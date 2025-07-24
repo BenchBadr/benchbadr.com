@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import ThemeProvider, {ThemeContext} from './ctx/ThemeContext';
+import SidebarProvider from './ctx/SidebarContext';
+import { useContext } from 'react';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <ThemeProvider>
+    <SidebarProvider>
+     <MainContent />
+    </SidebarProvider>
+  </ThemeProvider>
   );
+}
+
+
+const MainContent = () => {
+  const {theme, toggleTheme} = useContext(ThemeContext);
+
+  return (
+    <div className={`app ${theme}`}>
+      <div className='main-content'>
+        <h1 className='cop-title'>Badr Bench</h1>
+      </div>
+    </div>
+  )
 }
 
 export default App;
