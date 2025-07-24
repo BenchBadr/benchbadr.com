@@ -11,6 +11,9 @@
   /* --dark-bg:#2B3245;  */
   --dark-bg:#1e1e1e; 
   --light-bg:#f0eee7; 
+
+  --current-op-20:color-mix(in srgb, currentColor 20%, transparent 80%);
+  --current-op-40:color-mix(in srgb, currentColor 40%, transparent 60%);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
@@ -237,10 +240,22 @@ hr {
 }
 
 
+/* 
+Markdown content section 
+*/
+
 .markdown-box{
   font-family: Inter;
 
   .cop-title{
     font-family: Copernicus;
+  }
+
+  li {
+    list-style-type: disc;
+  }
+
+  li::marker{
+    color:var(--current-op-20);
   }
 }

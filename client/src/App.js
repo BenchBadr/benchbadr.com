@@ -26,27 +26,11 @@ This is an example of the **Markdown component** with MathJax support.
 
 ## Math Examples
 
-Global macros work: The real numbers $\\RR$ and complex numbers $\\CC$.
+Let's test ilsts
 
-Custom commands with newcommand:
-$\\newcommand{\\derivative}[2]{\\frac{d#1}{d#2}}$
-
-Now we can use: $\\derivative{f}{x} = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}$
-
-## Display Math
-
-$$\\int_{-\\infty}^{\\infty} e^{-x^2} dx = \\sqrt{\\pi}$$
-
-The norm $\\norm{\\mathbf{v}}$ and absolute value $\\abs{x}$ work too.
-
-## Other test
-
-Define here$\\newcommand{\\a}{hello}$
-
-- Test here: $\\a$
-
-> [tips]
-> test
+- Hello
+  - world
+    - test
 `;
 
   return (
