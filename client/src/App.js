@@ -26,7 +26,8 @@ This is an example of the **Markdown component** with MathJax support.
 
 ## Math Examples
 
-Let's test ilsts
+Let's test 
+ilsts
 
 - Hello
   - world

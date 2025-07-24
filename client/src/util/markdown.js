@@ -2,11 +2,12 @@ import React, { useMemo, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
+import remarkBreaks from 'remark-breaks';
 
 const Md = ({ children }) => (
     <div className='markdown-box'>
         <ReactMarkdown
-            remarkPlugins={[remarkMath]}
+            remarkPlugins={[remarkMath, remarkBreaks]}
             rehypePlugins={[rehypeMathjax]}
             components={{
                 h1: ({children}) => (
