@@ -3,11 +3,13 @@ import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkBreaks from 'remark-breaks';
+import remarkCallout from "@r4ai/remark-callout";
 
 const Md = ({ children }) => (
     <div className='markdown-box'>
+
         <ReactMarkdown
-            remarkPlugins={[remarkMath, remarkBreaks]}
+            remarkPlugins={[remarkMath, remarkBreaks, remarkCallout]}
             rehypePlugins={[rehypeMathjax]}
             components={{
                 h1: ({children}) => (
@@ -20,7 +22,8 @@ const Md = ({ children }) => (
 
                 h3: ({children}) => (
                     <h3 className='cop-title'>{children}</h3>
-                )
+                ),
+
             }}
         >
             {children}
