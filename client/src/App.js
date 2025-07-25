@@ -24,7 +24,7 @@ const MainContent = () => {
 
 This is an example of the **Markdown component** with MathJax support.
 
-## Math Examples
+## Math Examples \`hello\`
 
 Let's test[^1]
 ilsts
@@ -40,7 +40,7 @@ ilsts
 
 
 \`\`\`python
-print("Hello world")
+print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")
 \`\`\`
 
 [^1]:Test
