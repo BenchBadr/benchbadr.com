@@ -336,6 +336,7 @@ Markdown content section
       font-size:14px !important;
     }
 
+
     .linenumber {
       margin:0;
       user-select: none;
@@ -346,6 +347,24 @@ Markdown content section
       min-width: 2em;
     }
 
+    .linenumber:last-child{
+      display: none !important;
+    }
+
+    .label{
+      font-family: Inter !important;
+      color:var(--current-op-40);
+      text-transform:uppercase;
+      font-size: 75% !important;
+      position:absolute;
+      top:0;
+      right:5em;
+      border:1px solid var(--current-op-20);
+      padding:0 5px;
+      border-radius: 0 0 5px 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+      background: var(--blockcode-bg);
+    }
   }
 
   .code-block-wrapper{
@@ -364,6 +383,8 @@ Markdown content section
       transition-duration: .2s;
       user-select: none;
       color:var(--current-op-40);
+
+
       .material-icons{
         transition:.2s;
       }
@@ -387,6 +408,11 @@ Markdown content section
       }
     }
   }
+}
+
+
+.app.dark .label {
+    background:black;
 }
 
 /* Callout setup and details */

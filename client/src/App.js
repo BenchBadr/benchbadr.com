@@ -26,7 +26,7 @@ This is an example of the **Markdown component** with MathJax support.
 
 ## Math Examples \`hello\`
 
-Let's test[^1]
+Let's test[^1] \`hello\`
 ilsts
 
 - Hello
@@ -39,8 +39,10 @@ ilsts
 
 
 
-\`\`\`python
-print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")print("Hello world")
+\`\`\`javascript
+console.log('hi')
+// this is line two
+// line 3
 \`\`\`
 
 [^1]:Test

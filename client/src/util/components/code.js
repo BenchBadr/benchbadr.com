@@ -29,7 +29,7 @@ const CopyButton = ({ text }) => {
   };
 
   return (
-    <div onClick={handleCopy} className="copy-btn"  data-copied={copied ? `active` : ``} disable={copied}>
+    <div onClick={handleCopy} className="copy-btn"  data-copied={copied ? `active` : ``}>
       <span className="material-icons">
         {copied ? 'check' : 'content_copy'}
       </span>
@@ -42,6 +42,7 @@ const Highlighter = ({ code, language, showLines = true }) => {
 console.log(language)
   return (
     <div className="blockCode">
+      <div className='label'>{language}</div>
       <SyntaxHighlighter
         language={language || 'text'}
         style={theme === 'dark' ? vscDarkPlus : solarizedlight}
