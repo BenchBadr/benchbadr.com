@@ -245,6 +245,7 @@ hr {
   display: flex;
   align-items: center;
   font-family: Inter;
+  cursor: pointer;
 
   span.material-icons{
     margin-right:.5em;
@@ -308,21 +309,18 @@ Markdown content section
 
 details[data-callout] {
   summary {
-    color:var(--blue);
-    font-weight: bold;
     user-select: none;
     cursor:pointer;
   }
 
-  background:var(--blue-op);
   border-radius: 5px;
 }
 
-div[data-callout] {
+[data-callout] {
   --accent:var(--blue);
   --icon:'edit';
 
-  div[data-callout-title]{
+  [data-callout-title]{
     color:var(--accent);
     font-weight: 500;
     display: flex;
@@ -341,26 +339,49 @@ div[data-callout] {
   }
 
   border-radius: 5px;
-  background: color-mix(in srgb, var(--accent) 10%, transparent 90%);
+  background: color-mix(in srgb, var(--accent) 20%, transparent 80%);
   padding:12px 12px 12px 24px;
 }
 
-div[data-callout-type='tip']{
+.app.dark [data-callout]{
+  background: color-mix(in srgb, var(--accent) 10%, transparent 90%) !important;
+}
+
+details[data-callout] {
+  position:relative;
+
+  summary::after{
+    font-family: 'Material Icons Outlined';
+    content:'keyboard_arrow_down';
+    position:absolute;
+    right:10px;
+    font-size: 150%;
+    transition-duration:.1s;
+  }
+
+  &[open]{
+    summary::after{
+      transform:rotate(-90deg);
+    }
+  }
+}
+
+[data-callout-type='tip']{
   --accent:rgb(83, 223, 221);
   --icon:'local_fire_department';
 }
 
-div[data-callout-type='faq']{
+[data-callout-type='faq']{
   --accent:rgb(233, 151, 63);
   --icon:'help';
 }
 
-div[data-callout-type='example']{
+[data-callout-type='example']{
   --accent:rgb(168, 130, 255);
   --icon:'list';
 }
 
-div[data-callout-type='quote']{
+[data-callout-type='quote']{
   --accent:grey;
   --icon:'format_quote';
 }

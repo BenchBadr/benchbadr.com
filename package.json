@@ -3,6 +3,7 @@
     "@r4ai/remark-callout": "^0.6.2",
     "js-cookie": "^3.0.5",
     "react-router-dom": "^7.7.1",
-    "remark-breaks": "^4.0.0"
+    "remark-breaks": "^4.0.0",
+    "remark-footnotes": "^4.0.1"
   }
 }
