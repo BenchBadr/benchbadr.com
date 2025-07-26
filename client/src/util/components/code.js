@@ -39,7 +39,6 @@ const CopyButton = ({ text }) => {
 
 const Highlighter = ({ code, language, showLines = true }) => {
   const { theme } = useContext(ThemeContext);
-console.log(language)
   return (
     <div className="blockCode">
       <div className='label'>{language}</div>

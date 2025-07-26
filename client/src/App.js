@@ -20,6 +20,8 @@ const MainContent = () => {
   const {theme, toggleTheme} = useContext(ThemeContext);
 
   const exampleMarkdown = `
+lang:fr
+---
 # Welcome to Badr Bench
 
 This is an example of the **Markdown component** with MathJax support.
@@ -43,7 +45,6 @@ ilsts
 - [ ] Fix Burger
 - [x] Todo lists lol
 - [ ] Images
-- [ ] Twemoji
 - [x] Fix callouts
 - [ ] References up to Arltools
 - [ ] Table of content
