@@ -48,7 +48,7 @@ ilsts
 - [x] Fix callouts
 - [ ] References up to Arltools
 - [ ] Table of content
-- [ ] Sidebar open = no scroll behaviour
+- [x] Sidebar open = no scroll behaviour
 - [ ] Start indexing
 
 > [!tips] Testing

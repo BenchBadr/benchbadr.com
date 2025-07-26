@@ -224,6 +224,10 @@ html:has(.app.dark) .burger{
     transform: translateY(-15px) rotate(-45deg);
   }
 
+  html:has(.sidebar.open) {
+    overflow:hidden;
+  }
+
 }
 
 @media (min-width:769px){
