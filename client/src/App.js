@@ -42,7 +42,7 @@ ilsts
 
 - [ ] Fix refresh issue
 - [x] Design inline-code
-- [ ] Fix Burger
+- [x] Fix Burger
 - [x] Todo lists lol
 - [ ] Images
 - [x] Fix callouts
@@ -51,7 +51,7 @@ ilsts
 - [ ] Sidebar open = no scroll behaviour
 - [ ] Start indexing
 
-> [!tip] Testing
+> [!tips] Testing
 > This is peak
 
 
