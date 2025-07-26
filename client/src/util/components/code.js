@@ -24,7 +24,7 @@ const CopyButton = ({ text }) => {
   const handleCopy = () => {
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
+      setTimeout(() => setCopied(false), 3000);
     });
   };
 

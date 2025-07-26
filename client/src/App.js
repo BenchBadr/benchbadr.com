@@ -24,17 +24,33 @@ const MainContent = () => {
 
 This is an example of the **Markdown component** with MathJax support.
 
+$\\newcommand{\\m}[1]{\\begin{pmatrix}#1\\end{pmatrix}}$
+
 ## Math Examples \`hello\`
+
+- **matrix**
+  - $\\m{1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9}$
 
 Let's test[^1] \`hello\`
 ilsts
 
-- Hello
-  - world
-    - test
+## Todo next
 
+> Hello
 
-> [!warn]- Testing
+- [ ] Fix refresh issue
+- [x] Design inline-code
+- [ ] Fix Burger
+- [x] Todo lists lol
+- [ ] Images
+- [ ] Twemoji
+- [x] Fix callouts
+- [ ] References up to Arltools
+- [ ] Table of content
+- [ ] Sidebar open = no scroll behaviour
+- [ ] Start indexing
+
+> [!tip] Testing
 > This is peak
 
 

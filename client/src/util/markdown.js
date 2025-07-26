@@ -6,12 +6,13 @@ import remarkBreaks from 'remark-breaks';
 import remarkCallout from "@r4ai/remark-callout";
 import remarkFootnotes from 'remark-footnotes';
 import { CodeBlock, InlineCode } from './components/code';
+import remarkGfm from 'remark-gfm'
 
 const Md = ({ children }) => (
     <div className='markdown-box'>
 
         <ReactMarkdown
-            remarkPlugins={[remarkMath, remarkBreaks, remarkCallout, [remarkFootnotes, { inlineNotes: true }]]}
+            remarkPlugins={[remarkMath, remarkGfm, remarkBreaks, remarkCallout, [remarkFootnotes, { inlineNotes: true }]]}
             rehypePlugins={[rehypeMathjax]}
             components={{
                 h1: ({children}) => (

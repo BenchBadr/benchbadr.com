@@ -12,8 +12,11 @@
   --dark-bg:#1e1e1e; 
   --light-bg:#f0eee7; 
 
+  --current-op-10:color-mix(in srgb, currentColor 10%, transparent 90%);
   --current-op-20:color-mix(in srgb, currentColor 20%, transparent 80%);
+  --current-op-30:color-mix(in srgb, currentColor 30%, transparent 70%);
   --current-op-40:color-mix(in srgb, currentColor 40%, transparent 60%);
+  --current-op-50:color-mix(in srgb, currentColor 50%, transparent 50%);
 
   --accent:#1f4b7a;
 
@@ -52,6 +55,9 @@
   --light-pure-lowest:#c8c8cf;
   --light-pure-low-op:#f6f8fa90;
   --light-pure-lowest-op:rgba(200, 200, 207, 0.8);
+
+  --accent:var(--dark-blue);
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
@@ -63,12 +69,14 @@
   background-color: var(--light-bg);
   color: var(--light-text);
   --blockcode-bg: #f9f8f5;
+  --low-bg: var(--light-pure-low)
 }
 
 .app.dark,  html:has(.app.dark)  {
   background-color: var(--dark-bg);
   color: var(--dark-text);
-  --blockcode-bg:#161b22;
+  --blockcode-bg:#232934;
+  --low-bg:#393939;
 }
 
 .main-content {
@@ -321,7 +329,7 @@ Markdown content section
 
   .blockCode{
     padding-left:3em;
-    background:var(--blockcode-bg) !important;
+    background-color:var(--blockcode-bg) !important;
     border-radius:15px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
     margin:0;
@@ -334,6 +342,11 @@ Markdown content section
     *, * > * {
       font-family: Consolas, monospace !important;
       font-size:14px !important;
+    }
+
+    code {
+      padding:0;
+      background: transparent;
     }
 
 
@@ -399,6 +412,7 @@ Markdown content section
 
     .copy-btn[data-copied='active']{
       color:var(--green);
+      border:none;
 
       &:active {
         transform:none;
@@ -408,6 +422,52 @@ Markdown content section
       }
     }
   }
+
+  li.task-list-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.3em;
+    height: 1.3em;
+    transform: translateY(-2px);
+    border: 1px solid var(--current-op-30);
+    border-radius: 4px;
+    background: var(--current-op-10);
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s, background 0.2s;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  li.task-list-item input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  li.task-list-item input[type="checkbox"]:checked::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0.32em;
+    top: 0.1em;
+    width: 0.3em;
+    height: 0.6em;
+    border: solid #fff;
+    border-width: 0 0.18em 0.18em 0;
+    transform: rotate(45deg);
+  }
+
+  li.task-list-item:has(input[checked]){
+    color:color-mix(in srgb, currentColor 60%, transparent 40%);
+    text-decoration: line-through;
+  }
+
+  code {
+    background:var(--low-bg);
+    border-radius: 5px;
+    padding:3px;
+  }
+
 }
 
 
@@ -449,12 +509,12 @@ details[data-callout] {
   }
 
   border-radius: 5px;
-  background: color-mix(in srgb, var(--accent) 20%, transparent 80%);
+  background-color: color-mix(in srgb, var(--accent) 20%, transparent 80%);
   padding:12px 12px 12px 24px;
 }
 
 .app.dark [data-callout]{
-  background: color-mix(in srgb, var(--accent) 10%, transparent 90%) !important;
+  background-color: color-mix(in srgb, var(--accent) 10%, transparent 90%);
 }
 
 details[data-callout] {
@@ -503,7 +563,7 @@ div[data-callout-type='tips'], div[data-callout-type='info'], div[data-callout-t
     display: none;
   }
   position: relative;
-  background-color: rgb(217, 217, 0,0.4);
+  background-color: rgb(217, 217, 0,0.4) !important; 
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='orange' height='1.5em' viewBox='0 0 384 512'%3E%3Cpath d='M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z'/%3E%3C/svg%3E");
   background-position: 5px center, center;
   background-repeat: no-repeat, no-repeat;
@@ -520,19 +580,19 @@ div[data-callout-type='tips'], div[data-callout-type='info'], div[data-callout-t
 
 div[data-callout-type='info'] {
   border-left-color: var(--blue);
-  background-color: var(--blue-op);
+  background-color: var(--blue-op) !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(0, 153, 255)' height='1.5em' viewBox='0 0 24 24'%3E%3Cpath d='M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm2 16H8v-2h8zm0-4H8v-2h8zm-3-5V3.5L18.5 9z'/%3E%3C/svg%3E");
 }
 
 div[data-callout-type='warn']{
   border-left-color: var(--red);
-  background-color: var(--red-op);
+  background-color: var(--red-op) !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(201, 69, 60)' height='1.5em' viewBox='0 0 24 24'%3E%3Cpath d='M1 21h22L12 2zm12-3h-2v-2h2zm0-4h-2v-4h2z'/%3E%3C/svg%3E");
 }
 
 div[data-callout-type='check'] {
   border-left-color:var(--green);
-  background-color: var(--green-op);
+  background-color: var(--green-op) !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(0, 203, 169)' height='1.5em' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z'/%3E%3C/svg%3E");
 }
 
