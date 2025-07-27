@@ -8,23 +8,41 @@ import remarkFootnotes from 'remark-footnotes';
 import { CodeBlock, InlineCode } from './components/code';
 import remarkGfm from 'remark-gfm';
 import Details from './components/details';
+import { ExtRefs } from './components/footRefs';
+
+
 
 const Md = ({ children }) => {
     const [lang, setLang] = useState('en');
     const [textContent, setTextContent] = useState(null);
+    const [externalRefs, setExternalRefs] = useState([]);
+    const extRefsRef = useRef(new Set());
 
     useEffect(() => {
+        // Reset external refs for new content
+        extRefsRef.current.clear();
+        setExternalRefs([]);
+        
         // 1. Analyze intro
         const baseText = getIntro(children);
 
         // 1.1 Language
-        const matchLang = baseText.match(/lang:\s*([^:\n]*)/)[1];
+        const matchLang = baseText.match(/lang:\s*([^:\n]*)/)?.[1];
         if (matchLang) {
             setLang(matchLang)
         }
 
-    }, [])
+    }, [children])
 
+    // Use useEffect to collect external refs after rendering
+    useEffect(() => {
+        // After rendering, check if we have new external refs
+        const currentRefs = Array.from(extRefsRef.current);
+        if (currentRefs.length !== externalRefs.length || 
+            !currentRefs.every(ref => externalRefs.includes(ref))) {
+            setExternalRefs(currentRefs);
+        }
+    });
 
     function getIntro(text) {
         const index = text.indexOf('\n---\n');
@@ -63,15 +81,33 @@ const Md = ({ children }) => {
                         );
                     },
 
-                    // data-callout="true" data-callout-type="tips" open="">
-                    // <summary data-callout-title="true"
-                    details:({children, ...props}) => <Details {...props}>{children}</Details>
+                    details:({children, ...props}) => <Details {...props}>{children}</Details>,
+
+                    a: ({children, href, ...props}) => {
+                        if (href) {
+                            const isExternal = /^https?:\/\//.test(href) || 
+                                             (/^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\./.test(href) && !href.startsWith('/'));
+                            
+                            if (isExternal && !href.includes(window.location.hostname)) {
+                                const fullHref = /^https?:\/\//.test(href) ? href : `https://${href}`;
+                                extRefsRef.current.add(fullHref);
+                                
+                                return (
+                                    <a {...props} href={fullHref} target="_blank" rel="noopener noreferrer">{children}</a>
+                                );
+                            }
+                        }
+                        return (
+                            <a {...props} href={href}>{children}</a>
+                        )
+                    }
 
 
                 }}
             >
                 {textContent}
             </ReactMarkdown>
+            {externalRefs.length > 0 && <ExtRefs data={externalRefs}/>}
         </div>
     )
 };

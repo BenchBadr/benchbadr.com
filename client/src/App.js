@@ -47,13 +47,16 @@ ilsts
 - [x] Fix callouts
 - [x] Sidebar open = no scroll behaviour
 - [x] Fix expandables
+- [ ] External References
+- [ ] Footnotes
+- [ ] Tooltipping
 - [ ] Images
-- [ ] References up to Arltools
+- [ ] Tables
 - [ ] Table of content
 - [ ] Start indexing
 
-> [!tips]+ Testing
-> This is peak
+> [!tip]+ Testing
+> This is a nice little callout
 
 
 
@@ -62,6 +65,13 @@ console.log('hi')
 // this is line two
 // line 3
 \`\`\`
+
+
+| Nice table | test table |
+| - | - |
+| hi | hello |
+
+[Example](https://www.youtube.com/watch?v=nsZC6xcHJUs&list=RDzeiFvI6eUhc&index=4) and [example.com](example.com)
 
 [^1]:Test
 `;
