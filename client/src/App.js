@@ -74,7 +74,7 @@ console.log('hi')
 [Example](https://www.youtube.com/watch?v=nsZC6xcHJUs&list=RDzeiFvI6eUhc&index=4) and [example.com](example.com)
 
 
-[^1]:Test
+[^1]:https://en.wikipedia.org/wiki/Hittites
 `;
 
   return (

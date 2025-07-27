@@ -63,9 +63,17 @@ const Md = ({ children }) => {
                         <h1 className='cop-title'>{children}</h1>
                     ),
 
-                    h2: ({children}) => (
-                        <h2 className='cop-title'>{children}</h2>
-                    ),
+                    h2: ({children, id}) => {
+                        console.log(id)
+                        if (id === 'footnote-label') {
+                            return (
+                                <h2 className='cop-title' id={id}>{{'en':'Footnotes', 'fr':'Notes et références'}[lang]}</h2>
+                            )
+                        }
+                        return (
+                            <h2 className='cop-title' id={id}>{children}</h2>
+                        )
+                    },
 
                     h3: ({children}) => (
                         <h3 className='cop-title'>{children}</h3>
@@ -109,6 +117,25 @@ const Md = ({ children }) => {
 
                     sup: ({ children }) => {
                         return <Tooltip children={children} foot={foot} />;
+                    },
+
+                    section: ({ children }) => {
+
+                        const filteredChildren =
+                        children.length ? children.filter(child => child.key === 'ol-0')[0].props.children : null;
+                        filteredChildren &&
+                        filteredChildren.map((child, index) => {
+                            if (child !== '\n') {
+                            const temp = foot;
+                            try {
+                                temp[(index - 1) / 2] = child.props.children[1].props.children.slice(0, -1);
+                                setFoot(temp);
+                            } catch (error) {
+                                console.log('empty footnote');
+                            }
+                            }
+                        });
+                        return <div className="footnotes">{children}</div>;
                     },
 
 

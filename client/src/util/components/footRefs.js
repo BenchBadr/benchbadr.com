@@ -20,19 +20,97 @@ async function getWikipediaSummary(searchTerm, language='en') {
       return { title: searchTerm, desc: 'Wikipedia page not found', img_url: null };
     }
   }
-  
+
+async function getPageMeta(url) {
+  try {
+    const response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`);
+    const data = await response.json();
+    
+    if (response.ok && data.data) {
+      return {
+        title: data.data.title,
+        desc: data.data.description,
+        date: data.date
+      };
+    } else {
+      throw new Error('Failed to fetch metadata');
+    }
+  } catch (error) {
+    console.error('Error fetching page metadata:', error);
+    return {
+      title: null,
+      desc: null,
+      date: null
+    };
+  }
+}
 
   const Content = ({child}) => {
-    if (child){
-    if (!(child.startsWith('wiki:')))
+    const [webData, setWebData] = useState(null);
+    
+
+    const shouldProcessUrl = child && Array.isArray(child) && child.length > 0 && 
+      child[0] && child[0].props && child[0].props.href && 
+      /^https?:\/\/.+/.test(child[0].props.href);
+    
+    const href = shouldProcessUrl ? child[0].props.href : null;
+    
+    useEffect(() => {
+      if (!href) {
+        setWebData(null);
+        return;
+      }
+
+      try {
+        const urlObj = new URL(href);
+        const domain = urlObj.hostname.replace('www.', '');
+        const plac_title = domain.split('.')[0].charAt(0).toUpperCase() + domain.split('.')[0].slice(1);
+        
+
+        setWebData({ domain, plac_title, title: null, desc: null });
+        
+        let isMounted = true;
+        getPageMeta(href).then(meta => {
+          if (isMounted) {
+            setWebData({ ...meta, domain, plac_title });
+          }
+        }).catch(error => {
+          console.error('Error fetching page metadata:', error);
+          if (isMounted) {
+            setWebData({ domain, plac_title, title: null, desc: null });
+          }
+        });
+        
+        return () => { isMounted = false; };
+      } catch (error) {
+        console.error('Invalid URL:', href, error);
+        setWebData(null);
+      }
+    }, [href]);
+
+    if (!child) {
+      return null;
+    }
+
+    if (shouldProcessUrl && webData) {
+      try {
+        const urlObj = new URL(href);
+        return (
+          <div className='tooltip embed'>
+            <EmbedUrl url={urlObj} webData={webData}/>
+          </div>
+        );
+      } catch (error) {
+        console.error('Invalid URL:', href, error);
+      }
+    }
+
+    // Default case: render child as is
     return (
-      <div className='wikipedia-tooltip' style={{padding:'5px',fontFamily:'sans-serif', width:'auto', maxWidth:'320px'}}>
+      <div className='tooltip'>
         {child}
       </div>
-    )
-    return <Wiki searchTerm={child.slice(5)}/>
-    }
-    return null
+    );
   }
   
   
@@ -137,44 +215,18 @@ export const Tooltip = ({ children, foot, footnote=1 }) => {
 
 
     return (
-        <a onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} id='content'>
+        <span onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} id='content' className='inline'>
             {footnote ? <sup>{children}</sup> : children}
             {isTooltipVisible && children.props && children.props.href.startsWith('#user-content-fn-') ? (
-              <a style={{position:'relative',zIndex:100000}}>
-                <div ref={tooltipRef} style={tooltipStyle}>
+              <span style={{position:'relative',zIndex:100000}} className='inline'>
+                <span ref={tooltipRef} style={tooltipStyle}>
                     <Content child={footnote ? foot[parseInt(children.props ? children.props.children : null) - 1] : foot} />
-                </div>
-              </a>
+                </span>
+              </span>
             ) : null}
-        </a>
+        </span>
     );
 };
-
-
-async function getPageMeta(url) {
-  try {
-    const response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`);
-    const data = await response.json();
-    
-    if (response.ok && data.data) {
-      return {
-        title: data.data.title,
-        desc: data.data.description,
-        date: data.date
-      };
-    } else {
-      throw new Error('Failed to fetch metadata');
-    }
-  } catch (error) {
-    console.error('Error fetching page metadata:', error);
-    return {
-      title: null,
-      desc: null,
-      date:null
-    };
-  }
-}
-
 
 
 export const ExtRefs = ({data, language}) => {
@@ -215,32 +267,46 @@ export const ExtRefs = ({data, language}) => {
           const url = new URL(item);
           const domain = url.hostname.replace('www.', '');
           const webData = metaData[idx];
-          const plac_title = capitalize(domain.split('.')[0])
+          const list_dots = domain.split('.')
+          const plac_title = capitalize(list_dots[list_dots.length - 2])
 
-          if (domain === 'youtube.com') {
+          if (domain === 'youtube.com' && url.href.split('.').length === 3) {
             return <YoutubeRef url={url} data={webData} key={idx} domain={domain} plac_title={plac_title}/>
           }
           
-          return (
-            <div key={idx} className='ext-refs'>
-              <div className='center-vert'>
-                <img src={`https://www.google.com/s2/favicons?sz=64&domain_url=${domain}`} alt='favicon' className='icon'/>
-                
-                <div className='text-block'>
-                  <a>{plac_title}</a>
-                  <a className='domain'>{url.host}</a>
-                </div>
-              </div>
-
-              <a className='page-title link' href={url.href} target={`_blank`}>{webData?.title || domain} | {webData?.domain_title || plac_title}</a>
-              <p className='page-desc'>{webData?.desc || `Link to ${plac_title}`}</p>
-            </div>
-          );
+          return <EmbedUrl key={idx} url={url} webData={webData} />;
         })}
       </div>
     </>
   )
 }
+
+const EmbedUrl = ({ url, webData }) => {
+  const domain = url.hostname.replace('www.', '');
+  const list_dots = domain.split('.')
+  const plac_title = capitalize(list_dots[list_dots.length - 2])
+  
+  function capitalize(str) {
+    if (!str) return '';
+    return str[0].toUpperCase() + str.slice(1);
+  }
+
+  return (
+    <div className='ext-refs'>
+      <div className='center-vert'>
+        <img src={`https://www.google.com/s2/favicons?sz=64&domain_url=${domain}`} alt='favicon' className='icon'/>
+        
+        <div className='text-block'>
+          <a>{plac_title}</a>
+          <a className='domain'>{url.host}</a>
+        </div>
+      </div>
+
+      <a className='page-title link' href={url.href} target={`_blank`}>{webData?.title || domain} | {webData?.domain_title || plac_title}</a>
+      <p className='page-desc'>{webData?.desc || `Link to ${plac_title}`}</p>
+    </div>
+  );
+};
 
 const YoutubeRef = ({url, data, idx, domain, plac_title}) => {
   const id = url.href.split('/')[3].split('?v=')[1].split('&')[0];
@@ -257,7 +323,7 @@ const YoutubeRef = ({url, data, idx, domain, plac_title}) => {
           </div>
         </div>
 
-        <a className='page-title link' href={url.href} target={`_blank`} style={{display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{data?.title || domain} | {data?.title || plac_title}</a>
+        <a className='page-title link' href={url.href} target={`_blank`} style={{display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{data?.title || domain} | YouTube</a>
         <p className='page-desc' style={{overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', whiteSpace: 'normal'}}>{data?.desc || `Watch this video on Youtube.`}</p>
       </div>
       
