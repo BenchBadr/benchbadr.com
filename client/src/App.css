@@ -64,7 +64,6 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
 
-
 .app.light, html:has(.app.light) {
   background-color: var(--light-bg);
   color: var(--light-text);
@@ -320,6 +319,7 @@ Markdown content section
 
 .markdown-box{
   font-family: Inter;
+  padding-bottom:3em;
 
   .cop-title{
     font-family: Copernicus;
@@ -344,7 +344,7 @@ Markdown content section
     border-left:none;
   }
 
-  ul:first-child{
+  li ul{
     border-left:var(--current-op-20) solid 1px;
     margin-left:-12px;
   }
@@ -494,12 +494,13 @@ Markdown content section
 
 
 .app.dark .label {
-    background:black;
+    background:var(--blue-op);
+    color:var(--blue);
 }
 
 /* Callout setup and details */
 
-details[data-callout] {
+.details[data-callout] {
   summary {
     user-select: none;
     cursor:pointer;
@@ -513,7 +514,7 @@ details[data-callout] {
   --icon:'edit';
 
   [data-callout-title]{
-    color:var(--accent);
+    color:color-mix(in srgb, var(--accent) 60%, currentColor 40%);
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -539,7 +540,7 @@ details[data-callout] {
   background-color: color-mix(in srgb, var(--accent) 10%, transparent 90%);
 }
 
-details[data-callout] {
+.details[data-callout] {
   position:relative;
 
   summary::after{
@@ -578,9 +579,29 @@ details[data-callout] {
   --icon:'format_quote';
 }
 
+[data-callout-type='tips']{
+  --accent:rgb(217, 166, 0);
+  --icon:'lightbulb';
+}
+
+[data-callout-type='info']{
+  --accent:var(--blue);
+  --icon:'info';
+}
+
+[data-callout-type='warn']{
+  --accent:var(--red);
+  --icon:'warning';
+}
+
+[data-callout-type='check']{
+  --accent:var(--green);
+  --icon:'check';
+}
+
 /* The original callouts */
 
-div[data-callout-type='tips'], div[data-callout-type='info'], div[data-callout-type='warn'], div[data-callout-type='check'] {
+div:not(.details)[data-callout-type='tips'], div:not(.details)[data-callout-type='info'], div:not(.details)[data-callout-type='warn'], div:not(.details)[data-callout-type='check'] {
   div[data-callout-title]{
     display: none;
   }
@@ -600,19 +621,19 @@ div[data-callout-type='tips'], div[data-callout-type='info'], div[data-callout-t
   margin:5px 5px 0 0;
 }
 
-div[data-callout-type='info'] {
+div:not(.details)[data-callout-type='info'] {
   border-left-color: var(--blue);
   background-color: var(--blue-op) !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(0, 153, 255)' height='1.5em' viewBox='0 0 24 24'%3E%3Cpath d='M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm2 16H8v-2h8zm0-4H8v-2h8zm-3-5V3.5L18.5 9z'/%3E%3C/svg%3E");
 }
 
-div[data-callout-type='warn']{
+div:not(.details)[data-callout-type='warn']{
   border-left-color: var(--red);
   background-color: var(--red-op) !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(201, 69, 60)' height='1.5em' viewBox='0 0 24 24'%3E%3Cpath d='M1 21h22L12 2zm12-3h-2v-2h2zm0-4h-2v-4h2z'/%3E%3C/svg%3E");
 }
 
-div[data-callout-type='check'] {
+div:not(.details)[data-callout-type='check'] {
   border-left-color:var(--green);
   background-color: var(--green-op) !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(0, 203, 169)' height='1.5em' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z'/%3E%3C/svg%3E");

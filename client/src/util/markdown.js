@@ -6,7 +6,8 @@ import remarkBreaks from 'remark-breaks';
 import remarkCallout from "@r4ai/remark-callout";
 import remarkFootnotes from 'remark-footnotes';
 import { CodeBlock, InlineCode } from './components/code';
-import remarkGfm from 'remark-gfm'
+import remarkGfm from 'remark-gfm';
+import Details from './components/details';
 
 const Md = ({ children }) => {
     const [lang, setLang] = useState('en');
@@ -19,7 +20,6 @@ const Md = ({ children }) => {
         // 1.1 Language
         const matchLang = baseText.match(/lang:\s*([^:\n]*)/)[1];
         if (matchLang) {
-            console.log('matched',matchLang)
             setLang(matchLang)
         }
 
@@ -32,7 +32,6 @@ const Md = ({ children }) => {
         return index !== -1 ? text.substring(0, index).trim() : text.trim();
     }
 
-    console.log(textContent)
 
     return (
         <div className='markdown-box'>
@@ -62,7 +61,11 @@ const Md = ({ children }) => {
                         ) : (
                             <InlineCode code={codeText} {...props} />
                         );
-                    }
+                    },
+
+                    // data-callout="true" data-callout-type="tips" open="">
+                    // <summary data-callout-title="true"
+                    details:({children, ...props}) => <Details {...props}>{children}</Details>
 
 
                 }}

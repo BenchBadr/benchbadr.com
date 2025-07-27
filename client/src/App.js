@@ -40,18 +40,19 @@ ilsts
 
 > Hello
 
-- [ ] Fix refresh issue
+- [x] Fix refresh issue
 - [x] Design inline-code
 - [x] Fix Burger
 - [x] Todo lists lol
-- [ ] Images
 - [x] Fix callouts
+- [x] Sidebar open = no scroll behaviour
+- [x] Fix expandables
+- [ ] Images
 - [ ] References up to Arltools
 - [ ] Table of content
-- [x] Sidebar open = no scroll behaviour
 - [ ] Start indexing
 
-> [!tips] Testing
+> [!tips]+ Testing
 > This is peak
 
 
