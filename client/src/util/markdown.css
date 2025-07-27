@@ -404,6 +404,15 @@ div:not(.details)[data-callout-type='check'] {
 
 }
 
+.link{
+  color:var(--blue);
+  transition-duration: .2s;
+}
+
+.link:hover{
+  color:teal !important;
+}
+
 .link::after {
   content: "open_in_new";
   font-family: 'Material Icons';
@@ -517,4 +526,9 @@ TOOLTIP
 
 .app.dark .tooltip.embed{
   background:transparent !important;
+}
+
+a[data-footnote-ref] {
+  text-decoration: none !important;
+  color:currentColor;
 }

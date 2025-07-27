@@ -102,7 +102,7 @@ const Md = ({ children }) => {
                                 extRefsRef.current.add(fullHref);
                                 
                                 return (
-                                    <a {...props} href={fullHref} target="_blank" rel="noopener noreferrer">{children}</a>
+                                    <a {...props} href={fullHref} target="_blank" rel="noopener noreferrer" className='link'>{children}</a>
                                 );
                             }
                         }

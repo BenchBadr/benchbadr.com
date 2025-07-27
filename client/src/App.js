@@ -49,8 +49,8 @@ ilsts
 - [x] Fix expandables
 - [x] External References URLs
 - [x] Tables
-- [ ] Footnotes
-- [ ] Tooltipping
+- [x] Footnotes
+- [x] Tooltipping
 - [ ] Images
 - [ ] Table of content
 - [ ] Start indexing
