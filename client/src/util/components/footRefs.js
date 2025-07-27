@@ -152,25 +152,32 @@ export const Wiki = ({searchTerm}) => {
   
 
 async function getPageMeta(url) {
-  let result;
-
-  fetch('https://api.microlink.io/?url=https://example.com')
-  .then(res => res.json())
-  .then(data => {result = data.data})
-  .catch(console.error);
-
-  console.log(result)
-
-  return {
-    title:result.title,
-    desc:result.description,
+  try {
+    const response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`);
+    const data = await response.json();
+    
+    if (response.ok && data.data) {
+      return {
+        title: data.data.title,
+        desc: data.data.description,
+        date: data.date
+      };
+    } else {
+      throw new Error('Failed to fetch metadata');
+    }
+  } catch (error) {
+    console.error('Error fetching page metadata:', error);
+    return {
+      title: null,
+      desc: null,
+      date:null
+    };
   }
 }
 
 
 
-
-export const ExtRefs = ({data}) => {
+export const ExtRefs = ({data, language}) => {
   const [metaData, setMetaData] = useState({});
 
   useEffect(() => {
@@ -182,6 +189,7 @@ export const ExtRefs = ({data}) => {
         });
         
         const results = await Promise.all(metaPromises);
+
         const metaMap = {};
         results.forEach(({ idx, meta }) => {
           metaMap[idx] = meta;
@@ -193,32 +201,65 @@ export const ExtRefs = ({data}) => {
     fetchMetaData();
   }, [data]);
 
+  function capitalize(str) {
+    if (!str) return '';
+    return str[0].toUpperCase() + str.slice(1);
+  }
+
+
   return (
     <>
-      <h3 className='cop-title'>External References</h3>
+      <h3 className='cop-title'>{{'en':'External references','fr':'Références externes'}[language]}</h3>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         {data && Array.isArray(data) && data.map((item, idx) => {
           const url = new URL(item);
           const domain = url.hostname.replace('www.', '');
           const webData = metaData[idx];
+          const plac_title = capitalize(domain.split('.')[0])
+
+          if (domain === 'youtube.com') {
+            return <YoutubeRef url={url.href} data={webData} key={idx}/>
+          }
           
           return (
             <div key={idx} className='ext-refs'>
               <div className='center-vert'>
-                <img src={`https://www.google.com/s2/favicons?sz=64&domain_url=${domain}`} alt='favicon'/>
+                <img src={`https://www.google.com/s2/favicons?sz=64&domain_url=${domain}`} alt='favicon' className='icon'/>
                 
                 <div className='text-block'>
-                  <a>{webData?.title || url.host}</a>
+                  <a>{plac_title}</a>
                   <a className='domain'>{url.host}</a>
                 </div>
               </div>
 
-              <a className='page-title' href={url.href} target={`_blank`}>{webData.title} | {webData?.domain_title || domain}</a>
-              <p className='page-desc'>{webData.desc}</p>
+              <a className='page-title link' href={url.href} target={`_blank`}>{webData?.title || domain} | {webData?.domain_title || plac_title}</a>
+              <p className='page-desc'>{webData?.desc || `Link to ${plac_title}`}</p>
             </div>
           );
         })}
       </div>
     </>
+  )
+}
+
+const YoutubeRef = ({url, data, idx}) => {
+  const id = url.split('/')[3].split('?v=')[1].split('&')[0];
+
+  return (
+    <div className='ext-refs youtube' key={idx}>
+      <div className='center-vert'>
+        <a className='thumbnail' href={url} target={'_blank'}>
+          <img src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}/>
+          <div className='material-icons'>play_arrow</div>
+        </a>
+
+        <div className='text-block'>
+          <a className='youtube-title' href={url} target={`_blank`}>
+            <img src={`https://www.google.com/s2/favicons?sz=64&domain_url=https://youtube.com`} alt='favicon' className='icon'/>
+            {data?.title || 'Youtube'}</a>
+          <p className='page-desc'>{data?.desc || url}</p>
+        </div>
+      </div>
+    </div>
   )
 }

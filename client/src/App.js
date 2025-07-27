@@ -47,11 +47,11 @@ ilsts
 - [x] Fix callouts
 - [x] Sidebar open = no scroll behaviour
 - [x] Fix expandables
-- [ ] External References
+- [x] External References URLs
+- [x] Tables
 - [ ] Footnotes
 - [ ] Tooltipping
 - [ ] Images
-- [ ] Tables
 - [ ] Table of content
 - [ ] Start indexing
 
@@ -72,6 +72,7 @@ console.log('hi')
 | hi | hello |
 
 [Example](https://www.youtube.com/watch?v=nsZC6xcHJUs&list=RDzeiFvI6eUhc&index=4) and [example.com](example.com)
+
 
 [^1]:Test
 `;

@@ -100,14 +100,18 @@ const Md = ({ children }) => {
                         return (
                             <a {...props} href={href}>{children}</a>
                         )
-                    }
+                    },
+
+                    // section: ({children}) => {
+
+                    // }
 
 
                 }}
             >
                 {textContent}
             </ReactMarkdown>
-            {externalRefs.length > 0 && <ExtRefs data={externalRefs}/>}
+            {externalRefs.length > 0 && <ExtRefs data={externalRefs} language={lang}/>}
         </div>
     )
 };
