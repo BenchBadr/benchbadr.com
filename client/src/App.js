@@ -80,7 +80,7 @@ console.log('hi')
   return (
     <div className={`app ${theme}`}>
       <div className='main-content'>
-        <Md>{exampleMarkdown}</Md>
+        <Md article={true}>{exampleMarkdown}</Md>
       </div>
     </div>
   )

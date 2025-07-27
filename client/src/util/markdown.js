@@ -12,7 +12,7 @@ import { ExtRefs, Tooltip } from './components/footRefs';
 
 
 
-const Md = ({ children }) => {
+const Md = ({ children, article=false }) => {
     const [lang, setLang] = useState('en');
     const [textContent, setTextContent] = useState(null);
     const [externalRefs, setExternalRefs] = useState([]);
@@ -111,15 +111,16 @@ const Md = ({ children }) => {
                         )
                     },
 
-                    // section: ({children}) => {
-
-                    // }
 
                     sup: ({ children }) => {
                         return <Tooltip children={children} foot={foot} />;
                     },
 
                     section: ({ children }) => {
+
+                        if (!article) {
+                            return null
+                        }
 
                         const filteredChildren =
                         children.length ? children.filter(child => child.key === 'ol-0')[0].props.children : null;
@@ -143,7 +144,7 @@ const Md = ({ children }) => {
             >
                 {textContent}
             </ReactMarkdown>
-            {externalRefs.length > 0 && <ExtRefs data={externalRefs} language={lang}/>}
+            {article && externalRefs.length > 0 && <ExtRefs data={externalRefs} language={lang}/>}
         </div>
     )
 };
