@@ -82,74 +82,74 @@ export const Wiki = ({searchTerm}) => {
     );
   }
 
-  export const Tooltip = ({ children, foot, footnote=1 }) => {
-      const [isTooltipVisible, setTooltipVisible] = useState(false);
-      const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
-      const [tooltipDimensions, setTooltipDimensions] = useState({ width: 0, height: 0 });
-      const tooltipRef = useRef(null);
-  
-      const handleMouseEnter = (event) => {
-          setTooltipVisible(true);
-          setTooltipPosition({ x: event.clientX, y: event.clientY });
-      };
-  
-      const handleMouseLeave = () => {
-          setTooltipVisible(false);
-      };
-  
-      useEffect(() => {
-          if (tooltipRef.current) {
-              setTooltipDimensions({
-                  width: tooltipRef.current.offsetWidth,
-                  height: tooltipRef.current.offsetHeight,
-              });
-          }
-      }, [isTooltipVisible]);
-  
-      const calculateTooltipPosition = () => {
-          const { innerWidth, innerHeight } = window;
-          const { width: tooltipWidth, height: tooltipHeight } = tooltipDimensions;
-          const padding = 10; 
-  
-          let left = tooltipPosition.x;
-          let top = tooltipPosition.y;
-  
-          if (left + tooltipWidth + padding > innerWidth) {
-              left = innerWidth - tooltipWidth - padding;
-          }
-          if (top + tooltipHeight + padding > innerHeight) {
-              top = innerHeight - tooltipHeight - padding;
-          }
-          if (left < padding) {
-              left = padding;
-          }
-          if (top < padding) {
-              top = padding;
-          }
-  
-          return { left, top };
-      };
-  
-      const tooltipStyle = {
-          position: 'fixed',
-          ...calculateTooltipPosition(),
-      };
-  
-  
-      return (
-          <a onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} id='content'>
-              {footnote ? <sup>{children}</sup> : children}
-              {isTooltipVisible && children.props && children.props.href.startsWith('#user-content-fn-') ? (
-                <a style={{position:'relative',zIndex:100000}}>
-                  <div ref={tooltipRef} style={tooltipStyle}>
-                      <Content child={footnote ? foot[parseInt(children.props ? children.props.children : null) - 1] : foot} />
-                  </div>
-                </a>
-              ) : null}
-          </a>
-      );
-  };
-  
+export const Tooltip = ({ children, foot, footnote=1 }) => {
+    const [isTooltipVisible, setTooltipVisible] = useState(false);
+    const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+    const [tooltipDimensions, setTooltipDimensions] = useState({ width: 0, height: 0 });
+    const tooltipRef = useRef(null);
+
+    const handleMouseEnter = (event) => {
+        setTooltipVisible(true);
+        setTooltipPosition({ x: event.clientX, y: event.clientY });
+    };
+
+    const handleMouseLeave = () => {
+        setTooltipVisible(false);
+    };
+
+    useEffect(() => {
+        if (tooltipRef.current) {
+            setTooltipDimensions({
+                width: tooltipRef.current.offsetWidth,
+                height: tooltipRef.current.offsetHeight,
+            });
+        }
+    }, [isTooltipVisible]);
+
+    const calculateTooltipPosition = () => {
+        const { innerWidth, innerHeight } = window;
+        const { width: tooltipWidth, height: tooltipHeight } = tooltipDimensions;
+        const padding = 10; 
+
+        let left = tooltipPosition.x;
+        let top = tooltipPosition.y;
+
+        if (left + tooltipWidth + padding > innerWidth) {
+            left = innerWidth - tooltipWidth - padding;
+        }
+        if (top + tooltipHeight + padding > innerHeight) {
+            top = innerHeight - tooltipHeight - padding;
+        }
+        if (left < padding) {
+            left = padding;
+        }
+        if (top < padding) {
+            top = padding;
+        }
+
+        return { left, top };
+    };
+
+    const tooltipStyle = {
+        position: 'fixed',
+        ...calculateTooltipPosition(),
+    };
+
+
+    return (
+        <a onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} id='content'>
+            {footnote ? <sup>{children}</sup> : children}
+            {isTooltipVisible && children.props && children.props.href.startsWith('#user-content-fn-') ? (
+              <a style={{position:'relative',zIndex:100000}}>
+                <div ref={tooltipRef} style={tooltipStyle}>
+                    <Content child={footnote ? foot[parseInt(children.props ? children.props.children : null) - 1] : foot} />
+                </div>
+              </a>
+            ) : null}
+        </a>
+    );
+};
+
 
 async function getPageMeta(url) {
   try {
@@ -218,7 +218,7 @@ export const ExtRefs = ({data, language}) => {
           const plac_title = capitalize(domain.split('.')[0])
 
           if (domain === 'youtube.com') {
-            return <YoutubeRef url={url.href} data={webData} key={idx}/>
+            return <YoutubeRef url={url} data={webData} key={idx} domain={domain} plac_title={plac_title}/>
           }
           
           return (
@@ -242,24 +242,30 @@ export const ExtRefs = ({data, language}) => {
   )
 }
 
-const YoutubeRef = ({url, data, idx}) => {
-  const id = url.split('/')[3].split('?v=')[1].split('&')[0];
+const YoutubeRef = ({url, data, idx, domain, plac_title}) => {
+  const id = url.href.split('/')[3].split('?v=')[1].split('&')[0];
 
   return (
-    <div className='ext-refs youtube' key={idx}>
-      <div className='center-vert'>
-        <a className='thumbnail' href={url} target={'_blank'}>
-          <img src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}/>
-          <div className='material-icons'>play_arrow</div>
-        </a>
-
-        <div className='text-block'>
-          <a className='youtube-title' href={url} target={`_blank`}>
-            <img src={`https://www.google.com/s2/favicons?sz=64&domain_url=https://youtube.com`} alt='favicon' className='icon'/>
-            {data?.title || 'Youtube'}</a>
-          <p className='page-desc'>{data?.desc || url}</p>
+    <div key={idx} className='ext-refs youtube' style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem'}}>
+      <div style={{flex: 1, minWidth: 0, overflow: 'hidden'}}>
+        <div className='center-vert'>
+          <img src={`https://www.google.com/s2/favicons?sz=64&domain_url=${domain}`} alt='favicon' className='icon'/>
+          
+          <div className='text-block' style={{minWidth: 0, overflow: 'hidden'}}>
+            <div style={{overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{plac_title}</div>
+            <div className='domain' style={{overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{url.host}</div>
+          </div>
         </div>
+
+        <a className='page-title link' href={url.href} target={`_blank`} style={{display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{data?.title || domain} | {data?.title || plac_title}</a>
+        <p className='page-desc' style={{overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', whiteSpace: 'normal'}}>{data?.desc || `Watch this video on Youtube.`}</p>
       </div>
+      
+      <a className='thumbnail' href={url.href} target={'_blank'} style={{flexShrink: 0}}>
+        <img src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`} className='embed'/>
+        <div className='material-icons'>play_arrow</div>
+      </a>
     </div>
   )
 }
+

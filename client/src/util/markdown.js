@@ -8,7 +8,7 @@ import remarkFootnotes from 'remark-footnotes';
 import { CodeBlock, InlineCode } from './components/code';
 import remarkGfm from 'remark-gfm';
 import Details from './components/details';
-import { ExtRefs } from './components/footRefs';
+import { ExtRefs, Tooltip } from './components/footRefs';
 
 
 
@@ -16,6 +16,7 @@ const Md = ({ children }) => {
     const [lang, setLang] = useState('en');
     const [textContent, setTextContent] = useState(null);
     const [externalRefs, setExternalRefs] = useState([]);
+    const [foot, setFoot] = useState([]);
     const extRefsRef = useRef(new Set());
 
     useEffect(() => {
@@ -105,6 +106,10 @@ const Md = ({ children }) => {
                     // section: ({children}) => {
 
                     // }
+
+                    sup: ({ children }) => {
+                        return <Tooltip children={children} foot={foot} />;
+                    },
 
 
                 }}

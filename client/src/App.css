@@ -749,30 +749,28 @@ div:not(.details)[data-callout-type='check'] {
 
 .ext-refs.youtube{
   max-height: 15vh;
-  .center-vert {
-      img {
-        max-height:15vh;
-        user-select: none;
-        /* pointer-events: none; */
-        border-radius:15px;
-      }
-
-      .material-icons{
-        background:rgb(0,0,0,.6);
-        backdrop-filter:blur(5px);
-        position:absolute;
-        user-select:none;
-        font-size:150%;
-        color:white;
-        padding:5px;
-        border-radius:50%;
-        top:50%;
-        transform: translateY(-50%) translateX(-50%);
-        left:50%;
-        transition-duration:.2s;
-      }
-
+  img.embed {
+    max-height:15vh;
+    user-select: none;
+    /* pointer-events: none; */
+    border-radius:15px;
   }
+
+  .material-icons{
+    background:rgb(0,0,0,.6);
+    backdrop-filter:blur(5px);
+    position:absolute;
+    user-select:none;
+    font-size:150%;
+    color:white;
+    padding:5px;
+    border-radius:50%;
+    top:50%;
+    transform: translateY(-50%) translateX(-50%);
+    left:50%;
+    transition-duration:.2s;
+  }
+
 
   .thumbnail{
     position:relative;
