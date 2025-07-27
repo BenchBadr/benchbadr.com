@@ -52,7 +52,9 @@ ilsts
 - [x] Footnotes
 - [x] Tooltipping
 - [ ] Images
+- [ ] Sidebaright
 - [ ] Table of content
+- [ ] AI Chat
 - [ ] Start indexing
 
 > [!tip]+ Testing

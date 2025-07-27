@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useEffect, useState } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
@@ -9,7 +9,8 @@ import { CodeBlock, InlineCode } from './components/code';
 import remarkGfm from 'remark-gfm';
 import Details from './components/details';
 import { ExtRefs, Tooltip } from './components/footRefs';
-
+import { SidebarContext } from '../ctx/SidebarContext';
+import SidebarRight from './ui/sidebaright';
 
 
 const Md = ({ children, article=false }) => {
@@ -17,7 +18,13 @@ const Md = ({ children, article=false }) => {
     const [textContent, setTextContent] = useState(null);
     const [externalRefs, setExternalRefs] = useState([]);
     const [foot, setFoot] = useState([]);
+
     const extRefsRef = useRef(new Set());
+    const { isRightOpen, setIsRightOpen } = useContext(SidebarContext);
+
+    const toggleOpen = () => {
+        setIsRightOpen(!isRightOpen)
+    }
 
     useEffect(() => {
         // Reset external refs for new content
@@ -64,7 +71,7 @@ const Md = ({ children, article=false }) => {
                     ),
 
                     h2: ({children, id}) => {
-                        console.log(id)
+
                         if (id === 'footnote-label') {
                             return (
                                 <h2 className='cop-title' id={id}>{{'en':'Footnotes', 'fr':'Notes et références'}[lang]}</h2>
@@ -144,7 +151,19 @@ const Md = ({ children, article=false }) => {
             >
                 {textContent}
             </ReactMarkdown>
+
+
+            {/* The optional external urls section */}
+
             {article && externalRefs.length > 0 && <ExtRefs data={externalRefs} language={lang}/>}
+            
+            {/* Right button for right-bar */}
+            {article && 
+            <div className={`burger right ${isRightOpen ? 'open' : ''}`} onClick={toggleOpen}>
+                <span/>
+                <span/>
+            </div>}
+            {article && <SidebarRight/>}
         </div>
     )
 };

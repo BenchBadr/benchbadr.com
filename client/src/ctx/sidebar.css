@@ -16,6 +16,11 @@
   backdrop-filter: blur(10px);
 }
 
+.sidebar.right{
+  left:unset;
+  right:0;
+}
+
 
 @media (max-width:768px){
   .sidebar{
@@ -87,6 +92,75 @@ html:has(.app.dark) .sidebar-content{
 }
 
 
+.burger.right{
+  left:unset;
+  right:20px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    border:solid 1px;
+    height:2rem;
+    transform: translateY(-5px);
+    transition-duration: .2s;
+  }
+
+}
+
+@media (min-width: 769px){
+  .burger.right{
+    span:first-child{
+      transform: rotate(45deg) translateY(4px);
+    }
+
+    span:last-child{
+      transform:rotate(-45deg) translateY(-4px);
+    }
+  }
+
+  .burger.right.open{
+    span:first-child{
+      transform: rotate(-45deg) translateY(4px);
+    }
+
+    span:last-child{
+      transform:rotate(45deg) translateY(-4px);
+    }
+  }
+
+}
+
+@media (max-width:768px) {
+  html:has(.sidebar.open) .burger.right{
+    display: none;
+  }
+
+  html:has(.burger.right:not(.open)) .burger:not(.right){
+    display: none;
+  }
+
+  .burger.right{
+    span:first-child{
+      transform: rotate(-45deg) translateY(4px);
+    }
+
+    span:last-child{
+      transform:rotate(45deg) translateY(-4px);
+    }
+  }
+
+  .burger.right.open{
+    span:first-child{
+      transform: rotate(45deg) translateY(4px);
+    }
+
+    span:last-child{
+      transform:rotate(-45deg) translateY(-4px);
+    }
+  }
+
+}
 
 html:has(.app.dark) .burger{
   /* background:var(--dark-sidebar); */
@@ -142,12 +216,24 @@ html:has(.app.dark) .burger{
     transform:translateX(-100%);
   }
 
+  .sidebar.right.open{
+    transform:translateX(100%);
+  }
+
   html:has(.sidebar) .main-content{
     margin-left:calc(15vw + 50px);
   }
 
-  html:has(.sidebar.open) .main-content{
+  html:has(.sidebar.right) .main-content{
+    margin-right:calc(15vw + 50px);
+  }
+
+  html:has(.sidebar:not(.right).open) .main-content{
     margin-left:100px;
+  }
+
+  html:has(.sidebar.right.open) .main-content{
+    margin-right:20px;
   }
 
   .burger > div:nth-child(1) {

@@ -532,3 +532,7 @@ a[data-footnote-ref] {
   text-decoration: none !important;
   color:currentColor;
 }
+
+.markdown-box{
+  transition-duration: .2s;
+}
