@@ -302,3 +302,56 @@ html:has(.app.dark) .burger{
   justify-content: center;
   height:75%;
 }
+
+
+.sidebar.right .selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  background: var(--light-sidebar);
+  border-radius: 2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  gap: 1.5em;
+}
+
+.sidebar.right .selector .option {
+  background: var(--low-bg-op-50);
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--current-op-50);
+  font-size: 2rem;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
+  user-select: none;
+
+  &:hover{
+    background:var(--accent-op-20);
+  }
+}
+
+
+
+.sidebar.right .selector .option.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (min-width:769px) {
+  .sidebar.right .selector{
+    position: absolute;
+    bottom: 3em;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sidebar.right .selector .option{
+    width:2.5rem;
+    height:2.5rem;
+  }
+}

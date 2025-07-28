@@ -60,6 +60,16 @@
   --accent:#1f4b7a;
   --accent-light:var(--blue);
 
+  --accent-op-20: color-mix(in srgb, var(--accent) 20%, transparent 80%);
+  --accent-op-30: color-mix(in srgb, var(--accent) 30%, transparent 70%);
+  --accent-op-40: color-mix(in srgb, var(--accent) 40%, transparent 60%);
+  --accent-op-50: color-mix(in srgb, var(--accent) 50%, transparent 50%);
+
+  --low-bg-op-20: color-mix(in srgb, var(--low-bg) 20%, transparent 80%);
+  --low-bg-op-30: color-mix(in srgb, var(--low-bg) 30%, transparent 70%);
+  --low-bg-op-40: color-mix(in srgb, var(--low-bg) 40%, transparent 60%);
+  --low-bg-op-50: color-mix(in srgb, var(--low-bg) 50%, transparent 50%);
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
@@ -79,7 +89,7 @@
   background-color: var(--light-bg);
   color: var(--light-text);
   --blockcode-bg: #f9f8f5;
-  --low-bg: var(--light-pure-low)
+  --low-bg: var(--light-pure-low);
 }
 
 .app.dark,  html:has(.app.dark)  {
