@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import { SidebarContext } from '../../ctx/SidebarContext';
+import Toc from './sidetools/toc';
 
 const SidebarRight = () => {
     const { isRightOpen, setIsRightOpen } = useContext(SidebarContext);
@@ -17,7 +18,9 @@ const SidebarRight = () => {
                     <a className='material-icons'>auto_awesome</a>
                 </div>
             </div>
-            <h1>hello</h1>
+            <div>
+                {tool === 0 && <Toc/>}
+            </div>
         </div>
     )
 };

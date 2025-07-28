@@ -348,10 +348,14 @@ html:has(.app.dark) .burger{
     bottom: 3em;
     left: 50%;
     transform: translateX(-50%);
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    max-width: 100%;
   }
 
   .sidebar.right .selector .option{
     width:2.5rem;
-    height:2.5rem;
+    aspect-ratio: 1 / 1;
+    height: auto;
   }
 }
