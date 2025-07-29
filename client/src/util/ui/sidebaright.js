@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import { SidebarContext } from '../../ctx/SidebarContext';
 import Toc from './sidetools/toc';
 
-const SidebarRight = () => {
+const SidebarRight = ({toc}) => {
     const { isRightOpen, setIsRightOpen } = useContext(SidebarContext);
     const [tool, setTool] = useState(0);
     return (
@@ -19,7 +19,7 @@ const SidebarRight = () => {
                 </div>
             </div>
             <div className='sidebaright-content'>
-                {tool === 0 && <Toc/>}
+                {tool === 0 && <Toc toc={toc}/>}
             </div>
         </div>
     )
