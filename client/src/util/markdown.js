@@ -53,7 +53,7 @@ const Md = ({ children, article=false }) => {
     });
 
     function getIntro(text) {
-        const index = text.indexOf('\n---\n');
+        const index = text.indexOf('\n===\n');
         setTextContent(index !== -1 ? text.substring(index + 5) : text)
         return index !== -1 ? text.substring(0, index).trim() : text.trim();
     }

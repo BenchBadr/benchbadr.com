@@ -41,7 +41,7 @@ const Highlighter = ({ code, language, showLines = true }) => {
   const { theme } = useContext(ThemeContext);
   return (
     <div className="blockCode">
-      <div className='label'>{language}</div>
+      {language && <div className='label'>{language}</div>}
       <SyntaxHighlighter
         language={language || 'text'}
         style={theme === 'dark' ? vscDarkPlus : solarizedlight}

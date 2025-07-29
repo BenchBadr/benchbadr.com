@@ -17,11 +17,9 @@ function App() {
 
 
 const MainContent = () => {
-  const {theme, toggleTheme} = useContext(ThemeContext);
-
   const exampleMarkdown = `
 lang:fr
----
+===
 # Welcome to Badr Bench
 
 This is an example of the **Markdown component** with MathJax support.
@@ -81,12 +79,30 @@ console.log('hi')
 `;
 
   return (
+    <Md article={true}>{exampleMarkdown}</Md>
+  )
+}
+
+export default MainContent;
+
+
+const ToExportChild = ({children}) => {
+  const { theme } = useContext(ThemeContext);
+  return (
     <div className={`app ${theme}`}>
       <div className='main-content'>
-        <Md article={true}>{exampleMarkdown}</Md>
+        {children}
       </div>
     </div>
   )
 }
 
-export default App;
+export const ToExport = ({children}) => {
+  return (
+     <ThemeProvider>
+      <SidebarProvider>
+        <ToExportChild>{children}</ToExportChild>
+      </SidebarProvider>
+    </ThemeProvider>
+  )
+}
