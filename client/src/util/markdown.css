@@ -197,7 +197,7 @@
   
 
   th {
-    /* font-weight: bold; */
+    font-weight: bold;
   }
 
 }
@@ -535,4 +535,5 @@ a[data-footnote-ref] {
 
 .markdown-box{
   transition-duration: .2s;
+  overflow-x: scroll;
 }
