@@ -14,6 +14,7 @@
   z-index: 1000;
   background:var(--light-sidebar);
   backdrop-filter: blur(10px);
+  
 }
 
 .sidebar.right{
@@ -40,18 +41,19 @@ html:has(.app.dark) .sidebar {
   position:relative;
   overflow-y: scroll;
   border-radius: 1rem;
+
+  .bottom-box{
+    bottom:30px;
+    padding:20px;
+    position:absolute;
+  }
+
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
   color:#5c5c5c;
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
-  }
-
-  .bottom-box{
-    bottom:30px;
-    padding:20px;
-    position:absolute;
   }
 }
 
@@ -330,8 +332,17 @@ html:has(.app.dark) .burger{
   cursor: pointer;
   user-select: none;
 
-  &:hover{
+  .option:not(.active):hover{
     background:var(--accent-op-20);
+  }
+}
+
+
+.app.dark .sidebar.right .selector{
+  background: var(--dark-bg);
+
+  .option:not(.active):hover{
+    background:var(--accent-op-50);
   }
 }
 
@@ -358,4 +369,20 @@ html:has(.app.dark) .burger{
     aspect-ratio: 1 / 1;
     height: auto;
   }
+}
+
+
+.sidebaright-content{
+  margin-top:5em;
+  height:calc(100vh - 12em);
+  margin-bottom:5em;
+  overflow:scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  color:#5c5c5c;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
 }

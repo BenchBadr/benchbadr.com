@@ -18,7 +18,7 @@ const SidebarRight = () => {
                     <a className='material-icons'>auto_awesome</a>
                 </div>
             </div>
-            <div>
+            <div className='sidebaright-content'>
                 {tool === 0 && <Toc/>}
             </div>
         </div>
