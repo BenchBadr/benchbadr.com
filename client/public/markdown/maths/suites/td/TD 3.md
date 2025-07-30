@@ -74,16 +74,12 @@ Donc $f$ est continue sur $\R$.
 
 > Soit $f$ une fonction définie sur $I$, intervalle de $\mathbb{R}$ et $a \in I$. Traduire le fait que $f$ est discontinue en $a$ : en terme de voisinages puis avec les suites.
 > Soit $f$ la fonction définie par
-> $$
-f(x) =
-\begin{cases}
-\frac{x-1}{|x-1|} & \text{pour } x \neq 1 \\
-1 & \text{pour } x = 1
-\end{cases}
-> $$
+> 
+> $f(x) = \begin{cases}\frac{x-1}{|x-1|} & \text{pour } x \neq 1 \\1 & \text{pour } x = 1\end{cases}$
+> 
 > Montrer en utilisant la définition que $f$ est discontinue en 1. Retrouver ce résultat en construisant une suite $(u_n)_{n \in \mathbb{N}}$ qui converge vers 1 et telle que $f(u_n)$ ne converge pas vers $f(1)$.
 
-=
+
 $f$ n'est pas continue en $a$ 
 - si $\exists \epsilon_0 > 0$ et $\forall \delta > 0, \exists x_0 \in \R$ avec $|x_0-a|≤\delta$
 	- et $|f(x)-f(a)|> \epsilon$

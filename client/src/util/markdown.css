@@ -11,6 +11,11 @@
 
   .cop-title{
     font-family: Copernicus;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom:1px solid var(--current-op-20);
   }
 
   li {
@@ -535,5 +540,4 @@ a[data-footnote-ref] {
 
 .markdown-box{
   transition-duration: .2s;
-  overflow-x: scroll;
 }

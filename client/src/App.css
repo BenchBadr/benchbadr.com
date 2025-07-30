@@ -100,6 +100,7 @@ html {
   color: var(--light-text);
   --blockcode-bg: #f9f8f5;
   --low-bg: var(--light-pure-low);
+  --bg: var(--light-bg);
 }
 
 .app.dark,  html:has(.app.dark)  {
@@ -107,6 +108,7 @@ html {
   color: var(--dark-text);
   --blockcode-bg:#232934;
   --low-bg:#393939;
+  --bg:var(--dark-bg);
 }
 
 .main-content {
