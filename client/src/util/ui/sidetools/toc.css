@@ -1,0 +1,54 @@
+.toc-children {
+    border-left:var(--current-op-50) 1px solid;
+    padding-left:1em;
+}
+
+.toc-link:not(.root)::before{
+    font-family: 'Material Icons Outlined';
+    content:'keyboard_arrow_down';
+    font-size: 150%;
+    transition-duration:.1s;
+    transform: rotate(-90deg);
+}
+
+.toc-link.active:not(.root)::before{
+    transform: none;
+}
+
+.toc-link{
+    display: flex;
+    align-items: center;
+    font-size: 90%;
+    cursor:pointer;
+    user-select: none;
+    border-radius: 5px;
+    padding:5px;
+
+    &:hover{
+        background:var(--current-op-30)
+    }
+}
+
+.toc-link.active{
+    color:var(--blue);
+}
+
+.toc-link:not(.active) + .toc-children{
+    height:0;
+    display: none;
+}
+
+.toc-link.active + .toc-children, .toc-children:has(.toc-link.active){
+    height:auto !important;
+    display: block !important;
+}
+
+.toc-link.root{
+    padding-left:15px !important;
+}
+
+@media (max-width:768px) {
+    .toc-link{
+        font-size: 1em;
+    }
+}

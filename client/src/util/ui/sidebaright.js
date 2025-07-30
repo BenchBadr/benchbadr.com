@@ -19,7 +19,7 @@ const SidebarRight = ({markdown}) => {
                 </div>
             </div>
             <div className='sidebaright-content'>
-                {tool === 0 && <Toc toc={markdown}/>}
+                {tool === 0 && <Toc markdown={markdown}/>}
             </div>
         </div>
     )
