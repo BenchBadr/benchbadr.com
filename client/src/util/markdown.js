@@ -14,21 +14,7 @@ import SidebarRight from './ui/sidebaright';
 
 
 
-// Helper function to create unique slugs from text content
-const createSlug = (text) => {
-    if (!text) return '';
-    
-    const textString = typeof text === 'string' ? text : 
-                      Array.isArray(text) ? text.join('') : 
-                      String(text);
-    
-    return textString
-        .toLowerCase()
-        .trim()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/[\s_-]+/g, '-')
-        .replace(/^-+|-+$/g, '');
-};
+
 
 const Md = ({ children, article=false }) => {
     const [lang, setLang] = useState('en');
@@ -37,43 +23,15 @@ const Md = ({ children, article=false }) => {
     const [foot, setFoot] = useState([]);
 
     const extRefsRef = useRef(new Set());
-    const usedSlugsRef = useRef(new Map());
+    const titleCountRef = useRef(0);
+    const titleIdsRef = useRef(new Map());
     const { isRightOpen, setIsRightOpen } = useContext(SidebarContext);
 
     const toggleOpen = useCallback(() => {
         setIsRightOpen(!isRightOpen)
     }, [isRightOpen, setIsRightOpen]);
 
-
-    const generateUniqueId = useCallback((text) => {
-        const textString = typeof text === 'string' ? text : 
-                          Array.isArray(text) ? text.join('') : 
-                          String(text);
-        
-        if (usedSlugsRef.current.has(textString)) {
-            return usedSlugsRef.current.get(textString);
-        }
-        
-        const baseSlug = createSlug(textString);
-        if (!baseSlug) {
-            usedSlugsRef.current.set(textString, '');
-            return '';
-        }
-        
-        let uniqueSlug = baseSlug;
-        let counter = 1;
-        const existingValues = Array.from(usedSlugsRef.current.values());
-        
-        while (existingValues.includes(uniqueSlug)) {
-            uniqueSlug = `${baseSlug}-${counter}`;
-            counter++;
-        }
-        
-        usedSlugsRef.current.set(textString, uniqueSlug);
-        return uniqueSlug;
-    }, []);
-
-    // Memoize plugins to prevent recreation on every render
+    // Memoize plugins
     const remarkPlugins = useMemo(() => [
         remarkMath, 
         remarkGfm, 
@@ -82,7 +40,7 @@ const Md = ({ children, article=false }) => {
         [remarkFootnotes, { inlineNotes: true }]
     ], []);
 
-    // Configure MathJax for better performance
+
     const rehypePlugins = useMemo(() => [
         [rehypeMathjax, {
             tex: {
@@ -97,7 +55,7 @@ const Md = ({ children, article=false }) => {
                 processHtmlClass: 'tex2jax_process'
             },
             startup: {
-                typeset: false // Prevent automatic typesetting on startup
+                typeset: false
             }
         }]
     ], []);
@@ -105,11 +63,12 @@ const Md = ({ children, article=false }) => {
     // Memoize the intro processing
     const { processedTextContent, processedLang } = useMemo(() => {
         function getIntro(text) {
+            // 2. Metadata (extracted before ===) such as lang, desc, date...
             const index = text.indexOf('\n===\n');
             const textContent = index !== -1 ? text.substring(index + 5) : text;
             const introText = index !== -1 ? text.substring(0, index).trim() : text.trim();
             
-            // Extract language from intro
+            // 2.1 Extract language from intro
             const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
             
             return { textContent, lang: matchLang };
@@ -128,9 +87,11 @@ const Md = ({ children, article=false }) => {
         if (processedLang) {
             setLang(processedLang);
         }
-        // Reset external refs and slugs for new content
+
+        // Reset external refs and title count for new content
         extRefsRef.current.clear();
-        usedSlugsRef.current.clear();
+        titleCountRef.current = 0;
+        titleIdsRef.current.clear();
         setExternalRefs([]);
     }, [processedTextContent, processedLang]);
 
@@ -138,7 +99,8 @@ const Md = ({ children, article=false }) => {
     useEffect(() => {
         return () => {
             extRefsRef.current.clear();
-            usedSlugsRef.current.clear();
+            titleCountRef.current = 0;
+            titleIdsRef.current.clear();
         };
     }, []);
 
@@ -156,9 +118,34 @@ const Md = ({ children, article=false }) => {
     }, [externalRefs]);
 
     // Memoize the markdown components to prevent recreation
-    const markdownComponents = useMemo(() => ({
+    const markdownComponents = useMemo(() => {
+        // Reset title count and IDs when creating new components (new content)
+        titleCountRef.current = 0;
+        titleIdsRef.current.clear();
+        
+        // Helper function to get or create a stable ID for a heading
+        const getTitleId = (children) => {
+            // Create a stable key from the heading content
+            const contentKey = React.Children.toArray(children)
+                .map(child => typeof child === 'string' ? child : '')
+                .join('')
+                .slice(0, 50); // Use first 50 chars as key
+            
+            // If we've seen this content before, return the same ID
+            if (titleIdsRef.current.has(contentKey)) {
+                return titleIdsRef.current.get(contentKey);
+            }
+            
+            // Otherwise, create a new ID
+            const id = `title-${titleCountRef.current}`;
+            titleCountRef.current++;
+            titleIdsRef.current.set(contentKey, id);
+            return id;
+        };
+        
+        return {
         h1: ({children}) => {
-            const id = generateUniqueId(children);
+            const id = getTitleId(children);
             return (
                 <h1 className='cop-title' id={id}>{children}</h1>
             );
@@ -170,40 +157,39 @@ const Md = ({ children, article=false }) => {
                     <h2 className='cop-title' id={id}>{{'en':'Footnotes', 'fr':'Notes et références'}[lang]}</h2>
                 )
             }
-            const uniqueId = id || generateUniqueId(children);
+            const titleId = id || getTitleId(children);
             return (
-                <h2 className='cop-title' id={uniqueId}>{children}</h2>
+                <h2 className='cop-title' id={titleId}>{children}</h2>
             )
         },
 
         h3: ({children}) => {
-            const id = generateUniqueId(children);
+            const id = getTitleId(children);
             return (
                 <h3 className='cop-title' id={id}>{children}</h3>
             );
         },
 
         h4: ({children}) => {
-            const id = generateUniqueId(children);
+            const id = getTitleId(children);
             return (
                 <h4 className='cop-title' id={id}>{children}</h4>
             );
         },
 
         h5: ({children}) => {
-            const id = generateUniqueId(children);
+            const id = getTitleId(children);
             return (
                 <h5 className='cop-title' id={id}>{children}</h5>
             );
         },
 
         h6: ({children}) => {
-            const id = generateUniqueId(children);
+            const id = getTitleId(children);
             return (
                 <h6 className='cop-title' id={id}>{children}</h6>
             );
         },
-
         code: ({ node, inline, className, children, ...props }) => {
             const match = /language-(\w+)/.exec(className || '');
             const codeText = Array.isArray(children) ? children.join('') : children;
@@ -261,7 +247,8 @@ const Md = ({ children, article=false }) => {
             });
             return <div className="footnotes">{children}</div>;
         },
-    }), [lang, foot, article]); // Removed generateUniqueId from deps since it's stable with useCallback
+        };
+    }, [lang, foot, article, textContent]); // Add textContent to ensure component resets with new content
 
     // Memoize the main markdown component to prevent re-rendering when only sidebar state changes
     const markdownContent = useMemo(() => (
