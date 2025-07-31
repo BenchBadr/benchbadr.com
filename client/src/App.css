@@ -70,6 +70,7 @@
   --low-bg-op-30: color-mix(in srgb, var(--low-bg) 30%, transparent 70%);
   --low-bg-op-40: color-mix(in srgb, var(--low-bg) 40%, transparent 60%);
   --low-bg-op-50: color-mix(in srgb, var(--low-bg) 50%, transparent 50%);
+  --low-bg-op-80: color-mix(in srgb, var(--low-bg) 80%, transparent 20%);
 
 }
 
@@ -102,6 +103,7 @@ html {
   --blockcode-bg: #f9f8f5;
   --low-bg: var(--light-pure-low);
   --bg: var(--light-bg);
+  --text:var(--light-text);
 }
 
 .app.dark,  html:has(.app.dark)  {
@@ -110,6 +112,7 @@ html {
   --blockcode-bg:#232934;
   --low-bg:#393939;
   --bg:var(--dark-bg);
+  --text:var(--dark-text);
 }
 
 .main-content {
@@ -168,4 +171,24 @@ Markdown content section - moved to util/markdown.css
   margin-top: 50px;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* External references and tooltip styles - moved to util/markdown.css */
+
+
+.scroll-fix {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  color:#5c5c5c;
+
+  &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+  }
+}

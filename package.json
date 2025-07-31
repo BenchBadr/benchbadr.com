@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@r4ai/remark-callout": "^0.6.2",
+    "g4f": "^1.4.6",
     "js-cookie": "^3.0.5",
     "mermaid": "^11.9.0",
     "prism-react-renderer": "^2.4.1",

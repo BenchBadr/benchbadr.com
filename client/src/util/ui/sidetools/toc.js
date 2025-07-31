@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import './toc.css';
-import Md from '../../markdown.js'
 
 const Toc = ({ markdown }) => {
     const [activeSection, setActiveSection] = useState(null);

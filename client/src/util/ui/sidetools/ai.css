@@ -1,0 +1,177 @@
+.ai-chat{
+    position:relative;
+}
+
+.ai-chat .user-msg{
+    background:var(--accent);
+    color:white;
+    border-radius: 10px;
+    position:absolute;
+    right:0;
+}
+
+
+.ai-chat .prompt-area textarea{
+
+    position:absolute;
+    top:0;
+    left:0;
+
+    outline:none;
+    border:none;
+    font-family: Inter;
+    resize:none;
+    padding:10px;
+    color:var(--text);
+
+    background:transparent;
+
+    width:calc(100% - 3em);
+    height:calc(100% - 20px);
+
+
+}
+
+
+.ai-chat .prompt-area{
+    position: fixed;
+    bottom:8em;
+    
+    background: var(--low-bg-op-50);
+    height:4em;
+    width:calc(100% - 4em);
+
+    padding-left:10px;
+    padding-right:10px;
+
+    border:1px solid var(--current-op-20);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.send-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .2s;
+    background:var(--accent);
+    font-family: 'Material Icons';
+    height:2em;
+    width:2em;
+    position:absolute;
+
+    bottom:5px;
+    right:0;
+
+    color:white;
+    border-radius: 50%;
+    cursor:pointer;
+    user-select: none;
+
+    &:hover{
+        opacity:.8;
+    }
+}
+
+@media (min-width: 769px) {
+    .send-btn:not(.active) {
+        pointer-events: none;
+        opacity: .5;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .ai-chat .prompt-area{
+        width:calc(100% - 4em);
+        height:6em;
+        bottom:4em;
+    }
+
+    .send-btn{
+        position:fixed;
+        display: none;
+
+        bottom:4.5em;
+        right:2em;
+
+        height:3em;
+        width:3em;
+    }
+
+    .send-btn.active{
+        display: flex;
+    }
+
+    html:has(.send-btn.active) .burger.right{
+        display: none;
+    }
+}
+
+.ai-check{
+
+    label {
+        display: flex;
+        align-items: center;
+        gap:1em;
+    }
+
+    input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        min-width: 1.3em;
+        min-height: 1.3em;
+        transform: translateY(-2px);
+        border: 1px solid var(--current-op-30);
+        border-radius: 4px;
+        background: var(--current-op-10);
+        outline: none;
+        cursor: pointer;
+        transition: box-shadow 0.2s, background 0.2s;
+        position: relative;
+        vertical-align: middle;
+        /* box-sizing: border-box; */
+    }
+
+  input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  input[type="checkbox"]:checked::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0.32em;
+    top: 0.1em;
+    width: 0.3em;
+    height: 0.6em;
+    border: solid #fff;
+    border-width: 0 0.18em 0.18em 0;
+    transform: rotate(45deg);
+  }
+
+  .auth-ai{
+    background:var(--accent);
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity:.5;
+    pointer-events: none;
+    color:var(--dark-text);
+    border-radius: 1em;
+    transition-duration: .2s;
+
+    &.active{
+        pointer-events: unset;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    &:hover{
+        opacity:.8;
+    }
+  }
+
+}
