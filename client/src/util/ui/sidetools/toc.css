@@ -1,18 +1,7 @@
 .toc-children {
     border-left:var(--current-op-50) 1px solid;
     padding-left:1em;
-}
-
-.toc-link:not(.root)::before{
-    font-family: 'Material Icons Outlined';
-    content:'keyboard_arrow_down';
-    font-size: 150%;
-    transition-duration:.1s;
-    transform: rotate(-90deg);
-}
-
-.toc-link.active:not(.root)::before{
-    transform: none;
+    transition-duration: .1s;
 }
 
 .toc-link{
@@ -25,7 +14,7 @@
     padding:5px;
 
     &:hover{
-        background:var(--current-op-30)
+        background:var(--current-op-30);
     }
 }
 
@@ -33,14 +22,18 @@
     color:var(--blue);
 }
 
-.toc-link:not(.active) + .toc-children{
+.toc-link:not(.open) + .toc-children{
     height:0;
     display: none;
 }
 
-.toc-link.active + .toc-children, .toc-children:has(.toc-link.active){
+.toc-link.open + .toc-children, .toc-children:has(.toc-link.open){
     height:auto !important;
     display: block !important;
+}
+
+.toc-children:has(.toc-link.open){
+    border-left-color: var(--blue);
 }
 
 .toc-link.root{

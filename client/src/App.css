@@ -17,6 +17,7 @@
   --current-op-30:color-mix(in srgb, currentColor 30%, transparent 70%);
   --current-op-40:color-mix(in srgb, currentColor 40%, transparent 60%);
   --current-op-50:color-mix(in srgb, currentColor 50%, transparent 50%);
+  --current-op-80:color-mix(in srgb, currentColor 80%, transparent 20%);
 
   --blue:#0099ff;
 	--dark-blue:#024d7f;

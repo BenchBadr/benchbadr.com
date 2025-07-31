@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import './toc.css';
+import Md from '../../markdown.js'
 
 const Toc = ({ markdown }) => {
     const [activeSection, setActiveSection] = useState(null);
+    const [openSec, setOpenSec] = useState([]);
 
     // Parse markdown to extract headings and create nested tree
     const tocTree = useMemo(() => {
@@ -11,12 +13,14 @@ const Toc = ({ markdown }) => {
         const lines = markdown.split('\n');
         const headings = [];
         let inCodeBlock = null; // null, '```', or '~~~'
+        // the delimiter works here as the boolean and disabled if delimiter is found again
+        // note : we can insert tilde based blockcodes within a parent blockcode and reciprocally
+        // as long as delimiter is not the same
         let titleCount = 0;
 
         for (const line of lines) {
             const trimmedLine = line.trim();
 
-            // Check for codeblock delimiters
             if (trimmedLine.startsWith('```')) {
                 inCodeBlock = inCodeBlock === '```' ? null : '```';
                 continue;
@@ -26,10 +30,8 @@ const Toc = ({ markdown }) => {
                 continue;
             }
 
-            // Skip if we're inside a codeblock
             if (inCodeBlock) continue;
 
-            // Check for headings (# ## ### etc.)
             const headingMatch = trimmedLine.match(/^(#{1,6})\s+(.+)$/);
             if (headingMatch) {
                 const level = headingMatch[1].length;
@@ -91,7 +93,7 @@ const Toc = ({ markdown }) => {
     useEffect(() => {
         const handleScroll = () => {
             const headingElements = document.querySelectorAll('[id^="title-"]');
-            const scrollPosition = window.scrollY + 100; // Offset for better UX
+            const scrollPosition = window.scrollY;
 
             let currentSection = null;
             
@@ -110,7 +112,7 @@ const Toc = ({ markdown }) => {
         };
 
         window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Call once to set initial state
+        handleScroll();
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, [activeSection]);
@@ -120,10 +122,12 @@ const Toc = ({ markdown }) => {
         return items.map((item) => (
             <div key={item.id} className={`toc-item depth-${depth}`}>
                 <div
-                    className={`toc-link ${activeSection === item.id ? 'active' : ''} ${!item.children.length ? 'root' : ''}`}
+                    className={`toc-link ${activeSection === item.id || openSec.includes(item.id) ? 'open' : ''} ${activeSection === item.id ? 'active' : ''}`}
                     style={{ paddingLeft: `${depth * 16}px` }}
+                    onClick={() => scrollToSection(item.id)}
                 >
-                   <a onClick={() => scrollToSection(item.id)}>{item.text}</a>
+                   {/* {item.children.length > 0 ? <div className={`arrow-section ${activeSection === item.id || openSec.includes(item.id) ? 'open' : ''}`}/> : <div className='no-arrow'/>} */}
+                   <a>{item.text}</a>
                 </div>
                 {item.children.length > 0 && (
                     <div className="toc-children">
@@ -133,6 +137,8 @@ const Toc = ({ markdown }) => {
             </div>
         ));
     }, [activeSection, scrollToSection]);
+
+    console.log(tocTree)
 
     if (tocTree.length === 0) {
         return (

@@ -23,9 +23,8 @@ const Md = ({ children, article=false }) => {
     const [foot, setFoot] = useState([]);
 
     const extRefsRef = useRef(new Set());
-    const titleCountRef = useRef(0);
-    const titleIdsRef = useRef(new Map());
     const { isRightOpen, setIsRightOpen } = useContext(SidebarContext);
+    const titleCountRef = useRef(0); 
 
     const toggleOpen = useCallback(() => {
         setIsRightOpen(!isRightOpen)
@@ -62,23 +61,27 @@ const Md = ({ children, article=false }) => {
 
     // Memoize the intro processing
     const { processedTextContent, processedLang } = useMemo(() => {
-        function getIntro(text) {
-            // 2. Metadata (extracted before ===) such as lang, desc, date...
-            const index = text.indexOf('\n===\n');
-            const textContent = index !== -1 ? text.substring(index + 5) : text;
-            const introText = index !== -1 ? text.substring(0, index).trim() : text.trim();
-            
-            // 2.1 Extract language from intro
-            const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
-            
-            return { textContent, lang: matchLang };
-        }
+        if (article) {
+            function getIntro(text) {
+                // 2. Metadata (extracted before ===) such as lang, desc, date...
+                const index = text.indexOf('\n===\n');
+                const textContent = index !== -1 ? text.substring(index + 5) : text;
+                const introText = index !== -1 ? text.substring(0, index).trim() : text.trim();
+                
+                // 2.1 Extract language from intro
+                const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
+                
+                return { textContent, lang: matchLang };
+            }
 
-        const result = getIntro(children);
-        return {
-            processedTextContent: result.textContent,
-            processedLang: result.lang
-        };
+            const result = getIntro(children);
+            return {
+                processedTextContent: result.textContent,
+                processedLang: result.lang
+            };
+        } else {
+            return children
+        }
     }, [children]);
 
     // Update state when processed content changes
@@ -88,10 +91,8 @@ const Md = ({ children, article=false }) => {
             setLang(processedLang);
         }
 
-        // Reset external refs and title count for new content
+        // Do all the resets
         extRefsRef.current.clear();
-        titleCountRef.current = 0;
-        titleIdsRef.current.clear();
         setExternalRefs([]);
     }, [processedTextContent, processedLang]);
 
@@ -99,8 +100,6 @@ const Md = ({ children, article=false }) => {
     useEffect(() => {
         return () => {
             extRefsRef.current.clear();
-            titleCountRef.current = 0;
-            titleIdsRef.current.clear();
         };
     }, []);
 
@@ -117,149 +116,154 @@ const Md = ({ children, article=false }) => {
         return () => clearTimeout(timeoutId);
     }, [externalRefs]);
 
+    // Reset title count when content changes
+    useEffect(() => {
+        titleCountRef.current = 0;
+    }, [textContent]);
+
     // Memoize the markdown components to prevent recreation
     const markdownComponents = useMemo(() => {
-        // Reset title count and IDs when creating new components (new content)
-        titleCountRef.current = 0;
-        titleIdsRef.current.clear();
-        
-        // Helper function to get or create a stable ID for a heading
-        const getTitleId = (children) => {
-            // Create a stable key from the heading content
-            const contentKey = React.Children.toArray(children)
-                .map(child => typeof child === 'string' ? child : '')
-                .join('')
-                .slice(0, 50); // Use first 50 chars as key
-            
-            // If we've seen this content before, return the same ID
-            if (titleIdsRef.current.has(contentKey)) {
-                return titleIdsRef.current.get(contentKey);
-            }
-            
-            // Otherwise, create a new ID
-            const id = `title-${titleCountRef.current}`;
-            titleCountRef.current++;
-            titleIdsRef.current.set(contentKey, id);
-            return id;
-        };
-        
         return {
-        h1: ({children}) => {
-            const id = getTitleId(children);
-            return (
-                <h1 className='cop-title' id={id}>{children}</h1>
-            );
-        },
-
-        h2: ({children, id}) => {
-            if (id === 'footnote-label') {
+            h1: ({ children }) => {
+                const index = Math.floor(titleCountRef.current++ / 2);
                 return (
-                    <h2 className='cop-title' id={id}>{{'en':'Footnotes', 'fr':'Notes et références'}[lang]}</h2>
-                )
-            }
-            const titleId = id || getTitleId(children);
-            return (
-                <h2 className='cop-title' id={titleId}>{children}</h2>
-            )
-        },
+                    <h1 className="cop-title" id={`title-${index}`}>
+                        {children}
+                    </h1>
+                );
+            },
 
-        h3: ({children}) => {
-            const id = getTitleId(children);
-            return (
-                <h3 className='cop-title' id={id}>{children}</h3>
-            );
-        },
-
-        h4: ({children}) => {
-            const id = getTitleId(children);
-            return (
-                <h4 className='cop-title' id={id}>{children}</h4>
-            );
-        },
-
-        h5: ({children}) => {
-            const id = getTitleId(children);
-            return (
-                <h5 className='cop-title' id={id}>{children}</h5>
-            );
-        },
-
-        h6: ({children}) => {
-            const id = getTitleId(children);
-            return (
-                <h6 className='cop-title' id={id}>{children}</h6>
-            );
-        },
-        code: ({ node, inline, className, children, ...props }) => {
-            const match = /language-(\w+)/.exec(className || '');
-            const codeText = Array.isArray(children) ? children.join('') : children;
-
-            return match ? (
-                <CodeBlock language={match[1]} code={codeText} />
-            ) : (
-                <InlineCode code={codeText} {...props} />
-            );
-        },
-
-        details:({children, ...props}) => <Details {...props}>{children}</Details>,
-
-        a: ({children, href, ...props}) => {
-            if (href) {
-                const isExternal = /^https?:\/\//.test(href) || 
-                                 (/^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\./.test(href) && !href.startsWith('/'));
-                
-                if (isExternal && !href.includes(window.location.hostname)) {
-                    const fullHref = /^https?:\/\//.test(href) ? href : `https://${href}`;
-                    extRefsRef.current.add(fullHref);
-                    
+            h2: ({ children, id }) => {
+                if (id === 'footnote-label') {
                     return (
-                        <a {...props} href={fullHref} target="_blank" rel="noopener noreferrer" className='link'>{children}</a>
+                        <h2 className="cop-title" id={id}>
+                            {{ en: 'Footnotes', fr: 'Notes et références' }[lang]}
+                        </h2>
                     );
                 }
-            }
-            return (
-                <a {...props} href={href}>{children}</a>
-            )
-        },
+                const index = Math.floor(titleCountRef.current++ / 2);
+                return (
+                    <h2 className="cop-title" id={`title-${index}`}>
+                        {children}
+                    </h2>
+                );
+            },
 
-        sup: ({ children }) => {
-            return <Tooltip children={children} foot={foot} />;
-        },
+            h3: ({ children }) => {
+                const index = Math.floor(titleCountRef.current++ / 2);
+                return (
+                    <h3 className="cop-title" id={`title-${index}`}>
+                        {children}
+                    </h3>
+                );
+            },
 
-        section: ({ children }) => {
-            if (!article) {
-                return null
-            }
+            h4: ({ children }) => {
+                const index = Math.floor(titleCountRef.current++ / 2);
+                return (
+                    <h4 className="cop-title" id={`title-${index}`}>
+                        {children}
+                    </h4>
+                );
+            },
 
-            const filteredChildren =
-            children.length ? children.filter(child => child.key === 'ol-0')[0].props.children : null;
-            filteredChildren &&
-            filteredChildren.map((child, index) => {
-                if (child !== '\n') {
-                const temp = foot;
-                try {
-                    temp[(index - 1) / 2] = child.props.children[1].props.children.slice(0, -1);
-                    setFoot(temp);
-                } catch (error) {
-                    console.log('empty footnote');
+            h5: ({ children }) => {
+                const index = Math.floor(titleCountRef.current++ / 2);
+                return (
+                    <h5 className="cop-title" id={`title-${index}`}>
+                        {children}
+                    </h5>
+                );
+            },
+
+            h6: ({ children }) => {
+                const index = Math.floor(titleCountRef.current++ / 2);
+                return (
+                    <h6 className="cop-title" id={`title-${index}`}>
+                        {children}
+                    </h6>
+                );
+            },
+
+            code: ({ node, inline, className, children, ...props }) => {
+                const match = /language-(\w+)/.exec(className || '');
+                const codeText = Array.isArray(children) ? children.join('') : children;
+
+                return match ? (
+                    <CodeBlock language={match[1]} code={codeText} />
+                ) : (
+                    <InlineCode code={codeText} {...props} />
+                );
+            },
+
+            details: ({ children, ...props }) => <Details {...props}>{children}</Details>,
+
+            a: ({ children, href, ...props }) => {
+                if (href) {
+                    const isExternal =
+                        /^https?:\/\//.test(href) ||
+                        (/^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\./.test(href) && !href.startsWith('/'));
+
+                    if (isExternal && !href.includes(window.location.hostname)) {
+                        const fullHref = /^https?:\/\//.test(href) ? href : `https://${href}`;
+                        extRefsRef.current.add(fullHref);
+
+                        return (
+                            <a
+                                {...props}
+                                href={fullHref}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="link"
+                            >
+                                {children}
+                            </a>
+                        );
+                    }
                 }
+                return <a {...props} href={href}>{children}</a>;
+            },
+
+            sup: ({ children }) => {
+                return <Tooltip children={children} foot={foot} />;
+            },
+
+            section: ({ children }) => {
+                if (!article) {
+                    return null;
                 }
-            });
-            return <div className="footnotes">{children}</div>;
-        },
+
+                const filteredChildren =
+                    children.length ? children.filter((child) => child.key === 'ol-0')[0].props.children : null;
+                filteredChildren &&
+                    filteredChildren.map((child, index) => {
+                        if (child !== '\n') {
+                            const temp = foot;
+                            try {
+                                temp[(index - 1) / 2] = child.props.children[1].props.children.slice(0, -1);
+                                setFoot(temp);
+                            } catch (error) {
+                                console.log('empty footnote');
+                            }
+                        }
+                    });
+                return <div className="footnotes">{children}</div>;
+            },
         };
     }, [lang, foot, article, textContent]); // Add textContent to ensure component resets with new content
 
     // Memoize the main markdown component to prevent re-rendering when only sidebar state changes
-    const markdownContent = useMemo(() => (
-        <ReactMarkdown
-            remarkPlugins={remarkPlugins}
-            rehypePlugins={rehypePlugins}
-            components={markdownComponents}
-        >
-            {textContent}
-        </ReactMarkdown>
-    ), [textContent, remarkPlugins, rehypePlugins, markdownComponents]);
+    const markdownContent = useMemo(() => {
+        return (
+            <ReactMarkdown
+                remarkPlugins={remarkPlugins}
+                rehypePlugins={rehypePlugins}
+                components={markdownComponents}
+            >
+                {textContent}
+            </ReactMarkdown>
+        )
+    }, [textContent, remarkPlugins, rehypePlugins, markdownComponents]);
 
 
     // Memoize sidebar components to prevent re-rendering
