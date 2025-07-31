@@ -93,7 +93,9 @@ const Toc = ({ markdown }) => {
     useEffect(() => {
         const handleScroll = () => {
             const headingElements = document.querySelectorAll('[id^="title-"]');
-            const scrollPosition = window.scrollY;
+            const tocLink = document.querySelector('.toc-link');
+            const offset = tocLink ? tocLink.offsetHeight : 50;
+            const scrollPosition = window.scrollY + offset;
 
             let currentSection = null;
             
