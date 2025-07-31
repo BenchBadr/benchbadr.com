@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 const Markpage = () => {
     const [content, setContent] = useState("");
+    const [start, setStart] = useState(false);
     const params = useParams();
     const path = params['*'];
 
@@ -13,10 +14,10 @@ const Markpage = () => {
             .then(text => setContent(text));
     }, [path]);
 
-    console.log(content)
-
     return (
-        <Md article={true}>{content}</Md>
+        <>
+            <Md article={true}>{content}</Md>
+        </>
     )
 }
 
