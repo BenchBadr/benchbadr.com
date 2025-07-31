@@ -11,7 +11,6 @@ const Markpage = () => {
         fetch(`/markdown/${path}.md`)
             .then(res => res.text())
             .then(text => setContent(text));
-            console.log(content)
     }, [path]);
 
     console.log(content)

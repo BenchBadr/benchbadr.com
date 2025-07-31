@@ -20,6 +20,7 @@
 
 .toc-link.active{
     color:var(--blue);
+    background:var(--current-op-20);
 }
 
 .toc-link:not(.open) + .toc-children{
@@ -32,16 +33,18 @@
     display: block !important;
 }
 
-.toc-children:has(.toc-link.open){
-    border-left-color: var(--blue);
+.toc-children:has(.toc-link.active){
+    border-left-color: var(--dark-blue);
 }
 
 .toc-link.root{
     padding-left:15px !important;
 }
 
+
 @media (max-width:768px) {
     .toc-link{
         font-size: 1em;
     }
 }
+

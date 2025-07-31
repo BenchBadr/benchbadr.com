@@ -4,7 +4,7 @@ import Md from '../../markdown.js'
 
 const Toc = ({ markdown }) => {
     const [activeSection, setActiveSection] = useState(null);
-    const [openSec, setOpenSec] = useState([]);
+    const [openSec, setOpenSec] = useState(false);
 
     // Parse markdown to extract headings and create nested tree
     const tocTree = useMemo(() => {
@@ -47,6 +47,7 @@ const Toc = ({ markdown }) => {
                 
                 titleCount++;
             }
+
         }
 
         // Create nested structure
@@ -55,16 +56,13 @@ const Toc = ({ markdown }) => {
             const stack = [];
 
             for (const heading of headings) {
-                // Find the appropriate parent level
                 while (stack.length > 0 && stack[stack.length - 1].level >= heading.level) {
                     stack.pop();
                 }
 
                 if (stack.length === 0) {
-                    // Top level heading
                     root.push(heading);
                 } else {
-                    // Child heading
                     stack[stack.length - 1].children.push(heading);
                 }
 
@@ -124,11 +122,9 @@ const Toc = ({ markdown }) => {
         return items.map((item) => (
             <div key={item.id} className={`toc-item depth-${depth}`}>
                 <div
-                    className={`toc-link ${activeSection === item.id || openSec.includes(item.id) ? 'open' : ''} ${activeSection === item.id ? 'active' : ''}`}
-                    style={{ paddingLeft: `${depth * 16}px` }}
+                    className={`toc-link ${activeSection === item.id || !activeSection ? 'open' : ''} ${activeSection === item.id ? 'active' : ''}`}
                     onClick={() => scrollToSection(item.id)}
                 >
-                   {/* {item.children.length > 0 ? <div className={`arrow-section ${activeSection === item.id || openSec.includes(item.id) ? 'open' : ''}`}/> : <div className='no-arrow'/>} */}
                    <a>{item.text}</a>
                 </div>
                 {item.children.length > 0 && (
@@ -139,8 +135,6 @@ const Toc = ({ markdown }) => {
             </div>
         ));
     }, [activeSection, scrollToSection]);
-
-    console.log(tocTree)
 
     if (tocTree.length === 0) {
         return (

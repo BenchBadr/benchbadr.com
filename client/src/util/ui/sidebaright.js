@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import { SidebarContext } from '../../ctx/SidebarContext';
 import Toc from './sidetools/toc';
+import Ai from './sidetools/ai';
 
 const SidebarRight = ({markdown}) => {
     const { isRightOpen, setIsRightOpen } = useContext(SidebarContext);
@@ -20,6 +21,7 @@ const SidebarRight = ({markdown}) => {
             </div>
             <div className='sidebaright-content'>
                 {tool === 0 && <Toc markdown={markdown}/>}
+                {tool === 2 && <Ai markdown={markdown}/>}
             </div>
         </div>
     )

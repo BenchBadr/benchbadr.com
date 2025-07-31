@@ -387,3 +387,10 @@ html:has(.app.dark) .burger{
   }
 
 }
+
+@media (max-width: 768px) {
+  .sidebaright-content{
+    margin-top:0em;
+    padding-top:3em;
+  }
+}

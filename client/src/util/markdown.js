@@ -61,27 +61,23 @@ const Md = ({ children, article=false }) => {
 
     // Memoize the intro processing
     const { processedTextContent, processedLang } = useMemo(() => {
-        if (article) {
-            function getIntro(text) {
-                // 2. Metadata (extracted before ===) such as lang, desc, date...
-                const index = text.indexOf('\n===\n');
-                const textContent = index !== -1 ? text.substring(index + 5) : text;
-                const introText = index !== -1 ? text.substring(0, index).trim() : text.trim();
-                
-                // 2.1 Extract language from intro
-                const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
-                
-                return { textContent, lang: matchLang };
-            }
-
-            const result = getIntro(children);
-            return {
-                processedTextContent: result.textContent,
-                processedLang: result.lang
-            };
-        } else {
-            return children
+        function getIntro(text) {
+            // 2. Metadata (extracted before ===) such as lang, desc, date...
+            const index = text.indexOf('\n===\n');
+            const textContent = index !== -1 ? text.substring(index + 5) : text;
+            const introText = index !== -1 ? text.substring(0, index).trim() : text.trim();
+            
+            // 2.1 Extract language from intro
+            const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
+            
+            return { textContent, lang: matchLang };
         }
+
+        const result = getIntro(children);
+        return {
+            processedTextContent: result.textContent,
+            processedLang: result.lang
+        };
     }, [children]);
 
     // Update state when processed content changes
