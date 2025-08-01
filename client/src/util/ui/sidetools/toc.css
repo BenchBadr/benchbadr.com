@@ -12,6 +12,7 @@
     user-select: none;
     border-radius: 5px;
     padding:5px;
+    color:var(--text-op);
 
     &:hover{
         background:var(--current-op-30);
