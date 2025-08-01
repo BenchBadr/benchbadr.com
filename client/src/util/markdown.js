@@ -126,7 +126,7 @@ const Md = ({ children, article=false }) => {
             h1: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h1 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
+                    <h1 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
                         {children}
                     </h1>
                 );
@@ -142,7 +142,7 @@ const Md = ({ children, article=false }) => {
                 }
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h2 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
+                    <h2 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
                         {children}
                     </h2>
                 );
@@ -151,7 +151,7 @@ const Md = ({ children, article=false }) => {
             h3: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h3 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
+                    <h3 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
                         {children}
                     </h3>
                 );
@@ -160,7 +160,7 @@ const Md = ({ children, article=false }) => {
             h4: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h4 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
+                    <h4 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
                         {children}
                     </h4>
                 );
@@ -169,7 +169,7 @@ const Md = ({ children, article=false }) => {
             h5: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h5 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
+                    <h5 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
                         {children}
                     </h5>
                 );
@@ -178,7 +178,7 @@ const Md = ({ children, article=false }) => {
             h6: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h6 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
+                    <h6 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
                         {children}
                     </h6>
                 );
@@ -189,7 +189,7 @@ const Md = ({ children, article=false }) => {
                 const codeText = Array.isArray(children) ? children.join('') : children;
 
                 return match ? (
-                    <CodeBlock language={match[1]} code={codeText} />
+                    <CodeBlock language={match[1]} code={codeText} line={node.position.start.line}/>
                 ) : (
                     <InlineCode code={codeText} {...props} />
                 );
@@ -222,6 +222,38 @@ const Md = ({ children, article=false }) => {
                     }
                 }
                 return <a {...props} href={href}>{children}</a>;
+            },
+
+            p : ({children, node, ...props}) => {
+
+                return <p 
+                    data-line-count={node.position ? node.position.start.line : ''} 
+                    {...props}
+                >{children}</p>
+            },
+
+            div : ({children, node, ...props}) => {
+
+                return <div
+                    data-line-count={node.position ? node.position.start.line : ''} 
+                    {...props}
+                >{children}</div>
+            },
+
+            li : ({children, node, ...props}) => {
+
+                return <li 
+                    data-line-count={node.position ? node.position.start.line : ''} 
+                    {...props}
+                >{children}</li>
+            },
+
+            blockquote : ({children, node, ...props}) => {
+
+                return <blockquote 
+                    data-line-count={node.position ? node.position.start.line : ''} 
+                    {...props}
+                >{children}</blockquote>
             },
 
             sup: ({ children }) => {

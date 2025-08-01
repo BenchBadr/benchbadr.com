@@ -5,6 +5,7 @@ const Search = ({markdown}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [focusedIndex, setFocusedIndex] = useState(-1);
+    const [focusedLine, setFocusedLine] = useState(null);
     const resultRefs = useRef([]);
 
     useEffect(() => {
@@ -30,6 +31,11 @@ const Search = ({markdown}) => {
         setSearchResults(results);
         // clear results on query change
         resultRefs.current = [];
+
+        // clear highlight on query change
+        document.querySelectorAll('[data-attr-focus]').forEach(el => {
+            el.removeAttribute('data-attr-focus');
+        });
     }, [searchTerm, markdown]);
 
     // auto-scroll to search result on fucs
@@ -39,8 +45,32 @@ const Search = ({markdown}) => {
                 behavior: 'smooth',
                 block: 'nearest'
             });
+
+            if (focusedLine !== null) {
+                const prevEl = document.querySelector(`[data-line-count="${focusedLine}"]`);
+                if (prevEl) {
+                    prevEl.removeAttribute('data-attr-focus');
+                }
+            }
+
+            setFocusedLine(searchResults[focusedIndex].line)
         }
     }, [focusedIndex]);
+
+
+    // on change of selected line,
+    // scroll to it and highlight it
+    useEffect(() => {
+        // highlight
+        if (focusedLine !== null) {
+            const el = document.querySelector(`[data-line-count="${focusedLine}"]`);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                el.setAttribute('data-attr-focus', 'true');
+
+            }
+        }
+    }, [focusedLine])
 
     const focusDown = () => {
         if (searchResults.length === 0) return;

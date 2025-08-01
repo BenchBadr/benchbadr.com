@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import { SidebarContext } from '../../ctx/SidebarContext';
 import Toc from './sidetools/toc';
 import Ai from './sidetools/ai';
@@ -7,6 +7,13 @@ import Search from './sidetools/search';
 const SidebarRight = ({markdown}) => {
     const { isRightOpen, setIsRightOpen } = useContext(SidebarContext);
     const [tool, setTool] = useState(0);
+
+    useEffect(() => {
+        // clear eventual highlights remaining from search tool
+        document.querySelectorAll('[data-attr-focus]').forEach(el => {
+            el.removeAttribute('data-attr-focus');
+        });
+    }, [tool])
     return (
         <div className={`sidebar right ${isRightOpen ? 'open' : ''}`}>
             <div className='selector'>

@@ -37,8 +37,9 @@ const CopyButton = ({ text }) => {
   );
 };
 
-const Highlighter = ({ code, language, showLines = true }) => {
+const Highlighter = ({ code, language, line, showLines = true }) => {
   const { theme } = useContext(ThemeContext);
+
   return (
     <div className="blockCode">
       {language && <div className='label'>{language}</div>}
@@ -47,6 +48,12 @@ const Highlighter = ({ code, language, showLines = true }) => {
         style={theme === 'dark' ? vscDarkPlus : solarizedlight}
         showLineNumbers={showLines}
         customStyle={{background:'transparent'}}
+        wrapLines={true}
+        lineProps={(...props) => {
+          return {
+            'data-line-count': props[0] + line
+          };
+        }}
       >
         {code}
       </SyntaxHighlighter>
@@ -54,7 +61,7 @@ const Highlighter = ({ code, language, showLines = true }) => {
   );
 };
 
-export const CodeBlock = ({ language, code }) => {
+export const CodeBlock = ({ language, code, line }) => {
   const { theme } = useContext(ThemeContext);
   const rawCode = Array.isArray(code)
     ? code.map(c => (typeof c === 'object' ? c.props.children.join('') : c)).join('')
@@ -71,7 +78,7 @@ export const CodeBlock = ({ language, code }) => {
   return (
     <div className="code-block-wrapper" style={{ position: 'relative' }}>
       <CopyButton text={rawCode} />
-      <Highlighter code={rawCode} language={language} />
+      <Highlighter code={rawCode} language={language} line={line}/>
     </div>
   );
 };
