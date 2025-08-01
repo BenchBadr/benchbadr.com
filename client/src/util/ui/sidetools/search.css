@@ -1,0 +1,197 @@
+.search-tool {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.search-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--low-bg);
+    border: 1px solid var(--current-op-20);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.search-icon {
+    color: var(--current-op-50);
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: var(--text);
+    font-family: Inter;
+    font-size: 14px;
+}
+
+.search-input::placeholder {
+    color: var(--current-op-50);
+}
+
+.clear-search {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    color: var(--current-op-50);
+    transition: all 0.2s;
+}
+
+.clear-search:hover {
+    background: var(--current-op-10);
+    color: var(--text);
+}
+
+.clear-search .material-icons {
+    font-size: 16px;
+}
+
+.search-results {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background: var(--current-op-5);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--current-op-70);
+}
+
+.search-navigation {
+    display: flex;
+    gap: 4px;
+}
+
+.nav-btn {
+    background: none;
+    border: 1px solid var(--current-op-20);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--current-op-70);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    background: var(--current-op-10);
+    border-color: var(--current-op-30);
+}
+
+.nav-btn .material-icons {
+    font-size: 16px;
+}
+
+.search-matches {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.search-match {
+    padding: 12px;
+    border: 1px solid var(--current-op-20);
+    border-radius: 6px;
+    background: var(--low-bg);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.search-match:hover {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 5%, transparent 95%);
+}
+
+.search-match.active {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent 90%);
+}
+
+.match-context {
+    font-family: 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    word-break: break-word;
+}
+
+.match-highlight {
+    background: var(--accent);
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.match-info {
+    font-size: 11px;
+    color: var(--current-op-50);
+    font-family: Inter;
+}
+
+.more-results {
+    text-align: center;
+    padding: 12px;
+    color: var(--current-op-50);
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* Global styles for highlighted text in markdown */
+.search-highlight {
+    background: var(--accent) !important;
+    color: white !important;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.search-highlight.current {
+    background: #ff6b35 !important;
+    box-shadow: 0 0 8px rgba(255, 107, 53, 0.5) !important;
+    animation: search-pulse 1s ease-in-out !important;
+}
+
+@keyframes search-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Scrollbar styling for search matches */
+.search-matches {
+    scrollbar-width: thin;
+    scrollbar-color: var(--current-op-20) transparent;
+}
+
+.search-matches::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-matches::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.search-matches::-webkit-scrollbar-thumb {
+    background: var(--current-op-20);
+    border-radius: 3px;
+}
+
+.search-matches::-webkit-scrollbar-thumb:hover {
+    background: var(--current-op-30);
+}

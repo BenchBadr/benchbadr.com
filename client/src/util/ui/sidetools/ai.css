@@ -172,8 +172,8 @@
     overflow: scroll;
     position:relative;
     height:100%;
-    padding-bottom:150px;
     overflow: hidden;
+    padding-bottom: 30vh;
 }
 
 .ai-chat .msg:has(.user-msg){
