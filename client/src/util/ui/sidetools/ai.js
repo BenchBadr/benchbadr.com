@@ -92,7 +92,6 @@ ${markdown}
         }
     };
 
-    console.log(messages)
 
     return (
         <div className='ai-chat'>

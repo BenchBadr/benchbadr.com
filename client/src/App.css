@@ -61,6 +61,8 @@
   --accent:#1f4b7a;
   --accent-light:var(--blue);
 
+  --text-op: color-mix(in srgb, var(--text) 60%, transparent 40%);
+
   --accent-op-20: color-mix(in srgb, var(--accent) 20%, transparent 80%);
   --accent-op-30: color-mix(in srgb, var(--accent) 30%, transparent 70%);
   --accent-op-40: color-mix(in srgb, var(--accent) 40%, transparent 60%);

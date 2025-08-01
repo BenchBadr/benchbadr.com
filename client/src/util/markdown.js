@@ -117,19 +117,22 @@ const Md = ({ children, article=false }) => {
         titleCountRef.current = 0;
     }, [textContent]);
 
+    // Divide by two in dev mode (due to double renders)
+    const strictFactor = process.env.NODE_ENV === 'development' ? 2 : 1;
+
     // Memoize the markdown components to prevent recreation
     const markdownComponents = useMemo(() => {
         return {
             h1: ({ children, node }) => {
-                const index = Math.floor(titleCountRef.current++ / 2);
+                const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h1 className="cop-title" id={`title-${index}`}>
+                    <h1 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
                         {children}
                     </h1>
                 );
             },
 
-            h2: ({ children, id }) => {
+            h2: ({ children, id, node }) => {
                 if (id === 'footnote-label') {
                     return (
                         <h2 className="cop-title" id={id}>
@@ -137,45 +140,45 @@ const Md = ({ children, article=false }) => {
                         </h2>
                     );
                 }
-                const index = Math.floor(titleCountRef.current++ / 2);
+                const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h2 className="cop-title" id={`title-${index}`}>
+                    <h2 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
                         {children}
                     </h2>
                 );
             },
 
-            h3: ({ children }) => {
-                const index = Math.floor(titleCountRef.current++ / 2);
+            h3: ({ children, node }) => {
+                const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h3 className="cop-title" id={`title-${index}`}>
+                    <h3 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
                         {children}
                     </h3>
                 );
             },
 
-            h4: ({ children }) => {
-                const index = Math.floor(titleCountRef.current++ / 2);
+            h4: ({ children, node }) => {
+                const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h4 className="cop-title" id={`title-${index}`}>
+                    <h4 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
                         {children}
                     </h4>
                 );
             },
 
-            h5: ({ children }) => {
-                const index = Math.floor(titleCountRef.current++ / 2);
+            h5: ({ children, node }) => {
+                const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h5 className="cop-title" id={`title-${index}`}>
+                    <h5 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
                         {children}
                     </h5>
                 );
             },
 
-            h6: ({ children }) => {
-                const index = Math.floor(titleCountRef.current++ / 2);
+            h6: ({ children, node }) => {
+                const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h6 className="cop-title" id={`title-${index}`}>
+                    <h6 className="cop-title" id={`title-${index}`} data-line-count={node.position.start.line}>
                         {children}
                     </h6>
                 );
@@ -191,10 +194,7 @@ const Md = ({ children, article=false }) => {
                     <InlineCode code={codeText} {...props} />
                 );
             },
-
-            inlineMath: ({node}) => {
-                console.log(node)
-            },
+            
 
             details: ({ children, ...props }) => <Details {...props}>{children}</Details>,
 
