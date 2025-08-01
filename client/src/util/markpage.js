@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 
 const Markpage = () => {
     const [content, setContent] = useState("");
-    const [start, setStart] = useState(false);
     const params = useParams();
     const path = params['*'];
 
@@ -13,6 +12,8 @@ const Markpage = () => {
             .then(res => res.text())
             .then(text => setContent(text));
     }, [path]);
+
+  
 
     return (
         <>

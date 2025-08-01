@@ -4,6 +4,7 @@ import MainContent, { ToExport } from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider, Route, useParams} from 'react-router-dom';
 import Markpage from './util/markpage';
+import NotFound from './util/components/notFound';
 
 const Redirect = ({url}) => {
   useEffect(() => {
@@ -20,7 +21,11 @@ const routes = [
   },
   {
     path:'/blog/*',
-    element: <ToExport><Markpage/></ToExport>
+    element: <ToExport article={true}><Markpage/></ToExport>
+  },
+  {
+    path: "*",
+    element: <ToExport><NotFound/></ToExport>
   }
 ];
 

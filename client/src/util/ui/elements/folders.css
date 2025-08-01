@@ -1,0 +1,14 @@
+.fold-title {
+    font-family: Inter;
+}
+
+.fold-title::before{
+    font-family: Material Icons;
+    content:'keyboard_arrow_down';
+    margin-right:1em;
+}
+
+.fold-child{
+    border-left:1px solid var(--current-op-40);
+    padding-left:1em;
+}

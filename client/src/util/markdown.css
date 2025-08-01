@@ -34,6 +34,10 @@
     border-left:none;
   }
 
+  pre {
+    background:transparent !important;
+  }
+
   li ul{
     border-left:var(--current-op-20) solid 1px;
     margin-left:-12px;

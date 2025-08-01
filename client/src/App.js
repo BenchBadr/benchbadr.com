@@ -97,10 +97,10 @@ const ToExportChild = ({children}) => {
   )
 }
 
-export const ToExport = ({children}) => {
+export const ToExport = ({children, article = false}) => {
   return (
      <ThemeProvider>
-      <SidebarProvider>
+      <SidebarProvider article={article}>
         <ToExportChild>{children}</ToExportChild>
       </SidebarProvider>
     </ThemeProvider>

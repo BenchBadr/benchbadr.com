@@ -51,7 +51,7 @@ const Highlighter = ({ code, language, line, showLines = true }) => {
         wrapLines={true}
         lineProps={(...props) => {
           return {
-            'data-line-count': props[0] + line
+            'data-line-count': props[0] + line,
           };
         }}
       >

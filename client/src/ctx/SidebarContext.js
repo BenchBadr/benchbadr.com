@@ -1,28 +1,44 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import {ThemeContext} from './ThemeContext';
+import Folders from '../util/ui/elements/folders';
 
 export const SidebarContext = createContext();
 
-const SidebarProvider = ({ children }) => {
+const SidebarProvider = ({ children, article }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isRightOpen, setIsRightOpen] = useState(true);
+  const [manifestData, setManifestData] = useState(null);
 
   const toggleSidebar = () => {
     setIsSidebarOpen((prevIsSidebarOpen) => !prevIsSidebarOpen);
   };
 
+  useEffect(() => {
+    const fetchManifest = async () => {
+      try {
+        const response = await fetch('/markdown/manifest.json');
+        const data = await response.json();
+        setManifestData(data);
+      } catch (error) {
+        console.error('Error loading manifest.json:', error);
+      }
+    };
+
+    fetchManifest();
+  }, []);
+
   return (
-    <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar, isRightOpen, setIsRightOpen }}>
-      <Sidebar/>
+    <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar, isRightOpen, setIsRightOpen, manifestData }}>
+      <Sidebar article={article}/>
       {children}
     </SidebarContext.Provider>
   );
 };
 
 
-const Sidebar = () => {
+const Sidebar = ({article}) => {
     const { theme, toggleTheme } = useContext(ThemeContext);
-    const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
+    const { isSidebarOpen, toggleSidebar, manifestData } = useContext(SidebarContext);
 
     const sidebarItems = [
       { label: "About Me", path: "/about" , icon:'info'},
@@ -30,6 +46,10 @@ const Sidebar = () => {
       { label: "Papers", path: "/papers", icon:'article'},
       { label: "Blog", path: "/blog", icon:'newspaper'},
     ];
+
+    console.log(manifestData)
+
+
   
     return (
         <> 
@@ -42,13 +62,16 @@ const Sidebar = () => {
         <div className='sidebar-content'>
           <div className='sidebar-parent'>
             <div>
-          {sidebarItems.map((item, index) => (
+          {!article ? sidebarItems.map((item, index) => (
             <div key={index} className={`sidebar-element`}>
               <span className='material-icons'>{item.icon}</span>
               <a href={item.path}>{item.label}</a>
             </div>
-          ))}
+          )) : null}
           </div>
+          {article ? (
+            <Folders data={manifestData}/>
+          ) : null}
           </div>
             <div className='bottom-box'>
             <div onClick={toggleTheme} className='theme-toggle'><a className='material-icons'>{theme!=='light' ? 'light_mode' : 'dark_mode'}</a></div>
