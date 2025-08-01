@@ -120,7 +120,7 @@ const Md = ({ children, article=false }) => {
     // Memoize the markdown components to prevent recreation
     const markdownComponents = useMemo(() => {
         return {
-            h1: ({ children }) => {
+            h1: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / 2);
                 return (
                     <h1 className="cop-title" id={`title-${index}`}>
@@ -190,6 +190,10 @@ const Md = ({ children, article=false }) => {
                 ) : (
                     <InlineCode code={codeText} {...props} />
                 );
+            },
+
+            inlineMath: ({node}) => {
+                console.log(node)
             },
 
             details: ({ children, ...props }) => <Details {...props}>{children}</Details>,
