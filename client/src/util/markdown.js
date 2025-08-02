@@ -342,27 +342,29 @@ const Md = ({ children, article=false }) => {
     const markdownContent = useMemo(() => {
         return (
             <Suspense fallback={<MarkdownSkeleton />}>
-                <div className='markdown-box'>
                     <MarkdownRenderer
                         textContent={textContent}
                         remarkPlugins={remarkPlugins}
                         rehypePlugins={rehypePlugins}
                         markdownComponents={markdownComponents}
                     />
-                    {/* The optional external urls section */}
-                    {sidebarComponents.extRefs}
-                    
-                    {/* Right button for right-bar */}
-                    {sidebarComponents.burger}
-                    {sidebarComponents.sidebar}
-                </div>
-                <NextPrev/>
             </Suspense>
         )
     }, [textContent, remarkPlugins, rehypePlugins, markdownComponents]);
 
 
-    return markdownContent;
+    return (<>
+        <div className='markdown-box'>
+            {markdownContent}
+            {/* The optional external urls section */}
+            {sidebarComponents.extRefs}
+            
+            {/* Right button for right-bar */}
+            {sidebarComponents.burger}
+            {sidebarComponents.sidebar}
+        </div>
+        {article && isContentReady && <NextPrev/>}
+    </>);
 };
 
 export default React.memo(Md);
