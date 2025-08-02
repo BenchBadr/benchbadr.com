@@ -23,8 +23,10 @@ const Folders = ({data}) => {
                 if (key[0] === '/') {
                     return <Accordion title={key.substring(1)} 
                     listActive={currentActive}
+                    color={value[1].color}
                     openDefault={true} // Comment this to make default closed
                     children={<FoldersChild 
+                        color={value[1].color}
                         title={key} 
                         data={data} 
                         stack={key}
@@ -39,17 +41,19 @@ const Folders = ({data}) => {
     )
 }
 
-const FoldersChild = ({title, data, stack, listActive}) => {
+const FoldersChild = ({title, data, stack, listActive, color = undefined}) => {
     return (
         <>
         {data[title][0].map((item, index) => {
             if (item[0] === '/') {
                 return <Accordion 
                 title={item.substring(1)} 
+                color={data[item][1].color}
                 listActive={listActive.slice(1)}
                 children={<FoldersChild title={item} 
                 data={data} stack={stack + item}
                 listActive={listActive.slice(1)}
+                color={data[item][1].color || color}
                 />}/>
             } else {
                 return <File 
@@ -60,6 +64,7 @@ const FoldersChild = ({title, data, stack, listActive}) => {
                         index < (data[title][0].length - 1) && data[title][0][index+1]
                     ]}
                     currentActive={listActive.length === 2 && (listActive[1] === item)}
+                    color={data[title][1].color || color}
                 />
             }
         })}
@@ -67,15 +72,17 @@ const FoldersChild = ({title, data, stack, listActive}) => {
     )
 }
 
-const Accordion = ({title, children, openDefault, listActive}) => {
+const Accordion = ({title, children, openDefault, listActive, color}) => {
     const [open, setOpen] = useState(openDefault || (listActive.length && listActive[0] === title));
 
     const toggleOpen = () => setOpen(!open);
+
     return (
         <div className={`fold-container ${open ? 'open' : ''}`}>
             <div className={`fold-title`} onClick={toggleOpen}>
                 <a className='foldarrow'>keyboard_arrow_right</a>
                 <a>{title}</a>
+                {color && <a className='color-tag' style={{'--accent':`var(--${color})`}}/>}
             </div>
             <div className={`fold-child`}>{children}</div>
         </div>
@@ -83,14 +90,19 @@ const Accordion = ({title, children, openDefault, listActive}) => {
 
 }
 
-const File = ({title, stack, currentActive, nextPrev}) => {
+const File = ({title, stack, currentActive, nextPrev, color}) => {
     const ref = useRef(null);
     const { setNextPrev } = useContext(SidebarContext);
 
     useEffect(() => {
         if (currentActive) {
             setNextPrev(nextPrev)
+            if (color) {
+               document.documentElement.style.setProperty('--accent', `var(--dark-${color})`); 
+               document.documentElement.style.setProperty('--accent-light', `var(--${color})`); 
+            }
         }
+
     }, [])
 
     useEffect(() => {

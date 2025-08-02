@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useContext, useRef, useEffect, useState, useMemo, useCallback, Suspense } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
@@ -11,6 +11,39 @@ import Details from './components/details';
 import { ExtRefs, Tooltip } from './components/footRefs';
 import { SidebarContext } from '../ctx/SidebarContext';
 import SidebarRight from './ui/sidebaright';
+import NextPrev from './ui/elements/nextPrev';
+
+// Loading component for Suspense fallback
+const MarkdownSkeleton = () => (
+    <div className="markdown-skeleton">
+        {[
+            'skeleton-title',
+            'skeleton-paragraph',
+            'skeleton-paragraph short',
+            'skeleton-paragraph'
+        ].map((cls, i) => (
+            <div key={i} className={`skeleton-line ${cls}`}></div>
+        ))}
+    </div>
+);
+
+// Separate component for the actual markdown content
+const MarkdownRenderer = ({ textContent, remarkPlugins, rehypePlugins, markdownComponents }) => {
+    // This component will suspend if any of its dependencies are not ready
+    if (!textContent) {
+        throw new Promise(() => {}); // This will suspend the component
+    }
+
+    return (
+        <ReactMarkdown
+            remarkPlugins={remarkPlugins}
+            rehypePlugins={rehypePlugins}
+            components={markdownComponents}
+        >
+            {textContent}
+        </ReactMarkdown>
+    );
+};
 
 
 
@@ -287,46 +320,49 @@ const Md = ({ children, article=false }) => {
 
 
 
-    // Memoize the main markdown component to prevent re-rendering when only sidebar state changes
-    const markdownContent = useMemo(() => {
-        return (
-            <ReactMarkdown
-                remarkPlugins={remarkPlugins}
-                rehypePlugins={rehypePlugins}
-                components={markdownComponents}
-            >
-                {textContent}
-            </ReactMarkdown>
-        )
+
+    // Check if content is ready
+    const isContentReady = useMemo(() => {
+        return textContent && remarkPlugins && rehypePlugins && markdownComponents;
     }, [textContent, remarkPlugins, rehypePlugins, markdownComponents]);
 
-
-
-
-    // Memoize sidebar components to prevent re-rendering
+    // Memoize sidebar components to prevent re-rendering and only show when content is ready
     const sidebarComponents = useMemo(() => ({
-        extRefs: article && externalRefs.length > 0 ? <ExtRefs data={externalRefs} language={lang}/> : null,
-        burger: article ? (
+        extRefs: article && isContentReady && externalRefs.length > 0 ? <ExtRefs data={externalRefs} language={lang}/> : null,
+        burger: article && isContentReady ? (
             <div className={`burger right ${isRightOpen ? 'open' : ''}`} onClick={toggleOpen}>
                 <span/>
                 <span/>
             </div>
         ) : null,
-        sidebar: article ? <SidebarRight markdown={children}/> : null
-    }), [article, externalRefs, lang, isRightOpen, toggleOpen]);
+        sidebar: article && isContentReady ? <SidebarRight markdown={children}/> : null
+    }), [article, isContentReady, externalRefs, lang, isRightOpen, toggleOpen, children]);
 
-    return (
-        <div className='markdown-box'>
-            {markdownContent}
+    // Memoize the main markdown component with Suspense
+    const markdownContent = useMemo(() => {
+        return (
+            <Suspense fallback={<MarkdownSkeleton />}>
+                <div className='markdown-box'>
+                    <MarkdownRenderer
+                        textContent={textContent}
+                        remarkPlugins={remarkPlugins}
+                        rehypePlugins={rehypePlugins}
+                        markdownComponents={markdownComponents}
+                    />
+                    {/* The optional external urls section */}
+                    {sidebarComponents.extRefs}
+                    
+                    {/* Right button for right-bar */}
+                    {sidebarComponents.burger}
+                    {sidebarComponents.sidebar}
+                </div>
+                <NextPrev/>
+            </Suspense>
+        )
+    }, [textContent, remarkPlugins, rehypePlugins, markdownComponents]);
 
-            {/* The optional external urls section */}
-            {sidebarComponents.extRefs}
-            
-            {/* Right button for right-bar */}
-            {sidebarComponents.burger}
-            {sidebarComponents.sidebar}
-        </div>
-    )
+
+    return markdownContent;
 };
 
 export default React.memo(Md);

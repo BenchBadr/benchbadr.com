@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NextPrev from "./ui/elements/nextPrev";
 import NotFound from "./components/notFound";
-import { manifestData } from "../ctx/data/markNifest";
 
 const Markpage = () => {
     const [content, setContent] = useState("");
@@ -45,7 +44,6 @@ const Markpage = () => {
     return (
         <>
             <Md article={true}>{content}</Md>
-            <NextPrev/>
         </>
     )
 }

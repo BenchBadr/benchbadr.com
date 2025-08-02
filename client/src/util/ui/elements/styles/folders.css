@@ -68,3 +68,11 @@
         color:var(--accent-light);
     }
 }
+
+.color-tag{
+    height:.5em;
+    width:.5em;
+    border-radius: 1em;
+    background:var(--accent);
+    margin-left:.5em;
+}

@@ -547,3 +547,38 @@ a[data-footnote-ref] {
   z-index: 10;
   border-bottom:1px solid var(--current-op-20);
 }
+
+.markdown-skeleton {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+.skeleton-line {
+    height: 1em;
+    background: linear-gradient(90deg, var(--current-op-10) 0%, var(--current-op-20) 50%, var(--current-op-10) 100%);
+    background-size: 200% 100%;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    animation: shimmer 2s infinite linear;
+}
+.skeleton-title {
+    height: 2em;
+    width: 60%;
+    margin-bottom: 20px;
+}
+.skeleton-paragraph {
+    width: 100%;
+}
+.skeleton-paragraph.short {
+    width: 70%;
+}
+@keyframes shimmer {
+  0% {
+    background-position-x: -200%;
+  }
+  100% {
+    background-position-x: 200%;
+  }
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}

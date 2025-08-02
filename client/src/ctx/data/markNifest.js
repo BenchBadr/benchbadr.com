@@ -5,7 +5,7 @@ export const manifestData = {
             "/algebre"
         ],
         {
-            "icon":null
+            "icon":null,
         }
     ],
     "/algebre":[
@@ -19,7 +19,8 @@ export const manifestData = {
         ],
         {
             "icon":null,
-            "child":true
+            "child":true,
+            "color":'green'
         }
     ],
     "/suites":[
