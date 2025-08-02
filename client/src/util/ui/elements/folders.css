@@ -1,14 +1,70 @@
 .fold-title {
+    display: flex;
+    align-items: center;
+    font-size: 90%;
+    cursor:pointer;
+    user-select: none;
+    border-radius: 5px;
+    padding:5px;
+    color:var(--text-op);
     font-family: Inter;
+
+    &:hover{
+        background:var(--current-op-30);
+    }
+
+    .foldarrow{
+        font-family: 'Material Icons';
+        margin-right:5px;
+        font-size:1.5em;
+        color:var(--current-op-40);
+        transition-duration: .2s;
+    }
 }
 
-.fold-title::before{
-    font-family: Material Icons;
-    content:'keyboard_arrow_down';
-    margin-right:1em;
+.fold-container{
+    .fold-child{
+        border-left:1px solid var(--current-op-40);
+        padding-left:5px;
+        font-family: Inter;
+        height:0;
+        display: none;
+        margin-left:calc(1em - 1px);
+    }
 }
 
-.fold-child{
-    border-left:1px solid var(--current-op-40);
-    padding-left:1em;
+.fold-container.open{
+    & > .fold-title{
+        .foldarrow {
+            transform: rotate(90deg);
+        }
+    }
+
+    & > .fold-child{
+        height:auto;
+        display: block;
+    }
+}
+
+.sidebar-normal {
+    padding-top:5em;
+}
+
+.file-item{
+    cursor:pointer;
+    user-select: none;
+    border-radius: 5px;
+    padding:5px;
+    font-size: 90%;
+    color:var(--text-op);
+    display: block;
+    text-decoration: none;
+
+    &:hover, &.active{
+        background:var(--current-op-30);
+    }
+
+    &.active{
+        color:var(--accent-light);
+    }
 }

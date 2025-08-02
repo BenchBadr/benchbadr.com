@@ -101,7 +101,7 @@ ${markdown}
                    {msg.role === 'user' ? (
                         <UserMsg key={index} prompt={msg.content} />
                     ) : (
-                        index !== 0 ? <AiMsg key={index} answer={msg.content} /> : <AiMsg key={index} answer={`Hello! My name is Méné and I am here to assist you to with this article.`}/>
+                        index !== 0 ? <AiMsg key={index} answer={msg.content} /> : <AiMsg key={index} answer={`Hello! I am here to assist you with this article.`}/>
                     )}
                 </div>
                 ))}
@@ -142,7 +142,7 @@ const AiMsg = ({ answer }) => {
         return <div className='error-msg'>An error occurred. Please try again.</div>
     }
 
-const commands = "$\\newcommand{\\sub}{\\subset}\\newcommand{\\R}{\\mathbb{R}}\\newcommand{\\ov}[2]{\\overset{#2}{\\overbrace{#1}}}\\newcommand{\\lim}[1]{\\underset{#1}{\\text{lim}}}\\newcommand{\\N}{\\mathbb{N}}$";
+const commands = "$\\newcommand{\\sub}{\\subset}\\newcommand{\\R}{\\mathbb{R}}\\newcommand{\\ov}[2]{\\overset{#2}{\\overbrace{#1}}}\\newcommand{\\N}{\\mathbb{N}}$";
     return (
         <div className='ai-msg scroll-fix'>
             <Md>{`${commands}\n${answer}`}</Md>

@@ -20,7 +20,7 @@
 }
 
 .toc-link.active{
-    color:var(--blue);
+    color:var(--accent-light);
     background:var(--current-op-20);
 }
 
@@ -35,7 +35,8 @@
 }
 
 .toc-children:has(.toc-link.active){
-    border-left-color: var(--dark-blue);
+    /* border-left-color: var(--dark-blue); */
+    border-left:2px solid var(--current-op-50);
 }
 
 .toc-link.root{

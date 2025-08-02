@@ -13,6 +13,7 @@ const SidebarProvider = ({ children, article }) => {
     setIsSidebarOpen((prevIsSidebarOpen) => !prevIsSidebarOpen);
   };
 
+
   useEffect(() => {
     const fetchManifest = async () => {
       try {
@@ -47,8 +48,6 @@ const Sidebar = ({article}) => {
       { label: "Blog", path: "/blog", icon:'newspaper'},
     ];
 
-    console.log(manifestData)
-
 
   
     return (
@@ -60,6 +59,11 @@ const Sidebar = ({article}) => {
         </div>
       <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className='sidebar-content'>
+          {article ? (
+            <div className='sidebar-normal'>
+              <Folders data={manifestData}/>
+            </div>
+          ) : null}
           <div className='sidebar-parent'>
             <div>
           {!article ? sidebarItems.map((item, index) => (
@@ -69,9 +73,6 @@ const Sidebar = ({article}) => {
             </div>
           )) : null}
           </div>
-          {article ? (
-            <Folders data={manifestData}/>
-          ) : null}
           </div>
             <div className='bottom-box'>
             <div onClick={toggleTheme} className='theme-toggle'><a className='material-icons'>{theme!=='light' ? 'light_mode' : 'dark_mode'}</a></div>
