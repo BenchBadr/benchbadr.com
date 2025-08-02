@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import './toc.css';
+import './styles/toc.css';
 
 const Toc = ({ markdown }) => {
     const [activeSection, setActiveSection] = useState(null);

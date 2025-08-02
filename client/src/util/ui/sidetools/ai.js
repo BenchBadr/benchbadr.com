@@ -1,5 +1,5 @@
 import Md from '../../markdown.js';
-import './ai.css';
+import './styles/ai.css';
 import React, { useState } from 'react';
 
 

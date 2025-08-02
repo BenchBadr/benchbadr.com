@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './search.css';
+import './styles/search.css';
 
 const Search = ({markdown}) => {
     const [searchTerm, setSearchTerm] = useState('');

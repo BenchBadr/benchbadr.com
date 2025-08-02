@@ -1,6 +1,7 @@
 import Md from "./markdown"
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import NextPrev from "./ui/elements/nextPrev";
 
 const Markpage = () => {
     const [content, setContent] = useState("");
@@ -18,6 +19,7 @@ const Markpage = () => {
     return (
         <>
             <Md article={true}>{content}</Md>
+            <NextPrev/>
         </>
     )
 }

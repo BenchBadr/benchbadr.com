@@ -9,6 +9,9 @@ const SidebarProvider = ({ children, article }) => {
   const [isRightOpen, setIsRightOpen] = useState(true);
   const [manifestData, setManifestData] = useState(null);
 
+  // used to navigate between pages (markpage only)
+  const [nextPrev, setNextPrev] = useState([null, null])
+
   const toggleSidebar = () => {
     setIsSidebarOpen((prevIsSidebarOpen) => !prevIsSidebarOpen);
   };
@@ -29,7 +32,7 @@ const SidebarProvider = ({ children, article }) => {
   }, []);
 
   return (
-    <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar, isRightOpen, setIsRightOpen, manifestData }}>
+    <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar, isRightOpen, setIsRightOpen, manifestData, nextPrev, setNextPrev }}>
       <Sidebar article={article}/>
       {children}
     </SidebarContext.Provider>

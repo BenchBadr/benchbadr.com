@@ -1,5 +1,7 @@
-import './folders.css';
-import {useState} from 'react';
+import './styles/folders.css';
+import {useContext, useState} from 'react';
+import { useEffect, useRef } from 'react';
+import { SidebarContext } from '../../../ctx/SidebarContext';
 
 const Folders = ({data}) => {
 
@@ -40,7 +42,7 @@ const Folders = ({data}) => {
 const FoldersChild = ({title, data, stack, listActive}) => {
     return (
         <>
-        {data[title][0].map((item) => {
+        {data[title][0].map((item, index) => {
             if (item[0] === '/') {
                 return <Accordion 
                 title={item.substring(1)} 
@@ -53,6 +55,10 @@ const FoldersChild = ({title, data, stack, listActive}) => {
                 return <File 
                     title={item} 
                     stack={stack}
+                    nextPrev={[
+                        index > 0 && data[title][0][index-1],
+                        index < (data[title][0].length - 1) && data[title][0][index+1]
+                    ]}
                     currentActive={listActive.length === 2 && (listActive[1] === item)}
                 />
             }
@@ -77,7 +83,21 @@ const Accordion = ({title, children, openDefault, listActive}) => {
 
 }
 
-const File = ({title, stack, currentActive}) => {
+const File = ({title, stack, currentActive, nextPrev}) => {
+    const ref = useRef(null);
+    const { setNextPrev } = useContext(SidebarContext);
+
+    useEffect(() => {
+        if (currentActive) {
+            setNextPrev(nextPrev)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (currentActive && ref.current) {
+            ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, [currentActive]);
 
     return (
         <a href={'/blog' + stack + '/' + title} className={`file-item ${currentActive ? 'active' : ''}`}>{title}</a>
