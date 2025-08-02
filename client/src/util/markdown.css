@@ -9,12 +9,6 @@
     text-decoration: underline;
   }
 
-  .cop-title{
-    font-family: Copernicus;
-    z-index: 10;
-    border-bottom:1px solid var(--current-op-20);
-  }
-
   li {
     list-style-type: disc;
   }
@@ -544,4 +538,12 @@ a[data-footnote-ref] {
   transition-duration: .2s;
   overflow-x: auto;
   overflow-y: visible;
+}
+
+
+
+.cop-title{
+  font-family: Copernicus;
+  z-index: 10;
+  border-bottom:1px solid var(--current-op-20);
 }

@@ -2,6 +2,8 @@ import Md from "./markdown"
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NextPrev from "./ui/elements/nextPrev";
+import NotFound from "./components/notFound";
+import { manifestData } from "../ctx/data/markNifest";
 
 const Markpage = () => {
     const [content, setContent] = useState("");
@@ -17,12 +19,27 @@ const Markpage = () => {
                 setContent(text);
             } catch (error) {
                 console.error('Error loading markdown:', error);
-                setContent('# File not found\nThe requested markdown file could not be loaded.');
+                setContent(-1);
             }
         };
 
         loadMarkdown();
     }, [path]);
+
+    if (content === -1) {
+        console.log(decodeURI(window.location.pathname))
+        return (
+            <>
+                <NotFound blog={1}/>
+                <div className="lightmsg">
+                    <div>
+                        <h2 className="cop-title">Not found</h2>
+                        <p>This page doesn't exist. It might have been moved or deleted. Or maybe... does not exist <i>yet</i>.</p>
+                    </div>
+                </div>
+            </>
+        )
+    }
   
 
     return (

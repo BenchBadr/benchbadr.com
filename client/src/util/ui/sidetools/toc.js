@@ -83,7 +83,9 @@ const Toc = ({ markdown }) => {
                 block: 'start'
             });
             setActiveSection(id);
-            navigator.vibrate(50)
+            if ('vibrate' in navigator) {
+                navigator.vibrate(50)
+            }
         }
     }, []);
 

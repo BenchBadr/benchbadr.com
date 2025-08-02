@@ -75,6 +75,7 @@
   --low-bg-op-50: color-mix(in srgb, var(--low-bg) 50%, transparent 50%);
   --low-bg-op-80: color-mix(in srgb, var(--low-bg) 80%, transparent 20%);
 
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
@@ -107,6 +108,7 @@ html {
   --low-bg: var(--light-pure-low);
   --bg: var(--light-bg);
   --text:var(--light-text);
+  --draw:var(--text);
 }
 
 .app.dark,  html:has(.app.dark)  {
@@ -116,6 +118,7 @@ html {
   --low-bg:#393939;
   --bg:var(--dark-bg);
   --text:var(--dark-text);
+  --draw:var(--text-op);
 }
 
 .main-content {
@@ -194,4 +197,15 @@ Markdown content section - moved to util/markdown.css
   &::-webkit-scrollbar {
       display: none; /* Chrome, Safari, Opera */
   }
+}
+
+.lightmsg{
+  display: flex;
+  justify-content: center;
+  font-family: Inter;
+  width:100%;
+}
+
+.lightmsg > div{
+  max-width: 600px;
 }
