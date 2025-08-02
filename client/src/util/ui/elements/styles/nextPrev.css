@@ -2,10 +2,11 @@
     position:relative;
     padding-top:3em;
     padding-bottom:10em;
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
 
     .next, .prev{
-        position:absolute;
-        right:0;
         padding:10px;
         cursor:pointer;
         display: flex;
@@ -13,21 +14,31 @@
         border:1px solid var(--current-op-20);
         border-radius: 8px;
         transition:.1s;
+        overflow: hidden;
+        flex: 1;
+        max-width: calc(50% - 0.5em);
 
         div {
             flex-direction: column;
+            min-width: 0;
+            flex: 1;
         }
 
         &:hover {
             background:var(--blue-op);
             border:1px solid var(--accent-light);
         }
+
     }
 
     .name {
         font-family: Inter;
         color:var(--text);
         display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: right;
     }
 
     .head {
@@ -49,17 +60,15 @@
     }
 
     .prev {
-        left:0;
-        right:unset;
-
         .arrow-navi{
             margin-left:unset;
             margin-right:1em;
         }
 
-        .head {
+        .head, .name {
             text-align: left;
         }
+
     }
 
 }
@@ -67,4 +76,15 @@
 .next-prev > a{
     text-decoration: none;
     color:unset;
+}
+
+@media (max-width: 768px) {
+    .next-prev {
+        flex-direction: column;
+        gap: 1em;
+
+        .next, .prev {
+            max-width: none;
+        }
+    }
 }

@@ -285,6 +285,8 @@ const Md = ({ children, article=false }) => {
         };
     }, [lang, foot, article, textContent]); // Add textContent to ensure component resets with new content
 
+
+
     // Memoize the main markdown component to prevent re-rendering when only sidebar state changes
     const markdownContent = useMemo(() => {
         return (
@@ -297,6 +299,8 @@ const Md = ({ children, article=false }) => {
             </ReactMarkdown>
         )
     }, [textContent, remarkPlugins, rehypePlugins, markdownComponents]);
+
+
 
 
     // Memoize sidebar components to prevent re-rendering
