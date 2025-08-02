@@ -284,7 +284,9 @@ html:has(.app.dark) .burger{
   font-family: Inter;
   cursor: pointer;
   user-select: none;
-
+  text-decoration: none;
+  color:unset;
+  
   span.material-icons{
     margin-right:.5em;
   }

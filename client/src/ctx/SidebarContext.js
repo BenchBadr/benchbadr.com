@@ -56,10 +56,10 @@ const Sidebar = ({article}) => {
           <div className='sidebar-parent'>
             <div>
           {!article ? sidebarItems.map((item, index) => (
-            <div key={index} className={`sidebar-element`}>
+            <a key={index} className={`sidebar-element`} href={item.path}>
               <span className='material-icons'>{item.icon}</span>
-              <a href={item.path}>{item.label}</a>
-            </div>
+              <span>{item.label}</span>
+            </a>
           )) : null}
           </div>
           </div>
