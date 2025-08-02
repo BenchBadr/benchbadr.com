@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[3007],{93007:(e,c,i)=>{e.exports=i.p+"static/media/Fiche r\xe9vision.00ef60584f15a85f7e8c.md"}}]);

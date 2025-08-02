@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[6553],{16553:(e,t,a)=>{e.exports=a.p+"static/media/CC D'entrainement.28e60e186b785914a7a0.md"}}]);

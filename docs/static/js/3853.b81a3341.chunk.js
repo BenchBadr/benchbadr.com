@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[3853],{23853:(e,c,s)=>{e.exports=s.p+"static/media/Fiche AP2.17df86a10d9318034f2b.md"}}]);

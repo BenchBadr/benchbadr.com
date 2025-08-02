@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[863],{863:(e,c,t)=>{e.exports=t.p+"static/media/Projet - 1.8f588b16dce28dc2f843.md"}}]);

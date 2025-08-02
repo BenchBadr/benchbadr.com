@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[8854],{68854:(e,t,c)=>{e.exports=c.p+"static/media/Complexit\xe9.b3dc38882857373f32a9.md"}}]);

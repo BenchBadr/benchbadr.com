@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[8678],{8678:(e,s,t)=>{e.exports=t.p+"static/media/Probl\xe8mes 4.f7185f2b707339bd64ba.md"}}]);
