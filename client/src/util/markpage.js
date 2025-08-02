@@ -9,16 +9,26 @@ const Markpage = () => {
     const path = params['*'];
 
     useEffect(() => {
-        fetch(`/markdown/${path}.md`)
-            .then(res => res.text())
-            .then(text => setContent(text));
-    }, [path]);
+        const loadMarkdown = async () => {
+            try {
+                const markdownModule = await import(`../ctx/data/markdown/${path}.md`);
+                const response = await fetch(markdownModule.default);
+                const text = await response.text();
+                setContent(text);
+            } catch (error) {
+                console.error('Error loading markdown:', error);
+                setContent('# File not found\nThe requested markdown file could not be loaded.');
+            }
+        };
 
+        loadMarkdown();
+    }, [path]);
   
 
     return (
         <>
             <Md article={true}>{content}</Md>
+            {content}
             <NextPrev/>
         </>
     )

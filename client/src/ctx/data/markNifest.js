@@ -1,4 +1,4 @@
-{
+export const manifestData = {
     "/maths":[
         [
             "/suites",

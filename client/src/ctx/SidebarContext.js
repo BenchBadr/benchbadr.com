@@ -1,13 +1,13 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import {ThemeContext} from './ThemeContext';
 import Folders from '../util/ui/elements/folders';
+import { manifestData } from './data/markNifest';
 
 export const SidebarContext = createContext();
 
 const SidebarProvider = ({ children, article }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isRightOpen, setIsRightOpen] = useState(true);
-  const [manifestData, setManifestData] = useState(null);
 
   // used to navigate between pages (markpage only)
   const [nextPrev, setNextPrev] = useState([null, null])
@@ -15,21 +15,6 @@ const SidebarProvider = ({ children, article }) => {
   const toggleSidebar = () => {
     setIsSidebarOpen((prevIsSidebarOpen) => !prevIsSidebarOpen);
   };
-
-
-  useEffect(() => {
-    const fetchManifest = async () => {
-      try {
-        const response = await fetch('/markdown/manifest.json');
-        const data = await response.json();
-        setManifestData(data);
-      } catch (error) {
-        console.error('Error loading manifest.json:', error);
-      }
-    };
-
-    fetchManifest();
-  }, []);
 
   return (
     <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar, isRightOpen, setIsRightOpen, manifestData, nextPrev, setNextPrev }}>
