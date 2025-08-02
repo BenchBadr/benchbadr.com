@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[1634],{71634:(e,c,i)=>{e.exports=i.p+"static/media/Ch4 - D\xe9rivabilit\xe9.e9a09cd6716d6ae5fc7c.md"}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[6663],{76663:(e,c,s)=>{e.exports=s.p+"static/media/TD 6.0ab8e1bfc63cec4fa75c.md"}}]);

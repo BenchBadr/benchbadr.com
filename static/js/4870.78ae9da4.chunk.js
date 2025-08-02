@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[4870],{54870:(e,c,s)=>{e.exports=s.p+"static/media/Probleme 2.e13795a83c0f028168b5.md"}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[8433],{38433:(e,t,a)=>{e.exports=a.p+"static/media/Sujet 2024.6b46a104e208706baa0e.md"}}]);

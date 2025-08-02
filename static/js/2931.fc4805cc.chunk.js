@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[2931],{82931:(e,t,c)=>{e.exports=c.p+"static/media/Arithm\xe9tique.48965274c3493972d469.md"}}]);
