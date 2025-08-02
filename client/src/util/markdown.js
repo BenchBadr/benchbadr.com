@@ -28,6 +28,7 @@ const Md = ({ children, article=false }) => {
 
     const toggleOpen = useCallback(() => {
         setIsRightOpen(!isRightOpen)
+        // navigator.vibrate(50);
     }, [isRightOpen, setIsRightOpen]);
 
     // Memoize plugins

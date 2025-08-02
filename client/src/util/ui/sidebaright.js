@@ -13,6 +13,7 @@ const SidebarRight = ({markdown}) => {
         document.querySelectorAll('[data-attr-focus]').forEach(el => {
             el.removeAttribute('data-attr-focus');
         });
+        // navigator.vibrate(50);
     }, [tool])
     return (
         <div className={`sidebar right ${isRightOpen ? 'open' : ''}`}>

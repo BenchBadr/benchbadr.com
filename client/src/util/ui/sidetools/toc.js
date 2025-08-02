@@ -83,6 +83,7 @@ const Toc = ({ markdown }) => {
                 block: 'start'
             });
             setActiveSection(id);
+            navigator.vibrate(50)
         }
     }, []);
 

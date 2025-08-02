@@ -14,6 +14,7 @@ const SidebarProvider = ({ children, article }) => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen((prevIsSidebarOpen) => !prevIsSidebarOpen);
+    // navigator.vibrate(50);
   };
 
   return (

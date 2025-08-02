@@ -28,7 +28,6 @@ const Markpage = () => {
     return (
         <>
             <Md article={true}>{content}</Md>
-            {content}
             <NextPrev/>
         </>
     )
