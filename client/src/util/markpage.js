@@ -1,13 +1,12 @@
 import Md from "./markdown"
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import NextPrev from "./ui/elements/nextPrev";
 import NotFound from "./components/notFound";
 
-const Markpage = () => {
+const Markpage = ({defaultPath = null}) => {
     const [content, setContent] = useState("");
     const params = useParams();
-    const path = params['*'];
+    const path = defaultPath || params['*'];
 
     useEffect(() => {
         const loadMarkdown = async () => {

@@ -20,6 +20,10 @@ const routes = [
     element: <ToExport><MainContent/></ToExport>,
   },
   {
+    path:'/blog/',
+    element: <ToExport article={true}><Markpage defaultPath={`main`}/></ToExport>
+  },
+  {
     path:'/blog/*',
     element: <ToExport article={true}><Markpage/></ToExport>
   },
