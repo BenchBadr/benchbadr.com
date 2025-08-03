@@ -5,6 +5,8 @@ import './styles/nextPrev.css';
 const NextPrev = () => {
     const { nextPrev } = useContext(SidebarContext)
 
+    console.log(nextPrev)
+
     return (
         <div className="next-prev">
             {nextPrev[0] && (

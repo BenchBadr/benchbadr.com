@@ -11,6 +11,9 @@ const Folders = ({data}) => {
 
     // list that is [1:] progressively to see if group active
     const currentActive = decodeURI(window.location.pathname).split('/').slice(2)
+    if (currentActive[currentActive.length - 1] === "") {
+        currentActive.length--
+    }
 
     // note :
     // stack appends successfully path. maths > algebre...
@@ -42,6 +45,7 @@ const Folders = ({data}) => {
 }
 
 const FoldersChild = ({title, data, stack, listActive, color = undefined}) => {
+
     return (
         <>
         {data[title][0].map((item, index) => {
@@ -74,12 +78,15 @@ const FoldersChild = ({title, data, stack, listActive, color = undefined}) => {
 
 const Accordion = ({title, children, openDefault, listActive, color}) => {
     const [open, setOpen] = useState(openDefault || (listActive.length && listActive[0] === title));
-
     const toggleOpen = () => setOpen(!open);
 
     return (
         <div className={`fold-container ${open ? 'open' : ''}`}>
-            <div className={`fold-title`} onClick={toggleOpen}>
+            <div 
+                className={`fold-title ${listActive.length === 1 && listActive[0] === title ? 'active' : ''}`} 
+                onClick={toggleOpen}
+                style={{'--accent':`var(--${color})`}}
+                >
                 <a className='foldarrow'>keyboard_arrow_right</a>
                 <a>{title}</a>
                 {color && <a className='color-tag' style={{'--accent':`var(--${color})`}}/>}

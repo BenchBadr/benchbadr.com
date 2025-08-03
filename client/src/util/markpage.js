@@ -2,11 +2,33 @@ import Md from "./markdown"
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NotFound from "./components/notFound";
+import { manifestData } from "../ctx/data/markNifest";
 
 const Markpage = ({defaultPath = null}) => {
     const [content, setContent] = useState("");
+    const [isSpace, setIsSpace] = useState(false)
     const params = useParams();
     const path = defaultPath || params['*'];
+
+    const isPathValid = (pathList) => {
+        let current = '/' + pathList[0];
+
+        for (let i = 1; i < pathList.length; i++) {
+            if (!manifestData[current]) {
+                return false
+            }
+            const children = manifestData[current][0];
+
+            if (!(children && children.includes('/' + pathList[i]))) {
+                return false;
+            }
+            current = '/' + pathList[i];
+        }
+
+        return true
+    }
+
+
 
     useEffect(() => {
         const loadMarkdown = async () => {
@@ -16,8 +38,31 @@ const Markpage = ({defaultPath = null}) => {
                 const text = await response.text();
                 setContent(text);
             } catch (error) {
-                console.error('Error loading markdown:', error);
-                setContent(-1);
+                const pathPieces = path.split('/');
+
+                // Elegant solution I recently discovered
+                if (pathPieces[pathPieces.length - 1] === '') {
+                    pathPieces.length--
+                }
+
+                if (!isPathValid(pathPieces)) {
+                    setContent(-1)
+                } else {
+                    const spaceName = pathPieces && Object.keys(manifestData).includes('/' + pathPieces[pathPieces.length - 1])
+                    if (spaceName) {
+                        setIsSpace(spaceName)
+                        try {
+                            const markdownModule = await import(`../ctx/data/markdown/${pathPieces.join('/')}/_index.md`);
+                            const response = await fetch(markdownModule.default);
+                            const text = await response.text();
+                            setContent(text);
+                        } catch (error) {
+                            setContent(`# ${pathPieces[pathPieces.length - 1]}`)
+                        }
+                    } else {
+                        setContent(-1);
+                    }
+            }
             }
         };
 
@@ -25,7 +70,6 @@ const Markpage = ({defaultPath = null}) => {
     }, [path]);
 
     if (content === -1) {
-        console.log(decodeURI(window.location.pathname))
         return (
             <>
                 <NotFound blog={1}/>
@@ -38,6 +82,10 @@ const Markpage = ({defaultPath = null}) => {
             </>
         )
     }
+
+    if (isSpace) {
+        return <Space path={path} description={content}/>
+    }
   
 
     return (
@@ -48,3 +96,14 @@ const Markpage = ({defaultPath = null}) => {
 }
 
 export default Markpage;
+
+
+const Space = ({description, path}) => {
+
+    return (
+        <>
+            {/* Space markdown description */}
+            <Md>{description}</Md>
+        </>
+    )
+}

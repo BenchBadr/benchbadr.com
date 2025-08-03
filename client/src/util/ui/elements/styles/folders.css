@@ -13,6 +13,10 @@
         background:var(--current-op-30);
     }
 
+    &.active{
+        color:var(--accent);
+    }
+
     .foldarrow{
         font-family: 'Material Icons';
         margin-right:5px;
@@ -70,8 +74,8 @@
 }
 
 .color-tag{
-    height:.5em;
-    width:.5em;
+    height:6px;
+    width:6px;
     border-radius: 1em;
     background:var(--accent);
     margin-left:.5em;
