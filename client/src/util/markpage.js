@@ -22,6 +22,10 @@ const Markpage = ({defaultPath = null}) => {
     const isPathValid = (pathList) => {
         let current = '/' + pathList[0];
 
+        if (manifestData[current][1].child) {
+            return false
+        }
+
         for (let i = 1; i < pathList.length; i++) {
             if (!manifestData[current]) {
                 return false
@@ -41,10 +45,13 @@ const Markpage = ({defaultPath = null}) => {
 
     useEffect(() => {
         const loadMarkdown = async () => {
+
+            
             try {
                 const text = await fetchMd({ path });
                 setContent(text);
             } catch (error) {
+
                 const pathPieces = path.split('/');
 
                 // Elegant solution I recently discovered
@@ -76,6 +83,8 @@ const Markpage = ({defaultPath = null}) => {
         loadMarkdown();
     }, [path]);
 
+    console.log(path)
+
     if (content === -1) {
         return (
             <>
@@ -90,6 +99,7 @@ const Markpage = ({defaultPath = null}) => {
         )
     }
 
+
     if (isSpace) {
         return <Space path={isSpace} 
             description={content}
@@ -99,6 +109,7 @@ const Markpage = ({defaultPath = null}) => {
 
     return (
         <>
+            <PathPreview path={path.split('/')} isFile={true}/>
             <Md article={true}>{content}</Md>
         </>
     )

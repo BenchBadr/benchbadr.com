@@ -4,6 +4,7 @@ import './styles/preview.css';
 import removeMd from "remove-markdown";
 import { getIntro } from "../../markdown";
 import { SidebarContext } from "../../../ctx/SidebarContext";
+import { House } from 'lucide-react';
 
 const ElementPreview = ({name, path}) => {
     if (name[0] === '/') {
@@ -14,7 +15,7 @@ const ElementPreview = ({name, path}) => {
 }
 
 
-export const FolderPreview = ({name}) => {
+export const FolderPreview = ({name, path}) => {
     const { cacheColor } = useContext(SidebarContext)
 
     const color = cacheColor[name.slice(1)]
@@ -26,9 +27,10 @@ export const FolderPreview = ({name}) => {
         style['--accent-light'] = `var(--${color})`;
     }
 
+
     return (
         <a className="preview-card folder" 
-        href={`${name.slice(1)}`}
+        href={`/blog/${path.join('/')}/${name.slice(1)}`}
         style={style}
         >
             <span className="folder-icon">folder</span>
@@ -76,22 +78,40 @@ export const FilePreview = ({name, path}) => {
 export default ElementPreview;
 
 
-export const PathPreview = ({path}) => {
+export const PathPreview = ({path, isFile = false}) => {
     const {cacheColor} = useContext(SidebarContext);
+
+    console.log(path)
 
     return (
         <div className="path-list">
-            <span className="home-icon"/>
+            <a href={`/blog/`}>
+                <House size={'1.3em'} className="home-icon"/>
+            </a>
             {path.map((item, index) => {
-                const color = cacheColor[item];
+                if (item === "") {
+                    return
+                }
+
+                if (isFile && (index === path.length - 1)) {
+                    return <a className="file-path-item">
+                        <span>{item}</span>
+                        </a>
+                }
+
+                const color = cacheColor && cacheColor[item] || 'blue';
+
+
                 return (
                     <>
-                        <div className="path-item" style={{
+                        <a className="path-item" style={{
                             '--accent-light': color ? `var(--${color})` : 'unset',
                             '--accent': color ? `var(--dark-${color})` : 'unset'
-                            }}>
+                            }}
+                            href={`/blog/` + path.slice(0, index + 1).join('/')}
+                            >
                             <span>{item}</span>
-                        </div>
+                        </a>
                     </>
                 )
             })}

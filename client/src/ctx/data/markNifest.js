@@ -33,7 +33,7 @@ export const manifestData = {
         ],
         {
             "icon":null,
-            "child":true
+            "child":true,
         }
     ]
 }

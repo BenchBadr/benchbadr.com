@@ -126,6 +126,13 @@ html:has(.app.dark) .preview-card.folder {
     width:100%;
     padding:10px;
 
+    a {
+        text-decoration: none !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .path-item{
         display: inline-flex;
         align-items: center;
@@ -150,16 +157,43 @@ html:has(.app.dark) .preview-card.folder {
         }
     }
 
-    .path-item::before{
+    .file-path-item {
+        font-family: inter;
+        user-select: none;
+        color:var(--text-op);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        span{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        span::before{
+            font-family: Material Icons;
+            content:'article';
+            color:var(--text-op);
+            line-height: 1;
+            margin-right:.3em;
+        }
+    }
+
+    .path-item::before, .file-path-item::before{
         font-family: Material Icons;
         content:'chevron_right';
+        color:var(--text-op);
         line-height: 1;
     }
 
-    .home-icon{
-        font-family: Material Icons Outlined;
-        content:'home';
-        display: inline-block;
+    .home-icon {
+        color:var(--text-op);
+        cursor:pointer;
+
+        &:hover{
+            color:var(--text);
+        }
     }
 
 
@@ -181,4 +215,8 @@ html:has(.app.dark) .preview-card.folder {
         line-height: 1;
         margin-right:.5em;
     }
+}
+
+.path-list {
+    flex-wrap: wrap;
 }
