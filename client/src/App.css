@@ -62,6 +62,7 @@
   --accent-light:var(--blue);
 
   --text-op: color-mix(in srgb, var(--text) 60%, transparent 40%);
+  --text-op-max: color-mix(in srgb, var(--text) 10%, transparent 90%);
 
   --accent-op-10: color-mix(in srgb, var(--accent) 10%, transparent 90%);
   --accent-op-20: color-mix(in srgb, var(--accent) 20%, transparent 80%);
@@ -74,8 +75,6 @@
   --low-bg-op-40: color-mix(in srgb, var(--low-bg) 40%, transparent 60%);
   --low-bg-op-50: color-mix(in srgb, var(--low-bg) 50%, transparent 50%);
   --low-bg-op-80: color-mix(in srgb, var(--low-bg) 80%, transparent 20%);
-
-
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
@@ -109,6 +108,10 @@ html {
   --bg: var(--light-bg);
   --text:var(--light-text);
   --draw:var(--text);
+  --bs:0 2px 8px 0 var(--text-op-max), 0 1.5px 4px 0 var(--text-op-max);
+  --bs-hover:0 4px 16px 0 var(--text-op-max), 0 3px 8px 0 var(--text-op-max);
+
+  --lower-bg: #eae6db;
 }
 
 .app.dark,  html:has(.app.dark)  {
@@ -119,6 +122,8 @@ html {
   --bg:var(--dark-bg);
   --text:var(--dark-text);
   --draw:var(--text-op);
+
+  --lower-bg: black;
 }
 
 .main-content {

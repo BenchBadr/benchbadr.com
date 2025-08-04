@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import './styles/toc.css';
+import removeMd from 'remove-markdown';
 
 const Toc = ({ markdown }) => {
     const [activeSection, setActiveSection] = useState(null);
@@ -127,7 +128,7 @@ const Toc = ({ markdown }) => {
                     className={`toc-link ${activeSection === item.id || !activeSection ? 'open' : ''} ${activeSection === item.id ? 'active' : ''}`}
                     onClick={() => scrollToSection(item.id)}
                 >
-                   <a>{item.text}</a>
+                   <a>{removeMd(item.text)}</a>
                 </div>
                 {item.children.length > 0 && (
                     <div className="toc-children">

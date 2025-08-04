@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NotFound from "./components/notFound";
 import { manifestData } from "../ctx/data/markNifest";
+import ElementPreview from "./ui/elements/previews";
 
 
 export const fetchMd = async ({path}) => {
@@ -56,7 +57,9 @@ const Markpage = ({defaultPath = null}) => {
                 } else {
                     const spaceName = pathPieces && Object.keys(manifestData).includes('/' + pathPieces[pathPieces.length - 1])
                     if (spaceName) {
-                        setIsSpace(spaceName)
+                        if (spaceName) {
+                            setIsSpace(pathPieces)
+                        }
                         try {
                             const text = await fetchMd({path: `${pathPieces.join('/')}/_index`});
                             setContent(text);
@@ -88,7 +91,9 @@ const Markpage = ({defaultPath = null}) => {
     }
 
     if (isSpace) {
-        return <Space path={path} description={content}/>
+        return <Space path={isSpace} 
+            description={content}
+        />
     }
   
 
@@ -103,11 +108,25 @@ export default Markpage;
 
 
 const Space = ({description, path}) => {
+    const [childs, setChilds] = useState(null);
+
+    useEffect(() => {
+        setChilds(manifestData['/' + path[path.length - 1]][0])
+
+    }, [])
 
     return (
         <>
-            {/* Space markdown description */}
+            {/* 1. Space markdown description */}
             <Md>{description}</Md>
+
+            {/* 2. Folders display */}
+            <div className="preview-grid-container">
+                {childs && childs.map((item) => (
+                    <ElementPreview name={item} path={path}/>
+                ))}
+            </div>
+
         </>
     )
 }

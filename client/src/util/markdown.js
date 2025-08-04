@@ -13,6 +13,32 @@ import { SidebarContext } from '../ctx/SidebarContext';
 import SidebarRight from './ui/sidebaright';
 import NextPrev from './ui/elements/nextPrev';
 
+
+export const getIntro = (text) => {
+    // 2. Metadata (extracted before ===) such as lang, desc, date...
+    const index = text.indexOf('\n===\n');
+    const textContent = index !== -1 ? text.substring(index + 5) : text;
+    const introText = index !== -1 ? text.substring(0, index).trim() : text.trim();
+    
+    // 2.1 Extract language from intro
+    const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
+
+    // 2.2 Extract description
+    const matchDesc = introText.match(/desc:\s*([^:\n]*)/)?.[1];
+
+    // 2.3 Extract date
+    const matchDate = introText.match(/date:\s*([^:\n]*)/)?.[1];
+    let dateObj = null;
+    if (matchDate) {
+        const parsed = Date.parse(matchDate.trim());
+        if (!isNaN(parsed)) {
+            dateObj = new Date(parsed);
+        }
+    }
+    
+    return { textContent, lang: matchLang, desc: matchDesc, date: dateObj};
+}
+
 // Loading component for Suspense fallback
 const MarkdownSkeleton = () => (
     <div className="markdown-skeleton">
@@ -95,17 +121,6 @@ const Md = ({ children, article=false }) => {
 
     // Memoize the intro processing
     const { processedTextContent, processedLang } = useMemo(() => {
-        function getIntro(text) {
-            // 2. Metadata (extracted before ===) such as lang, desc, date...
-            const index = text.indexOf('\n===\n');
-            const textContent = index !== -1 ? text.substring(index + 5) : text;
-            const introText = index !== -1 ? text.substring(0, index).trim() : text.trim();
-            
-            // 2.1 Extract language from intro
-            const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
-            
-            return { textContent, lang: matchLang };
-        }
 
         const result = getIntro(children);
         return {
