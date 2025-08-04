@@ -1,4 +1,4 @@
-import Md from "./markdown"
+import Md, {MarkdownSkeleton} from "./markdown"
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NotFound from "./components/notFound";
@@ -147,6 +147,38 @@ const Space = ({description, path}) => {
                     item[0]!== '/' && <FilePreview name={item} path={path}/>
                 ))}
             </div>
+
+        </>
+    )
+}
+
+
+export const MainBlog = () => {
+    const [description, setDescription] = useState(null);
+
+    useEffect(() => {
+        const loadMarkdown = async () => {
+            const text = await fetchMd({ path : 'main' });
+            setDescription(text);
+        }
+
+        loadMarkdown();
+    }, [])
+
+    return (
+        <>
+        
+        {/*1. Space markdown description */}
+        {description ? <Md>{description}</Md> : <MarkdownSkeleton/>}
+
+        {/* 2. Folders display */}
+        <div className="preview-grid-container">
+            {Object.entries(manifestData).map(([key, value]) => {
+                console.log(key)
+                if (value[1].child) { return null }
+                return key[0] === '/' && <FolderPreview name={key} path={''}/>
+            })}
+        </div>
 
         </>
     )

@@ -18,7 +18,7 @@ const ElementPreview = ({name, path}) => {
 export const FolderPreview = ({name, path}) => {
     const { cacheColor } = useContext(SidebarContext)
 
-    const color = cacheColor[name.slice(1)]
+    const color = cacheColor && cacheColor[name.slice(1)]
 
 
     const style = {};
@@ -30,7 +30,7 @@ export const FolderPreview = ({name, path}) => {
 
     return (
         <a className="preview-card folder" 
-        href={`/blog/${path.join('/')}/${name.slice(1)}`}
+        href={`/blog/${path ? path.join('/') : ''}/${name.slice(1)}`}
         style={style}
         >
             <span className="folder-icon">folder</span>
@@ -46,7 +46,7 @@ export const FilePreview = ({name, path}) => {
 
     useEffect(() => {
         const fetchContent = async () => {
-            const text = await fetchMd({path: path.join('/') + '/' + name});
+            const text = await fetchMd({path: (path ? path.join('/') : '') + '/' + name});
             const intro = getIntro(text)
             setContent(intro.textContent)
             setIntro(intro)
@@ -56,7 +56,7 @@ export const FilePreview = ({name, path}) => {
 
 
     return (
-        <a className="preview-card" href={'/blog/' + path.join('/') + '/' + name}>
+        <a className="preview-card" href={'/blog/' + (path ? path.join('/') : '') + '/' + name}>
             <span className="title">
                 {name}
             </span>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import MainContent, { ToExport } from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider, Route, useParams} from 'react-router-dom';
-import Markpage from './util/markpage';
+import Markpage, { MainBlog } from './util/markpage';
 import NotFound from './util/components/notFound';
 
 const Redirect = ({url}) => {
@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path:'/blog/',
-    element: <ToExport article={true}><Markpage defaultPath={`main`}/></ToExport>
+    element: <ToExport article={true}><MainBlog/></ToExport>
   },
   {
     path:'/blog/*',

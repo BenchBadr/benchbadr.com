@@ -33,7 +33,7 @@ export const getIntro = (text) => {
 }
 
 // Loading component for Suspense fallback
-const MarkdownSkeleton = () => (
+export const MarkdownSkeleton = () => (
     <div className="markdown-skeleton">
         {[
             'skeleton-title',
