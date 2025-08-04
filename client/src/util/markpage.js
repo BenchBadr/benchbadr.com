@@ -4,6 +4,14 @@ import { useParams } from 'react-router-dom';
 import NotFound from "./components/notFound";
 import { manifestData } from "../ctx/data/markNifest";
 
+
+export const fetchMd = async ({path}) => {
+    const markdownModule = await import(`../ctx/data/markdown/${path}.md`);
+    const response = await fetch(markdownModule.default);
+    const text = await response.text();
+    return text
+}
+
 const Markpage = ({defaultPath = null}) => {
     const [content, setContent] = useState("");
     const [isSpace, setIsSpace] = useState(false)
@@ -33,9 +41,7 @@ const Markpage = ({defaultPath = null}) => {
     useEffect(() => {
         const loadMarkdown = async () => {
             try {
-                const markdownModule = await import(`../ctx/data/markdown/${path}.md`);
-                const response = await fetch(markdownModule.default);
-                const text = await response.text();
+                const text = await fetchMd({ path });
                 setContent(text);
             } catch (error) {
                 const pathPieces = path.split('/');
@@ -52,9 +58,7 @@ const Markpage = ({defaultPath = null}) => {
                     if (spaceName) {
                         setIsSpace(spaceName)
                         try {
-                            const markdownModule = await import(`../ctx/data/markdown/${pathPieces.join('/')}/_index.md`);
-                            const response = await fetch(markdownModule.default);
-                            const text = await response.text();
+                            const text = await fetchMd({path: `${pathPieces.join('/')}/_index`});
                             setContent(text);
                         } catch (error) {
                             setContent(`# ${pathPieces[pathPieces.length - 1]}`)
