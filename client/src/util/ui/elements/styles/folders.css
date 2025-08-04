@@ -26,6 +26,10 @@
     }
 }
 
+html:has(.app.dark) .fold-child .active{
+    color:var(--accent-light) !important;
+}
+
 .fold-container{
     .fold-child{
         border-left:1px solid var(--current-op-40);
@@ -69,8 +73,12 @@
     }
 
     &.active{
-        color:var(--accent-light);
+        color:var(--accent);
     }
+}
+
+html:has(.app.dark) .file-item.active{
+    color:var(--accent-light)
 }
 
 .color-tag{
@@ -79,4 +87,8 @@
     border-radius: 1em;
     background:var(--accent);
     margin-left:.5em;
+}
+
+html:has(.app.dark) .color-tag{
+    background:var(--accent-light);
 }

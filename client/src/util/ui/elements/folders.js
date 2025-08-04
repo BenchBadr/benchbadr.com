@@ -2,10 +2,11 @@ import './styles/folders.css';
 import {useContext, useState} from 'react';
 import { useEffect, useRef } from 'react';
 import { SidebarContext } from '../../../ctx/SidebarContext';
+import { manifestData } from '../../../ctx/data/markNifest';
 
-const Folders = ({data}) => {
+const Folders = () => {
 
-    if (!data || typeof data !== 'object') {
+    if (!manifestData || typeof manifestData !== 'object') {
         return <div className='spinner'/>;
     }
 
@@ -21,7 +22,7 @@ const Folders = ({data}) => {
 
     return (
         <>
-        {Object.entries(data).map(([key, value]) => {
+        {Object.entries(manifestData).map(([key, value]) => {
             if (!value[1].child) {
                 if (key[0] === '/') {
                     return <Accordion title={key.substring(1)} 
@@ -31,7 +32,6 @@ const Folders = ({data}) => {
                     children={<FoldersChild 
                         color={value[1].color}
                         title={key} 
-                        data={data} 
                         stack={key}
                         listActive={currentActive}
                         />}/>
@@ -44,31 +44,31 @@ const Folders = ({data}) => {
     )
 }
 
-const FoldersChild = ({title, data, stack, listActive, color = undefined}) => {
+const FoldersChild = ({title, stack, listActive, color = undefined}) => {
 
     return (
         <>
-        {data[title][0].map((item, index) => {
+        {manifestData[title][0].map((item, index) => {
             if (item[0] === '/') {
                 return <Accordion 
                 title={item.substring(1)} 
-                color={data[item][1].color}
+                color={manifestData[item][1].color}
                 listActive={listActive.slice(1)}
                 children={<FoldersChild title={item} 
-                data={data} stack={stack + item}
+                stack={stack + item}
                 listActive={listActive.slice(1)}
-                color={data[item][1].color || color}
+                color={manifestData[item][1].color || color}
                 />}/>
             } else {
                 return <File 
                     title={item} 
                     stack={stack}
                     nextPrev={[
-                        index > 0 && data[title][0][index-1],
-                        index < (data[title][0].length - 1) && data[title][0][index+1]
+                        index > 0 && manifestData[title][0][index-1],
+                        index < (manifestData[title][0].length - 1) && manifestData[title][0][index+1]
                     ]}
                     currentActive={listActive.length === 2 && (listActive[1] === item)}
-                    color={data[title][1].color || color}
+                    color={manifestData[title][1].color || color}
                 />
             }
         })}
@@ -78,18 +78,27 @@ const FoldersChild = ({title, data, stack, listActive, color = undefined}) => {
 
 const Accordion = ({title, children, openDefault, listActive, color}) => {
     const [open, setOpen] = useState(openDefault || (listActive.length && listActive[0] === title));
+    const { setCacheColor } = useContext(SidebarContext);
+
+    useEffect(() => {
+        setCacheColor(cacheColor => ({
+            ...cacheColor,
+            [title]:color
+        }))
+    }, [])
     const toggleOpen = () => setOpen(!open);
+
 
     return (
         <div className={`fold-container ${open ? 'open' : ''}`}>
             <div 
                 className={`fold-title ${listActive.length === 1 && listActive[0] === title ? 'active' : ''}`} 
                 onClick={toggleOpen}
-                style={{'--accent':`var(--${color})`}}
+                style={{'--accent':`var(--dark-${color})`,'--accent-light':`var(--${color})`}}
                 >
                 <a className='foldarrow'>keyboard_arrow_right</a>
                 <a>{title}</a>
-                {color && <a className='color-tag' style={{'--accent':`var(--${color})`}}/>}
+                {color && <a className='color-tag' style={{'--accent':`var(--dark-${color})`,'--accent-light':`var(--${color})`}}/>}
             </div>
             <div className={`fold-child`}>{children}</div>
         </div>

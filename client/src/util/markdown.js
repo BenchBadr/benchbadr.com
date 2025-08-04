@@ -28,15 +28,8 @@ export const getIntro = (text) => {
 
     // 2.3 Extract date
     const matchDate = introText.match(/date:\s*([^:\n]*)/)?.[1];
-    let dateObj = null;
-    if (matchDate) {
-        const parsed = Date.parse(matchDate.trim());
-        if (!isNaN(parsed)) {
-            dateObj = new Date(parsed);
-        }
-    }
     
-    return { textContent, lang: matchLang, desc: matchDesc, date: dateObj};
+    return { textContent, lang: matchLang, desc: matchDesc, date: matchDate};
 }
 
 // Loading component for Suspense fallback

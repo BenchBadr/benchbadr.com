@@ -1,3 +1,9 @@
+lang:fr
+desc:Ce cours présente les espaces vectoriels, leurs sous-espaces et bases. Il explique les notions de familles libres, génératrices et de décomposition unique. Enfin, il aborde la dimension comme outil de classification.
+date:30/01/2025
+
+===
+$\newcommand{\R}{\mathbb{R}}\newcommand{\N}{\mathbb{N}}\newcommand{\sub}{\subset}$
 # I -  Espaces vectoriels
 
 ### Exemple introductif
@@ -8,11 +14,9 @@ Considérons $\R^3$
 > $\R^3$ : ensemble des vecteurs à 3 coordonnées (réelles)
 
 > [!check]
-> __Exemples d'éléments de $\R^3$__
+> Exemples d'éléments de $\R^3$ : $(1,0,-2),(-3,-1,\frac{1}{2})...$etc
 
-$(1,0,-2),(-3,-1,\frac{1}{2})...$etc/]
-
-- On peut additionner deux vecteursde $\R^3$
+- On peut additionner deux vecteurs de $\R^3$
     - $(1,-1,2)+(0,3,1)=(1,2,3)$ 
 - On peut multiplier un vecteur par un nombre:
     - $3(1,-1,2) = (3,-3, 6)$ 

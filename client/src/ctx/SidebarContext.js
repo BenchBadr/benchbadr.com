@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, cache } from 'react';
 import {ThemeContext} from './ThemeContext';
 import Folders from '../util/ui/elements/folders';
 import { manifestData } from './data/markNifest';
@@ -9,6 +9,10 @@ const SidebarProvider = ({ children, article }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isRightOpen, setIsRightOpen] = useState(true);
 
+  // used to cache inheritable folders colors 
+  // without performing a cost recursive search
+  const [cacheColor, setCacheColor] = useState(null);
+
   // used to navigate between pages (markpage only)
   const [nextPrev, setNextPrev] = useState([null, null])
 
@@ -18,7 +22,12 @@ const SidebarProvider = ({ children, article }) => {
   };
 
   return (
-    <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar, isRightOpen, setIsRightOpen, manifestData, nextPrev, setNextPrev }}>
+    <SidebarContext.Provider value={{ 
+        isSidebarOpen, toggleSidebar, 
+        isRightOpen, setIsRightOpen, 
+        nextPrev, setNextPrev, 
+        cacheColor, setCacheColor 
+      }}>
       <Sidebar article={article}/>
       {children}
     </SidebarContext.Provider>

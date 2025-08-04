@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NotFound from "./components/notFound";
 import { manifestData } from "../ctx/data/markNifest";
-import ElementPreview from "./ui/elements/previews";
+import {FolderPreview, FilePreview, PathPreview} from "./ui/elements/previews";
 
 
 export const fetchMd = async ({path}) => {
@@ -117,13 +117,23 @@ const Space = ({description, path}) => {
 
     return (
         <>
+            {/* 0. Path preview (joined with chevrons) */}
+            <PathPreview path={path}/>
+
             {/* 1. Space markdown description */}
             <Md>{description}</Md>
 
             {/* 2. Folders display */}
             <div className="preview-grid-container">
                 {childs && childs.map((item) => (
-                    <ElementPreview name={item} path={path}/>
+                    item[0]=== '/' && <FolderPreview name={item} path={path}/>
+                ))}
+            </div>
+
+            {/* 3. Articles display */}
+            <div className="preview-grid-container">
+                {childs && childs.map((item) => (
+                    item[0]!== '/' && <FilePreview name={item} path={path}/>
                 ))}
             </div>
 

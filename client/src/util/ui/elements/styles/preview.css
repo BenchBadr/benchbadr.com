@@ -23,9 +23,24 @@
         bottom:0;
         background: linear-gradient(to bottom, transparent 10%, var(--low-bg) 50%);
         padding:20px;
+        padding-top:40px;
         display: block;
         width:100%;
         left:0;
+        display: flex;
+        justify-content: flex-start;
+        gap:1em;
+
+        span {
+            color:var(--text-op);
+            display: flex;
+            align-items: center;
+            gap:.5em;
+
+            .icon {
+                font-family: Material Icons;
+            }
+        }
     }
 
     p {
@@ -45,6 +60,47 @@
         margin-right:1em;
         color:var(--text-op);
     }
+
+    span.folder-title{
+        font-weight: 500;
+        transition: color .2s, font-weight .2s;
+    }
+
+    span.folder-icon{
+        font-family: Material Icons;
+        color:var(--accent);
+    }
+
+    &.folder{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap:1em;
+
+        &:hover{
+            .folder-title{
+                color:var(--accent);
+            }
+        }
+    }
+
+    span.after-arrow{
+        font-family: Material Icons;
+        margin-left:auto;
+    }
+
+}
+
+html:has(.app.dark) .preview-card.folder {
+    span.folder-icon{
+        color:var(--accent-light);
+    }
+
+    &:hover {
+        span.folder-title {
+            color:var(--accent-light);
+        }
+    }
 }
 
 .preview-grid-container {
@@ -60,4 +116,69 @@
     gap: 10px;
     padding: 10px;
   }
+}
+
+.path-list{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;   
+    border-color:var(--text-op);
+    width:100%;
+    padding:10px;
+
+    .path-item{
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+
+        span {
+            background:var(--current-op-20);
+            font-family: Inter;
+            cursor:pointer;
+            padding:5px;
+            border-radius: 1rem;
+            color:var(--accent);
+            display: flex;
+            align-items: center;
+
+            &::before{
+                font-family: Material Icons;
+                content:'folder';
+                line-height: 1;
+                margin-right:.5em;
+            }
+        }
+    }
+
+    .path-item::before{
+        font-family: Material Icons;
+        content:'chevron_right';
+        line-height: 1;
+    }
+
+    .home-icon{
+        font-family: Material Icons Outlined;
+        content:'home';
+        display: inline-block;
+    }
+
+
+}
+
+.app.dark .path-list .path-item span {
+    background:var(--current-op-20);
+    font-family: Inter;
+    cursor:pointer;
+    padding:5px;
+    border-radius: 1rem;
+    color:var(--accent-light);
+    display: flex;
+    align-items: center;
+
+    &::before{
+        font-family: Material Icons;
+        content:'folder';
+        line-height: 1;
+        margin-right:.5em;
+    }
 }

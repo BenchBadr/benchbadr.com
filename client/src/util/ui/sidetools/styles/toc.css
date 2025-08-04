@@ -20,7 +20,7 @@
 }
 
 .toc-link.active{
-    color:var(--accent-light);
+    color:var(--accent-auto);
     background:var(--current-op-20);
 }
 

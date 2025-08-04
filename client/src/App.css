@@ -112,6 +112,8 @@ html {
   --bs-hover:0 4px 16px 0 var(--text-op-max), 0 3px 8px 0 var(--text-op-max);
 
   --lower-bg: #eae6db;
+
+  --accent-auto:var(--accent);
 }
 
 .app.dark,  html:has(.app.dark)  {
@@ -124,6 +126,8 @@ html {
   --draw:var(--text-op);
 
   --lower-bg: black;
+
+  --accent-auto:var(--accent-light);
 }
 
 .main-content {
