@@ -20,6 +20,11 @@ const Markpage = ({defaultPath = null}) => {
     const path = defaultPath || params['*'];
 
     const isPathValid = (pathList) => {
+
+        if (!pathList[0]) {
+            return false;
+        }
+
         let current = '/' + pathList[0];
 
         if (manifestData[current][1].child) {
@@ -27,6 +32,10 @@ const Markpage = ({defaultPath = null}) => {
         }
 
         for (let i = 1; i < pathList.length; i++) {
+            if (!current) {
+                return false
+            }
+
             if (!manifestData[current]) {
                 return false
             }
