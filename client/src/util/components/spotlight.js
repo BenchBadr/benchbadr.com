@@ -70,11 +70,15 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
                 >cancel</a>}
             </div>
 
-            {results.length !== 0 && <>
+            {(value.length && results.length !== 0) && <>
                 <div className="separator"/>
                 <div className="spotlight-results">
                     {results.map((result) => (
-                        <a>{result}</a>
+                        <a>
+                            <span>{result.split(value)[0]}</span>
+                            <b>{value}</b>
+                            <span>{result.split(value)[1]}</span>
+                        </a>
                     ))}
                 </div>
             </>}
@@ -96,15 +100,16 @@ const dfs = (criterias, results, prefix = []) => {
     // DFS - Parcours en profondeur
 
     console.log('now in',prefix, criterias)
-    if (prefix.length && !manifestData[prefix[prefix.length-1]]) {
+    if (prefix.length && !manifestData['/' + prefix[prefix.length-1]]) {
+        console.log(prefix,'failed',)
         return
     }
 
 
-    const items = !prefix.length ? [...Object.keys(manifestData)] : manifestData[prefix[prefix.length-1]][0];
+    const items = !prefix.length ? [...Object.keys(manifestData)] : manifestData['/' + prefix[prefix.length-1]][0];
 
     for (const item of items) {
-        console.log('active',item)
+        console.log('active',item, criterias)
         // in:folder - prevents unnecessary iterations
         if (criterias.length && items.includes('/' + criterias[0]) && item !== criterias[0]) {
             continue
