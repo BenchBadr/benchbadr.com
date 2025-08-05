@@ -70,7 +70,7 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
                 >cancel</a>}
             </div>
 
-            {(value.length && results.length !== 0) && <>
+            {(value.length !== 0 && results.length !== 0) && <>
                 <div className="separator"/>
                 <div className="spotlight-results">
                     {results.map((result) => {
