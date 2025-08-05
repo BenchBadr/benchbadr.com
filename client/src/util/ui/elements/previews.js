@@ -30,7 +30,7 @@ export const FolderPreview = ({name, path}) => {
 
     return (
         <a className="preview-card folder" 
-        href={`/blog/${path ? path.join('/') : ''}/${name.slice(1)}`}
+        href={`${path ? path.join('/') : ''}/${name.slice(1)}`}
         style={style}
         >
             <span className="folder-icon">folder</span>
@@ -56,7 +56,7 @@ export const FilePreview = ({name, path}) => {
 
 
     return (
-        <a className="preview-card" href={'/blog/' + (path ? path.join('/') : '') + '/' + name}>
+        <a className="preview-card" href={'/' + (path ? path.join('/') : '') + '/' + name}>
             <span className="title">
                 {name}
             </span>
@@ -85,7 +85,7 @@ export const PathPreview = ({path, isFile = false}) => {
 
     return (
         <div className="path-list">
-            <a href={`/blog/`}>
+            <a href={`/`}>
                 <House size={'1.3em'} className="home-icon"/>
             </a>
             {path.map((item, index) => {
@@ -93,7 +93,7 @@ export const PathPreview = ({path, isFile = false}) => {
                     return
                 }
 
-                if (isFile && (index === path.length - 1)) {
+                if (isFile && (index === path.length - 1 || (index === path.length - 2 && !path[index+1]))) {
                     return <a className="file-path-item">
                         <span>{item}</span>
                         </a>
@@ -108,7 +108,7 @@ export const PathPreview = ({path, isFile = false}) => {
                             '--accent-light': color ? `var(--${color})` : 'unset',
                             '--accent': color ? `var(--dark-${color})` : 'unset'
                             }}
-                            href={`/blog/` + path.slice(0, index + 1).join('/')}
+                            href={`/` + path.slice(0, index + 1).join('/')}
                             >
                             <span>{item}</span>
                         </a>

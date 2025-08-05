@@ -276,16 +276,17 @@ html:has(.app.dark) .burger{
 }
 
 .sidebar-element{
-  font-size: 14px;
-  padding:10px 10px;
-  border-radius: 10px;
   display: flex;
   align-items: center;
-  font-family: Inter;
-  cursor: pointer;
+  font-size: 80%;
+  cursor:pointer;
   user-select: none;
+  border-radius: 5px;
+  padding:5px;
+  color:var(--text-op);
+  font-family: Inter;
   text-decoration: none;
-  color:unset;
+
   
   span.material-icons{
     margin-right:.5em;

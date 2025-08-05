@@ -7,7 +7,8 @@ import {FolderPreview, FilePreview, PathPreview} from "./ui/elements/previews";
 
 
 export const fetchMd = async ({path}) => {
-    const markdownModule = await import(`../ctx/data/markdown/${path}.md`);
+    const pathFix = path[path.length - 1] === '/' ? path.slice(0, -1) : path
+    const markdownModule = await import(`../ctx/data/markdown/${pathFix}.md`);
     const response = await fetch(markdownModule.default);
     const text = await response.text();
     return text
@@ -21,13 +22,13 @@ const Markpage = ({defaultPath = null}) => {
 
     const isPathValid = (pathList) => {
 
-        if (!pathList[0]) {
+        if (!pathList || !pathList[0]) {
             return false;
         }
 
         let current = '/' + pathList[0];
 
-        if (manifestData[current][1].child) {
+        if (!manifestData[current] || !manifestData[current][1] || manifestData[current][1].child) {
             return false
         }
 
@@ -92,7 +93,6 @@ const Markpage = ({defaultPath = null}) => {
         loadMarkdown();
     }, [path]);
 
-    console.log(path)
 
     if (content === -1) {
         return (
@@ -183,7 +183,6 @@ export const MainBlog = () => {
         {/* 2. Folders display */}
         <div className="preview-grid-container">
             {Object.entries(manifestData).map(([key, value]) => {
-                console.log(key)
                 if (value[1].child) { return null }
                 return key[0] === '/' && <FolderPreview name={key} path={''}/>
             })}

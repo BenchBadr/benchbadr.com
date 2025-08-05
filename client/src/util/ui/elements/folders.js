@@ -10,6 +10,7 @@ const Folders = () => {
         return <div className='spinner'/>;
     }
 
+
     // list that is [1:] progressively to see if group active
     const currentActive = decodeURI(window.location.pathname).split('/').slice(2)
     if (currentActive[currentActive.length - 1] === "") {
@@ -128,7 +129,7 @@ const File = ({title, stack, currentActive, nextPrev, color}) => {
     }, [currentActive]);
 
     return (
-        <a href={'/blog' + stack + '/' + title} className={`file-item ${currentActive ? 'active' : ''}`}>{title}</a>
+        <a href={ stack + '/' + title} className={`file-item ${currentActive ? 'active' : ''}`}>{title}</a>
     )
 }
 

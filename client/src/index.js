@@ -16,15 +16,11 @@ const Redirect = ({url}) => {
 
 const routes = [
   {
-    path: "/",
-    element: <ToExport><MainContent/></ToExport>,
-  },
-  {
-    path:'/blog/',
+    path:'/',
     element: <ToExport article={true}><MainBlog/></ToExport>
   },
   {
-    path:'/blog/*',
+    path:'/*',
     element: <ToExport article={true}><Markpage/></ToExport>
   },
   {
