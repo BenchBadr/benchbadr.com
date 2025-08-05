@@ -1,10 +1,12 @@
 import './styles/papers.css'
 import { paperData } from './data/data';
 import Drawing from '../components/Drawing';
+import { PathPreview } from '../ui/elements/previews';
 
 const Papers = () => {
     return (
         <>
+            <PathPreview path={['Papers']} isFile={true} icon={'article'}/>
             <Drawing path="papers.svg" maxHeight='300px'/>
             <PapersChild data={paperData}/>
         </>

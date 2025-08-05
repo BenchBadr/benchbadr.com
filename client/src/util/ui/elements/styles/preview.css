@@ -161,7 +161,7 @@ html:has(.app.dark) .preview-card.folder {
         font-family: inter;
         user-select: none;
         color:var(--text-op);
-        display: inline-flex;
+        display: flex;
         align-items: center;
         justify-content: center;
 
@@ -171,7 +171,7 @@ html:has(.app.dark) .preview-card.folder {
             justify-content: center;
         }
 
-        span::before{
+        .icon{
             font-family: Material Icons;
             content:'article';
             color:var(--text-op);
@@ -250,6 +250,10 @@ html:has(.app.dark) .preview-card.folder {
         align-items: center;
         justify-content: center;
 
+        span {
+            transition-duration: .1s;
+        }
+
         .after-arrow{
             margin-left:auto;
             font-family: Material Icons;
@@ -258,7 +262,9 @@ html:has(.app.dark) .preview-card.folder {
 
     &:hover{
         .read-btn{
-            color:var(--accent-light);
+            span {
+                color:var(--accent-light);
+            }
         }
     }
 }

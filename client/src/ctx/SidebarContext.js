@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect, cache } from 'react';
 import {ThemeContext} from './ThemeContext';
 import Folders from '../util/ui/elements/folders';
-import { manifestData } from './data/markNifest';
+import { Home } from 'lucide-react';
 
 export const SidebarContext = createContext();
 
@@ -57,6 +57,10 @@ const Sidebar = () => {
       <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className='sidebar-content'>
             <div className='sidebar-normal'>
+              <a key={0} className={`sidebar-element`} href={'/'} style={{gap:'1em'}}>
+                  <Home/>
+                  <span>Home</span>
+                </a>
               {sidebarItems.map((item, index) => (
                 <a key={index} className={`sidebar-element`} href={item.path}>
                   <span className='material-icons'>{item.icon}</span>

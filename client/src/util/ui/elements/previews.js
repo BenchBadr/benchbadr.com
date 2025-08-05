@@ -78,10 +78,8 @@ export const FilePreview = ({name, path}) => {
 export default ElementPreview;
 
 
-export const PathPreview = ({path, isFile = false}) => {
+export const PathPreview = ({path, isFile = false, icon = null}) => {
     const {cacheColor} = useContext(SidebarContext);
-
-    console.log(path)
 
     return (
         <div className="path-list">
@@ -95,6 +93,7 @@ export const PathPreview = ({path, isFile = false}) => {
 
                 if (isFile && (index === path.length - 1 || (index === path.length - 2 && !path[index+1]))) {
                     return <a className="file-path-item">
+                        <div className="icon">{!icon ? 'article' : icon}</div>
                         <span>{item}</span>
                         </a>
                 }
