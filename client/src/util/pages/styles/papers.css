@@ -1,6 +1,6 @@
 .paper-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 20px;
     padding: 20px;
 }
@@ -64,7 +64,7 @@
     }
 }
 
-@media (max-width:384px){
+@media (max-width:1268px){
     .paper-item{
         display:block;
 
@@ -73,5 +73,17 @@
             align-items: center;
             justify-content: center;
         }
+    }
+}
+
+.tags-container{
+    padding:10px 0;
+
+    .tag{
+        padding:2px;
+        color:var(--accent-auto);
+        background:var(--current-op-20);
+        border-radius: 6px;
+        margin:0 2px;
     }
 }

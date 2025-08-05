@@ -1,10 +1,21 @@
 import './styles/papers.css'
 import { paperData } from './data/data';
+import Drawing from '../components/Drawing';
 
 const Papers = () => {
     return (
+        <>
+            <Drawing path="papers.svg" maxHeight='300px'/>
+            <PapersChild data={paperData}/>
+        </>
+    )
+}
+
+
+const PapersChild = ({data}) => {
+    return (
         <div className='paper-grid'>
-        {paperData.map((item) => (
+        {data.map((item) => (
             <a className='paper-item' href={`https://drive.google.com/file/d/${item.googleId}/view`} target={`_blank`}>
                 <div className='img-parent'>
                     <img src={`https://lh3.googleusercontent.com/d/${item.googleId}=w1600`}/>
@@ -20,6 +31,11 @@ const Papers = () => {
                             <span className="icon">calendar_today</span>
                             {item.date}
                         </span>}
+                    </div>
+                    <div className='tags-container'>
+                        {item.tags && item.tags.length && item.tags.map((item) => (
+                            <span className='tag'>#{item}</span>
+                        ))}
                     </div>
                     <p>{item.desc}</p>
                 </div>
