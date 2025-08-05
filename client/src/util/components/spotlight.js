@@ -73,13 +73,19 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
             {(value.length && results.length !== 0) && <>
                 <div className="separator"/>
                 <div className="spotlight-results">
-                    {results.map((result) => (
-                        <a>
-                            <span>{result.split(value)[0]}</span>
-                            <b>{value}</b>
-                            <span>{result.split(value)[1]}</span>
-                        </a>
-                    ))}
+                    {results.map((result) => {
+                        const regex = new RegExp(value, 'gi');
+                        const parts = result.split(regex);
+                        const query = result.slice(parts[0].length, parts[0].length + value.length);
+
+                        return (
+                            <a>
+                                <span>{parts[0]}</span>
+                                <b>{query}</b>
+                                <span>{parts[1]}</span>
+                            </a>
+                        );
+                    })}
                 </div>
             </>}
 
@@ -92,8 +98,12 @@ const searchSpot = (query) => {
 
     const results = [];
     dfs(query.split('/'), results)
-    console.log('RESULTS',results)
     return results
+}
+
+const checkMatch = (str1, str2) => {
+    console.log('checkmatch',str1,str2, str1.toLowerCase().startsWith(str2.toLowerCase()))
+    return str1.toLowerCase().startsWith(str2.toLowerCase())
 }
 
 const dfs = (criterias, results, prefix = []) => {
@@ -123,10 +133,10 @@ const dfs = (criterias, results, prefix = []) => {
             const foundFolder = item === '/' + criterias[0]
 
             // if only one crit and not found - means it's a prefix
-            const prefixFold =  criterias.length === 1 && item.startsWith('/' + criterias[0])
+            const prefixFold =  criterias.length === 1 && checkMatch(item, criterias[0])
             dfs(foundFolder || prefixFold ? criterias.slice(1) : criterias, results, [...prefix, item.substring(1)])
         } else {
-            if (!criterias.length) {
+            if (!criterias.length || (!items.includes(criterias[0]) && criterias.length === 1 && checkMatch(item, criterias[0]))) {
                 results.push(prefix.join('/')+'/'+item)
             }
         }
