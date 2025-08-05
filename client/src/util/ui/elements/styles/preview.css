@@ -220,3 +220,45 @@ html:has(.app.dark) .preview-card.folder {
 .path-list {
     flex-wrap: wrap;
 }
+
+.preview-card.essentials{
+    display: flex;
+    align-items: center;
+    cursor:pointer;
+    flex-direction: column;
+    
+    padding-bottom:5px;
+
+    .header{
+        display: flex;
+        align-items: center;
+        gap:.5em;
+
+        .icon{
+            font-family: Material Icons;
+            color:var(--text-op);
+        }
+    }
+
+    .read-btn{
+        width:100%;
+        margin-top: auto;
+        padding:5px;
+        border-top:1px solid var(--current-op-20);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .after-arrow{
+            margin-left:auto;
+            font-family: Material Icons;
+        }
+    }
+
+    &:hover{
+        .read-btn{
+            color:var(--accent-light);
+        }
+    }
+}

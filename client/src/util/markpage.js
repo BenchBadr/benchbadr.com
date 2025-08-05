@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import NotFound from "./components/notFound";
 import { manifestData } from "../ctx/data/markNifest";
 import {FolderPreview, FilePreview, PathPreview} from "./ui/elements/previews";
-
+import { sidebarItems } from "../ctx/SidebarContext";
 
 export const fetchMd = async ({path}) => {
     const pathFix = path[path.length - 1] === '/' ? path.slice(0, -1) : path
@@ -180,7 +180,27 @@ export const MainBlog = () => {
         {/*1. Space markdown description */}
         {description ? <Md>{description}</Md> : <MarkdownSkeleton/>}
 
-        {/* 2. Folders display */}
+
+        {/* 2. Essentials */}
+        <div className="preview-grid-container">
+            {sidebarItems.map((item) => {
+                return <a className="preview-card essentials" href={item.path}>
+
+                    <div className="header">
+                        <span className="icon">{item.icon}</span>
+                        <span>{item.label}</span>
+                    </div>
+                    <p>{item.description}</p>
+
+                    <div className="read-btn">
+                        <span>Read</span>
+                        <span className="after-arrow">chevron_right</span>
+                    </div>
+                </a>
+            })}
+        </div>
+
+        {/* 3. Folders display */}
         <div className="preview-grid-container">
             {Object.entries(manifestData).map(([key, value]) => {
                 if (value[1].child) { return null }

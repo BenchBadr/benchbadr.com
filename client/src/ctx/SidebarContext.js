@@ -5,6 +5,13 @@ import { manifestData } from './data/markNifest';
 
 export const SidebarContext = createContext();
 
+
+export const sidebarItems = [
+  { label: "About Me", path: "/about" , icon:'info', description:"A little presentation with my Curriculum Vitae attached."},
+  { label: "Papers", path: "/papers", icon:'article', description:"A collection of papers, whether they are academic or not."},
+];
+
+
 const SidebarProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isRightOpen, setIsRightOpen] = useState(true);
@@ -38,12 +45,6 @@ const SidebarProvider = ({ children }) => {
 const Sidebar = () => {
     const { theme, toggleTheme } = useContext(ThemeContext);
     const { isSidebarOpen, toggleSidebar, manifestData } = useContext(SidebarContext);
-
-    const sidebarItems = [
-      { label: "About Me", path: "/about" , icon:'info'},
-      { label: "Papers", path: "/papers", icon:'article'},
-    ];
-
 
   
     return (
