@@ -102,7 +102,9 @@ const searchSpot = (query) => {
 }
 
 const checkMatch = (str1, str2) => {
-    console.log('checkmatch',str1,str2, str1.toLowerCase().startsWith(str2.toLowerCase()))
+    if (str2 === "") {
+        return true
+    }
     return str1.toLowerCase().startsWith(str2.toLowerCase())
 }
 
@@ -120,8 +122,9 @@ const dfs = (criterias, results, prefix = []) => {
 
     for (const item of items) {
         console.log('active',item, criterias)
+
         // in:folder - prevents unnecessary iterations
-        if (criterias.length && items.includes('/' + criterias[0]) && item !== criterias[0]) {
+        if (criterias.length && items.includes('/' + criterias[0]) && item !== '/' + criterias[0]) {
             continue
         }
 
@@ -133,7 +136,7 @@ const dfs = (criterias, results, prefix = []) => {
             const foundFolder = item === '/' + criterias[0]
 
             // if only one crit and not found - means it's a prefix
-            const prefixFold =  criterias.length === 1 && checkMatch(item, criterias[0])
+            const prefixFold =  criterias.length === 1 && checkMatch(item.slice(1), criterias[0])
             dfs(foundFolder || prefixFold ? criterias.slice(1) : criterias, results, [...prefix, item.substring(1)])
         } else {
             if (!criterias.length || (!items.includes(criterias[0]) && criterias.length === 1 && checkMatch(item, criterias[0]))) {
