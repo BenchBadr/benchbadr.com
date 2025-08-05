@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { manifestData } from "../../ctx/data/markNifest";
 
 const Spotlight = ({toggle}) => {
@@ -19,6 +19,8 @@ export default Spotlight;
 
 export const SearchBar = ({autoFocus = false, toggle = null}) => {
     const inputRef = useRef(null);
+    const [value, setValue] = useState("");
+    const [results, setResults] = useState([]);
 
     useEffect(() => {
         if (autoFocus) {
@@ -36,29 +38,92 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [toggle]);
+    }, []);
 
+    const handleChange = (event) => {
+        setValue(event.target.value);
+        setResults(searchSpot(event.target.value));
+    }
+
+
+    
 
     
 
     return (
          <div className="spotlight-container">
             <div className="spotlight-search">
+                {/*1. Search icon*/}
                 <a className="icon">search</a>
-                <input placeholder="Find articles..." ref={inputRef}/>
+
+                {/*2. Input box*/}
+                <input placeholder="Find articles..." 
+                ref={inputRef}
+                value={value}
+                onChange={handleChange}
+                />
+
+                {/*3. Cancel btn*/}
                 {toggle && <a className="icon" 
                 style={{cursor:'pointer'}}
                 onClick={toggle}
                 >cancel</a>}
             </div>
 
-            {false && <>
+            {results.length !== 0 && <>
                 <div className="separator"/>
                 <div className="spotlight-results">
-                    <a>test</a>
+                    {results.map((result) => (
+                        <a>{result}</a>
+                    ))}
                 </div>
             </>}
 
         </div>
     )
+}
+
+
+const searchSpot = (query) => {
+
+    const results = [];
+    dfs(query.split('/'), results)
+    console.log('RESULTS',results)
+    return results
+}
+
+const dfs = (criterias, results, prefix = []) => {
+    // DFS - Parcours en profondeur
+
+    console.log('now in',prefix, criterias)
+    if (prefix.length && !manifestData[prefix[prefix.length-1]]) {
+        return
+    }
+
+
+    const items = !prefix.length ? [...Object.keys(manifestData)] : manifestData[prefix[prefix.length-1]][0];
+
+    for (const item of items) {
+        console.log('active',item)
+        // in:folder - prevents unnecessary iterations
+        if (criterias.length && items.includes('/' + criterias[0]) && item !== criterias[0]) {
+            continue
+        }
+
+        console.log('check inside')
+
+        // if folder
+        if (item[0] === '/') {
+            // handle if folder found
+            const foundFolder = item === '/' + criterias[0]
+
+            // if only one crit and not found - means it's a prefix
+            const prefixFold =  criterias.length === 1 && item.startsWith('/' + criterias[0])
+            dfs(foundFolder || prefixFold ? criterias.slice(1) : criterias, results, [...prefix, item.substring(1)])
+        } else {
+            if (!criterias.length) {
+                results.push(prefix.join('/')+'/'+item)
+            }
+        }
+    }
 }
