@@ -1,5 +1,5 @@
-import { Search } from "lucide-react";
 import { useRef, useEffect } from "react";
+import { manifestData } from "../../ctx/data/markNifest";
 
 const Spotlight = ({toggle}) => {
     const handleOverlayClick = (e) => {
@@ -10,14 +10,14 @@ const Spotlight = ({toggle}) => {
 
     return (
         <div className="spotlight-overlay" onClick={handleOverlayClick}>
-            <SearchBar autoFocus={true}/>
+            <SearchBar autoFocus={true} toggle={toggle}/>
         </div>
     )
 }
 
 export default Spotlight;
 
-export const SearchBar = ({autoFocus = false}) => {
+export const SearchBar = ({autoFocus = false, toggle = null}) => {
     const inputRef = useRef(null);
 
     useEffect(() => {
@@ -25,14 +25,20 @@ export const SearchBar = ({autoFocus = false}) => {
             inputRef.current && inputRef.current.focus();
         }
     }, []);
+
+
+    
+
     return (
          <div className="spotlight-container">
             <div className="spotlight-search">
-                <Search/>
+                <a className="icon">search</a>
                 <input placeholder="Find articles..." ref={inputRef}/>
+                {toggle && <a className="icon">cancel</a>}
             </div>
+            <div className="separator"/>
             <div className="spotlight-results">
-                <span>test</span>
+                <a>test</a>
             </div>
         </div>
     )

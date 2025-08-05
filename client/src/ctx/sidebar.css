@@ -411,7 +411,7 @@ html:has(.app.dark) .burger{
   .spotlight-container{
     box-shadow:0 0 80px 30px var(--accent-op-50);
     animation: slideIn 0.2s ease-out;
-    margin-top:10%;
+    margin-top:20%;
     margin-left:50%;
     translate:-50% 0;
   }
@@ -432,9 +432,7 @@ html:has(.spotlight-overlay){
   max-height: 70vh;
   overflow: hidden;
 
-
-
-  border:1px solid var(--current-op-50);
+  border:1px solid var(--current-op-20);
 }
 
 @keyframes slideIn {
@@ -453,11 +451,16 @@ html:has(.spotlight-overlay){
 }
 
 .spotlight-search{
-  border-bottom:1px solid var(--current-op-30);
   padding:10px;
   display: flex;
   align-items: center;
-  gap:1em;
+  gap:.5em;
+
+  .icon{
+    user-select: none;
+    color:var(--text-op);
+    font-family: Material Icons;
+  }
 }
 
 .spotlight-search input {
@@ -470,4 +473,32 @@ html:has(.spotlight-overlay){
   font-size: 1rem;
   font-family: Inter, system-ui, sans-serif;
   color: var(--text);
+}
+
+
+.spotlight-results{
+  padding:15px;
+}
+
+.spotlight-results > a{
+  border-radius: 5px;
+  padding:5px 5px;
+  font-family: Inter;
+  user-select: none;
+  cursor: pointer;
+  display: block;
+
+  &.active {
+    background:var(--current-op-10);
+    color:var(--accent-auto);
+  }
+
+  &:hover{
+    background:var(--current-op-10);
+  }
+}
+
+.spotlight-container .separator{
+  margin:0 10px;
+  border-bottom: 1px solid var(--current-op-20);
 }
