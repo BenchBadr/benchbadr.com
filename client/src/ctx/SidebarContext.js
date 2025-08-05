@@ -2,6 +2,7 @@ import React, { createContext, useState, useContext, useEffect, cache } from 're
 import {ThemeContext} from './ThemeContext';
 import Folders from '../util/ui/elements/folders';
 import { Home } from 'lucide-react';
+import Spotlight from '../util/components/spotlight';
 
 export const SidebarContext = createContext();
 
@@ -28,6 +29,7 @@ const SidebarProvider = ({ children }) => {
     // navigator.vibrate(50);
   };
 
+
   return (
     <SidebarContext.Provider value={{ 
         isSidebarOpen, toggleSidebar, 
@@ -45,10 +47,29 @@ const SidebarProvider = ({ children }) => {
 const Sidebar = () => {
     const { theme, toggleTheme } = useContext(ThemeContext);
     const { isSidebarOpen, toggleSidebar, manifestData } = useContext(SidebarContext);
+    const [spotlight, setSpotlight] = useState(false);
+
+    const toggleSpot = () => {
+      setSpotlight(!spotlight)
+    }
+
+    useEffect(() => {
+      const handleKeyDown = (event) => {
+        if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'p') {
+          event.preventDefault();
+          toggleSpot()
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }, [toggleSpot]);
 
   
     return (
         <> 
+        {spotlight ? <Spotlight toggle={toggleSpot}/> : false}
         <div onClick={toggleSidebar} className={`burger ${isSidebarOpen ? 'active' : ''}`}>
         <div></div>
         <div></div>

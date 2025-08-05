@@ -114,6 +114,8 @@ html {
   --lower-bg: #eae6db;
 
   --accent-auto:var(--accent);
+
+  --sidebar:var(--light-sidebar);
 }
 
 .app.dark,  html:has(.app.dark)  {
@@ -128,6 +130,8 @@ html {
   --lower-bg: black;
 
   --accent-auto:var(--accent-light);
+
+  --sidebar:var(--dark-sidebar);
 }
 
 .main-content {

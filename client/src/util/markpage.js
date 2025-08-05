@@ -5,6 +5,8 @@ import NotFound from "./components/notFound";
 import { manifestData } from "../ctx/data/markNifest";
 import {FolderPreview, FilePreview, PathPreview} from "./ui/elements/previews";
 import { sidebarItems } from "../ctx/SidebarContext";
+import { SearchBar } from "./components/spotlight";
+
 
 export const fetchMd = async ({path}) => {
     const pathFix = path[path.length - 1] === '/' ? path.slice(0, -1) : path
@@ -176,7 +178,9 @@ export const MainBlog = () => {
 
     return (
         <>
-        
+        {/*0. Search */}
+        <SearchBar />
+
         {/*1. Space markdown description */}
         {description ? <Md>{description}</Md> : <MarkdownSkeleton/>}
 
