@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider, Route, useParams} from 'react-router-dom';
 import Markpage, { MainBlog } from './util/markpage';
 import NotFound from './util/components/notFound';
+import Papers from './util/pages/papers';
 
 const Redirect = ({url}) => {
   useEffect(() => {
@@ -17,11 +18,15 @@ const Redirect = ({url}) => {
 const routes = [
   {
     path:'/',
-    element: <ToExport article={true}><MainBlog/></ToExport>
+    element: <ToExport><MainBlog/></ToExport>
+  },
+  {
+    path:'/papers',
+    element: <ToExport><Papers/></ToExport>
   },
   {
     path:'/*',
-    element: <ToExport article={true}><Markpage/></ToExport>
+    element: <ToExport><Markpage/></ToExport>
   },
   {
     path: "*",

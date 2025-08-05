@@ -12,7 +12,7 @@ const Folders = () => {
 
 
     // list that is [1:] progressively to see if group active
-    const currentActive = decodeURI(window.location.pathname).split('/').slice(2)
+    const currentActive = decodeURI(window.location.pathname).split('/').slice(1)
     if (currentActive[currentActive.length - 1] === "") {
         currentActive.length--
     }

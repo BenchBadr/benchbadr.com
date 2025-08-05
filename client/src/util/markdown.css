@@ -4,6 +4,10 @@
   font-family: Inter;
   padding-bottom:3em;
 
+  img {
+    max-width: 100%;
+  }
+
   a[href] {
     color:var(--accent-light);
     text-decoration: underline;
