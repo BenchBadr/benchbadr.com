@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, Route, useParams} from 'react-rout
 import Markpage, { MainBlog } from './util/markpage';
 import NotFound from './util/components/notFound';
 import Papers from './util/pages/papers';
+import About from './util/pages/about';
 
 const Redirect = ({url}) => {
   useEffect(() => {
@@ -23,6 +24,10 @@ const routes = [
   {
     path:'/papers',
     element: <ToExport><Papers/></ToExport>
+  },
+  {
+    path:'/about',
+    element: <ToExport><About/></ToExport>
   },
   {
     path:'/*',

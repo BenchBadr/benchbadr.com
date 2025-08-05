@@ -45,7 +45,6 @@ html:has(.app.dark) .sidebar {
 
   .bottom-box{
     bottom:30px;
-    padding:20px;
     position:absolute;
   }
 
@@ -202,7 +201,7 @@ html:has(.app.dark) .burger{
   }
 
   .bottom-box{
-    bottom:auto;
+    bottom:unset;
     top:20px;
   }
 
