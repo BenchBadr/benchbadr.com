@@ -26,6 +26,18 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
         }
     }, []);
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "Escape" && toggle) {
+                toggle();
+            }
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [toggle]);
+
 
     
 
@@ -34,12 +46,19 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
             <div className="spotlight-search">
                 <a className="icon">search</a>
                 <input placeholder="Find articles..." ref={inputRef}/>
-                {toggle && <a className="icon">cancel</a>}
+                {toggle && <a className="icon" 
+                style={{cursor:'pointer'}}
+                onClick={toggle}
+                >cancel</a>}
             </div>
-            <div className="separator"/>
-            <div className="spotlight-results">
-                <a>test</a>
-            </div>
+
+            {false && <>
+                <div className="separator"/>
+                <div className="spotlight-results">
+                    <a>test</a>
+                </div>
+            </>}
+
         </div>
     )
 }
