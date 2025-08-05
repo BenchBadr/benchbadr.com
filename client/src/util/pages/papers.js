@@ -3,7 +3,7 @@ import { paperData } from './data/data';
 
 const Papers = () => {
     return (
-        <>
+        <div className='paper-grid'>
         {paperData.map((item) => (
             <a className='paper-item' href={`https://drive.google.com/file/d/${item.googleId}/view`} target={`_blank`}>
                 <div className='img-parent'>
@@ -25,7 +25,7 @@ const Papers = () => {
                 </div>
             </a>
         ))}
-        </>
+        </div>
     )
 }
 
