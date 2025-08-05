@@ -207,7 +207,6 @@ export const MainBlog = () => {
                 return key[0] === '/' && <FolderPreview name={key} path={''}/>
             })}
         </div>
-
         </>
     )
 }
