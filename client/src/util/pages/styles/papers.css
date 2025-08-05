@@ -26,7 +26,9 @@
 
     img {
         height:100%;
+        max-height: 150px;
         object-fit: cover;
+
         pointer-events: none;
         border-radius: 5px;
         box-shadow: var(--bs);
@@ -59,6 +61,18 @@
 
         p {
             color:var(--text-op);
+        }
+    }
+}
+
+@media (max-width:384px){
+    .paper-item{
+        display:block;
+
+        .img-parent{
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }
