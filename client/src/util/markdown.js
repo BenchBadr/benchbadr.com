@@ -23,6 +23,8 @@ export const getIntro = (text) => {
     // 2.1 Extract language from intro
     const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
 
+    console.log(matchLang)
+
     // 2.2 Extract description
     const matchDesc = introText.match(/desc:\s*([^:\n]*)/)?.[1];
 
@@ -114,13 +116,19 @@ const Md = ({ children, article=false }) => {
 
     // Memoize the intro processing
     const { processedTextContent, processedLang } = useMemo(() => {
-
         const result = getIntro(children);
+
         return {
             processedTextContent: result.textContent,
             processedLang: result.lang
         };
     }, [children]);
+
+    useEffect(() => {
+        if (processedLang) {
+            setLang(processedLang);
+        }
+    }, [processedLang]);
 
     // Update state when processed content changes
     useEffect(() => {
@@ -161,6 +169,7 @@ const Md = ({ children, article=false }) => {
 
     // Divide by two in dev mode (due to double renders)
     const strictFactor = process.env.NODE_ENV === 'development' ? 2 : 1;
+
 
     // Memoize the markdown components to prevent recreation
     const markdownComponents = useMemo(() => {

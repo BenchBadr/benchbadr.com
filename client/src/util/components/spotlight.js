@@ -22,6 +22,8 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
     const [value, setValue] = useState("");
     const [results, setResults] = useState([]);
 
+    const [focused, setFocused] = useState(-1);
+
     useEffect(() => {
         if (autoFocus) {
             inputRef.current && inputRef.current.focus();
@@ -42,26 +44,70 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
 
     const handleChange = (event) => {
         setValue(event.target.value);
-        console.log(event.target.value)
         setResults(searchSpot(event.target.value));
     }
 
+
+    const focusUp = () => {
+        setFocused(prev => {
+            if (results.length === 0) return -1;
+            if (prev <= 0) return results.length - 1;
+            return prev - 1;
+        });
+    };
+
+    const focusDown = () => {
+        setFocused(prev => {
+            if (results.length === 0) return -1;
+            if (prev === -1 || prev >= results.length - 1) return 0;
+            return prev + 1;
+        });
+    };
+
+    useEffect(() => {
+        if (focused >= 0 && results.length > 0) {
+            const el = document.querySelector(`.spotlight-container div.spotlight-results a.active`);
+            if (el) {
+                el.scrollIntoView({ block: 'nearest' });
+            }
+        }
+    }, [focused, results]);
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            focusUp();
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            focusDown();
+        }
+
+        // Enter => Open
+        if (e.key === "Enter") {
+            if (e.ctrlKey || e.metaKey) {
+                window.open('/' + results[focused], '_blank');
+            } else {
+                window.location.href = '/' + results[focused]
+            }
+        }
+    };
 
     
 
     
 
     return (
-         <div className="spotlight-container">
+         <div className={`spotlight-container`}>
             <div className="spotlight-search">
                 {/*1. Search icon*/}
                 <a className="icon">search</a>
 
                 {/*2. Input box*/}
-                <input placeholder="Find articles or papers..." 
+                <input placeholder="Find articles..." 
                 ref={inputRef}
                 value={value}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 />
 
                 {/*3. Cancel btn*/}
@@ -72,8 +118,8 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
             </div>
 
             {(value.length !== 0 && results.length !== 0) && <>
-                <div className="separator"/>
-                <div className="spotlight-results">
+                <div className={`separator ${!autoFocus ? 'stable' : ''}`}/>
+                <div className={`spotlight-results ${!autoFocus ? 'stable' : ''}`}>
                     {results.map((result, resultIdx) => {
 
                         let searchTerms = value.split('/');
@@ -92,7 +138,6 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
                             prevIdx = index + searchTerm.length;
 
                             // fix cases by "grapping" from result
-                            console.log([searchTerms[idx], result.slice(index, index + searchTerms[idx].length)])
                             searchTerms[idx] = result.slice(index, index + searchTerms[idx].length)
                         }
 
@@ -101,7 +146,7 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
                         }
 
                         return (
-                            <a key={result + '-' + resultIdx} href={'/' + result}>
+                            <a key={result + '-' + resultIdx} href={'/' + result} className={focused === resultIdx ? 'active' : ''}>
                                 {partsIdx.map((content, index) => (
                                     <div key={index} style={{display:'inline-block'}}>
                                         <span>{content}</span>

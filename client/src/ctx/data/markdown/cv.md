@@ -1,7 +1,7 @@
 lang:fr
-date:05/08/2025
 
 ===
+
 # Curriculum Vitae
 
 ## Contact

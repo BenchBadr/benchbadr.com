@@ -529,4 +529,31 @@ html:has(.spotlight-overlay){
 .spotlight-container .separator{
   margin:0 10px;
   border-bottom: 1px solid var(--current-op-20);
+
+  &.stable{
+    display: none;
+  }
+}
+
+.spotlight-results.stable {
+  position:absolute;
+  background:var(--bg);
+
+  /* Calc width by removing padding and border */
+  width: calc(100% - 30px);
+  top:100%;
+  left:-1px;
+  z-index:50;
+  border:1px solid var(--current-op-20);
+
+  max-height: 200px;
+
+
+}
+
+
+.spotlight-container:has(.spotlight-results.stable) {
+  position:relative;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
