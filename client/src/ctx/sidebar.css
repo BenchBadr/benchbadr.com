@@ -491,7 +491,7 @@ html:has(.spotlight-overlay){
   }
 
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background: transparent !important;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -548,6 +548,15 @@ html:has(.spotlight-overlay){
 
   max-height: 200px;
 
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+
+  scrollbar-width: none !important; 
+  -ms-overflow-style: none !important;
+
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
 
 }
 
