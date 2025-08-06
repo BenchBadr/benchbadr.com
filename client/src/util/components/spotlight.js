@@ -74,16 +74,13 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
                 <div className="separator"/>
                 <div className="spotlight-results">
                     {results.map((result, resultIdx) => {
+
                         let searchTerms = value.split('/');
                         const partsIdx = [];
                         let prevIdx = 0;
+
                         for (const searchTerm of searchTerms){
                             const index = result.toLowerCase().indexOf(searchTerm.toLowerCase(), prevIdx);
-                            if (index === -1) {
-                                partsIdx.push(result.slice(prevIdx));
-                                prevIdx = result.length;
-                                break;
-                            }
                             partsIdx.push(result.slice(prevIdx, index));
                             prevIdx = index + searchTerm.length;
                         }
@@ -130,13 +127,13 @@ const dfs = (criterias, results, prefix = []) => {
     // DFS - Parcours en profondeur
 
     if (prefix.length && !manifestData['/' + prefix[prefix.length-1]]) {
-        console.log(prefix,'failed',)
         return
     }
 
 
-    const items = !prefix.length ? [...Object.keys(manifestData)] : manifestData['/' + prefix[prefix.length-1]][0];
+    const items = !prefix.length ? Object.keys(manifestData).filter((item) => !manifestData[item][1].child) : manifestData['/' + prefix[prefix.length-1]][0];
 
+    console.log('at',prefix)
     for (const item of items) {
 
         // Avoid unprefixed duplicates to results
@@ -146,16 +143,19 @@ const dfs = (criterias, results, prefix = []) => {
 
         // in:folder - prevents unnecessary iterations
         if (criterias.length && items.includes('/' + criterias[0]) && item !== '/' + criterias[0]) {
+            console.log('item fail',item)
             continue
         }
 
+
         // if folder
         if (item[0] === '/') {
+
             // handle if folder found
-            const foundFolder = item === '/' + criterias[0]
+            const foundFolder = item === '/' + criterias[0];
 
             // if only one crit and not found - means it's a prefix
-            const prefixFold =  criterias.length === 1 && checkMatch(item.slice(1), criterias[0])
+            const prefixFold =  criterias.length === 1 && checkMatch(item.slice(1), criterias[0]);
             dfs(foundFolder || prefixFold ? criterias.slice(1) : criterias, results, [...prefix, item.substring(1)])
         } else {
             if (!criterias.length || (!items.includes(criterias[0]) && criterias.length === 1 && checkMatch(item, criterias[0]))) {
