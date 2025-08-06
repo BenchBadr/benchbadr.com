@@ -92,6 +92,7 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
                             prevIdx = index + searchTerm.length;
 
                             // fix cases by "grapping" from result
+                            console.log([searchTerms[idx], result.slice(index, index + searchTerms[idx].length)])
                             searchTerms[idx] = result.slice(index, index + searchTerms[idx].length)
                         }
 
@@ -104,7 +105,7 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
                                 {partsIdx.map((content, index) => (
                                     <div key={index} style={{display:'inline-block'}}>
                                         <span>{content}</span>
-                                        {searchTerms[index] && <b>{searchTerms[index]}</b>}
+                                        <span>{searchTerms[index] && <b>{searchTerms[index]}</b>}</span>
                                     </div>
                                 ))}
                                 <span>{result.slice(prevIdx)}</span>
