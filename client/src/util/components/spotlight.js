@@ -42,6 +42,7 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
 
     const handleChange = (event) => {
         setValue(event.target.value);
+        console.log(event.target.value)
         setResults(searchSpot(event.target.value));
     }
 
@@ -57,7 +58,7 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
                 <a className="icon">search</a>
 
                 {/*2. Input box*/}
-                <input placeholder="Find articles..." 
+                <input placeholder="Find articles or papers..." 
                 ref={inputRef}
                 value={value}
                 onChange={handleChange}
@@ -79,14 +80,23 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
                         const partsIdx = [];
                         let prevIdx = 0;
 
-                        for (const searchTerm of searchTerms){
+                        for (const [idx, searchTerm] of searchTerms.entries()){
                             const index = result.toLowerCase().indexOf(searchTerm.toLowerCase(), prevIdx);
+
+                            // should never trigger but... just in case
+                            if (index === -1) {
+                                continue
+                            }
+
                             partsIdx.push(result.slice(prevIdx, index));
                             prevIdx = index + searchTerm.length;
+
+                            // fix cases by "grapping" from result
+                            searchTerms[idx] = result.slice(index, index + searchTerms[idx].length)
                         }
 
                         if (searchTerms[searchTerms.length - 1] === "") {
-                            searchTerms = searchTerms.slice(0, -1);
+                            searchTerms.length--;
                         }
 
                         return (
@@ -133,7 +143,7 @@ const dfs = (criterias, results, prefix = []) => {
 
     const items = !prefix.length ? Object.keys(manifestData).filter((item) => !manifestData[item][1].child) : manifestData['/' + prefix[prefix.length-1]][0];
 
-    console.log('at',prefix)
+
     for (const item of items) {
 
         // Avoid unprefixed duplicates to results
@@ -143,7 +153,6 @@ const dfs = (criterias, results, prefix = []) => {
 
         // in:folder - prevents unnecessary iterations
         if (criterias.length && items.includes('/' + criterias[0]) && item !== '/' + criterias[0]) {
-            console.log('item fail',item)
             continue
         }
 

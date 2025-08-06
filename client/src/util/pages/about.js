@@ -20,7 +20,7 @@ const About = () => {
         <>
         <PathPreview path={['About me']} isFile={true} icon={'info'}/>
         <Drawing maxHeight={`300px`} path={`about.svg`}/>
-        <Md>{content}</Md>
+        <Md article={true}>{content}</Md>
         </>
     )
 }
