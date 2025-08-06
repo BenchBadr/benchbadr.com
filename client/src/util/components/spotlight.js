@@ -73,16 +73,34 @@ export const SearchBar = ({autoFocus = false, toggle = null}) => {
             {(value.length !== 0 && results.length !== 0) && <>
                 <div className="separator"/>
                 <div className="spotlight-results">
-                    {results.map((result) => {
-                        const regex = new RegExp(value, 'gi');
-                        const parts = result.split(regex);
-                        const query = result.slice(parts[0].length, parts[0].length + value.length);
+                    {results.map((result, resultIdx) => {
+                        let searchTerms = value.split('/');
+                        const partsIdx = [];
+                        let prevIdx = 0;
+                        for (const searchTerm of searchTerms){
+                            const index = result.toLowerCase().indexOf(searchTerm.toLowerCase(), prevIdx);
+                            if (index === -1) {
+                                partsIdx.push(result.slice(prevIdx));
+                                prevIdx = result.length;
+                                break;
+                            }
+                            partsIdx.push(result.slice(prevIdx, index));
+                            prevIdx = index + searchTerm.length;
+                        }
+
+                        if (searchTerms[searchTerms.length - 1] === "") {
+                            searchTerms = searchTerms.slice(0, -1);
+                        }
 
                         return (
-                            <a>
-                                <span>{parts[0]}</span>
-                                <b>{query}</b>
-                                <span>{parts[1]}</span>
+                            <a key={result + '-' + resultIdx} href={'/' + result}>
+                                {partsIdx.map((content, index) => (
+                                    <div key={index} style={{display:'inline-block'}}>
+                                        <span>{content}</span>
+                                        {searchTerms[index] && <b>{searchTerms[index]}</b>}
+                                    </div>
+                                ))}
+                                <span>{result.slice(prevIdx)}</span>
                             </a>
                         );
                     })}
@@ -111,7 +129,6 @@ const checkMatch = (str1, str2) => {
 const dfs = (criterias, results, prefix = []) => {
     // DFS - Parcours en profondeur
 
-    console.log('now in',prefix, criterias)
     if (prefix.length && !manifestData['/' + prefix[prefix.length-1]]) {
         console.log(prefix,'failed',)
         return
@@ -121,14 +138,16 @@ const dfs = (criterias, results, prefix = []) => {
     const items = !prefix.length ? [...Object.keys(manifestData)] : manifestData['/' + prefix[prefix.length-1]][0];
 
     for (const item of items) {
-        console.log('active',item, criterias)
+
+        // Avoid unprefixed duplicates to results
+        if (!prefix.length && manifestData[item][1].child) {
+            continue
+        }
 
         // in:folder - prevents unnecessary iterations
         if (criterias.length && items.includes('/' + criterias[0]) && item !== '/' + criterias[0]) {
             continue
         }
-
-        console.log('check inside')
 
         // if folder
         if (item[0] === '/') {
