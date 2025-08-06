@@ -78,12 +78,12 @@ const Sidebar = () => {
       <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className='sidebar-content'>
             <div className='sidebar-normal'>
-              <a key={0} className={`sidebar-element`} href={'/'} style={{gap:'1em'}}>
+              <a key={0} className={`sidebar-element  ${'/' === window.location.pathname ? 'active' : ''}`} href={'/'} style={{gap:'1em'}}>
                   <Home/>
                   <span>Home</span>
                 </a>
               {sidebarItems.map((item, index) => (
-                <a key={index} className={`sidebar-element`} href={item.path}>
+                <a key={index} className={`sidebar-element ${item.path === window.location.pathname ? 'active' : ''}`} href={item.path}>
                   <span className='material-icons'>{item.icon}</span>
                   <span>{item.label}</span>
                 </a>

@@ -299,6 +299,10 @@ html:has(.app.dark) .burger{
   &:hover{
     background:color-mix(in srgb, currentColor 20%, transparent 80%);
   }
+
+  &.active{
+    color:var(--accent-auto);
+  }
 }
 
 .sidebar-parent{

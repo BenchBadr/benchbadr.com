@@ -6,6 +6,7 @@ import { manifestData } from "../ctx/data/markNifest";
 import {FolderPreview, FilePreview, PathPreview} from "./ui/elements/previews";
 import { sidebarItems } from "../ctx/SidebarContext";
 import { SearchBar } from "./components/spotlight";
+import Drawing from "./components/Drawing";
 
 
 export const fetchMd = async ({path}) => {
@@ -178,14 +179,15 @@ export const MainBlog = () => {
 
     return (
         <>
-        {/*0. Search */}
-        <SearchBar />
+        {/*0. Search and logo */}
+        <Drawing path={`logo.svg`} maxHeight="300px" maxWidth="300px"/>
+        <div style={{display:'flex',justifyContent:'center'}}>
+            <SearchBar />
+        </div>
 
-        {/*1. Space markdown description */}
-        {description ? <Md>{description}</Md> : <MarkdownSkeleton/>}
 
 
-        {/* 2. Essentials */}
+        {/* 1. Essentials */}
         <div className="preview-grid-container">
             {sidebarItems.map((item) => {
                 return <a className="preview-card essentials" href={item.path}>
@@ -204,13 +206,16 @@ export const MainBlog = () => {
             })}
         </div>
 
-        {/* 3. Folders display */}
+        {/* 2. Folders display */}
         <div className="preview-grid-container">
             {Object.entries(manifestData).map(([key, value]) => {
                 if (value[1].child) { return null }
                 return key[0] === '/' && <FolderPreview name={key} path={''}/>
             })}
         </div>
+
+        {/*3. Space markdown description */}
+        {description ? <Md>{description}</Md> : <MarkdownSkeleton/>}
         </>
     )
 }
