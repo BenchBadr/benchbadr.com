@@ -31,6 +31,11 @@ When reading an article, all the tools you'll need are already there. Details be
 	- It performs a conditional DFS in the file tree.
 	- Is it **permissive**: you can type in wrong paths because folders are filters.
 		- `maths/Ch1` while return all files (even in subfolders) in maths that starts with `Ch1`
+	- Once results are found, either click manually (or `Ctrl/Cmd` + Click to open in a new tab)
+	- Either use the shortcuts:
+		- `Up` / `Down` : navigates to a given results
+		- `Enter` : Open the result
+		- `Ctrl/Cmd` + `Enter` : Open the result in a new tab
 
 ## Recent releases
 - Publication of Map Maker in [/papers](/papers)
