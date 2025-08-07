@@ -188,22 +188,25 @@ export const MainBlog = () => {
 
 
         {/* 1. Essentials */}
-        <div className="preview-grid-container">
-            {sidebarItems.map((item) => {
-                return <a className="preview-card essentials" href={item.path}>
+        <div style={{display:'flex',alignItems:'center', flexDirection:'column',paddingTop:'5em'}}>
+            <div className="preview-grid-container">
+                {sidebarItems.map((item) => {
+                    return <a className="preview-card essentials" href={item.path}>
 
-                    <div className="header">
-                        <span className="icon">{item.icon}</span>
-                        <span>{item.label}</span>
-                    </div>
-                    <p>{item.description}</p>
+                        <div className="header">
+                            <span className="icon">{item.icon}</span>
+                            <span>{item.label}</span>
+                        </div>
+                        <p>{item.description}</p>
 
-                    <div className="read-btn">
-                        <span>Read</span>
-                        <span className="after-arrow">chevron_right</span>
-                    </div>
-                </a>
-            })}
+                        <div className="read-btn">
+                            <span>Read</span>
+                            <span className="after-arrow">chevron_right</span>
+                        </div>
+                    </a>
+                })}
+            </div>
+
         </div>
 
         {/* 2. Folders display */}

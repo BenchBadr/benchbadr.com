@@ -109,9 +109,8 @@ html:has(.app.dark) .preview-card.folder {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
-  justify-content: center;
   padding: 1rem;
-  max-width: 1000px;
+  max-width: 100%;
 }
 @media (max-width: 768px) {
   .preview-grid-container {
