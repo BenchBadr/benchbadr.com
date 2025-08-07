@@ -222,3 +222,25 @@ Markdown content section - moved to util/markdown.css
 .lightmsg > div{
   max-width: 600px;
 }
+
+select {
+  background:var(--low-bg);
+  outline:none;
+  color:var(--text);
+  padding:5px 10px;
+  border:1px solid var(--current-op-40);
+  border-radius: 1rem;
+
+}
+
+.language-select{
+  font-family: Inter;
+  gap:1em;
+  display: flex;
+  margin:3em 0;
+  padding:5px;
+  justify-content: center;
+  align-items: center;
+  background:var(--bg);
+  box-shadow: var(--bs);
+}

@@ -14,7 +14,7 @@ const Papers = () => {
 }
 
 
-const PapersChild = ({data}) => {
+export const PapersChild = ({data}) => {
     return (
         <div className='paper-grid'>
         {data.map((item) => (

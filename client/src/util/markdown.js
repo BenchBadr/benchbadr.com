@@ -23,8 +23,6 @@ export const getIntro = (text) => {
     // 2.1 Extract language from intro
     const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
 
-    console.log(matchLang)
-
     // 2.2 Extract description
     const matchDesc = introText.match(/desc:\s*([^:\n]*)/)?.[1];
 
@@ -71,7 +69,7 @@ const MarkdownRenderer = ({ textContent, remarkPlugins, rehypePlugins, markdownC
 
 
 const Md = ({ children, article=false }) => {
-    const [lang, setLang] = useState('en');
+    const [lang, setLang] = useState(null);
     const [textContent, setTextContent] = useState(null);
     const [externalRefs, setExternalRefs] = useState([]);
     const [foot, setFoot] = useState([]);

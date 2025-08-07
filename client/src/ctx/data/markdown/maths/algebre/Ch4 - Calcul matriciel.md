@@ -1,3 +1,9 @@
+lang:fr
+desc:Introduction au calcul matriciel incluant des terminologies et définitions fondamentales sur les matrices.
+date:25/03/2025
+
+===
+
 *Liens utiles*
 - https://matrixmuliplication.xyz
 

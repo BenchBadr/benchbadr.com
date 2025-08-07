@@ -36,8 +36,9 @@ lang:fr
 - **Engagement lycéen**
 	- *Lycée Descartes / André Malraux*
 	- Responsable de l’informatique à la Maison des Lycéens. 
+	-  Implication dans de nombreux clubs, dont modélisation des Nations Unies, écologie et arts martiaux.
 - **Prix coup de cœur au Hackathon de AI Movement**
-	- Hackathon de AI Movement. Implication dans de nombreux clubs, dont modélisation des Nations Unies, écologie et arts martiaux.
+	- Hackathon de AI Movement.
 
 - **Junior Engineer**
 	- *El Botola*
@@ -49,7 +50,11 @@ lang:fr
 
 ## Projet Personnel : Arltools
 
-https://arltools.com est un réseau social de prise de notes canalisant différents outils ($\LaTeX$, Pyodide, IA générative...) où chaque dossier de notes (dites Arlnotes) est comparable à un blog. Possible de s'abonner pour recevoir une newsletter d'un utilisateur, commenter et modifier à tout moment vos fiches. Pic d'activité à plus de 2000 utilisateurs quotidiens. Plus de 150 utilisateurs inscrits. [Instagram du site](https://instagram.com/arltools)
+- https://arltools.com est un réseau social de prise de notes canalisant différents outils ($\LaTeX$, Pyodide, IA générative...) 
+- Chaque dossier de notes (dites Arlnotes) est comparable à un blog. 
+- Possible de s'abonner à un utilisateur pour recevoir sa newsletter, commenter et modifier à tout moment vos fiches. 
+- Pic d'activité à plus de 2000 utilisateurs quotidiens. Plus de 150 utilisateurs inscrits. 
+- Instagram du site: [@arltools](https://instagram.com/arltools)
 
 ## Loisirs
 

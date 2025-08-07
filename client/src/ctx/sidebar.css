@@ -518,6 +518,9 @@ html:has(.spotlight-overlay){
   user-select: none;
   cursor: pointer;
   display: block;
+  overflow: scroll;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
   white-space: pre;
 
   &.active {
@@ -570,3 +573,47 @@ html:has(.spotlight-overlay){
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
+
+/* Google mobile search inspired - Fill screen for friendliness */
+
+/* @media (max-width:768px) {
+  .spotlight-container:has(input:focus), .spotlight-container:has(.spotlight-results){
+      position:fixed !important;
+      top:0;
+      left:0;
+      border-radius:0;
+      z-index:50;
+      max-height: unset;
+
+      width:calc(100%);      
+      height:calc(100vh);
+
+
+
+    .separator{
+      display: block;
+    }
+
+    .spotlight-results{
+      position:static;
+      width:calc(100% - 30px);
+      max-height: unset;
+      border:none;
+      height:calc(100vh - 80px);
+    }
+
+    .spotlight-results > a{
+      padding:10px 10px;
+    }
+  }
+
+  html:has(.spotlight-search > input:focus) .burger, html:has(.spotlight-results) .burger {
+    display: none;
+  }
+
+  html:has(.spotlight-search > input:focus), html:has(.spotlight-results) {
+    overflow: hidden;
+  }
+
+} */
