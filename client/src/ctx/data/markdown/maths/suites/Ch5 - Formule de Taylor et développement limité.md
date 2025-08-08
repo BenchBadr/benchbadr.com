@@ -1,4 +1,9 @@
-$\newcommand{\sub}{\subset}\newcommand{\R}{\mathbb{R}}\newcommand{\ov}[2]{\overset{#2}{\overbrace{#1}}}\newcommand{\lim}[1]{\underset{#1}{\text{lim}}}\newcommand{\N}{\mathbb{N}}$
+lang:fr
+desc:Analyse du théorème de Taylor-Young, ses formules et applications clés avec exemples.
+lang:02/04/2025
+
+===
+$\newcommand{\sub}{\subset}\newcommand{\R}{\mathbb{R}}\newcommand{\ov}[2]{\overset{#2}{\overbrace{#1}}}\newcommand{\lim}[1]{\underset{#1}{\text{lim}}}\newcommand{\N}{\mathbb{N}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}$
 > C'est un théorème des accroissements finis qui fait intervenir les dérivées $n$-ièmes.
 # I - Formules de Taylor
 

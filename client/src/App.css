@@ -241,6 +241,4 @@ select {
   padding:5px;
   justify-content: center;
   align-items: center;
-  background:var(--bg);
-  box-shadow: var(--bs);
 }

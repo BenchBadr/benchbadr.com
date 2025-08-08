@@ -1,5 +1,9 @@
+lang:fr
+desc:
+date:
 
-$\newcommand{\N}{\mathbb{N}}\newcommand{\Z}{\mathbb{Z}}$
+===
+$\newcommand{\N}{\mathbb{N}}\newcommand{\Z}{\mathbb{Z}}\newcommand{\R}{\mathbb{R}}\newcommand{\sub}{\subset}\newcommand{\R}{\mathbb{R}}$
 # I -  Ensemble de nombres 
 
 - __Entier naturels__ : $\N = \{0,1,...\}$

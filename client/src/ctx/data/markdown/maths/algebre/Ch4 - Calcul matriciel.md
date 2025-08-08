@@ -7,9 +7,10 @@ date:25/03/2025
 *Liens utiles*
 - https://matrixmuliplication.xyz
 
-$\newcommand{\K}{\mathbb{K}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}$
+$\newcommand{\K}{\mathbb{K}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\pmatrix}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\C}{\mathbb{C}}\newcommand{\sub}{\subset}\newcommand{\R}{\mathbb{R}}\newcommand{\ncr}[2]{\begin{pmatrix}#1 \\ #2\end{pmatrix}}$
 ---
-$\newcommand{\pmatrix}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\C}{\mathbb{C}}$
+
+
 # I - Définitions et premières opérations
 
 ## Définition

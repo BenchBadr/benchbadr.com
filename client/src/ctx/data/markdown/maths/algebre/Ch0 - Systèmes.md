@@ -64,7 +64,8 @@ $$
 
 ### Résolution par la méthode de remontée (cas $p=n$, solution unique)
 
-$$\begin{cases}
+$$
+\begin{cases}
 2x-3+8=1 \Rightarrow x=-2 \\
 z = 3\\
 y=4

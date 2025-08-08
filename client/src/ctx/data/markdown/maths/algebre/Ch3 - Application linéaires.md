@@ -1,5 +1,11 @@
-## I - Définitions
-$\newcommand{\K}{\mathbb{K}}\newcommand{\R}{\mathbb{R}}$
+lang:fr
+desc:Vue d'ensemble des applications linéaires : définitions, propriétés, opérations, image, noyau, dimension, théorème du rang et projections.
+date:04/03/2025
+
+===
+# I - Définitions
+$\newcommand{\K}{\mathbb{K}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\pmatrix}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\C}{\mathbb{C}}\newcommand{\sub}{\subset}\newcommand{\R}{\mathbb{R}}$
+
 ## Définition
 Soit $E$ et $F$ deux $\K$-ev. 
 Soit $f$ une application de $E$ dans $f$. On dit que $f$ est une *application linéaire* si:
@@ -53,7 +59,7 @@ Soit $f:E\to F$ une application. Cette application est linéaire _ssi_ : $\foral
 - L'application identité de $E$ dans $E$, notée $\text{id}_E$ est linéaire.
 	-  $\forall u \in E, \text{id}_E(u) = u$
 
-### Vocabulaire et notations
+## Vocabulaire et notations
 
 - Soit $f:E\to F$ une application linéaire
 	- Si $E=F,$ $f$ est appelée *endomorphisme* de $E$.  ... application linéaire avec le même ensemble d'arrivée et de départ $\biggl{|}\begin{matrix}\text{de E}\\\text{surE}\end{matrix}$

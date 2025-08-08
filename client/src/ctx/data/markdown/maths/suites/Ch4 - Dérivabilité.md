@@ -1,3 +1,8 @@
+desc:Résumé des principes essentiels du calcul différentiel : définitions, propriétés, opérations et théorèmes clés.
+lang:fr
+date:17/03/2025
+
+===
 $\newcommand{\Z}{\mathbb{Z}}\newcommand{\N}{\mathbb{N}}\newcommand{\ov}[2]{\overset{#2}{\overbrace{#1}}}$
 ## I - Définition
 $\newcommand{\R}{\mathbb{R}}\newcommand{\lim}[1]{\underset{#1}{\text{lim}}}\newcommand{\sub}{\subset}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}$
