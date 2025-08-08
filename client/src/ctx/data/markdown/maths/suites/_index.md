@@ -1,11 +1,10 @@
-lang:fr
-===
-# Algèbre linéaire
+# Suites et fonctions
 
 > [!info]
-> **Enseignant** : M. Doyen
+> **Enseignant**: M. Bonis
 
 ## I. Organisation du cours
+
 
 - 2h de cours par semaine
 - 3h de TD / En deux séances d'1h30
@@ -20,12 +19,12 @@ Moyenne donnée par: $\frac{TD+CC1+2\cdot CC2-\min(TD, CC1, CC2)}{3}$
 
 ## III. Contenu du cours
 
-Algèbre linéaire.
 
-- Résolution des systèmes linéaires
-- Espaces vectoriels
-- Applications linéaires
-- Matrices
+1. Nombres réels
+2. Suites et limites
+3. Limites de fonctions et continuité
+4. Dérivabilité
+5. Formule de Taylor et développement limité
 
-En L2, un cours __Algèbre linéaire 2__ est obligatoire.
+Ce cours fait suite au cours de **Méthodologie** du 1er semestre.
 
