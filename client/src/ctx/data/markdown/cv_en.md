@@ -49,12 +49,13 @@ lang:en
   - [https://worldofenlighten.com](https://worldofenlighten.com)
   - Performed diverse tasks, notably automating social media content generation.
 
-## Personal Project: Arltools
+## Projets showcase: Arltools & DiaFox
 
 - **Arltools**: [arltools.com](https://arltools.com) is a note-taking social platform integrating various tools (LaTeX, Pyodide, generative AI, etc.).
-- Each note folder of notes (called “Arlnote”) functions like a blog. Features include user subscriptions for newsletters and commenting and editing your notes at any moment.
-- Peak activity over 2,000 daily users; more than 150 registered users.
-- Instagram of the website: [@arltools](https://instagram.com/arltools)
+	- Each note folder of notes (called “Arlnote”) functions like a blog. Features include user subscriptions for newsletters and commenting and editing your notes at any moment.
+	- Peak activity over 2,000 daily users; more than 150 registered users.
+	- Instagram of the website: [@arltools](https://instagram.com/arltools)
+- **DiaFox** (https://github.com/benchbadr/diafox) is an extension attempting to port the Dia Browser experience to Firefox-based browsers including Zen Browser. 
 
 ### Hobbies & Interests
 

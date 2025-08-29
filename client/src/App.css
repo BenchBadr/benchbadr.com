@@ -39,7 +39,7 @@
 	--green-op:color-mix(in srgb, var(--green) var(--transparency, 20%), transparent);
   
 	--light-purple:#e2c2e6;
-	--purple:#4a2570;
+	--purple:#615da0;
 	--dark-purple:#65498f;
 
   --light-highest:#efede7;

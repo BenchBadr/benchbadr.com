@@ -1,0 +1,183 @@
+{
+  "main": {
+    "id": "032e988508cfc8da",
+    "type": "split",
+    "children": [
+      {
+        "id": "470f8e95cc8e410e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f4a9010e32f34be9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "projets/DiaFox.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DiaFox"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "97d0f0a966e7729e",
+    "type": "split",
+    "children": [
+      {
+        "id": "7cd4faf392070ed8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3da332a8eadbb844",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1a02951036316168",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "7544042bf940f1f3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "43469f00df87ffa9",
+    "type": "split",
+    "children": [
+      {
+        "id": "66040acdf84bcf3a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "30a7df1c656522cf",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "projets/DiaFox.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for DiaFox"
+            }
+          },
+          {
+            "id": "cca2b2a8372b830b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "projets/DiaFox.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from DiaFox"
+            }
+          },
+          {
+            "id": "655da6f7ac72ccdb",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "8b72dad0de96a55a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "projets/DiaFox.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of DiaFox"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "f4a9010e32f34be9",
+  "lastOpenFiles": [
+    "cv_fr.md",
+    "projets/DiaFox/updates/v0.0.md",
+    "projets/DiaFox.md",
+    "projets/DiaFox/updates",
+    "projets/_index.md",
+    "projets/DiaFox/Untitled 1.md",
+    "projets/DiaFox",
+    "cv_en.md",
+    "projets"
+  ]
+}

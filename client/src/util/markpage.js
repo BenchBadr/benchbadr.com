@@ -179,6 +179,7 @@ export const MainBlog = () => {
 
     return (
         <>
+
         {/*0. Search and logo */}
         <Drawing path={`logo.svg`} maxHeight="300px" maxWidth="300px"/>
         <div style={{display:'flex',justifyContent:'center'}}>

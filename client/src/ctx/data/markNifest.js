@@ -35,5 +35,14 @@ export const manifestData = {
             "icon":null,
             "child":true,
         }
-    ]
+    ],
+    "/projets":[
+        [
+            "DiaFox"
+        ],
+        {
+            "icon":null,
+            "color":"purple"
+        }
+    ],
 }
