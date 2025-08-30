@@ -1,4 +1,5 @@
 .fold-title {
+
     display: flex;
     align-items: center;
     font-size: 90%;
@@ -24,6 +25,10 @@
         color:var(--current-op-40);
         transition-duration: .2s;
     }
+}
+
+html:has(.app.dark) .fold-title.active{
+    color:var(--accent-light) !important;
 }
 
 html:has(.app.dark) .fold-child .active{

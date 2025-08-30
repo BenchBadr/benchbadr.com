@@ -46,8 +46,20 @@ const Markpage = ({defaultPath = null}) => {
             const children = manifestData[current][0];
 
             if (!(children && children.includes('/' + pathList[i]))) {
+                console.log('fucked here',children, '/' + pathList[i])
+
+                for (const child of children) {
+
+                    if (Object.keys(manifestData).includes(child) && 
+                        (manifestData[child][1].title.toLowerCase() === pathList[i])
+                    ) {
+                        return true;
+                    }
+                }
+
                 return false;
             }
+
             current = '/' + pathList[i];
         }
 
@@ -72,7 +84,7 @@ const Markpage = ({defaultPath = null}) => {
                     pathPieces.length--
                 }
 
-                if (false && !isPathValid(pathPieces)) {
+                if (!isPathValid(pathPieces)) {
                     setContent(-1)
                 } else {
                     const spaceName = pathPieces && Object.keys(manifestData).includes('/' + pathPieces[pathPieces.length - 1])

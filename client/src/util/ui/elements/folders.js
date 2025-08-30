@@ -21,20 +21,23 @@ const Folders = () => {
     // stack appends successfully path. maths > algebre...
     // to generate href after
 
+
     return (
         <>
         {Object.entries(manifestData).map(([key, value]) => {
             if (!value[1].child) {
                 if (key[0] === '/') {
-                    return <Accordion title={value[1].title ? value[1].title : key.substring(1)} 
-                    listActive={currentActive}
-                    color={value[1].color}
-                    openDefault={true} // Comment this to make default closed
-                    children={<FoldersChild 
-                        color={value[1].color}
-                        title={key} 
-                        stack={key}
+                    return <Accordion 
+                        title={value[1].title ? value[1].title : key.substring(1)} 
+                        titleId={key.substring(1)}
                         listActive={currentActive}
+                        color={value[1].color}
+                        openDefault={true} // This is making it open at level 0
+                        children={<FoldersChild 
+                            color={value[1].color}
+                            title={key} 
+                            stack={key}
+                            listActive={currentActive}
                         />}/>
                 } else {
                     return <File title={key}/>
@@ -47,11 +50,13 @@ const Folders = () => {
 
 const FoldersChild = ({title, stack, listActive, color = undefined}) => {
 
+    // Returns either accordion(folder childs) or file.
+
     return (
         <>
         {manifestData[title][0].map((item, index) => {
             if (item[0] === '/') {
-                console.log(stack + (manifestData[item][1].path ? '/' + manifestData[item][1].path : item))
+
                 return <Accordion 
                     title={manifestData[item][1].title || item.substring(1)} 
                     color={manifestData[item][1].color}
@@ -60,6 +65,7 @@ const FoldersChild = ({title, stack, listActive, color = undefined}) => {
                     stack={stack + (manifestData[item][1].path ? '/' + manifestData[item][1].path : item)}
                     listActive={listActive.slice(1)}
                     color={manifestData[item][1].color || color}
+                    titleId={item.substring(1)}
                 />}/>
             } else {
                 return <File 
@@ -78,8 +84,8 @@ const FoldersChild = ({title, stack, listActive, color = undefined}) => {
     )
 }
 
-const Accordion = ({title, children, openDefault, listActive, color}) => {
-    const [open, setOpen] = useState(openDefault || (listActive.length && listActive[0] === title));
+const Accordion = ({title, titleId, children, openDefault, listActive, color}) => {
+    const [open, setOpen] = useState(openDefault || (listActive.length && listActive[0] === titleId));
     const { setCacheColor } = useContext(SidebarContext);
 
     useEffect(() => {
@@ -90,13 +96,12 @@ const Accordion = ({title, children, openDefault, listActive, color}) => {
     }, [])
     const toggleOpen = () => setOpen(!open);
 
-
     return (
         <div className={`fold-container ${open ? 'open' : ''}`}>
             <div 
                 className={`fold-title ${listActive.length === 1 && listActive[0] === title ? 'active' : ''}`} 
                 onClick={toggleOpen}
-                style={{'--accent':`var(--dark-${color})`,'--accent-light':`var(--${color})`}}
+                style={{'--accent':`var(--dark-${color || 'blue'})`,'--accent-light':`var(--${color || 'blue'})`}}
                 >
                 <a className='foldarrow'>keyboard_arrow_right</a>
                 <a>{title}</a>
