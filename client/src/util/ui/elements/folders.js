@@ -37,6 +37,7 @@ const Folders = () => {
                             color={value[1].color}
                             title={key} 
                             stack={key}
+                            titleId={key.substring(1)}
                             listActive={currentActive}
                         />}/>
                 } else {
@@ -48,7 +49,7 @@ const Folders = () => {
     )
 }
 
-const FoldersChild = ({title, stack, listActive, color = undefined}) => {
+const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) => {
 
     // Returns either accordion(folder childs) or file.
 
@@ -75,7 +76,7 @@ const FoldersChild = ({title, stack, listActive, color = undefined}) => {
                         index > 0 && manifestData[title][0][index-1],
                         index < (manifestData[title][0].length - 1) && manifestData[title][0][index+1]
                     ]}
-                    currentActive={listActive.length === 2 && (listActive[1] === item)}
+                    currentActive={listActive.length === 2 && (listActive[0] === titleId && listActive[1] === item)}
                     color={manifestData[title][1].color || color}
                 />
             }
