@@ -30,6 +30,7 @@
   }
 }
 
+
 html:has(.app.dark) .sidebar {
   background: var(--dark-sidebar);
 }
@@ -38,23 +39,50 @@ html:has(.app.dark) .sidebar {
 .sidebar-content {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 40px);
+  height: calc(100% - 200px);
+
+  margin-top:100px;
+
   position:relative;
   overflow-y: scroll;
   border-radius: 1rem;
 
-  .bottom-box{
-    bottom:30px;
-    position:absolute;
-  }
+  background: linear-gradient(
+    to bottom,
+    var(--low-bg-op-20) 0%,
+    transparent 5%,
+    transparent 95%,
+    var(--low-bg-op-20)  100%
+  );
 
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  color:#5c5c5c;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--current-op-30) transparent;
 
   &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    width: 4px;
   }
+
+  &::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--current-op-30);
+    border-radius: 3px;
+  }
+}
+
+@media (max-width:768px) {
+  .sidebar-content{
+    margin-top:1em;
+    height:calc(100% - 150px);
+  }
+}
+
+.bottom-box{
+    bottom:75px;
+    position:absolute;
 }
 
 
@@ -201,8 +229,7 @@ html:has(.app.dark) .burger{
   }
 
   .bottom-box{
-    bottom:unset;
-    top:20px;
+    right:50px;
   }
 
   .burger.active > div:nth-child(1) {

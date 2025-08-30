@@ -94,9 +94,9 @@ const Sidebar = () => {
             <div>
           </div>
           </div>
-            <div className='bottom-box'>
+        </div>
+        <div className='bottom-box'>
             <div onClick={toggleTheme} className='theme-toggle'><a className='material-icons'>{theme!=='light' ? 'light_mode' : 'dark_mode'}</a></div>
-            </div>
         </div>
       </aside>
       </>

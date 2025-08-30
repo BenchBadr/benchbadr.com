@@ -55,7 +55,7 @@ html:has(.app.dark) .fold-child .active{
 }
 
 .sidebar-normal {
-    padding-top:5em;
+    padding-top:1em;
 }
 
 .file-item{
@@ -63,6 +63,7 @@ html:has(.app.dark) .fold-child .active{
     user-select: none;
     border-radius: 5px;
     padding:5px;
+    padding-left:1em;
     font-size: 90%;
     color:var(--text-op);
     display: block;

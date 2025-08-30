@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "projets/DiaFox.md",
+                "file": "main.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DiaFox"
+              "title": "main"
             }
           }
         ]
@@ -160,6 +160,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -170,14 +171,15 @@
   },
   "active": "f4a9010e32f34be9",
   "lastOpenFiles": [
+    "blog/DiaFox.md",
+    "Untitled.md",
     "cv_fr.md",
     "projets/DiaFox/updates/v0.0.md",
-    "projets/DiaFox.md",
     "projets/DiaFox/updates",
-    "projets/_index.md",
+    "blog/_index.md",
     "projets/DiaFox/Untitled 1.md",
     "projets/DiaFox",
     "cv_en.md",
-    "projets"
+    "blog"
   ]
 }

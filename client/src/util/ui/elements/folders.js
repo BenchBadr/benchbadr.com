@@ -26,7 +26,7 @@ const Folders = () => {
         {Object.entries(manifestData).map(([key, value]) => {
             if (!value[1].child) {
                 if (key[0] === '/') {
-                    return <Accordion title={key.substring(1)} 
+                    return <Accordion title={value[1].title ? value[1].title : key.substring(1)} 
                     listActive={currentActive}
                     color={value[1].color}
                     openDefault={true} // Comment this to make default closed
@@ -51,14 +51,15 @@ const FoldersChild = ({title, stack, listActive, color = undefined}) => {
         <>
         {manifestData[title][0].map((item, index) => {
             if (item[0] === '/') {
+                console.log(stack + (manifestData[item][1].path ? '/' + manifestData[item][1].path : item))
                 return <Accordion 
-                title={item.substring(1)} 
-                color={manifestData[item][1].color}
-                listActive={listActive.slice(1)}
-                children={<FoldersChild title={item} 
-                stack={stack + item}
-                listActive={listActive.slice(1)}
-                color={manifestData[item][1].color || color}
+                    title={manifestData[item][1].title || item.substring(1)} 
+                    color={manifestData[item][1].color}
+                    listActive={listActive.slice(1)}
+                    children={<FoldersChild title={item} 
+                    stack={stack + (manifestData[item][1].path ? '/' + manifestData[item][1].path : item)}
+                    listActive={listActive.slice(1)}
+                    color={manifestData[item][1].color || color}
                 />}/>
             } else {
                 return <File 

@@ -41,3 +41,8 @@ When reading an article, all the tools you'll need are already there. Details be
 - Publication of Map Maker in [/papers](/papers)
 - Publication of L1 / S2 maths resources in [/maths](/maths). 
 
+
+# Blog posts
+
+Below you can find my personal blog which ranges from projects showcase to personal thoughts.
+

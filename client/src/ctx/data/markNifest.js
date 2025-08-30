@@ -5,7 +5,8 @@ export const manifestData = {
             "/algebre"
         ],
         {
-            "icon":null,
+            "icon": null,
+            "title": "maths"
         }
     ],
     "/algebre":[
@@ -15,12 +16,14 @@ export const manifestData = {
             "Ch2 - EV dim finie",
             "Ch3 - Application linéaires",
             "Ch4 - Calcul matriciel",
-            "Ch5 - Matrices d'applications linéaires"
+            "Ch5 - Matrices d'applications linéaires",
+            "/td-alg"
         ],
         {
-            "icon":null,
-            "child":true,
-            "color":'green'
+            "icon": null,
+            "child": true,
+            "color": "green",
+            "title": "algebre"
         }
     ],
     "/suites":[
@@ -29,20 +32,46 @@ export const manifestData = {
             "Ch2 - Suites et limites",
             "Ch3 - Limites de fonctions et continuité",
             "Ch4 - Dérivabilité",
-            "Ch5 - Formule de Taylor et développement limité"
+            "Ch5 - Formule de Taylor et développement limité",
+            "/td"
         ],
         {
-            "icon":null,
-            "child":true,
+            "icon": null,
+            "child": true,
+            "title": "suites"
         }
     ],
-    "/projets":[
+    "/blog":[
         [
             "DiaFox"
         ],
         {
-            "icon":null,
-            "color":"purple"
+            "icon": null,
+            "color": "purple",
+            "title": "blog"
         }
     ],
+    "/td":[
+        [
+            "TD 1",
+            "TD 2"
+        ],
+        {
+            "icon":null,
+            "child":true,
+            "title":"TD"
+        }
+    ],
+    "/td-alg":[
+        [
+            "TD 1",
+            "TD 2"
+        ],
+        {
+            "icon":null,
+            "child":true,
+            "title":"TD",
+            "path":'td'
+        }
+    ]
 }

@@ -72,7 +72,7 @@ const Markpage = ({defaultPath = null}) => {
                     pathPieces.length--
                 }
 
-                if (!isPathValid(pathPieces)) {
+                if (false && !isPathValid(pathPieces)) {
                     setContent(-1)
                 } else {
                     const spaceName = pathPieces && Object.keys(manifestData).includes('/' + pathPieces[pathPieces.length - 1])
