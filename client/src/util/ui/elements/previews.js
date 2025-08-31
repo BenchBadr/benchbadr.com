@@ -124,7 +124,7 @@ export const PathPreview = ({path, isFile = false, icon = null}) => {
 
 
 
-const ImageCard = ({src, seed}) => {
+const ImageCard = ({src, seed, unfit}) => {
 
     function pastelBlob(seed) {
         // simple seeded random
@@ -168,7 +168,7 @@ const ImageCard = ({src, seed}) => {
         <div className="sick-gradient"
             style={{backgroundImage:pastelBlob(seed)}}
         >
-            {src && <img src={src}/>}
+            {src && <img src={src} style={{width: unfit ? 'auto' : '100%'}}/>}
         </div>
     )
 }
@@ -199,6 +199,7 @@ export const BlogPreview = ({name, path}) => {
             <ImageCard 
                 src={intro.banner} 
                 seed={intro.title.length}
+                unfit={intro.unfit}
             />
             <span className="title">{intro.title}</span>
             <div className="bottom-info">
