@@ -1,5 +1,5 @@
 .toc-children {
-    border-left:var(--current-op-50) 1px solid;
+    border-left:var(--current-op-30) 1px solid;
     padding-left:1em;
     transition-duration: .1s;
 }
@@ -13,6 +13,8 @@
     border-radius: 5px;
     padding:5px;
     color:var(--text-op);
+
+    overflow: hidden;
 
     &:hover{
         background:var(--current-op-30);

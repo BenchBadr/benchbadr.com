@@ -56,9 +56,6 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
     // Checks if folder is in active list
     const isActivePropag = (title.substring(1) === listActive[0] || manifestData[title][1].path === listActive[0]);
 
-    if (title === '/td-alg') {
-        console.log(title, manifestData[title][1].title, listActive[0], isActivePropag)
-    }
 
     return (
         <>
@@ -72,6 +69,7 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
                     title={manifestData[item][1].title || item.substring(1)} 
                     color={manifestData[item][1].color}
                     listActive={newActive}
+                    titleId={item.substring(1)}
 
                     children={<FoldersChild title={item}
                         stack={stack + (manifestData[item][1].path ? '/' + manifestData[item][1].path : item)}
@@ -80,7 +78,6 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
                         titleId={item.substring(1)}
                 />}/>
             } else {
-                // console.log('filehand',item,stack, listActive, isActivePropag)
 
                 return <File 
                     title={item} 
@@ -101,7 +98,14 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
 }
 
 const Accordion = ({title, titleId, children, openDefault, listActive, color}) => {
-    const [open, setOpen] = useState(openDefault || (listActive.length && listActive[0] === titleId));
+
+
+    const [open, setOpen] = useState(openDefault || (
+        listActive.length && 
+            listActive[0] === titleId  || // Regular case - titleId <=> title
+            (manifestData['/' + titleId]?.length && listActive[0] === manifestData['/' + titleId][1]?.path) // Otherwise, use path key
+        ) 
+    );
     const { setCacheColor } = useContext(SidebarContext);
 
     useEffect(() => {

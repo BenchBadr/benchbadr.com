@@ -1,7 +1,8 @@
 
 # To fix immediately
 
-- [ ] Fix duplicates folders
+- [x] Fix duplicates folders
+- [ ] Fix scroll folders
 - [ ] Fix file headers
 - [ ] Blog preview
 	- [ ] Blog blob

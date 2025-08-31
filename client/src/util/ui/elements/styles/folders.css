@@ -37,7 +37,7 @@ html:has(.app.dark) .fold-child .active{
 
 .fold-container{
     .fold-child{
-        border-left:1px solid var(--current-op-40);
+        border-left:1px solid var(--current-op-20);
         padding-left:5px;
         font-family: Inter;
         height:0;
