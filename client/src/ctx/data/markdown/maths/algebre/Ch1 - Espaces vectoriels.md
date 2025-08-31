@@ -1,8 +1,9 @@
-lang:fr
-desc:Ce cours présente les espaces vectoriels, leurs sous-espaces et bases. Il explique les notions de familles libres, génératrices et de décomposition unique. Enfin, il aborde la dimension comme outil de classification.
-date:30/01/2025
+---
+lang: fr
+desc: Ce cours présente les espaces vectoriels, leurs sous-espaces et bases. Il explique les notions de familles libres, génératrices et de décomposition unique. Enfin, il aborde la dimension comme outil de classification.
+date: 30/01/2025
+---
 
-===
 $\newcommand{\R}{\mathbb{R}}\newcommand{\N}{\mathbb{N}}\newcommand{\sub}{\subset}$
 # I -  Espaces vectoriels
 

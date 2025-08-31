@@ -1,8 +1,8 @@
-lang:fr
-desc:Concepts essentiels en analyse réelle : limites, continuité, monoticité et théorèmes clés.
-date:19/02/2025
-
-===
+---
+lang: fr
+desc: Concepts essentiels en analyse réelle : limites, continuité, monoticité et théorèmes clés.
+date: 19/02/2025
+---
 
 $\newcommand{\R}{\mathbb{R}}\newcommand{\N}{\mathbb{N}}$
 # I - Intervalles et adhérences

@@ -1,8 +1,8 @@
-lang:fr
-date:11/02/2025
-desc:Ce cours couvre les espaces vectoriels finis, leurs bases, sous-espaces et dimension, avec des propriétés clés comme l'égalité des tailles de bases et la formule de Grassmann.
-
-===
+---
+lang: fr
+date: 11/02/2025
+desc: Ce cours couvre les espaces vectoriels finis, leurs bases, sous-espaces et dimension, avec des propriétés clés comme l'égalité des tailles de bases et la formule de Grassmann.
+---
 
 $\newcommand{\R}{\mathbb{R}}\newcommand{\sub}{\subset}\newcommand{\N}{\mathbb{N}}\newcommand{\K}{\mathbb{K}}$
 # Chapitre 2 - Espaces vectoriels de dimensions finies

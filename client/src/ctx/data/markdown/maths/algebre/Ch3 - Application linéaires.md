@@ -1,8 +1,10 @@
-lang:fr
-desc:Vue d'ensemble des applications linéaires : définitions, propriétés, opérations, image, noyau, dimension, théorème du rang et projections.
-date:04/03/2025
+---
+lang: fr
+desc: "Vue d'ensemble des applications linéaires : définitions, propriétés, opérations, image, noyau, dimension, théorème du rang et projections."
+date: 04/03/2025
+---
 
-===
+
 # I - Définitions
 $\newcommand{\K}{\mathbb{K}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\pmatrix}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\C}{\mathbb{C}}\newcommand{\sub}{\subset}\newcommand{\R}{\mathbb{R}}$
 

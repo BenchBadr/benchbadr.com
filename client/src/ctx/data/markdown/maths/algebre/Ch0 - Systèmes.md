@@ -1,8 +1,9 @@
-date:14/01/2025
-desc:Cours d'introduction à l'algèbre linéaire portant sur la résolution des systèmes linéaires, notion essentielle pour ce cours.
-lang:fr
+---
+date: 14/01/2025
+desc: Cours d'introduction à l'algèbre linéaire portant sur la résolution des systèmes linéaires, notion essentielle pour ce cours.
+lang: fr
+---
 
-===
 # Résolution (pratique) de systèmes linéaires
 
 ## Définitions

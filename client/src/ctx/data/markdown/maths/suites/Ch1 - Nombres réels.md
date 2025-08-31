@@ -1,8 +1,9 @@
-lang:fr
-desc:Présentation des ensembles numériques, relations d'ordre, bornes et propriétés fondamentales en mathématiques.
-date:15/01/2025
+---
+lang: fr
+desc: Présentation des ensembles numériques, relations d'ordre, bornes et propriétés fondamentales en mathématiques.
+date: 15/01/2025
+---
 
-===
 $\newcommand{\N}{\mathbb{N}}\newcommand{\Z}{\mathbb{Z}}\newcommand{\R}{\mathbb{R}}\newcommand{\sub}{\subset}\newcommand{\R}{\mathbb{R}}$
 # I -  Ensemble de nombres 
 

@@ -1,8 +1,9 @@
-lang:fr
-desc:Exploration des applications linéaires, de leurs matrices, changement de bases, noyau, image et rang dans les espaces vectoriels finis.
-date:08/04/2025
+---
+lang: fr
+desc: Exploration des applications linéaires, de leurs matrices, changement de bases, noyau, image et rang dans les espaces vectoriels finis.
+date: 08/04/2025
+---
 
-===
 $\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}$
 # I -  Définitions
 

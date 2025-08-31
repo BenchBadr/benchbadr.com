@@ -2,7 +2,7 @@
 # To fix immediately
 
 - [x] Fix duplicates folders
-- [ ] Fix scroll folders
+- [x] Fix scroll folders
 - [ ] Fix file headers
 - [ ] Blog preview
 	- [ ] Blog blob

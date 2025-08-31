@@ -12,25 +12,29 @@ import { ExtRefs, Tooltip } from './components/footRefs';
 import { SidebarContext } from '../ctx/SidebarContext';
 import SidebarRight from './ui/sidebaright';
 import NextPrev from './ui/elements/nextPrev';
+import yaml from 'js-yaml';
 
 
 export const getIntro = (text) => {
-    // 2. Metadata (extracted before ===) such as lang, desc, date...
-    const index = text.indexOf('\n===\n');
-    const textContent = index !== -1 ? text.substring(index + 5) : text;
-    const introText = index !== -1 ? text.substring(0, index).trim() : text.trim();
-    
-    // 2.1 Extract language from intro
-    const matchLang = introText.match(/lang:\s*([^:\n]*)/)?.[1];
+    // Find YAML frontmatter between --- and ---
+    const yamlMatch = text.match(/^---\n([\s\S]*?)\n---\n/);
+    let meta = {};
+    let textContent = text;
 
-    // 2.2 Extract description
-    const matchDesc = introText.match(/desc:\s*([^:\n]*)/)?.[1];
+    if (yamlMatch) {
+        try {
+            meta = yaml.load(yamlMatch[1]) || {};
+        } catch (e) {
+            meta = {};
+        }
+        textContent = text.substring(yamlMatch[0].length);
+    }
 
-    // 2.3 Extract date
-    const matchDate = introText.match(/date:\s*([^:\n]*)/)?.[1];
-    
-    return { textContent, lang: matchLang, desc: matchDesc, date: matchDate};
-}
+    return {
+        textContent,
+        ...meta
+    };
+};
 
 // Loading component for Suspense fallback
 export const MarkdownSkeleton = () => (
