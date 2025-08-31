@@ -1,3 +1,9 @@
+---
+title: Introducing DiaFox
+date: 16/08/2025
+type: Release
+banner: https://github.com/BenchBadr/diafox/blob/main/icons/icon_big.png?raw=true
+---
 
 
 > [!center]

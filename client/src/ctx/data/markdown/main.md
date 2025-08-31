@@ -1,6 +1,6 @@
-lang:en
-
-===
+---
+lang: en
+---
 
 This website was built with React and relies on `react-markdown` along with a few `remark` and `rehype` plugins. It is a way for me to share thoughts and resources, which are mainly stored in markdown but there is also a page dedicated to my papers, which are not necessarily academic. Finally, you will find a section "About me" that includes personal information such as my *Curriculum Vitae*.
 

@@ -1,4 +1,14 @@
 export const manifestData = {
+    "/blog":[
+        [
+            "DiaFox"
+        ],
+        {
+            "icon": null,
+            "color": "purple",
+            "title": "blog"
+        }
+    ],
     "/maths":[
         [
             "/suites",
@@ -39,16 +49,6 @@ export const manifestData = {
             "icon": null,
             "child": true,
             "title": "suites"
-        }
-    ],
-    "/blog":[
-        [
-            "DiaFox"
-        ],
-        {
-            "icon": null,
-            "color": "purple",
-            "title": "blog"
         }
     ],
     "/td":[

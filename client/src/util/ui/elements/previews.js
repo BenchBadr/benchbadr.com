@@ -77,7 +77,10 @@ export const FilePreview = ({name, path}) => {
 
 export default ElementPreview;
 
-
+/** Previews a given path with clickable elements
+ * 
+ * @returns 
+ */
 export const PathPreview = ({path, isFile = false, icon = null}) => {
     const {cacheColor} = useContext(SidebarContext);
 
@@ -117,3 +120,92 @@ export const PathPreview = ({path, isFile = false, icon = null}) => {
         </div>
     )
 }
+
+
+
+
+const ImageCard = ({src, seed}) => {
+
+    function pastelBlob(seed) {
+        // simple seeded random
+        function rnd() {
+            seed = (seed * 9301 + 49297) % 233280;
+            return seed / 233280;
+        }
+
+        // pastel color generator (HSL)
+        function pastel() {
+            const h = Math.floor(rnd() * 360);
+            const s = 80 + Math.floor(rnd() * 20); // 60–80% saturation
+            const l = 65 + Math.floor(rnd() * 15); // 75–90% lightness
+            return `hsl(${h}, ${s}%, ${l}%)`;
+        }
+
+        // pick colors
+        const c1 = pastel();
+        const c2 = pastel();
+        const c3 = pastel();
+        const c4 = pastel();
+
+        // positions + angle
+        const cx1 = Math.round(rnd() * 100);
+        const cy1 = Math.round(rnd() * 100);
+        const cx2 = Math.round(rnd() * 100);
+        const cy2 = Math.round(rnd() * 100);
+        const angle = Math.round(rnd() * 360);
+
+
+        return `
+            radial-gradient(circle at ${cx1}% ${cy1}%, ${c1} 0%, transparent 40%),
+            radial-gradient(circle at ${cx2}% ${cy2}%, ${c2} 0%, transparent 45%),
+            linear-gradient(${angle}deg, ${c3} 0%, ${c4} 60%),
+            linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.08))
+        `;
+    }
+
+
+    return (
+        <div className="sick-gradient"
+            style={{backgroundImage:pastelBlob(seed)}}
+        >
+            {src && <img src={src}/>}
+        </div>
+    )
+}
+
+
+/**
+ * Blog Preview
+ * 
+ */
+
+export const BlogPreview = ({name, path}) => {
+    const [intro, setIntro] = useState(null);
+
+    useEffect(() => {
+        const fetchContent = async () => {
+            const text = await fetchMd({path: (path ? path.join('/') : '') + '/' + name});
+            const intro = getIntro(text)
+            setIntro(intro)
+        };
+        fetchContent();
+    }, [path]);
+
+    if (!intro) {
+        return <a></a>
+    }
+    return (
+        <a className="blog-card" href={path + '/' + name}>
+            <ImageCard 
+                src={intro.banner} 
+                seed={intro.title.length}
+            />
+            <span className="title">{intro.title}</span>
+            <div className="bottom-info">
+                <span>{intro.type}</span>
+                <span>{intro.date}</span>
+            </div>
+        </a>
+    )
+}
+

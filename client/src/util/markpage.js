@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NotFound from "./components/notFound";
 import { manifestData } from "../ctx/data/markNifest";
-import {FolderPreview, FilePreview, PathPreview} from "./ui/elements/previews";
+import {FolderPreview, FilePreview, PathPreview, BlogPreview} from "./ui/elements/previews";
 import { sidebarItems } from "../ctx/SidebarContext";
 import { SearchBar } from "./components/spotlight";
 import Drawing from "./components/Drawing";
@@ -125,6 +125,10 @@ const Markpage = ({defaultPath = null}) => {
 
 
     if (isSpace) {
+
+        if (isSpace[0] === 'blog') {
+            return <BlogSpace path={isSpace}/>
+        }
         return <Space path={isSpace} 
             description={content}
         />
@@ -171,6 +175,33 @@ const Space = ({description, path}) => {
                     item[0]!== '/' && <FilePreview name={item} path={path}/>
                 ))}
             </div>
+
+        </>
+    )
+}
+
+const BlogSpace = ({path = ["blog"], light = false}) => {
+    const [childs, setChilds] = useState(null);
+
+    useEffect(() => {
+        setChilds(manifestData['/' + path[path.length - 1]][0])
+
+    }, [])
+
+    console.log(path)
+
+    return (
+        <>
+            {/* 0. Path preview (joined with chevrons) */}
+            {!light && <PathPreview path={path}/>}
+
+            {/* 1. Articles display */}
+            <div className="preview-grid-container">
+                {childs && childs.map((item) => (
+                    item[0]!== '/' && <BlogPreview name={item} path={path}/>
+                ))}
+            </div>
+
 
         </>
     )
@@ -232,6 +263,10 @@ export const MainBlog = () => {
 
         {/*3. Space markdown description */}
         {description ? <Md>{description}</Md> : <MarkdownSkeleton/>}
+
+
+        {/*4. Blog preview */}
+        <BlogSpace light={true}/>
         </>
     )
 }
