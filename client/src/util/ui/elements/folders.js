@@ -41,7 +41,7 @@ const Folders = () => {
                             listActive={currentActive}
                         />}/>
                 } else {
-                    return <File title={key}/>
+                    return <File title={key} currentActive={currentActive[0] === key}/>
                 }
             }
         })}
@@ -51,24 +51,37 @@ const Folders = () => {
 
 const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) => {
 
-    // Returns either accordion(folder childs) or file.
+    // Returns either accordion(folder childs) or file.3
+
+    // Checks if folder is in active list
+    const isActivePropag = (title.substring(1) === listActive[0] || manifestData[title][1].path === listActive[0]);
+
+    if (title === '/td-alg') {
+        console.log(title, manifestData[title][1].title, listActive[0], isActivePropag)
+    }
 
     return (
         <>
         {manifestData[title][0].map((item, index) => {
             if (item[0] === '/') {
 
+                const newActive = isActivePropag ? listActive.slice(1) : [];
+
                 return <Accordion 
+
                     title={manifestData[item][1].title || item.substring(1)} 
                     color={manifestData[item][1].color}
-                    listActive={listActive.slice(1)}
-                    children={<FoldersChild title={item} 
-                    stack={stack + (manifestData[item][1].path ? '/' + manifestData[item][1].path : item)}
-                    listActive={listActive.slice(1)}
-                    color={manifestData[item][1].color || color}
-                    titleId={item.substring(1)}
+                    listActive={newActive}
+
+                    children={<FoldersChild title={item}
+                        stack={stack + (manifestData[item][1].path ? '/' + manifestData[item][1].path : item)}
+                        listActive={newActive}
+                        color={manifestData[item][1].color || color}
+                        titleId={item.substring(1)}
                 />}/>
             } else {
+                // console.log('filehand',item,stack, listActive, isActivePropag)
+
                 return <File 
                     title={item} 
                     stack={stack}
@@ -76,7 +89,9 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
                         index > 0 && manifestData[title][0][index-1],
                         index < (manifestData[title][0].length - 1) && manifestData[title][0][index+1]
                     ]}
-                    currentActive={listActive.length === 2 && (listActive[0] === titleId && listActive[1] === item)}
+
+                    currentActive={listActive.length === 2 && (isActivePropag && listActive[1] === item)}
+
                     color={manifestData[title][1].color || color}
                 />
             }
