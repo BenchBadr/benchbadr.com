@@ -16,7 +16,7 @@ const CustomImage = ({...props}) => {
 
     return (
         <>
-        <div style={{display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}}
+        <span style={{display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer'}}
             onClick={handleClick}
         >
             <img {...props} style={{
@@ -24,21 +24,21 @@ const CustomImage = ({...props}) => {
                 maxWidth:'100%'
             }} 
             loading={`lazy`}/>
-        </div>
+        </span>
 
-        {open && <div
+        {open && <span
             className={'spotlight-overlay img'}
             onClick={handleClick}
         >
-            <div className="burger right" onClick={() => setOpen(false)}>
+            <span className="burger right" onClick={() => setOpen(false)}>
                 <a className="material-icons" style={{fontSize:'2em'}}>close</a>
-            </div>
+            </span>
             <img {...props} style={{
                 maxHeight:'90vh', 
                 maxWidth:'100%'
             }} 
             loading={`lazy`}/>
-        </div>}
+        </span>}
         </>
     )
 }

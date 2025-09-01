@@ -1,4 +1,4 @@
-import Md, {MarkdownSkeleton} from "./markdown"
+import Md, {MarkdownSkeleton, getIntro} from "./markdown"
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NotFound from "./components/notFound";
@@ -19,7 +19,8 @@ export const fetchMd = async ({path}) => {
 
 const Markpage = ({defaultPath = null}) => {
     const [content, setContent] = useState("");
-    const [isSpace, setIsSpace] = useState(false)
+    const [isSpace, setIsSpace] = useState(false);
+    const [intro, setIntro] = useState(null);
     const params = useParams();
     const path = defaultPath || params['*'];
 
@@ -94,6 +95,8 @@ const Markpage = ({defaultPath = null}) => {
                         }
                         try {
                             const text = await fetchMd({path: `${pathPieces.join('/')}/_index`});
+                            setIntro(getIntro(text));
+                            console.log(intro)
                             setContent(text);
                         } catch (error) {
                             setContent(`# ${pathPieces[pathPieces.length - 1]}`)

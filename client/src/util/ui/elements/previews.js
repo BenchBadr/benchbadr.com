@@ -207,7 +207,7 @@ export const BlogPreview = ({name, path}) => {
     const seed = intro.title.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
 
     return (
-        <a className="blog-card" href={path + '/' + name}>
+        <a className="blog-card" href={'/blog/' + name}>
             <ImageCard 
                 src={intro.banner} 
                 seed={seed}

@@ -333,7 +333,7 @@ const Md = ({ children, article=false }) => {
                                 temp[(index - 1) / 2] = child.props.children[1].props.children.slice(0, -1);
                                 setFoot(temp);
                             } catch (error) {
-                                console.log('empty footnote');
+                                // console.log('empty footnote');
                             }
                         }
                     });

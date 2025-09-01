@@ -232,7 +232,6 @@ export const Tooltip = ({ children, foot, footnote=1 }) => {
 export const ExtRefs = ({data, language}) => {
   const [metaData, setMetaData] = useState({});
 
-  console.log('EXTREFS',language)
 
   useEffect(() => {
     const fetchMetaData = async () => {
