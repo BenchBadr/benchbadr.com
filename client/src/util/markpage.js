@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import NotFound from "./components/notFound";
 import { manifestData } from "../ctx/data/markNifest";
-import {FolderPreview, FilePreview, PathPreview, BlogPreview} from "./ui/elements/previews";
+import {FolderPreview, FilePreview, PathPreview, BlogPreview, ImageCard} from "./ui/elements/previews";
 import { sidebarItems } from "../ctx/SidebarContext";
 import { SearchBar } from "./components/spotlight";
 import Drawing from "./components/Drawing";
@@ -47,7 +47,6 @@ const Markpage = ({defaultPath = null}) => {
             const children = manifestData[current][0];
 
             if (!(children && children.includes('/' + pathList[i]))) {
-                console.log('fucked here',children, '/' + pathList[i])
 
                 for (const child of children) {
 
@@ -75,6 +74,7 @@ const Markpage = ({defaultPath = null}) => {
             
             try {
                 const text = await fetchMd({ path });
+                setIntro(getIntro(text));
                 setContent(text);
             } catch (error) {
 
@@ -96,7 +96,6 @@ const Markpage = ({defaultPath = null}) => {
                         try {
                             const text = await fetchMd({path: `${pathPieces.join('/')}/_index`});
                             setIntro(getIntro(text));
-                            console.log(intro)
                             setContent(text);
                         } catch (error) {
                             setContent(`# ${pathPieces[pathPieces.length - 1]}`)
@@ -140,6 +139,15 @@ const Markpage = ({defaultPath = null}) => {
 
     return (
         <>
+            {intro && intro.type && <div>
+                <ImageCard 
+                    title={intro.title} 
+                    src={intro.banner} 
+                    header={true}
+                    unfit={intro.unfit}
+                />
+            </div>
+            }
             <PathPreview path={path.split('/')} isFile={true}/>
             <Md article={true}>{content}</Md>
         </>

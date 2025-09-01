@@ -139,6 +139,7 @@ html {
   flex: 1;
   padding: 20px;
   transition:.2s;
+  position:relative;
 }
 
 ::-webkit-scrollbar {

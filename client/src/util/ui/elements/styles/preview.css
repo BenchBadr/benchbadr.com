@@ -287,6 +287,8 @@ html:has(.app.dark) .preview-card.folder {
 }
 
 
+
+
 .blog-card .title{
     font-size: 2em;
     word-break: break-word;
@@ -336,3 +338,14 @@ html:has(.app.dark) .preview-card.folder {
     overflow: hidden;
     border-radius: 5px;
 }
+
+.sick-parent.header{
+    border-radius: 1rem;
+    height:20vh;
+
+    .sick-gradient{
+        height:20vh;
+    }
+    
+}
+

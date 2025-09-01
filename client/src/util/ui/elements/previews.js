@@ -124,7 +124,9 @@ export const PathPreview = ({path, isFile = false, icon = null}) => {
 
 
 
-const ImageCard = ({src, seed, unfit}) => {
+export const ImageCard = ({src, title, unfit, header = false}) => {
+
+    const seed = title.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
 
     function pastelBlob(seed) {
         // simple seeded random
@@ -172,11 +174,11 @@ const ImageCard = ({src, seed, unfit}) => {
 
 
     return (
-        <div className="sick-parent">
+        <div className={`sick-parent ${header ? 'header' : ''}`}>
             <div className="sick-gradient"
                 style={pastelBlob(seed)}
             >
-                {src && <img src={src} style={{width: unfit ? 'auto' : '100%'}}/>}
+                {src && (!header || !unfit) && <img src={src} style={{width: unfit ? 'auto' : '100%'}}/>}
             </div>
         </div>
     )
@@ -204,13 +206,12 @@ export const BlogPreview = ({name, path}) => {
         return <a></a>
     }
 
-    const seed = intro.title.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
 
     return (
         <a className="blog-card" href={'/blog/' + name}>
             <ImageCard 
                 src={intro.banner} 
-                seed={seed}
+                title={intro.title}
                 unfit={intro.unfit}
             />
             <span className="title">{intro.title}</span>
