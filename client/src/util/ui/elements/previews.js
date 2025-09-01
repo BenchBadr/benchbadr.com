@@ -147,28 +147,37 @@ const ImageCard = ({src, seed, unfit}) => {
         const c3 = pastel();
         const c4 = pastel();
 
-        // positions + angle
+        // positions + angle as values
         const cx1 = Math.round(rnd() * 100);
         const cy1 = Math.round(rnd() * 100);
         const cx2 = Math.round(rnd() * 100);
         const cy2 = Math.round(rnd() * 100);
         const angle = Math.round(rnd() * 360);
 
-
-        return `
-            radial-gradient(circle at ${cx1}% ${cy1}%, ${c1} 0%, transparent 40%),
-            radial-gradient(circle at ${cx2}% ${cy2}%, ${c2} 0%, transparent 45%),
-            linear-gradient(${angle}deg, ${c3} 0%, ${c4} 60%),
+        // Return all values in a JSON object
+        return {
+            backgroundImage: `
+            radial-gradient(circle at var(--cx1) var(--cy1), ${c1} 0%, transparent 40%),
+            radial-gradient(circle at var(--cx2) var(--cy2), ${c2} 0%, transparent 45%),
+            linear-gradient(var(--angle), ${c3} 0%, ${c4} 60%),
             linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.08))
-        `;
+            `,
+            '--cx1': `${cx1}%`,
+            '--cy1': `${cy1}%`,
+            '--cx2': `${cx2}%`,
+            '--cy2': `${cy2}%`,
+            '--angle': `${angle}deg`
+        };
     }
 
 
     return (
-        <div className="sick-gradient"
-            style={{backgroundImage:pastelBlob(seed)}}
-        >
-            {src && <img src={src} style={{width: unfit ? 'auto' : '100%'}}/>}
+        <div className="sick-parent">
+            <div className="sick-gradient"
+                style={pastelBlob(seed)}
+            >
+                {src && <img src={src} style={{width: unfit ? 'auto' : '100%'}}/>}
+            </div>
         </div>
     )
 }
@@ -194,11 +203,14 @@ export const BlogPreview = ({name, path}) => {
     if (!intro) {
         return <a></a>
     }
+
+    const seed = intro.title.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+
     return (
         <a className="blog-card" href={path + '/' + name}>
             <ImageCard 
                 src={intro.banner} 
-                seed={intro.title.length}
+                seed={seed}
                 unfit={intro.unfit}
             />
             <span className="title">{intro.title}</span>

@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "032e988508cfc8da",
+    "id": "87c96262be0090a5",
     "type": "split",
     "children": [
       {
-        "id": "470f8e95cc8e410e",
+        "id": "871487d21d6b07bc",
         "type": "tabs",
         "children": [
           {
-            "id": "f4a9010e32f34be9",
+            "id": "0f5def2ea514eaec",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,83 +20,40 @@
               "icon": "lucide-file",
               "title": "main"
             }
-          },
-          {
-            "id": "87c1b892a9e509f9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "maths/suites/Ch1 - Nombres réels.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Ch1 - Nombres réels"
-            }
-          },
-          {
-            "id": "d411dc1d5e08224c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "maths/suites/Ch2 - Suites et limites.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Ch2 - Suites et limites"
-            }
-          },
-          {
-            "id": "36c78ba36ccd6e2e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "blog/DiaFox.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "DiaFox"
-            }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "97d0f0a966e7729e",
+    "id": "98e1f4459c79f087",
     "type": "split",
     "children": [
       {
-        "id": "7cd4faf392070ed8",
+        "id": "193606d2b6aef09d",
         "type": "tabs",
         "children": [
           {
-            "id": "3da332a8eadbb844",
+            "id": "49ab035e5cf9e0ab",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
             }
           },
           {
-            "id": "1a02951036316168",
+            "id": "51b8d24a1480eec9",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "\\newcommand{\\ub}",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -108,7 +65,7 @@
             }
           },
           {
-            "id": "7544042bf940f1f3",
+            "id": "330ea803cb0439c8",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -121,51 +78,37 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 221.50260543823242
   },
   "right": {
-    "id": "43469f00df87ffa9",
+    "id": "fd02d7e167b7be40",
     "type": "split",
     "children": [
       {
-        "id": "66040acdf84bcf3a",
+        "id": "23aa88231a397ec7",
         "type": "tabs",
         "children": [
           {
-            "id": "30a7df1c656522cf",
+            "id": "e4665116a3240e94",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "projets/DiaFox.md",
+                "file": "maths/suites/td/TD 3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for DiaFox"
+              "title": "Backlinks for TD 3"
             }
           },
           {
-            "id": "cca2b2a8372b830b",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "projets/DiaFox.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "Outgoing links from DiaFox"
-            }
-          },
-          {
-            "id": "655da6f7ac72ccdb",
+            "id": "b0b54326c468a90a",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -180,26 +123,50 @@
             }
           },
           {
-            "id": "8b72dad0de96a55a",
+            "id": "5e7a58700d10b277",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "projets/DiaFox.md",
-                "followCursor": false,
-                "showSearch": false,
+                "file": "blog/Carnets d'Anatolie.md",
+                "followCursor": true,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of DiaFox"
+              "title": "Outline of Carnets d'Anatolie"
+            }
+          },
+          {
+            "id": "75c2b3fc7890ac1a",
+            "type": "leaf",
+            "state": {
+              "type": "mermaid-toolbar-view",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "mermaid-toolbar-view"
+            }
+          },
+          {
+            "id": "5db0b0c807506889",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Informatique/Recherche liste.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Recherche liste"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -212,20 +179,94 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "36c78ba36ccd6e2e",
+  "floating": {
+    "id": "9556e29345bc15dc",
+    "type": "floating",
+    "children": [
+      {
+        "id": "ccfb2c8fa5db8598",
+        "type": "window",
+        "children": [
+          {
+            "id": "8c0c69839bb9ab6f",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "d7a02beda07db3c8",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "blog/Carnets d'Anatolie.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "Carnets d'Anatolie"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 1179,
+        "y": 44,
+        "width": 481,
+        "height": 927,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "d7a02beda07db3c8",
   "lastOpenFiles": [
-    "maths/suites/Ch2 - Suites et limites.md",
-    "maths/suites/Ch1 - Nombres réels.md",
-    "TODO LIST.md",
+    "blog/Carnets d'Anatolie.md",
     "main.md",
-    "blog/DiaFox.md",
-    "cv_fr.md",
-    "projets/DiaFox/updates/v0.0.md",
-    "projets/DiaFox/updates",
-    "blog/_index.md",
-    "projets/DiaFox/Untitled 1.md",
-    "projets/DiaFox",
-    "cv_en.md",
-    "blog"
+    "TODO LIST.md",
+    "maths/suites/Ch3 - Limites de fonctions et continuité.md",
+    "assets.zip",
+    "Netherlands.md",
+    "netherlands.pdf",
+    "assets/c.jpg",
+    "assets/be.jpg",
+    "assets/a.jpg",
+    "assets/ze.jpg",
+    "assets/stay.jpg",
+    "assets/heine.jpg",
+    "assets/161969726.jpg",
+    "assets/annemarie.jpg",
+    "assets/1024px-Canal_in_Jordaan_2C_Amsterdam__289258952020_29.jpg",
+    "assets/100_0009.jpg",
+    "assets/leonardo-103786036-mgv_0752_O-695658.jpg_width_1366_height_768_crop_true",
+    "assets/476931713.jpg_k_3814c5f6e889bd46689d4ab28640f6547f9c23710364a7b22ddef031b2f05358_o__hp_1",
+    "assets/478005569.jpg_k_35662ea9d12817fe8e972f9963e5b39d13876e2f9067177e16ce77e48614fbef_o__hp_1",
+    "assets/heineken-experience-in.jpg_w_1200_h_-1_s_1",
+    "assets/161969726.jpg_k_b7f78e0f1750bdb2acb2b169af82269de48ac562098bea9b273386f7a46379cf_o__hp_1",
+    "assets",
+    "lilas/s1/TD 2 - Ensembles.md",
+    "DLMI - L1/maths/algebre/Ch1 - Espaces vectoriels.md",
+    "DLMI - L1/maths/suites/Ch5 - Formule de Taylor et développement limité.md",
+    "lilas/s1/TD 1 - Logique.md",
+    "lilas/s1/TD",
+    "lilas/s1",
+    "Untitled 1.md",
+    "Brouillon.md",
+    "DLMI - L1/maths/algebre/Ch5 - Matrices d'applications linéaires.md",
+    "DLMI - L1/maths/suites/Ch4 - Dérivabilité.md",
+    "DLMI - L1/maths/suites/Ch3 - Limites de fonctions et continuité.md",
+    "DLMI - L1/maths/suites/Ch2 - Suites et limites.md",
+    "DLMI - L1/maths/_index.md",
+    "DLMI - L1/maths/suites/_index.md",
+    "DLMI - L1/maths/algebre/_index.md",
+    "DLMI - L1/maths/suites/Ch1 - Nombres réels.md",
+    "divers/phys/Mécanique/1. Mécanique du point.md",
+    "DLMI - L1/maths/algebre/Ch2 - EV dim finie.md",
+    "DLMI - L1/maths/algebre/Ch3 - Application linéaires.md",
+    "DLMI - L1/maths/algebre/Ch0 - Systèmes.md",
+    "DLMI - L1/maths/algebre/Ch4 - Calcul matriciel.md",
+    "_img/_exc/Drawing 2025-08-01 16.54.45.excalidraw.md",
+    "maths.md",
+    "Untitled.canvas",
+    "Untitled 1.canvas"
   ]
 }

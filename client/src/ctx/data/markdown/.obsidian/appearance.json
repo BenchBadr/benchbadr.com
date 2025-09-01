@@ -1,1 +1,6 @@
-{}
+{
+  "cssTheme": "Sample Theme",
+  "theme": "moonstone",
+  "accentColor": "#024d7f",
+  "translucency": true
+}

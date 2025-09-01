@@ -13,6 +13,7 @@ import { SidebarContext } from '../ctx/SidebarContext';
 import SidebarRight from './ui/sidebaright';
 import NextPrev from './ui/elements/nextPrev';
 import yaml from 'js-yaml';
+import CustomImage from './components/image';
 
 
 export const getIntro = (text) => {
@@ -299,6 +300,10 @@ const Md = ({ children, article=false }) => {
                     data-line-count={node.position ? node.position.start.line : ''} 
                     {...props}
                 >{children}</li>
+            },
+
+            img: ({...props}) => {
+                return <CustomImage {...props}/>
             },
 
             blockquote : ({children, node, ...props}) => {

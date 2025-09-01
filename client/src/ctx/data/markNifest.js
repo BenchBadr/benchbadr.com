@@ -1,12 +1,16 @@
 export const manifestData = {
     "/blog":[
         [
-            "DiaFox"
+            "Carnets d'Anatolie",
+            "DiaFox",
+            "Sommaire déroulant",
+            "Découverte des Pays-Bas"
         ],
         {
             "icon": null,
             "color": "purple",
-            "title": "blog"
+            "title": "blog",
+            "closed": true
         }
     ],
     "/maths":[
@@ -27,7 +31,6 @@ export const manifestData = {
             "Ch3 - Application linéaires",
             "Ch4 - Calcul matriciel",
             "Ch5 - Matrices d'applications linéaires",
-            "/td-alg"
         ],
         {
             "icon": null,
@@ -43,7 +46,6 @@ export const manifestData = {
             "Ch3 - Limites de fonctions et continuité",
             "Ch4 - Dérivabilité",
             "Ch5 - Formule de Taylor et développement limité",
-            "/td"
         ],
         {
             "icon": null,

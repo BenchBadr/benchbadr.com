@@ -184,7 +184,7 @@ const BlogSpace = ({path = ["blog"], light = false}) => {
     const [childs, setChilds] = useState(null);
 
     useEffect(() => {
-        setChilds(manifestData['/' + path[path.length - 1]][0])
+        setChilds([...manifestData['/' + path[path.length - 1]][0]].reverse())
 
     }, [])
 
