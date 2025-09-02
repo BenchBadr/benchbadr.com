@@ -106,6 +106,141 @@ Il avait également une fonction religieuse importante : pendant le Ramadan, c'�
 
 > [!check]
 > La couleur **turquoise** tient son nom de la **Turquie**.
+
+## 11. Chambre de la circoncision
+
+![circo](https://i.ibb.co/Q3Lx6gts/img-2025-09-01-13-24-38.png)
+
+
+- La pièce a été construite spécifiquement pour la cérémonie de circoncision des fils du sultan, un événement qui se déroulait avec faste et était crucial pour la légitimité et la continuité de la lignée.
+- Située dans la 4ème cour du palais, la partie la plus intime et privée du palais
+- Construite durant le règne du Sultan Salomon le magnifique (1520 - 1566), la chambre prend sa forme actuelle sous le règne du Sultan Ibrahim (1640 - 1648).
+
+![circo2](https://i.ibb.co/zYm1pyz/img-2025-09-01-13-28-41.png)
+
+## 12. Cadran Solaire
+
+![cadran](https://i.ibb.co/YFtfJM1n/img-2025-09-01-13-31-30.png)
+
+Le cadran solaire du palais de Topkapi est orienté vers le **nord-ouest**. Il a été restauré sous le règne du sultan **Selim III** par **Seyyid Abdullah**. On pense qu'il date de l'époque du sultan **Mehmed II le Conquérant**.
+
+## 13. Chambre du manteau sacré
+
+![entree](https://i.ibb.co/6c20pMSj/Pasted-image-20250629112144.jpg)
+
+> [!info]
+> les toits ont cette forme par analogie aux tentes de l'époque Sejdoukide
+
+Cette chambre contient des reliques saintes reliées aux mythes des monothéistes, plus particulièrement l'islam étant donné que de nombreuses d'entre elles sont intrinsèquement liées au prophète Mahomet.
+
+![toit](https://i.ibb.co/HD0rt2Mw/img-2025-09-01-13-37-01.png)
+
+### 13.1 Bâton de Moïse
+
+![baton](https://i.ibb.co/LDrNTrJd/img-2025-09-01-13-38-23.png)
+
+### 13.2 Empreinte de Mahomet
+
+![empreinte](https://i.ibb.co/5W27ZBsw/img-2025-09-01-13-40-28.png)
+
+Cette empreinte est immense (une pointure de 70 au moins).
+### 13.3 Relique du bras de Jean le baptiste
+
+Selon la tradition musulmane et chrétienne, le bras de ce dernier est particulièrement sacré ayant servi à baptiser Jesus. Un morceau du crâne est la relique principale de la cathédrale d'Amiens[^1] en France, rapportée par un croisé au XIIIe siècle. D'autres parties de ce crâne se trouvent à Rome et dans d'autres lieux.
+
+[^1]:https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_d%27Amiens
+
+![bras](https://i.ibb.co/gMpHF9TB/Pasted-image-20250629113024.jpg)
+
+
+### 13.4 Épée de David
+
+![david](https://i.ibb.co/PZyQHk7T/Pasted-image-20250629113125.jpg)
+
+### 13.5 Morceau de la Mecque
+
+![mecque](https://i.ibb.co/LXhL9gJh/img-2025-09-01-13-47-23.png)
+
+### 13.6 Cardigan de Mahomet
+
+![cardigan](https://i.ibb.co/WvmJLN3D/img-2025-09-01-13-50-21.png)
+
+
+### 13.7 Fragments divers de Mahomet
+
+![](https://i.ibb.co/wr3Hc1yL/Pasted-image-20250629113526.jpg)
+
+Poils de barbe notamment.
+
+### 13.8 Tenue de Fatima, fille de Mahomet
+
+![tenue](https://i.ibb.co/yBRdrWHK/img-2025-09-01-13-52-26.png)
+
+## 14. Porte de la félicité
+
+- Ses décorations sont de style rococo, notamment sur le dôme, ajoutées sous Abdulhamid Ier (1774 - 1789)
+- En 1775, la toiture est remplacée par une toiture en bois dans un style baroque typique de l'époque.
+- Plus tard sous Mahmud II des fresques sont ajoutées dont les motifs simples sont caractéristiques de son règne.
+- Les fontaines symétriques qui ornaient les côtés des portails ont été retirées lors des restaurations de 1940.
+
+La porte était une barrière physique qui symbolisait la séparation entre l'espace public et le cœur du pouvoir impérial. Elle donne accès aux appartements du Chef des Eunuques.
+
+Hormis pour les grandes cérémonies, ce portail n'était pas utilisé et était fermé la plupart du temps. C'était le lieu de cérémonies cruciales comme le couronnement, la réception des ambassadeurs ou les funérailles impériales.
+
+### 15. Troisième cour
+
+![troisieme](https://i.ibb.co/1SG5s12/img-2025-09-01-13-58-48.png)
+
+Réorganisée durant l'ère du Sultan Mehmed le Conquérant (1451 - 1481), cet endroit est composé de dortoirs pour les garçons amenés au Palais Ottoman par taxe du sang. Ils étaient éduqués.
+
+Modelés par le Grand Seljuk et les États Seljuk Anatoliens. Pendant des siècles, ils entraînent les bureaucrates et soldiers les plus puissants de l'empire Ottoman.
+
+On peut considérer cela comme l'académie du Palais.
+
+## 16. Tenues impériales
+
+Les armures étaient ornées de versets coranique pour éloigner la mauvaise chance et les importunités.
+
+### 16.1 Kaftan de Selim Ier
+
+![caftan](https://i.ibb.co/kVhhTFq6/img-2025-09-01-14-01-20.png)
+
+Première partie du 16ème siècle, fabrique en coton. Appartenu au Sultan Selim (1512 - 1520)
+
+### 16.2 Tenue Talismanique
+
+Petit extrait illustrant le niveau impressionnant de détails. En soie et encre, ainsi que de fines couches d'or.
+
+![](https://i.ibb.co/s9Yxgvq8/Pasted-image-20250629120725.jpg)
+
+
+
+## 17. Pavillon de Mehmed le Conquérant
+
+Construit entre 1462 et 1463 durant son règne. Composé de quatre chambres.  Diverses artéfacts dont des épées, meubles et ustensiles mais aussi des bijoux.
+
+![tresor](https://i.ibb.co/vvjRYGzd/img-2025-09-01-14-04-26.png)
+
+![tresor](https://i.ibb.co/kss0ms2S/img-2025-09-01-14-07-09.png)
+
+![tresor2](https://i.ibb.co/d44Dt3qN/img-2025-09-01-14-09-07.png)
+
+![](https://i.ibb.co/gMKm3rZF/Pasted-image-20250629122213.jpg)
+
+Probablement acquis par la trésorerie du palais pendant l'ère du Sultan Mehmed IV (1648 - 1687), forme de poire, diamant scientillant entouré par 49 diamants de plusieurs tailles en 2 rangées. 86 carats.
+
+
+### 17.1 Armure de Mustafa'nin Zirh
+
+![armure](https://i.ibb.co/RTK3F119/img-2025-09-01-14-17-44.png)
+
+### 17.2 Armes
+
+![armes](https://i.ibb.co/2YYbjf8z/Pasted-image-20250629122420.jpg)
+### 18. Balcon s'ouvrant sur la mer
+
+![mer](https://i.ibb.co/C3Dv4xB7/img-2025-09-01-14-16-43.png)
+
 # II - Hippodrome
 
 À l'origine, l'hippodrome de Constantinople était une arène monumentale construite pour les courses de chars et de chevaux, des événements très populaires dans le monde romain puis byzantins.
@@ -159,3 +294,12 @@ Pour ce qui est des trois têtes de serpents, on sait qu'elles étaient encore e
 Plusieurs récits, souvent contradictoires tentent d'expliquer leur disparition. L'un des plus célèbres veut que le sultan Mehmet II, après la conquête de Constantinople ait brisé la mâchoire de l'un des serpents avec sa masse, symbole de victoire sur le paganisme. D'autres versions racontent qu'elles le furent par des soldats ou diplomates ivres.
 
 Un morceau fut retrouvé par Gaspare Fossati en 1848 lors de travaux de restauration menés autour de la basilique Sainte-Sophie à Istanbul. Il est exposé aujourd'hui dans une pièce maîtresse du Musée d'Archéologie d'Istanbul.
+
+# III - Mosquée Bleue
+
+*Section en cours*
+
+# IV - Sainte-Sophie
+
+*Section en cours*
+

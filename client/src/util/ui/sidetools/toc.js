@@ -120,6 +120,7 @@ const Toc = ({ markdown }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [activeSection]);
 
+
     // Render nested TOC items
     const renderTocItems = useCallback((items, depth = 0) => {
         return items.map((item) => (

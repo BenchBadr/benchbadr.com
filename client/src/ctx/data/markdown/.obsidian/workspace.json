@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "871487d21d6b07bc",
+        "id": "3a54b290909793a8",
         "type": "tabs",
         "children": [
           {
-            "id": "0f5def2ea514eaec",
+            "id": "b69291cd10b50fb5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "main.md",
+                "file": "Démonstration test.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "main"
+              "title": "Démonstration test"
             }
           }
         ]
@@ -128,13 +128,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blog/Carnets d'Anatolie.md",
+                "file": "Démonstration test.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Carnets d'Anatolie"
+              "title": "Outline of Démonstration test"
             }
           },
           {
@@ -179,48 +179,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "floating": {
-    "id": "9556e29345bc15dc",
-    "type": "floating",
-    "children": [
-      {
-        "id": "ccfb2c8fa5db8598",
-        "type": "window",
-        "children": [
-          {
-            "id": "8c0c69839bb9ab6f",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "d7a02beda07db3c8",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "blog/Carnets d'Anatolie.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "Carnets d'Anatolie"
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 1179,
-        "y": 44,
-        "width": 481,
-        "height": 927,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "d7a02beda07db3c8",
+  "active": "b69291cd10b50fb5",
   "lastOpenFiles": [
     "blog/Carnets d'Anatolie.md",
+    "Démonstration test.md",
+    "maths/additions",
+    "cv_fr.md",
+    "Pasted image 20250901140618.png",
+    "cv_en.md",
     "main.md",
     "TODO LIST.md",
     "maths/suites/Ch3 - Limites de fonctions et continuité.md",
@@ -236,7 +202,6 @@
     "assets/161969726.jpg",
     "assets/annemarie.jpg",
     "assets/1024px-Canal_in_Jordaan_2C_Amsterdam__289258952020_29.jpg",
-    "assets/100_0009.jpg",
     "assets/leonardo-103786036-mgv_0752_O-695658.jpg_width_1366_height_768_crop_true",
     "assets/476931713.jpg_k_3814c5f6e889bd46689d4ab28640f6547f9c23710364a7b22ddef031b2f05358_o__hp_1",
     "assets/478005569.jpg_k_35662ea9d12817fe8e972f9963e5b39d13876e2f9067177e16ce77e48614fbef_o__hp_1",
@@ -248,7 +213,6 @@
     "DLMI - L1/maths/suites/Ch5 - Formule de Taylor et développement limité.md",
     "lilas/s1/TD 1 - Logique.md",
     "lilas/s1/TD",
-    "lilas/s1",
     "Untitled 1.md",
     "Brouillon.md",
     "DLMI - L1/maths/algebre/Ch5 - Matrices d'applications linéaires.md",
@@ -263,9 +227,6 @@
     "DLMI - L1/maths/algebre/Ch2 - EV dim finie.md",
     "DLMI - L1/maths/algebre/Ch3 - Application linéaires.md",
     "DLMI - L1/maths/algebre/Ch0 - Systèmes.md",
-    "DLMI - L1/maths/algebre/Ch4 - Calcul matriciel.md",
-    "_img/_exc/Drawing 2025-08-01 16.54.45.excalidraw.md",
-    "maths.md",
     "Untitled.canvas",
     "Untitled 1.canvas"
   ]

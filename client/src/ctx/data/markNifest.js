@@ -52,28 +52,5 @@ export const manifestData = {
             "child": true,
             "title": "suites"
         }
-    ],
-    "/td":[
-        [
-            "TD 1",
-            "TD 2"
-        ],
-        {
-            "icon":null,
-            "child":true,
-            "title":"TD"
-        }
-    ],
-    "/td-alg":[
-        [
-            "TD 1",
-            "TD 2"
-        ],
-        {
-            "icon":null,
-            "child":true,
-            "title":"TD",
-            "path":'td'
-        }
     ]
 }

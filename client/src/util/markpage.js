@@ -7,6 +7,7 @@ import {FolderPreview, FilePreview, PathPreview, BlogPreview, ImageCard} from ".
 import { sidebarItems } from "../ctx/SidebarContext";
 import { SearchBar } from "./components/spotlight";
 import Drawing from "./components/Drawing";
+import { useLocation } from 'react-router-dom';
 
 
 export const fetchMd = async ({path}) => {
@@ -23,6 +24,10 @@ const Markpage = ({defaultPath = null}) => {
     const [intro, setIntro] = useState(null);
     const params = useParams();
     const path = defaultPath || params['*'];
+     const location = useLocation();
+
+    const queryParams = new URLSearchParams(location.search);
+    const sharing = queryParams.get('sharing') === 'ionesco';
 
     const isPathValid = (pathList) => {
 

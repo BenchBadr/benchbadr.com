@@ -102,8 +102,10 @@ const Accordion = ({title, titleId, children, openDefault, listActive, color}) =
 
     const [open, setOpen] = useState(openDefault || (
         listActive.length && 
-            listActive[0] === titleId  || // Regular case - titleId <=> title
-            (manifestData['/' + titleId]?.length && listActive[0] === manifestData['/' + titleId][1]?.path) // Otherwise, use path key
+            (
+                listActive[0] === titleId  || // Regular case - titleId <=> title
+                (manifestData['/' + titleId]?.length && (listActive[0] === manifestData['/' + titleId][1].path)) // Otherwise, use path key
+            )
         ) 
     );
     const { setCacheColor } = useContext(SidebarContext);

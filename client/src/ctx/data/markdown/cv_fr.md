@@ -1,6 +1,7 @@
-lang:fr
+---
+lang: fr
+---
 
-===
 
 # Curriculum Vitae
 
