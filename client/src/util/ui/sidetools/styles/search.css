@@ -75,6 +75,16 @@
     overflow: scroll;
     max-height: 70vh;
     position:relative;
+
+    background: linear-gradient(
+    to bottom,
+    var(--low-bg-op-20) 0%,
+    transparent 5%,
+    transparent 95%,
+    var(--low-bg-op-20)  100%
+  );
+
+  border-radius: 15px;
 }
 
 .search-result-item{

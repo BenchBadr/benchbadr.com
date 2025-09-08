@@ -142,14 +142,14 @@ const Toc = ({ markdown }) => {
 
     if (tocTree.length === 0) {
         return (
-            <div className="toc-container">
+            <div className="toc-container scroll-fix">
                 <div className="toc-empty">No headings found</div>
             </div>
         );
     }
 
     return (
-        <div className="toc-container">
+        <div className="toc-container scroll-fix">
                 {renderTocItems(tocTree)}
         </div>
     );

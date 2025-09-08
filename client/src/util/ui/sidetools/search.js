@@ -126,7 +126,7 @@ const Search = ({markdown, fenl}) => {
                         </div>
                     </div>
                     <div className="search-results scroll-fix">
-                        {searchResults.map((result, index) => (
+                        {searchResults.map((result, index) => (result.line >= fenl &&
                             <div 
                                 key={index} 
                                 ref={el => resultRefs.current[index] = el}

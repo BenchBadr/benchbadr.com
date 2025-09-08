@@ -116,10 +116,10 @@ ${markdown}
 
     return (
         <div className='ai-chat'>
-            <div className='msgs'>
-             {messages.map((msg, index) => (
+            <div className='msgs scroll-fix'>
+            {messages.map((msg, index) => (
                 <div className='msg scroll-fix'>
-                   {msg.role === 'user' ? (
+                {msg.role === 'user' ? (
                         <UserMsg key={index} prompt={msg.content} />
                     ) : (
                         index !== 0 ? <AiMsg key={index} answer={msg.content} /> : <AiMsg key={index} answer={`Hello! I am here to assist you with this article.`}/>
