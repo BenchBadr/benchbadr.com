@@ -1,16 +1,14 @@
+import { ChatInference } from './ChatInference';
 import Md from '../../markdown.js';
 import './styles/ai.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
-
-
-const Ai = ({markdown, messages, setMessages}) => {
+const Ai = ({ markdown }) => {
+    const [messages, setMessages] = useState([]);
     const [prompt, setPrompt] = useState('');
-    const [ans, setAns] = useState(false);
-
-    const handleChange = (event) => {
-        setPrompt(event.target.value);
-    };
+    const [isAnswering, setIsAnswering] = useState(false);
+    const chatInferenceRef = useRef(null);
+    const messagesEndRef = useRef(null);
 
     const systemPrompt = `
 You are embedded directly in an article and serve as a sidebar assistant.
@@ -35,8 +33,24 @@ Do not use it except if there is a side note you would like to add while not nec
 A skill is a slash command that is a substitute to some instructions followed by a prompt:
 - \`/qcm\` : Based on the article content, the user wants you to test his knowledge. 
     - Ask multiple choice questions (about 5) and if the user reuses the command, ask other questions
-    - each question is followed by a check callout (collapsed by default as follows \`> [!check]-\`) containing the right answer.
     - The questions must always be in the language of the article.
+    - Always include answer after each question in the following format:
+    - Formatting bellow
+
+## Question <Number>
+
+- a) <qst a>
+- b) <qst b>
+- ... 
+
+> [!check] <Answer in answering language> -  <- Do not forget the \`-\`. It's for it to be collapsed.
+> <Insert letter of the answer>
+
+## Question <Number+1>
+
+....
+
+
 - \`/search <query>\`
     - Search occurence of the query or a similar text.
     - User will use this likely after manual search fails so be permissive
@@ -52,124 +66,117 @@ Finally, find bellow the article we are talking about:
 ${markdown}
 
 ---
-`
+`;
 
     useEffect(() => {
-        setMessages([{user:'system',content:systemPrompt}])
-    }, [])
+        chatInferenceRef.current = new ChatInference();
+        setMessages([{ role: 'system', content: systemPrompt }]);
+    }, [systemPrompt]);
 
+    useEffect(() => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages.length]);
 
-    const sendMsg = async () => {
-        if (!prompt.trim()) return;
-        setAns(true);
+    const handleSend = async () => {
+        if (!prompt.trim() || isAnswering) return;
+
         const userMessage = { role: 'user', content: prompt };
-        const updatedMessages = [...messages, userMessage];
-        setMessages(updatedMessages); 
+        const newMessages = [...messages, userMessage];
+        setMessages(newMessages);
         setPrompt('');
-        setTimeout(() => {
-            const msgsDiv = document.querySelector('.ai-chat .msgs');
-            if (msgsDiv) {
-                msgsDiv.scrollTop = msgsDiv.scrollHeight;
-            }
-        }, 100);
+        setIsAnswering(true);
 
-        try {
-            fetch(`https://text.pollinations.ai/openai`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    model: 'openai-fast',
-                    messages: updatedMessages,
-                    private: true,
-                    seed:42
-                }),
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch AI response');
-                }
-                return response.text();
-            })
-            .then(data => {
-                const aiMessage = { role: 'system', content: JSON.parse(data).choices[0].message.content.split('**Sponsor**')[0] };
-                setMessages((prev) => [...prev, aiMessage]);
-                setAns(false);
-            })
-            .catch(error => {
-                setMessages((prev) => [...prev, {role:'system',content:'error'}]);
-                setAns(false)
-            });
-        } catch (error) {
-            console.error('Error:', error);
+        setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
+
+        await chatInferenceRef.current.sendMessage(
+            newMessages,
+            (chunk) => {
+                setMessages(prev => {
+                    const lastMsgIndex = prev.length - 1;
+                    const lastMsg = prev[lastMsgIndex];
+                    const updatedMsg = { ...lastMsg, content: lastMsg.content + chunk };
+                    const newMessages = [...prev.slice(0, lastMsgIndex), updatedMsg];
+                    return newMessages;
+                });
+            },
+            () => {
+                setIsAnswering(false);
+            }
+        );
+    };
+
+    const handleStop = () => {
+        if (chatInferenceRef.current) {
+            chatInferenceRef.current.stop();
+            setIsAnswering(false);
         }
     };
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter' && !event.shiftKey) {
             event.preventDefault();
-            sendMsg();
+            handleSend();
         }
     };
-
 
     return (
         <div className='ai-chat'>
             <div className='msgs scroll-fix'>
-            {messages.map((msg, index) => (
-                <div className='msg scroll-fix'>
-                {msg.role === 'user' ? (
-                        <UserMsg key={index} prompt={msg.content} />
-                    ) : (
-                        index !== 0 ? <AiMsg key={index} answer={msg.content} /> : <AiMsg key={index} answer={`Hello! I am here to assist you with this article.`}/>
-                    )}
-                </div>
-                ))}
-                {ans ? <div className='blink-dot'/> : ''}
+                {messages.map((msg, index) => {
+                    if (msg.role === 'system' && index === 0) {
+                        return <AiMsg key={index} answer="Hello! I am here to assist you with this article." />;
+                    }
+                    if (msg.role === 'user') {
+                        return <UserMsg key={index} prompt={msg.content} />;
+                    }
+                    if (msg.role === 'assistant') {
+                        return <AiMsg key={index} answer={msg.content} />;
+                    }
+                    return null;
+                })}
+                {isAnswering && messages[messages.length - 1]?.content === '' && <div className='blink-dot' />}
+                <div ref={messagesEndRef} />
             </div>
             <div className='prompt-area'>
                 <div style={{ position: 'relative', height: '100%', width: '100%' }}>
                     <textarea
-                        placeholder={`Ask a question about this article...`}
+                        placeholder="Ask a question about this article..."
                         className='scroll-fix'
-                        onChange={handleChange}
+                        onChange={(e) => setPrompt(e.target.value)}
                         value={prompt}
                         onKeyDown={handleKeyDown}
+                        disabled={isAnswering}
                     />
                     <div
-                        className={`send-btn ${prompt.length ? 'active' : ''}`}
-                        onClick={sendMsg}
+                        className={`send-btn ${prompt.length > 0 || isAnswering ? 'active' : ''}`}
+                        onClick={isAnswering ? handleStop : handleSend}
                     >
-                        arrow_upward
+                        {isAnswering ? 'stop' : 'arrow_upward'}
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};
 
-const UserMsg = ({ prompt }) => {
-    return (
-        <a className='user-msg scroll-fix'>
-            {prompt}
-        </a>
-    )
-}
-
+const UserMsg = ({ prompt }) => (
+    <a className='user-msg scroll-fix'>
+        {prompt}
+    </a>
+);
 
 const AiMsg = ({ answer }) => {
     if (answer === 'error') {
-        return <div className='error-msg'>An error occurred. Please try again.</div>
+        return <div className='error-msg'>An error occurred. Please try again.</div>;
     }
-
-const commands = "$\\newcommand{\\sub}{\\subset}\\newcommand{\\R}{\\mathbb{R}}\\newcommand{\\ov}[2]{\\overset{#2}{\\overbrace{#1}}}\\newcommand{\\N}{\\mathbb{N}}$";
+    const commands = "$\\newcommand{\\sub}{\\subset}\\newcommand{\\R}{\\mathbb{R}}\\newcommand{\\ov}[2]{\\overset{#2}{\\overbrace{#1}}}\\newcommand{\\N}{\\mathbb{N}}$";
     return (
         <div className='ai-msg scroll-fix'>
             <Md>{`${commands}\n${answer}`}</Md>
         </div>
-    )
-}
-
+    );
+};
 
 export default Ai;
