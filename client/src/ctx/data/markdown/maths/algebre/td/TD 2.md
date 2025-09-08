@@ -421,7 +421,7 @@ L'autre inclusion étant immédiate, on conclut que $\R[X]=F+\R_1[X]$
 
 Il nous suffit de montrer que $F\cap \R_1[X]\sub \{0_{\R[X]}\}$
 
-Soit $P\in F \cap \R_1[X]. $ Puisque $P\in \R_1[X],$ il existe $a,b$ deux réels tels que $P = aX+b$ et puisque $P\in F$
+Soit $P\in F \cap \R_1[X].$ Puisque $P\in \R_1[X],$ il existe $a,b$ deux réels tels que $P = aX+b$ et puisque $P\in F$
 
 on a $\begin{cases}P(1) = 0 \\ P(-1) = 0\end{cases}$, c'est-à-dire $\begin{cases}a+b = 0 \\ b-a = 0\end{cases},$ équivalent à $a=b=0$
 

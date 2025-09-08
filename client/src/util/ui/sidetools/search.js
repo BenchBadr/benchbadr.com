@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './styles/search.css';
 
-const Search = ({markdown}) => {
+const Search = ({markdown, fenl}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [focusedIndex, setFocusedIndex] = useState(-1);
@@ -47,13 +47,13 @@ const Search = ({markdown}) => {
             });
 
             if (focusedLine !== null) {
-                const prevEl = document.querySelector(`[data-line-count="${focusedLine}"]`);
+                const prevEl = document.querySelector(`[data-line-count~="${focusedLine}"]`);
                 if (prevEl) {
                     prevEl.removeAttribute('data-attr-focus');
                 }
             }
 
-            setFocusedLine(searchResults[focusedIndex].line)
+            setFocusedLine(searchResults[focusedIndex].line - fenl)
         }
     }, [focusedIndex]);
 
@@ -63,7 +63,7 @@ const Search = ({markdown}) => {
     useEffect(() => {
         // highlight
         if (focusedLine !== null) {
-            const el = document.querySelector(`[data-line-count="${focusedLine}"]`);
+            const el = document.querySelector(`[data-line-count~="${focusedLine}"]`);
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 el.setAttribute('data-attr-focus', 'true');
@@ -134,7 +134,7 @@ const Search = ({markdown}) => {
                                 onClick={() => setFocusedIndex(index)}
                             >
                                 <div className="result-content">{result.content}</div>
-                                <div className="line-number">Line {result.line}</div>
+                                <div className="line-number">Line {result.line - fenl}</div>
                             </div>
                         ))}
                     </div>

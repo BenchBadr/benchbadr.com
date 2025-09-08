@@ -5,7 +5,7 @@ type: Travel
 banner: https://i.ibb.co/RpczN0Xp/Pasted-image-20250704153512.jpg
 ---
 
-Ce petit "carnet" a pour objectif de relater des souvenirs de voyage, d'en garder une trace et surtout de permettre à tout moment de retrouver des instants et endroits. Il est composé essentiellement de photos.
+La Turquie fut pour moi un voyage marquant, au cœur de cultures, civilisations et à l'histoire si riche que l'on peut s'y perdre. Une balade à Istanbul et sans le savoir vous foulez les traces de moultes empereurs et empires. Les hattis, hittites, romains, seldjoukes, grecs, ottomans... Tant de chose à raconter que je ne pouvais le faire que par l'intermédiaire d'un carnet de voyage.
 
 # I - Palais de Topkapı
 
@@ -297,9 +297,222 @@ Un morceau fut retrouvé par Gaspare Fossati en 1848 lors de travaux de restaura
 
 # III - Mosquée Bleue
 
-*Section en cours*
+![mosqueebleue](https://i.ibb.co/sv76k4r6/Pasted-image-20250629150730.jpg)
+
+Cette mosquée fait face à l'emblématique Sainte-Sophie et avait pour ambition d'avoir un diamètre supérieur et une hauteur supérieure, ces dernières sont séparées par la place de l'Hippodrome.
+
+La construction débute en 1609 et s'achève en 1616 (Sainte-Sophie en 539).
+
+Cette mosquée se veut unique. Elle ambitionne d'avoir 6 minarets. Quand le sultan Ahmet Ier a ordonné la construction de six minarets pour sa nouvelle mosquée, cela a déclenché un scandale. Beaucoup y ont vu une tentative d'égaler, voire de dépasser, le site le plus sacré de l'Islam.
+
+Pour résoudre le conflit, le sultan a fait don d'argent pour la construction d'un septième minaret à La Mecque, mettant fin au scandale et restaurant la hiérarchie.
+
+-  La salle de prière principale a une superficie d'environ 2 646 m² et une base d'environ 64 mètres sur 72 mètres.
+- Le point le plus haut de la coupole centrale culmine à **43 mètres**.
+- La coupole a un diamètre d'environ **23,5 mètres**.
+- La mosquée peut accueillir jusqu'à 10 000 fidèles pour la prière.
+
+![interieur](https://i.ibb.co/YBjXmvZL/img-2025-09-03-15-43-58.png)
+
+Il y a 4 ans, le président Erdogan perd les élections. Ainsi, sur la colline de la partie asiatique il refait construire une nouvelle mosquée à 6 minarets. Il y a donc trois mosquées à 6 minarets en Turquie. Or, Erdogan n'est pas un sultan et historiquement c'était leur rôle.
+
+En turc, elle ne s'appelle pas la Mosquée bleue mais la mosquée Sultan Ahmed, le sultan ayant ordonné sa construction. Ce sont les découvertes occidentales qui lui confèrent ce nom.
+
+Notons par ailleurs la présence de socle contenant le nom des califes, bien que non sacralisés religieusement (l'Islam voulant le prophète Mahomet comme le dernier pouvant faire des révélations) ils le sont en quelques sorte par leur présence écrite quelque part pour renforcer le pouvoir théologique du Sultan par itération.
+
+![socle](https://i.ibb.co/d0HYPRBk/Pasted-image-20250629143406.jpg)
+
+Ces panneaux n'ont commencé que sous Selim Ier qui a battu les memloukites en Arabie. Ce sultan qui est devenu le premier calife Mahomet. 
+
+Sans fondement concret, on suppose qu'elles ont été ajoutées afin de donner une importance et valider son autorité (succession de califes) donc autorité religieuse.
+
+Plein de chaînes / cordes soutiennent le support de la coupole (utilisée pour illuminer).
 
 # IV - Sainte-Sophie
+
+![sophie](https://i.ibb.co/xS29xGCL/Pasted-image-20250629150633.jpg)
+
+
+La basilique est construite pour la première fois en 360 par l'empereur Constance II (fils de Constantin le Grand). Elle fut détruite et ravagée par des révoltes. Reconstruite de nouveau par l'empereur Théodose II en 415, de nouveau détruite pendant les révoltes de Nika en 532[^1]. 
+
+L'édifice que l'on connaît aujourd'hui a été commandé par l'empereur Justinien Ier et construit en un temps record de cinq ans et dix mois, de 532 à 537. C'était un exploit architectural sans précédent, notamment grâce à son dôme massif. Le dôme s'est d'ailleurs effondré en 558 à la suite d'un tremblement de terre et a été reconstruit.
+
+Après la prise de Constantinople par les Ottomans en 1453, le sultan Mehmed II a immédiatement converti l'église en mosquée, marquant le passage de la puissance byzantine à la puissance ottomane.
+
+La conversion fut progressive. Les mosaïques chrétiennes ne furent pas toutes recouvertes de plâtre immédiatement. Certaines furent laissées visibles pendant un temps. Les minarets ont bien été ajoutés, mais par différents sultans, le premier étant Mehmed II lui-même, qui en a ajouté un en bois. Les quatre minarets actuels ont été construits par des sultans ultérieurs.
+
+![batiments](https://i.ibb.co/spvW21Sv/Pasted-image-20250629150604.jpg)
+
+Les bâtiments longeant  l'allée vers Sainte-Sophie sont les thermes construites par la femme de Soliman le Magnifique. 
+
+## 1. La vulgaire couche de plâtre
+
+![couche](https://i.ibb.co/23chCQbN/img-2025-09-03-16-03-12.png)
+
+*Le beau réémergent*
+
+Lors de la conversion en mosquée, de par l'interdiction islamique de l'iconoclasme et toute forme de figuratisme, les ottomans recouvrent progressivement les mosaïques d'une vulgaire couche de plâtre ensuite ornée par des motifs traditionnels ottomans. 
+
+Le temps aujourd'hui nous a fait redécouvrir certaines de ces impressionnantes mosaïques et aujourd'hui se pose la question suivante:
+
+> Faut-il déterrer l'art chrétien ou préserver le plâtre ottoman, ce dernier ayant aussi une valeur historique ?
+
+Un débat qui encore aujourd'hui fait rage. 
+
+## 2. Statut du monument
+
+
+De sa création à l'invasion islamique (1453), ce fut une église. En 1934, le père fondateur de la Turquie moderne: **Mustafa Kemal Atatürk** décide de la convertir en musée afin de mettre fin aux tensions l'entourant. 
+
+En 2020, sous la présidence de Erdoğan, un décret a annulé la décision de 1934 en faisant de nouveau une mosquée. La partie inférieure est accessible exclusivement aux musulmans tandis que le haut peut être visité par quiconque.
+
+Aujourd'hui il est fortement endommagé par la multiplication des séismes en Turquie ces dernières années. Certains fanatiques musulmans réclament le droit de prier à l'étage, or, des experts prédisent que cela ferait se faire s'effondrer l'étage. Ci-dessous l'image d'une colonne en diagonale:
+
+![colonne](https://i.ibb.co/hRwBQpwB/img-2025-09-03-16-08-59.png)
+
+
+## 3. Mosaïques
+
+### 3.1 Deesis
+
+![deesis](https://i.ibb.co/ycPyRZBr/img-2025-09-03-16-09-48.png)
+
+### 3.2 Mosaïque la plus importante
+
+![mosaique](https://i.ibb.co/CCGNvQ5/img-2025-09-03-16-11-53.png)
+
+
+# V - Mausolée d'Atatürk
+
+Né dans l'actuelle Grèce, Mustafa Kemal se fit remarquer en tant qu'officier dans l'armée ottomane, notamment durant la bataille des Dardanelles en 1915, où il a mené une défense héroïque contre les forces alliées.
+
+Après la Première Guerre mondiale et l'occupation de l'Anatolie par les puissances victorieuses, il a organisé et dirigé la guerre d'Indépendance turque. En 1922, ses victoires militaires ont forcé les Alliés et l'armée grecque à se retirer, ce qui a conduit à l'armistice et à la reconnaissance de la souveraineté de la nouvelle République de Turquie.
+
+Atatürk a révolutionné la Turquie en abolissant le sultanat et le califat, et en fondant une république laïque. Il a mis en place des réformes radicales, se heurtant non pas à des "fondamentalistes", mais à la résistance des conservateurs et des élites religieuses qui s'opposaient à la laïcisation de l'État. Il a établi un État laïc malgré la large majorité de sa population musulmane.
+
+![mausolee](https://i.ibb.co/DP9H7nVw/img-2025-09-03-16-21-00.png)
+
+De plus, il a réinventé la langue turque, la faisant passer à un alphabet latin (autrefois arabe) créant une véritable fracture avec le passé du pays, rendant la population actuelle incapable d'étudier des œuvres non modernisées.
+
+Il n'a jamais laissé d'instructions pour la construction d'un mausolée. Le Parlement turc a décidé de construire l'Anıtkabir afin de lui rendre un hommage monumental, symbolisant la gratitude de la nation pour le fondateur de la République.
+
+Comme l'interdit la tradition funéraire islamique, il ne fut pas enterré dans un cercueil mais simplement placé dans une chambre funéraire souterraine. Le cénotaphe visible au-dessus, dans la "salle d'honneur", est un tombeau symbolique. Il est entouré de 81 vases, symbolisant les 81 provinces de la Turquie, ce qui donne l'impression qu'Atatürk est éternellement veillé par la nation qu'il a créée.
+
+Le mausolée combine une architecture moderne avec des éléments de l'architecture traditionnelle turque, notamment de la période seldjoukide et ottomane. Les Seldjoukides étaient les premiers peuples turcs à arriver en Anatolie, et leur style architectural est bien représenté. La sculpture représente un ange (ou plutôt une figure allégorique de la Victoire) tenant une couronne de laurier qui symbolise la victoire de la Turquie.
+
+Seule une deuxième personne fut enterrée dans ce mausolée, l'ami intime d'Atatürk, qui fut le deuxième président de la Turquie est enterré en face de lui (dans un endroit beaucoup moins triomphal). On constate pendant notre visite des étudiants qui font leur cérémonie de diplôme ici.
+
+Le 10 novembre de chaque année, à 9h05, pendant la commémoration de la date de décès d'Atatürk, la vie s'arrête et tout le monde est figé, descend de sa voiture en hommage à ce dernier.
+- Les sirènes retentissent à travers les villes.
+- La circulation s’arrête, y compris les voitures, les transports publics… tout s’interrompt.
+- Les drapeaux sont mis en berne.
+- Une ou deux minutes de silence sont observées.
+Istanbul, c’est au [palais de Dolmabahçe](https://fr.wikipedia.org/wiki/Palais_de_Dolmabah%C3%A7e) (l’endroit même où il est mort) que se rassemblent de nombreux Turcs pour observer ce moment poignant. Les horloges du palais sont figées à 9h05 en hommage à l’heure de sa disparition.
+
+Enfin, on y trouve sa collection privée de voitures et une petite salle de cinéma avec la diffusion de ses discours dont voici un extrait:
+
+![interieur](https://i.ibb.co/vC7yg8c6/img-2025-09-03-16-26-44.png)
+
+## 1. Extraits discours
+
+Extraits
+- "élevons notre nation au rang de l'époque contemporaine"
+- "faisons de notre pays des plus civilisés et instruits"
+- "faisons renaître la flamme des civilisation antiques"
+- "rompons avec notre passé"
+- "aimons l'art, les science et l'unité nationale
+
+## 2. Extrait dernier message à l'armée Turque
+
+> J'adresse à l'armée Turque, ceux qui se souviennent du début de la victoire à l'aube de l'humanité de la civilisation et son processus victorieux.
+> 
+> Si vous avez sauvé votre pays de l'oppression et l'invasion ennemie au moment le plus critique et les temps les plus durs, je n'ai aucun doute que dans l'ère fructueuse de la République, avec tous ses équipements modernes vous conduirez votre devoir avec la même loyauté.
+
+— 29 octobre 1938
+
+# VI - Cappadoce
+
+Le paysage vert s'efface au fil du traijet, laissant place à un désert à perte de vue. 
+On arrive enfin au lac salé, pensant d'abord qu'il s'agissait d'un mirage par son apparence assez particulière jusqu'à ce qu'il se révèle davantage.
+
+## 1. Lac salé
+
+![lac sale](https://i.ibb.co/spwML7qS/img-2025-09-03-16-29-57.png)
+
+Un soleil ardent, des silhouettes absorbées par l'horizon et quelques explosions s'apparentant à du souffre. Un spectacle digne d'une autre planète.
+
+![lac](https://i.ibb.co/ccS89jkP/img-2025-09-03-16-31-59.png)
+
+## 2. Visite de ville souterraine
+
+![vile](https://i.ibb.co/Kv2W90j/img-2025-09-03-16-33-31.png)
+
+La première question: pour quelle raison firent construites ces villes souterraines?
+
+> Pour quelle raison ont-elle été construite? 
+
+Ils ont commencé à creuser probablement à l'époque Hittite. Historiquement, on date cela au 6ème siècle av J.-C, protection des perses.
+
+La deuxième période, la religion chrétienne était interdite dans l'Empire Romain.
+
+Par la suite, ce n'était plus les perses mais les romains puis les arabes.
+
+> Comment ont-elle été construites?
+
+Il fallait d'abord une cheminée d'aération pour ventiler les maison. Comme le tuffe est une matière calcaireuse, très facile à creuser et s'effondrant très facilement. Donc il fallait des calculs minutieux pour y arriver. La plus grande maison du style trouvée fait 9 étages et il y avait environ 1000 habitants. On utilise une grosse roche ronde afin de boucher les issues. 
+
+De plus, les maisons contenaient des fours donc il y a eu des calculs importants en ce qui concerne l'évacuation de la fumée.
+
+Et ici, une photo de ce qui faisait office de porte, quelque part, c'est l'ancêtre de la porte coulissante.
+
+![porte](https://i.ibb.co/nN3hscrt/img-2025-09-03-16-36-36.png)
+
+La production du vin existait déjà à cette époque. Le vin était stocké à l'intérieur et produit dans les grottes à l'aide de femmes qui marchent dessus (à l'image des productions modernes). Il est impossible d'affirmer avec certitude combien la construction de ces maisons a duré.
+
+L'éclairage se faisait à l'aide de torches puis lampe à huile. Or, il fallait bien calculer l'évacuation de la fumée. Il y avait un système de communication basé sur des pigeons et on considère que tous les tunnels étaient reliés entre eux.
+
+![pigeo](https://i.ibb.co/Y4sJGGXr/img-2025-09-03-16-38-37.png)
+
+## 3. Immersion en Cappadoce
+
+![](https://i.ibb.co/Z1K6gfLk/img-2025-09-03-16-41-53.png)
+
+*Pause café à **Ortahisar Panorama**.*
+
+En 2500 avant J.-C, le peuple autochtone de la région était les Hattis, puis les Hittites, puis les phrygiens puis les grecs. Les noms de village portent souvent des noms grecs, car la culture s'est préservée. Cependant, beaucoup ont du se convertir donc les noms et prénoms sonnent musulmans.
+
+Il n'y a plus de race pure turque. Après les grecs, à partir du 3ème siècle av J.-C, on voit l'entrée de l'Empire Romain. Les turcs quant à eux sont arrivés autour du 11ème siècle afin d'y installer leurs émirats, le changement d'alphabet crée une barrière dans la découverte de la culture chez les locaux. La **pomme de terre** est emblématique de la Cappadoce. Il y a aussi des vignes. En 1908, on dénombrait 86 cépages différents. Or, c'est une richesse qui se perd aujourd'hui il en reste près de 25.
+
+Dans les années 80, le vin turc a gagné des médailles pour son vin rouge de Cappadoce et vin blanc d'Égée dans le **festival du vin de Dijon**.
+
+### 3.1 - Artisanat du tapis
+
+Pour le tapis on utilise la laine, la soie et le coton. L'histoire de cet artisanat, remonte dans L'histoire connue rèvèle un tapis artisanal en Sibérie.  Ce qui remonte à 400 av J.-C. On obtient selon les matériaux 4 types de tapis différents. L'utilité du tapis laine sur laine est de se chauffer dans les tentes, par temps froid. La meilleure qualité c'est la laine du cou. Par cm², on trouve au plus 5x5 = 25 nœuds. 
+
+Les tapis présentent des motifs floraux détaillés. Au plus, 64 nœuds par cm². En 1992, une fille turque a battu le record de nœuds sur un tapis, 625 nœuds. Par la suite, le record est battu par une autre fille turque, 2500 nœuds par m² (à l'aide d'une loupe).
+
+Il y a deux systèmes de nœuds, le simple et double. Les nœuds résultent d'une meilleure qualité et solidité.  Ça fatigue les yeux et le dos, donc elles font des pauses fréquentes lors de la production du tapis.
+
+Si on la fait travailler plus, se multiplieront les fautes ce qui n'est pas acceptables. Les tapis sont supposément non signés, la signature des femmes consiste en 4-5 petites erreurs que seule elle peut pointer.
+
+La soie est le tissu le plus solide, pendant la guerre était utilisé pour des parachutes. La Chine, l'Inde, la Turquie et l'Iran sont les plus grands producteurs de soie.
+
+- 1 mois et demi 100% laine
+- 2 à 4 mois laine et coton (max 6h par jour)
+- 8 mois à un an pour la soie (max 3h)
+
+## 4. Vallée de l'amour
+
+![amour](https://i.ibb.co/yBqm3fVP/img-2025-09-03-16-45-08.png)
+
+## 5. Vallée des Pigeonniers
+
+**Légende des Pigeonniers**
+À l'époque, deux communautés coexistaient en Cappadoce. Les humains et les fées. Il y avait un prince en Cappadoce qui en se promenant rencontra une fée très belle et est tombé amoureux. Il en parle à sa mère. Qui s'énerve car elle l'avait promis à une noble du Royaume. Il conteste la décision. Le père le menace de chasser toutes les fées s'il refuse le mariage. Les fées pour se sauver ont commencé à se transformer en pigeons pour éviter de se faire tuer.
+
+![pigeo](https://i.ibb.co/MybBkz6r/img-2025-09-03-16-46-45.png)
+
+# VII - Konya, au centre du souffisme
 
 *Section en cours*
 

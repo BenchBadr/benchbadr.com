@@ -73,6 +73,9 @@ Ainsi $\lim{n\to+\infty}u_n = +\infty$
 
 # Exercice 3
 
+> En utilisant les résultats de l’exercice précédent et les opérations usuelles sur les suites, étudier la convergence de chacune des suites dont les sont définis par:
+
+
 > $\forall n≥2, a_n = \frac{1}{\ln(n)}+\frac{1}{n^2}$
 
 D'après l'exercice $2$, $\lim{n\to+\infty}\frac{1}{\ln(n)}=0$

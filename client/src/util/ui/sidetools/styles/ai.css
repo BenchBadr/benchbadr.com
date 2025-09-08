@@ -183,18 +183,38 @@
 }
 
 .ai-chat .user-msg{
-    background:var(--accent);
-    color:white;
-    border-radius: 15px;
+  --temp-mag:0;
 
+  position: relative;
+  /* z-index:15; */
+  background: linear-gradient(var(--accent-op-30), var(--accent-op-20));
+  padding: 8px 15px;
+  border-radius: 1rem;
+  display: block;
+  width: fit-content;
+  max-width: 70%;
+  margin: 5px 0 5px auto;
+  white-space: pre-wrap;
+  overflow: scroll;
+  overflow: hidden;
 
-    max-width: 60%;
+  margin-bottom:var(--temp-mag);
 
-    text-align: right;
-
-    padding:10px;
-    overflow: scroll;
+  animation: msgUserAppear 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
+
+
+@keyframes msgUserAppear {
+  from {
+    opacity:0;
+    transform: translateY(100vh) scale(3);
+  }
+  to {
+    opacity:1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 
 
 .ai-chat .ai-msg{

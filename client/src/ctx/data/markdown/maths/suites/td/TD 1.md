@@ -89,7 +89,8 @@ Mercredi  (22/01)
     - Puisque $a\sub\R, \sup(A)$ et $\inf(A)$ existent. 
     - De plus, $\frac{2}{3}=\frac{5-1}{5+1}\in A \Rightarrow \frac{2}{3}=p.p.e(A)=\inf(A)$ 
 
-{tips}[/Quand il y a un ppe, c'est la borne inférieure. « Il suffit que » c'est le donc à l'envers./]
+> [!tips]
+> Quand il y a un ppe, c'est la borne inférieure. « Il suffit que » c'est le donc à l'envers.
 
 - Montrons que $1=\sup(A)$
     - On a $1$ majorant de $A$. 
@@ -111,29 +112,22 @@ Mercredi  (22/01)
 
 > $A = \{\frac{1}{x^2}+3 | x \in \R^*\}$
 
-Cherchons un minorant de $A$. Soit $a\in A,$ il existe un $x\in\R^*$ tel que: 
-- $a = \frac{1}{x^2}+3$. 
-- On a $\frac{1}{x^2}>0$ 
-- donc $\frac{1}{x^2}+3>3$, 
-- ainsi $a>3.$
-
-A est donc __minoré par 3__.
-
-
-Montrons que c'est le plus grand des minorants:
-
-Soit $\epsilon > 0, $ Mq $3+\epsilon$ n'est pas minorant de $A$. 
-
-On veut trouver $x_0$ tel que $\frac{1}{x^2}+3<3+\epsilon$.
-
-- Il suffit que $\frac{1}{x^2}<\epsilon$
-- Il suffit que $x^2> \frac{1}{\epsilon}$
-- Il suffit que $x_0 > \sqrt{\frac{1}{3}}$
-- Prenons $x_0 = \sqrt{\frac{1}{\epsilon}}+1$
-- On a $x_0\in\R^*$. Donc $a_0 = \frac{1}{x^2}+3 \in A$
-- De plus, $x_0 ≥ \sqrt{\frac{1}{\epsilon}}+1>\sqrt{\frac{1}{\epsilon}}$
-
-De plus $3\notin A$, donc $A$ n'admet pas de __p.p.e__. 
+- *Cherchons un minorant de $A$. Soit $a\in A,$ il existe un $x\in\R^*$ tel que: *
+	- $a = \frac{1}{x^2}+3$. 
+	- On a $\frac{1}{x^2}>0$ 
+	- donc $\frac{1}{x^2}+3>3$, 
+	- ainsi $a>3.$
+- A est donc __minoré par 3__.
+- *Montrons que c'est le plus grand des minorants:*
+	- Soit $\epsilon > 0,$ Mq $3+\epsilon$ n'est pas minorant de $A$. 
+	- On veut trouver $x_0$ tel que $\frac{1}{x^2}+3<3+\epsilon$.
+	- Il suffit que $\frac{1}{x^2}<\epsilon$
+	- Il suffit que $x^2> \frac{1}{\epsilon}$
+	- Il suffit que $x_0 > \sqrt{\frac{1}{3}}$
+	- Prenons $x_0 = \sqrt{\frac{1}{\epsilon}}+1$
+	- On a $x_0\in\R^*$. Donc $a_0 = \frac{1}{x^2}+3 \in A$
+	- De plus, $x_0 ≥ \sqrt{\frac{1}{\epsilon}}+1>\sqrt{\frac{1}{\epsilon}}$
+- De plus $3\notin A$, donc $A$ n'admet pas de __p.p.e__. 
 
 Mq $A$ n'est pas majorée
 - Soit $M\in\R$, Mq il existe un $a\in A$ tel que $a>M$.

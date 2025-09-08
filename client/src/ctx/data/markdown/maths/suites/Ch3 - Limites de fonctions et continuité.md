@@ -1,6 +1,6 @@
 ---
 lang: fr
-desc: Concepts essentiels en analyse réelle : limites, continuité, monoticité et théorèmes clés.
+desc: "Concepts essentiels en analyse réelle : limites, continuité, monoticité et théorèmes clés."
 date: 19/02/2025
 ---
 

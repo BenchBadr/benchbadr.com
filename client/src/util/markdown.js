@@ -83,6 +83,12 @@ const Md = ({ children, article=false }) => {
     const { isRightOpen, setIsRightOpen } = useContext(SidebarContext);
     const titleCountRef = useRef(0); 
 
+
+    /** rangeString
+     * produces string like "a a+1 ... b"
+     */
+    const rangeString = (a, b) => Array.from({length: Math.abs(b - a) + 1}, (_, i) => a <= b ? a + i : a - i).join(' ');
+
     const toggleOpen = useCallback(() => {
         setIsRightOpen(!isRightOpen)
         // navigator.vibrate(50);
@@ -180,7 +186,7 @@ const Md = ({ children, article=false }) => {
             h1: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h1 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
+                    <h1 className="cop-title" id={`title-${index}`} data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''}>
                         {children}
                     </h1>
                 );
@@ -196,7 +202,7 @@ const Md = ({ children, article=false }) => {
                 }
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h2 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
+                    <h2 className="cop-title" id={`title-${index}`} data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''} >
                         {children}
                     </h2>
                 );
@@ -205,7 +211,7 @@ const Md = ({ children, article=false }) => {
             h3: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h3 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
+                    <h3 className="cop-title" id={`title-${index}`} data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''} >
                         {children}
                     </h3>
                 );
@@ -214,7 +220,7 @@ const Md = ({ children, article=false }) => {
             h4: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h4 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
+                    <h4 className="cop-title" id={`title-${index}`} data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''} >
                         {children}
                     </h4>
                 );
@@ -223,7 +229,7 @@ const Md = ({ children, article=false }) => {
             h5: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h5 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
+                    <h5 className="cop-title" id={`title-${index}`} data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''} >
                         {children}
                     </h5>
                 );
@@ -232,7 +238,7 @@ const Md = ({ children, article=false }) => {
             h6: ({ children, node }) => {
                 const index = Math.floor(titleCountRef.current++ / strictFactor);
                 return (
-                    <h6 className="cop-title" id={`title-${index}`} data-line-count={node.position ? node.position.start.line : ''} >
+                    <h6 className="cop-title" id={`title-${index}`} data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''} >
                         {children}
                     </h6>
                 );
@@ -281,7 +287,7 @@ const Md = ({ children, article=false }) => {
             p : ({children, node, ...props}) => {
 
                 return <p 
-                    data-line-count={node.position ? node.position.start.line : ''} 
+                    data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''} 
                     {...props}
                 >{children}</p>
             },
@@ -289,7 +295,7 @@ const Md = ({ children, article=false }) => {
             div : ({children, node, ...props}) => {
 
                 return <div
-                    data-line-count={node.position ? node.position.start.line : ''} 
+                    data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''} 
                     {...props}
                 >{children}</div>
             },
@@ -297,7 +303,7 @@ const Md = ({ children, article=false }) => {
             li : ({children, node, ...props}) => {
 
                 return <li 
-                    data-line-count={node.position ? node.position.start.line : ''} 
+                    data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''} 
                     {...props}
                 >{children}</li>
             },
@@ -309,7 +315,7 @@ const Md = ({ children, article=false }) => {
             blockquote : ({children, node, ...props}) => {
 
                 return <blockquote 
-                    data-line-count={node.position ? node.position.start.line : ''} 
+                    data-line-count={node.position ? rangeString(node.position.start.line, node.position.end.line) : ''} 
                     {...props}
                 >{children}</blockquote>
             },

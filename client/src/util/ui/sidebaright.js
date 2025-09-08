@@ -4,9 +4,32 @@ import Toc from './sidetools/toc';
 import Ai from './sidetools/ai';
 import Search from './sidetools/search';
 
+
+
 const SidebarRight = ({markdown}) => {
     const { isRightOpen, setIsRightOpen } = useContext(SidebarContext);
     const [tool, setTool] = useState(0);
+    const [messages, setMessages] = useState([]);
+
+    // fenl = front matter end line
+    const [fenl, setFenl] = useState(0);
+
+    // Returns the index of the second '---' line in the markdown (end of front matter), or 0 if not found
+    const getFrontMatterEndLine = (markdown) => {
+        const lines = markdown.split('\n');
+        if (lines[0].trim() === '---') {
+            for (let i = 1; i < lines.length; i++) {
+                if (lines[i].trim() === '---') {
+                    return i;
+                }
+            }
+        }
+        return 0;
+    };
+
+    useEffect(() => {
+        setFenl(getFrontMatterEndLine(markdown) + 1)
+    }, [])
 
     useEffect(() => {
         // clear eventual highlights remaining from search tool
@@ -14,7 +37,12 @@ const SidebarRight = ({markdown}) => {
             el.removeAttribute('data-attr-focus');
         });
         // navigator.vibrate(50);
+
     }, [tool])
+
+
+
+    
     return (
         <div className={`sidebar right ${isRightOpen ? 'open' : ''}`}>
             <div className='selector'>
@@ -30,8 +58,8 @@ const SidebarRight = ({markdown}) => {
             </div>
             <div className='sidebaright-content'>
                 {tool === 0 && <Toc markdown={markdown}/>}
-                {tool === 2 && <Ai markdown={markdown}/>}
-                {tool === 1 && <Search markdown={markdown}/>}
+                {tool === 2 && <Ai markdown={markdown} messages={messages} setMessages={setMessages}/>}
+                {tool === 1 && <Search markdown={markdown} fenl={fenl}/>}
             </div>
         </div>
     )

@@ -16,3 +16,7 @@
 # Distant
 
 - [ ] Cache markdown into html files
+
+
+$n^4+6n^3+11n^2+6n+1$
+

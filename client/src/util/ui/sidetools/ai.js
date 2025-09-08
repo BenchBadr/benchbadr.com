@@ -1,10 +1,10 @@
 import Md from '../../markdown.js';
 import './styles/ai.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 
-const Ai = ({markdown}) => {
+const Ai = ({markdown, messages, setMessages}) => {
     const [prompt, setPrompt] = useState('');
     const [ans, setAns] = useState(false);
 
@@ -54,7 +54,10 @@ ${markdown}
 ---
 `
 
-    const [messages, setMessages] = useState([{user:'system',content:systemPrompt}]);
+    useEffect(() => {
+        setMessages([{user:'system',content:systemPrompt}])
+    }, [])
+
 
     const sendMsg = async () => {
         if (!prompt.trim()) return;
@@ -77,7 +80,7 @@ ${markdown}
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    model: 'openai',
+                    model: 'openai-fast',
                     messages: updatedMessages,
                     private: true,
                     seed:42

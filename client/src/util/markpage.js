@@ -27,7 +27,7 @@ const Markpage = ({defaultPath = null}) => {
      const location = useLocation();
 
     const queryParams = new URLSearchParams(location.search);
-    const sharing = queryParams.get('sharing') === 'ionesco';
+    const sharing = queryParams.get('mdp') === 'ionesco';
 
     const isPathValid = (pathList) => {
 
@@ -51,6 +51,10 @@ const Markpage = ({defaultPath = null}) => {
             }
             const children = manifestData[current][0];
 
+            if (children.includes(pathList[i])) {
+                return true;
+            }
+
             if (!(children && children.includes('/' + pathList[i]))) {
 
                 for (const child of children) {
@@ -72,23 +76,35 @@ const Markpage = ({defaultPath = null}) => {
     }
 
 
+    
+
+
 
     useEffect(() => {
         const loadMarkdown = async () => {
+
+            const pathPieces = path.split('/');
+
+            // Elegant solution I recently discovered
+            if (pathPieces[pathPieces.length - 1] === '') {
+                pathPieces.length--
+            }
+
+
 
             
             try {
                 const text = await fetchMd({ path });
                 setIntro(getIntro(text));
                 setContent(text);
+
+                console.log(isPathValid(pathPieces), pathPieces, sharing)
+
+                if (!isPathValid(pathPieces) && !sharing) {
+                    setContent(-1)
+                }
             } catch (error) {
 
-                const pathPieces = path.split('/');
-
-                // Elegant solution I recently discovered
-                if (pathPieces[pathPieces.length - 1] === '') {
-                    pathPieces.length--
-                }
 
                 if (!isPathValid(pathPieces)) {
                     setContent(-1)
@@ -140,7 +156,6 @@ const Markpage = ({defaultPath = null}) => {
             description={content}
         />
     }
-  
 
     return (
         <>
