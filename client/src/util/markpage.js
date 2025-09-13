@@ -288,7 +288,7 @@ export const MainBlog = () => {
         <div className="preview-grid-container">
             {Object.entries(manifestData).map(([key, value]) => {
                 if (value[1].child) { return null }
-                return key[0] === '/' && <FolderPreview name={key} path={''}/>
+                return key[0] === '/' && <FolderPreview name={key} title={manifestData[key][1].title} path={''}/>
             })}
         </div>
 
