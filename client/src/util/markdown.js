@@ -244,6 +244,8 @@ const Md = ({ children, article=false }) => {
                 );
             },
 
+            pre: ({ children }) => <>{children}</>,
+
             code: ({ node, inline, className, children, ...props }) => {
                 const match = /language-(\w+)/.exec(className || '');
                 const codeText = Array.isArray(children) ? children.join('') : children;

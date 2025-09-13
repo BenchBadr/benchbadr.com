@@ -15,3 +15,20 @@ Moyenne donnée par: $\frac{TD+CC1+2\cdot CC2-\min(TD, CC1, CC2)}{3}$
 ## III. Contenu du cours
 
 L'objectif sera de mettre en place des outils d'analyse. 
+
+
+```
+hello
+```
+
+`hi` and `test`
+
+```mermaid
+graph TD;
+	A --> B
+```
+
+
+```python
+print("Hello world")
+```

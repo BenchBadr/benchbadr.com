@@ -27,7 +27,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "maths/algebre II/_index.md",
+                "file": "maths/integrales/_index.md",
                 "mode": "source",
                 "source": false
               },
@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -185,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "sharing/TODO LIST.md",
+                "file": "maths/integrales/_index.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of TODO LIST"
+              "title": "Outline of _index"
             }
           },
           {
@@ -226,12 +226,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f15f48ac45abe188",
+  "active": "213077959da65b50",
   "lastOpenFiles": [
-    "maths/suites/_index.md",
-    "maths/algebre/_index.md",
     "maths/algebre II/_index.md",
     "sharing/TODO LIST.md",
+    "maths/suites/_index.md",
+    "maths/algebre/_index.md",
     "maths/algebre II/Ch1 - Déterminant.md",
     "maths/integrales/Ch1 - Relations de comparaisons.md",
     "maths/algebre/Ch5 - Matrices d'applications linéaires.md",

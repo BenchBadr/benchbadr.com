@@ -4,19 +4,30 @@ import { vscDarkPlus, solarizedlight } from 'react-syntax-highlighter/dist/esm/s
 import mermaid from "mermaid";
 import { ThemeContext } from '../../ctx/ThemeContext';
 
-const Mermaid = ({ theme, chart }) => {
-  const ref = useRef(null);
 
-  useEffect(() => {
-    if (ref.current) {
-      mermaid.initialize({ theme: theme || 'default', startOnLoad: false });
-      ref.current.innerHTML = chart;
+
+
+
+class Mermaid extends React.Component {
+    componentDidMount() {
+      this.renderChart();
+    }
+  
+    componentDidUpdate() {
+      this.renderChart();
+    }
+  
+    renderChart() {
+      mermaid.initialize({
+        theme: this.props.theme || 'default'
+      });
       mermaid.contentLoaded();
     }
-  }, [theme, chart]);
-
-  return <div className="mermaid" ref={ref}></div>;
-};
+  
+    render() {
+      return <div className="mermaid">{this.props.chart}</div>;
+    }
+}
 
 const CopyButton = ({ text }) => {
   const [copied, setCopied] = useState(false);
