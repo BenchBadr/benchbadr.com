@@ -18,7 +18,8 @@ export const manifestData = {
         [
             "/suites",
             "/algebre",
-            "/integrales"
+            "/integrales",
+            "/algebre II"
         ],
         {
             "icon": null,
@@ -62,7 +63,8 @@ export const manifestData = {
         {
             "icon": null,
             "child": true,
-            "title": "Séries & Intégrales"
+            "title": "Séries & Intégrales",
+            "color": "pink"
         }
     ],
     "/informatique":[
@@ -72,7 +74,8 @@ export const manifestData = {
         {
             "icon":null,
             "child":false,
-            "title":"informatique"
+            "title":"informatique",
+            "color":'green'
         }
     ],
     "/langage C":[

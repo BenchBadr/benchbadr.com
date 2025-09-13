@@ -196,7 +196,7 @@ const Space = ({description, path}) => {
             {/* 2. Folders display */}
             <div className="preview-grid-container">
                 {childs && childs.map((item) => (
-                    item[0]=== '/' && <FolderPreview name={item} path={path}/>
+                    item[0]=== '/' && <FolderPreview name={item} title={manifestData[item][1].title} path={path}/>
                 ))}
             </div>
 

@@ -82,7 +82,7 @@
 
         &:hover{
             .folder-title{
-                color:var(--accent);
+                color:color-mix(in srgb, var(--accent) 50%, var(--text) 50%);
             }
         }
     }
@@ -101,7 +101,7 @@ html:has(.app.dark) .preview-card.folder {
 
     &:hover {
         span.folder-title {
-            color:var(--accent-light);
+            color:color-mix(in srgb, var(--accent-light) 50%, var(--text) 50%);
         }
     }
 }

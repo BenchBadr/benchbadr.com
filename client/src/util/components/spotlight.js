@@ -180,6 +180,8 @@ const checkMatch = (str1, str2) => {
 }
 
 const dfs = (criterias, results, prefix = []) => {
+    console.log(criterias, prefix)
+
     // DFS - Parcours en profondeur
 
     if (prefix.length && !manifestData['/' + prefix[prefix.length-1]]) {
@@ -198,9 +200,12 @@ const dfs = (criterias, results, prefix = []) => {
         }
 
         // in:folder - prevents unnecessary iterations
-        if (criterias.length && items.includes('/' + criterias[0]) && item !== '/' + criterias[0]) {
-            continue
-        }
+
+        // This was temporarily removed as it led to "algebre II" to disappear when typing "algebre" without restrictive '/' suffix
+
+        // if (criterias.length && items.includes('/' + criterias[0]) && item !== '/' + criterias[0]) {
+        //     continue
+        // }
 
 
         // if folder

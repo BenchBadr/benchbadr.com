@@ -1,5 +1,6 @@
 ---
 lang: fr
+date: 14/01/2025
 ---
 
 # Suites et fonctions

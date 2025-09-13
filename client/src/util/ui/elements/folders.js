@@ -32,7 +32,7 @@ const Folders = () => {
                         titleId={key.substring(1)}
                         listActive={currentActive}
                         color={value[1].color}
-                        openDefault={true} // This is making it open at level 0
+                        openDefault={true} // This is making it open at level 0 -- Will not work if folder[1].closed is true
                         children={<FoldersChild 
                             color={value[1].color}
                             title={key} 
@@ -66,7 +66,7 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
 
                 return <Accordion 
 
-                    title={manifestData[item][1].title || item.substring(1)} 
+                    title={item.substring(1)} 
                     color={manifestData[item][1].color}
                     listActive={newActive}
                     titleId={item.substring(1)}
@@ -89,7 +89,7 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
 
                     currentActive={listActive.length === 2 && (isActivePropag && listActive[1] === item)}
 
-                    color={manifestData[title][1].color || color}
+                    color={manifestData['/' + titleId][1].color || color}
                 />
             }
         })}
@@ -99,7 +99,7 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
 
 const Accordion = ({title, titleId, children, openDefault, listActive, color}) => {
 
-
+    console.log(title, titleId, color)
     const [open, setOpen] = useState((
         manifestData['/' + titleId]?.length && (
             !manifestData['/' + titleId][1].closed && ( openDefault ||
@@ -117,7 +117,7 @@ const Accordion = ({title, titleId, children, openDefault, listActive, color}) =
     useEffect(() => {
         setCacheColor(cacheColor => ({
             ...cacheColor,
-            [title]:color
+            [titleId]:color
         }))
     }, [])
 

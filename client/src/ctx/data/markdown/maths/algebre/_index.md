@@ -1,5 +1,8 @@
-lang:fr
 ---
+lang: fr
+date: 16/01/2025
+---
+
 # Algèbre linéaire
 
 > [!info]

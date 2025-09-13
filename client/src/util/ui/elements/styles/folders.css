@@ -90,9 +90,10 @@ html:has(.app.dark) .file-item.active{
 .color-tag{
     height:6px;
     width:6px;
-    border-radius: 1em;
+    border-radius: 50%;
     background:var(--accent);
     margin-left:.5em;
+    flex-shrink: 0;
 }
 
 html:has(.app.dark) .color-tag{

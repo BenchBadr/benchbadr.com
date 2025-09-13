@@ -15,7 +15,7 @@ const ElementPreview = ({name, path}) => {
 }
 
 
-export const FolderPreview = ({name, path}) => {
+export const FolderPreview = ({name, path, title}) => {
     const { cacheColor } = useContext(SidebarContext)
 
     const color = cacheColor && cacheColor[name.slice(1)]
@@ -34,7 +34,7 @@ export const FolderPreview = ({name, path}) => {
         style={style}
         >
             <span className="folder-icon">folder</span>
-            <span className="folder-title">{name.slice(1)}</span>
+            <span className="folder-title">{title}</span>
             <span className="after-arrow">chevron_right</span>
         </a>
     )
