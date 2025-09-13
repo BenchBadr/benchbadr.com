@@ -1,3 +1,8 @@
+---
+lang: fr
+date: 27/03/2025
+---
+
 $\newcommand{\R}{\mathbb{R}}\newcommand{\rg}{\text{rg}}\newcommand{\K}{\mathbb{K}}\newcommand{\sub}{\subset}$
 # Exercice 1
 

@@ -43,7 +43,7 @@ A skill is a slash command that is a substitute to some instructions followed by
 - b) <qst b>
 - ... 
 
-> [!check] <Answer in answering language> -  <- Do not forget the \`-\`. It's for it to be collapsed.
+> [!check]- <Answer in answering language> // Do not forget the \`-\`. It's for it to be collapsed.
 > <Insert letter of the answer>
 
 ## Question <Number+1>
@@ -132,11 +132,15 @@ ${markdown}
                         return <UserMsg key={index} prompt={msg.content} />;
                     }
                     if (msg.role === 'assistant') {
-                        return <AiMsg key={index} answer={msg.content} />;
+                        if (msg.content) {
+                            return <AiMsg key={index} answer={msg.content} />;
+                        }
+                        return null
                     }
                     return null;
                 })}
-                {isAnswering && messages[messages.length - 1]?.content === '' && <div className='blink-dot' />}
+
+                {(isAnswering && messages[messages.length - 1]?.content === '') && <a className='blink-dot' />}
                 <div ref={messagesEndRef} />
             </div>
             <div className='prompt-area'>

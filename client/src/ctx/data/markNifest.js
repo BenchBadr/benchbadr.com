@@ -4,19 +4,21 @@ export const manifestData = {
             "Carnets d'Anatolie",
             "DiaFox",
             "Sommaire déroulant",
-            "Découverte des Pays-Bas"
+            // "Découverte des Pays-Bas"
         ],
         {
             "icon": null,
             "color": "purple",
             "title": "blog",
-            "closed": true
+            "closed": true,
+            "posts": true
         }
     ],
     "/maths":[
         [
             "/suites",
-            "/algebre"
+            "/algebre",
+            "/integrales"
         ],
         {
             "icon": null,
@@ -36,7 +38,7 @@ export const manifestData = {
             "icon": null,
             "child": true,
             "color": "green",
-            "title": "algebre"
+            "title": "Algèbre Linéaire"
         }
     ],
     "/suites":[
@@ -50,7 +52,47 @@ export const manifestData = {
         {
             "icon": null,
             "child": true,
-            "title": "suites"
+            "title": "Suites & Fonctions"
+        }
+    ],
+    "/integrales":[
+        [
+            "Ch1 - Relations de comparaisons",
+        ],
+        {
+            "icon": null,
+            "child": true,
+            "title": "Séries & Intégrales"
+        }
+    ],
+    "/informatique":[
+        [
+            "/langage C"
+        ],
+        {
+            "icon":null,
+            "child":false,
+            "title":"informatique"
+        }
+    ],
+    "/langage C":[
+        [
+            "Ch1 - Syntaxe de base"
+        ],
+        {
+            "icon":null,
+            "child":true,
+            "title":"Langage C"
+        }
+    ],
+    "/algebre II":[
+        [
+            "Ch1 - Déterminant"
+        ],
+        {
+            "icon":null,
+            "child":true,
+            "title":'Algèbre Linéaire II'
         }
     ]
 }

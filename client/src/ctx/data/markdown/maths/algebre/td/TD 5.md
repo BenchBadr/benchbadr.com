@@ -1,3 +1,8 @@
+---
+lang: fr
+date: 18/02/2025
+---
+
 $\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\card}{\text{card}}\newcommand{\R}{\mathbb{R}}\newcommand{\N}{\mathbb{N}}$
 $\newcommand{\K}{\mathbb{K}}\newcommand{\Im}{\text{Im}}\newcommand{\sub}{\subset}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}$
 $\newcommand{\Vect}{\text{Vect}}$

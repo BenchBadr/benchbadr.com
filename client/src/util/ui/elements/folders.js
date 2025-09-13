@@ -100,13 +100,17 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
 const Accordion = ({title, titleId, children, openDefault, listActive, color}) => {
 
 
-    const [open, setOpen] = useState(openDefault || (
-        listActive.length && 
-            (
-                listActive[0] === titleId  || // Regular case - titleId <=> title
-                (manifestData['/' + titleId]?.length && (listActive[0] === manifestData['/' + titleId][1].path)) // Otherwise, use path key
+    const [open, setOpen] = useState((
+        manifestData['/' + titleId]?.length && (
+            !manifestData['/' + titleId][1].closed && ( openDefault ||
+                listActive.length && 
+                    (
+                        listActive[0] === titleId  || // Regular case - titleId <=> title
+                        ((listActive[0] === manifestData['/' + titleId][1].path)) // Otherwise, use path key
+                    )
+                )
             )
-        ) 
+        )
     );
     const { setCacheColor } = useContext(SidebarContext);
 
@@ -116,6 +120,7 @@ const Accordion = ({title, titleId, children, openDefault, listActive, color}) =
             [title]:color
         }))
     }, [])
+
     const toggleOpen = () => setOpen(!open);
 
     return (

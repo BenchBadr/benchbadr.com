@@ -1,3 +1,7 @@
+---
+lang: fr
+date: 29/04/2025
+---
 
 $\newcommand{\R}{\mathbb{R}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\Mat}{\text{Mat}}\newcommand{\mb}[1]{\begin{matrix}#1\end{matrix}}\newcommand{\id}{\text{id}}\newcommand{\card}{\text{card}}\newcommand{\ifff}[1]{\underset{\begin{matrix}#1\end{matrix}}{\iff}}\newcommand{\sym}[1]{\underset{\begin{matrix}#1\end{matrix}}{\sim}}$
 # Exercice 1

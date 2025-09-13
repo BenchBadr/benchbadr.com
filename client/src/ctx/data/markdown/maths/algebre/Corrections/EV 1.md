@@ -1,4 +1,10 @@
-## Exercice 1
+---
+lang: fr
+desc: Corrigé de la première évaluation
+date: 18/02/2025
+---
+
+# Exercice 1
 
 > Résoudre le système suivant
 >
@@ -12,33 +18,26 @@ On a $(S)\underset{L_1 \leftrightarrow L_3}{\iff}\begin{cases}x+2y+z=c \\ -x+2y-
 
 $\underset{\begin{matrix}L_2 \leftarrow L_2+L_1 \\ L_3 \leftarrow L_3 - 3L_1\end{matrix}}{\iff} \begin{cases}x+2y+z = c \\ 4y - 2z = b+c \\ -7y-z = a-3c \end{cases}$
 
-$\underset{L_2 \leftrightarrow L_3}{\iff}\begin{cases}
-x+2y+z = c \\ -7y-z = a - 3c \\ 4y - 2z = b+c 
-\end{cases}$
+$\underset{L_2 \leftrightarrow L_3}{\iff}\begin{cases}x+2y+z = c \\ -7y-z = a - 3c \\ 4y - 2z = b+c \end{cases}$
 
-$\underset{L_3 \leftarrow L_3 - 2L_2}{\iff}\begin{cases}
-x+2y+z = c \\ -7y -z = a-3c \\ 18y = -2a+b+7c
-\end{cases}$
+$\underset{L_3 \leftarrow L_3 - 2L_2}{\iff}\begin{cases}x+2y+z = c \\ -7y -z = a-3c \\ 18y =-2a+b+7c\end{cases}$
 
 $\iff \begin{cases}x = \frac{1}{18}(8a+5b-c)\\z = \frac{1}{18}(-4a-7b+5c) \\ y = \frac{1}{18}(-2a+b+7c)\end{cases}$
 
 Donc $(S)$ possède une unique solution, le triplet $(\frac{1}{18}(8a+5b-c), \frac{1}{18}(-2a+b+7c), \frac{1}{18}(-2a+b+7c))$
 
-## Exercice 2
+# Exercice 2
 
 > Montrer que $F = \{(u_n)_{n\in\N} \in \R^{\N}:(u_n)_{n\in\N}\text{ est géométrique}\}$ n'est pas sous-espace vectoriel de $\R^\N$
 
 Soit $(u_n)_{n\in\N} = (2^n)_{n\in\N}\in F$
-
-$(v_n)_{n\in\N} = (3^n)_{n\in\N} \in F$
-
-Alors $(u_n)_{n\in\N}+(v_n)_{n\in\N} = (2^n+3^n)_{n\in\N} \notin F$
-
+- $(v_n)_{n\in\N} = (3^n)_{n\in\N} \in F$
+- Alors $(u_n)_{n\in\N}+(v_n)_{n\in\N} = (2^n+3^n)_{n\in\N} \notin F$
 __En effet__ 
+- $\frac{w_1}{w_0} = \frac{5}{2} ≠ \frac{13}{2} ≠ \frac{w_2}{w_1}$
 
-$\frac{w_1}{w_0} = \frac{5}{2} ≠ \frac{13}{2} ≠ \frac{w_2}{w_1} $
+# Exercice 3
 
-## Exercice 3
 
 > Dans $\R^3,$ montrer que le sous-ensemble suivant est un sous-espace vectoriel, dont on donnera une base et la dimension:
 >
@@ -48,9 +47,7 @@ $\frac{w_1}{w_0} = \frac{5}{2} ≠ \frac{13}{2} ≠ \frac{w_2}{w_1} $
 Soit $(x,y,z)\in\R^3$. Alors:
 
 $(x,y,z) \in F \iff x+y = 0$
-
 $\phantom{(x,y,z) \in F} \iff \exists \lambda \in \R, \exists \mu \in \R$ tels que: $\begin{cases}x = \lambda \\ y = -\lambda \\ z = \mu\end{cases}$
-
 $\phantom{(x,y,z) \in F} \iff \exists \lambda \in \R, \exists \mu \in \R$ tels que $(x,y,z) = \lambda(1,-1, 0)+\mu(0,0,1)$
 
 Donc, $\mathcal{F} = \text{Vect}(\{(1,-1, 0), (0,0,1)\})$ 
@@ -84,6 +81,6 @@ $\iff \exists \alpha \in \R, \exists \beta \in \R$ tels que $P = \alpha X^3+\bet
 
 D'où $F = \text{Vect}(\{X^3, X\})$
 
-et $F$ est donc un sous-espace vectoriel de $\R_2[X]$ et $\mathcal{F}$ est génératrice de $F$. De plus, dc'est une famille libre car famille de polynómes non nuls étagées en degrés.
+et $F$ est donc un sous-espace vectoriel de $\R_2[X]$ et $\mathcal{F}$ est génératrice de $F$. De plus, dc'est une famille libre car famille de polynômes non nuls étagées en degrés.
 
 C'est-à-dire une base de $F$ et $\dim(F) = \text{card}(\mathcal{F}) = 2$

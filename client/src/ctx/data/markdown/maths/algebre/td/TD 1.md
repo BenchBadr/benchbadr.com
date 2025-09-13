@@ -1,3 +1,7 @@
+---
+lang: fr
+date: 21/01/2025
+---
 
 # TD-1 : Algebre
 

@@ -1,3 +1,7 @@
+---
+lang: fr
+date: 18/03/2025
+---
 
 $\newcommand{\R}{\mathbb{R}}\newcommand{\N}{\mathbb{N}}\newcommand{\lim}[1]{\underset{#1}{\text{lim}}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\ncr}[2]{\begin{pmatrix}#1 \\ #2\end{pmatrix}}$
 # Exercice 4

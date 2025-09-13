@@ -1,3 +1,7 @@
+---
+lang: fr
+---
+
 # Suites et fonctions
 
 > [!info]

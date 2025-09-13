@@ -185,9 +185,12 @@
     padding:3px;
   }
 
+
   table {
     border-collapse: collapse;
     width: 100%;
+    table-layout: fixed;
+    display: table;
   }
 
   th, td {
@@ -198,6 +201,10 @@
 
   td {
     border: 1px solid var(--current-op-20);
+
+    img {
+      object-fit: contain;
+    }
   }
   
 
@@ -222,6 +229,7 @@
   }
 
   border-radius: 5px;
+  margin:1em 0;
 }
 
 [data-callout] {

@@ -1,4 +1,4 @@
-- [ ] # Exercice 1
+# Exercice 1
 
 > Soit $\mathcal{B} = \{e_1, e_2, e_3\}$ la base canonique de $\R^3$. On considère l'application linéaire de $\R^3$ dans $\R^3$ donnée par:
 > $f(e_1) = (1,-1,0)$
@@ -11,6 +11,7 @@
 > 5. $f$ est-elle injective? Surjective?
 
 ## Question 1
+
 > Rappeler pourquoi une telle application linéaire $f$ existe et est unique
 
 Puisque $\{e_1, e_2, e_3\}$ est une bas, il existe une unique application linéaire $f$ telle que:
@@ -42,12 +43,12 @@ $\dim(\ker(f)) = \card(\{(1,-2,1)\}) = 1$
 ## Question 4
 > En déduire $\Im(f)$
 
-D'après la forule du rang:
+D'après la formule du rang:
 $\dim(\Im(f)) = \dim(\R^3) - \dim(\ker(f)) = 2$
 Par ailleurs, 
 - $\Im(f) = \Vect\{f(e_1), f(e_2), f(e_3)\}$
 - $= \Vect(\{(1,-1,0), (-1,0,1),(-3,1,2)\})$
-Il suffit d'n prendre 2 non colinéaires, par exemple $\{(1,-1,0), (-1, 0, 1)\}$ est une base de $\Im(f)$
+Il suffit d'en prendre 2 non colinéaires, par exemple $\{(1,-1,0), (-1, 0, 1)\}$ est une base de $\Im(f)$
 
 ## Question 5
 >  $f$ est-elle injective? Surjective?
@@ -65,7 +66,7 @@ $\ker(f) ≠ \{0_{\R^3}\}$ donc $f$ est non injective et non surjective puisque 
 
 ($\sub$) Soit $x \in \ker(g \circ f)$
 - Alors $g(f(x)) = (g\circ f)(x) = 0$ (car $x \in g \circ f$)
-- Donc $f(x) \in \ker(f)$ c'est-à-dire $x \in f^{-1}(\ker(g))$ 
+- Donc $f(x) \in \ker(g)$ c'est-à-dire $x \in f^{-1}(\ker(g))$ 
 Donc $\ker(g \circ f) \sub f^{-1}(\ker(g))$
 $(\supset)$ Soit $x \in f^{-1}(\ker(g))$
 - Alors $(g \circ f)(x) = g(f(x))$ (car $f(x) \in \ker(g)$)

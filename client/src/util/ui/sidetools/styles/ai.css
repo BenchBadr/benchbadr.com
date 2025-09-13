@@ -169,9 +169,9 @@
 }
 
 .msgs-wrap{
-  height:100%;
   overflow: scroll;
   overflow: hidden;
+
 
   background: linear-gradient(
     to bottom,
@@ -190,6 +190,9 @@
   border-radius: 1rem;
 
   padding-bottom:20vh;
+
+
+  max-height:60vh;
 
   background: linear-gradient(
     to bottom,
@@ -212,9 +215,9 @@
 
   position: relative;
 
-  color:var(--text-op-min);
+  color:var(--text);
 
-  background: linear-gradient(var(--accent-op-30), var(--accent-op-50));
+  background: linear-gradient(var(--accent-op-50), var(--accent-op-30));
   padding: 8px 15px;
   border-radius: 1rem;
   display: block;
@@ -257,7 +260,7 @@
 }
 
 .blink-dot {
-  position: relative;
+
 }
 
 .blink-dot::after {

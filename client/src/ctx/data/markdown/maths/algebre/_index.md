@@ -1,5 +1,5 @@
 lang:fr
-===
+---
 # Algèbre linéaire
 
 > [!info]

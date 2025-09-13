@@ -1,4 +1,7 @@
-# TD-2,  Algèbre
+---
+lang: fr
+date: 28/01/2025
+---
 
 $\newcommand{\sup}{\text{sup}}$
 
@@ -442,32 +445,18 @@ D'où $X^3+X+1 = \color{green}(X-1)(X+1)X\color{g}+(2X+1)$
 > On se place dans $\mathbb{R}^\N$, le $\R$-espace vectoriel des suites réelles. On note respectivement $\mathscr{D}, \mathscr{C}$ et $\mathscr{D}_0$ les sous-espaces vectoriels des suites convergentes, des suites constantes et des suites convergentes de limite nulle. Montrer que $\mathscr{D} = \mathscr{C} \oplus \mathscr{D}_0$
  
 Soit $(u_n)_{n\in\N}\in\mathscr{C}\cap \mathscr{D}_0$
-
-Puisque $(u_n)_{n\in\N}\in\mathscr{C},$ alors il existe $l\in\R$ tel que pour tout $n\in\N, u_n = l$
-
-D'où $u_n\underset{n\to+\infty}{\longrightarrow}l$
-
+- Puisque $(u_n)_{n\in\N}\in\mathscr{C},$ alors il existe $l\in\R$ tel que pour tout $n\in\N, u_n = l$
+- D'où $u_n\underset{n\to+\infty}{\longrightarrow}l$
 Mais $(u_n)_{n\in\N}\in\mathscr{D}_0,$ donc $u_n \underset{n\to+\infty}{\to}0$
-
-Par unicité de la limite, $l=0$.
-
-On a donc, pour tout $n\in\N, u_n = 0$ c'est-à-dire $(u_n)_{n\in\N}=0_{\R^{\N}}$ et $\mathscr{C}\cap \mathscr{D}_0 \sub \{0_{\R^\N}\}$
-
+- Par unicité de la limite, $l=0$.
+- On a donc, pour tout $n\in\N, u_n = 0$ c'est-à-dire $(u_n)_{n\in\N}=0_{\R^{\N}}$ et $\mathscr{C}\cap \mathscr{D}_0 \sub \{0_{\R^\N}\}$
 Reste à montrer que $\mathscr{D} \sub \mathscr{C} + \mathscr{D}_0$
-
-Soit $(u_n)_{n\in\N}\in \mathscr{D},$ de limite notée $l$. 
-
-Posons $(v_n)_{n\in\N}=(l)_{n\in\N}$ et $(w_n)_{n\in\N}=(u_n-l)_{n\in\N}$
-
-Alors, puisque pour tout $n\in\N, u_n = v_n +w_n, $ on a $(u_n)_{n\in\N}=(v_n)_{n\in\N}+(w_n)_{n\in\N}$
-
-avec $(v_n)_{n\in\N}\in C$ et $(w_n)_{n\in\N}\in\mathscr{D}_0$
-
-D'où $(u_n)_{n\in\N} \in C+\mathscr{D}_0$
-
+- Soit $(u_n)_{n\in\N}\in \mathscr{D},$ de limite notée $l$. 
+- Posons $(v_n)_{n\in\N}=(l)_{n\in\N}$ et $(w_n)_{n\in\N}=(u_n-l)_{n\in\N}$
+Alors, puisque pour tout $n\in\N, u_n = v_n +w_n,$ on a $(u_n)_{n\in\N}=(v_n)_{n\in\N}+(w_n)_{n\in\N}$
+- avec $(v_n)_{n\in\N}\in C$ et $(w_n)_{n\in\N}\in\mathscr{D}_0$
+- D'où $(u_n)_{n\in\N} \in C+\mathscr{D}_0$
 c'est-à-dire $\mathscr{D}\sub\mathscr{C}+\mathscr{D}_0$
+- Finalement, on a bien montré que $\mathscr{D}=\mathscr{C}\oplus \mathscr{D}_0$
 
-Finalement, on a bien montré que $\mathscr{D}=\mathscr{C}\oplus \mathscr{D}_0$
-
----
 

@@ -1,12 +1,13 @@
+---
+date: 18/02/2025
+lang: fr
+---
+$\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\sub}{\subset}\newcommand{\card}{\text{card}}$
 
-1,2,7,3
-## Exercice 1
+# Exercice 1
 
 > $\mathcal{F} = ((1,0,3), (-1, 1, 2))$
-$\newcommand{\sub}{\subset}$
-$\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}$
-$\newcommand{\card}{\text{card}}$
-Puisque $\card(\mathcal{F_1}) = 2 ≠ \dim(\R^3)$  alors $\mathcal{F}$ n'est as une base de $\R^3$, 
+> Puisque $\card(\mathcal{F_1}) = 2 ≠ \dim(\R^3)$  alors $\mathcal{F}$ n'est as une base de $\R^3$, 
 
 > $\mathcal{F}_4 = ((1, -1, 2), (0,-1, -1), (1,-2, 1), (0,1,0))$
 

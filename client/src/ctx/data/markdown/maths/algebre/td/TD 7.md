@@ -1,3 +1,8 @@
+---
+lang: fr
+date:
+---
+
 $\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\N}{\mathbb{N}}\newcommand{\ub}[2]{\underset{#2}{\underbrae{#1}}}$
 # Exercice 1
 > On considère les matrices

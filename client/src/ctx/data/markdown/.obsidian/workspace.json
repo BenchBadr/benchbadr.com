@@ -4,77 +4,38 @@
     "type": "split",
     "children": [
       {
-        "id": "5991e067f93450a5",
+        "id": "411cdcdfdda18220",
         "type": "tabs",
         "children": [
           {
-            "id": "0f7ea8a17969b95d",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
-            }
-          },
-          {
-            "id": "64c80ea34ab6a36c",
+            "id": "b4960f9e7b1f58d2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "maths/algebre/td/TD 3.md",
+                "file": "maths/algebre II/Ch1 - Déterminant.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TD 3"
+              "title": "Ch1 - Déterminant"
             }
           },
           {
-            "id": "e33bad48554a7278",
+            "id": "213077959da65b50",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "maths/suites/td/TD 4.md",
+                "file": "maths/algebre II/_index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TD 4"
-            }
-          },
-          {
-            "id": "cfdfee9f38b28ec9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "maths/suites/td/TD 2.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "TD 2"
-            }
-          },
-          {
-            "id": "6246b8a8962dc82e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "blog/Sommaire déroulant.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Sommaire déroulant"
+              "title": "_index"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -106,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "E(10^n",
+                "query": "\\newcommand{\\rcases",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -181,23 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blog/Sommaire déroulant.md",
+                "file": "maths/algebre II/Ch1 - Déterminant.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Sommaire déroulant"
-            }
-          },
-          {
-            "id": "75c2b3fc7890ac1a",
-            "type": "leaf",
-            "state": {
-              "type": "mermaid-toolbar-view",
-              "state": {},
-              "icon": "lucide-ghost",
-              "title": "mermaid-toolbar-view"
+              "title": "Outline of Ch1 - Déterminant"
             }
           },
           {
@@ -232,33 +183,45 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6246b8a8962dc82e",
+  "active": "b4960f9e7b1f58d2",
   "lastOpenFiles": [
-    "maths/suites/td/TD 1.md",
-    "maths/suites/td/TD 2.md",
-    "maths/suites/td/TD 4.md",
-    "maths/algebre/td/TD 3.md",
-    "maths/suites/td/TD 3.md",
-    "maths/algebre/td/TD 1.md",
-    "maths/algebre/td/TD 2.md",
+    "maths/algebre II/_index.md",
+    "maths/algebre II/Ch1 - Déterminant.md",
+    "maths/algebre/Ch5 - Matrices d'applications linéaires.md",
+    "maths/suites/_index.md",
+    "maths/algebre/_index.md",
+    "maths/algebre II",
+    "maths/algebre/td/TD 7.md",
+    "maths/algebre/Corrections/EV 3.md",
+    "maths/algebre/td/TD 6.md",
+    "maths/suites/td/TD 6.md",
+    "maths/algebre/Ch4 - Calcul matriciel.md",
+    "maths/suites/td/TD 5.md",
+    "maths/algebre/Ch2 - EV dim finie.md",
     "sharing/Compilation.md",
-    "maths/suites/Ch3 - Limites de fonctions et continuité.md",
-    "sharing/L2.md",
-    "sharing/TODO LIST.md",
-    "Untitled.md",
-    "maths/suites/Révisions/TD 2.md",
+    "maths/algebre/Corrections/EV 2.md",
+    "maths/integrales/Ch1 - Relations de comparaisons.md",
+    "informatique/langage C/_index.md",
+    "maths/algebre/td/TD 4.md",
+    "maths/algebre/Corrections/EV 1.md",
+    "maths/algebre/td/TD 3.md",
+    "maths/algebre/Corrections/CC1.6.md",
+    "informatique/langage C/Ch1 - Syntaxe de base.md",
+    "maths/algebre/td/TD 8.md",
+    "maths/algebre/td/TD 5.md",
+    "maths/algebre/td/TD 2.md",
+    "maths/algebre/td/TD 1.md",
+    "maths/algebre/Révisions/Demos CC1.md",
+    "informatique/langage C",
+    "informatique/l1-misc",
+    "Pasted image 20250911110449.png",
+    "maths/integrales/td",
+    "maths/integrales",
     "Pasted image 20250903160559.png",
-    "maths/suites/Ch2 - Suites et limites.md",
-    "sharing/Récurrence chiante.md",
-    "blog/Carnets d'Anatolie.md",
     "sharing",
     "maths/additions",
-    "cv_fr.md",
     "Pasted image 20250901140618.png",
-    "cv_en.md",
-    "main.md",
     "assets.zip",
-    "Netherlands.md",
     "netherlands.pdf",
     "assets/c.jpg",
     "assets/be.jpg",
@@ -267,19 +230,7 @@
     "assets/stay.jpg",
     "assets/heine.jpg",
     "assets/161969726.jpg",
-    "assets/annemarie.jpg",
     "assets/leonardo-103786036-mgv_0752_O-695658.jpg_width_1366_height_768_crop_true",
-    "assets/476931713.jpg_k_3814c5f6e889bd46689d4ab28640f6547f9c23710364a7b22ddef031b2f05358_o__hp_1",
-    "assets/478005569.jpg_k_35662ea9d12817fe8e972f9963e5b39d13876e2f9067177e16ce77e48614fbef_o__hp_1",
-    "assets/heineken-experience-in.jpg_w_1200_h_-1_s_1",
-    "assets/161969726.jpg_k_b7f78e0f1750bdb2acb2b169af82269de48ac562098bea9b273386f7a46379cf_o__hp_1",
-    "assets",
-    "lilas/s1/TD 2 - Ensembles.md",
-    "DLMI - L1/maths/algebre/Ch1 - Espaces vectoriels.md",
-    "DLMI - L1/maths/suites/Ch5 - Formule de Taylor et développement limité.md",
-    "lilas/s1/TD 1 - Logique.md",
-    "Untitled 1.md",
-    "Brouillon.md",
     "Untitled.canvas",
     "Untitled 1.canvas"
   ]

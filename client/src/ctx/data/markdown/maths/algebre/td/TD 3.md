@@ -1,28 +1,30 @@
-$\newcommand{\R}{\mathbb{R}}$
-$\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\K}{\mathbb{\K}}\newcommand{\ifff}[1]{\underset{#1}{\iff}}$
-### Exercice 3
+---
+lang: fr
+date: 06/02/2025
+---
+$\newcommand{\R}{\mathbb{R}}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\K}{\mathbb{\K}}\newcommand{\ifff}[1]{\underset{#1}{\iff}}\newcommand{\Vect}{\text{Vect}}\newcommand{\K}{\mathbb{K}}$
+# Exercice 1
+
 > On se place dans l'espace vectoriel $\R^3$. Déterminer si les familles de vecteurs suivantes sont libres.
+
+## Question 1
+
 > $\mathscr{F} = \{(-1, 2, -3), (1,0,-1), (-2, -1, 4)\}$
 
 Soit $(a,b,c) \in \R^3$ tels que:
 - $a(-1, 2, -3)+b(1,0,-1)+c(-2, -1, 4)=0_{\R^3}$
 C'est à dire, tels que:
 $(S):\begin{cases} -a+b-2c=0 \\ 2a-c = 0  \\ -3a-b+4c = 0\end{cases}$
-
-
-
-
-
 $\ifff{L_3\leftarrow L_3+L_1}\begin{cases}-a+b-2c = 0 \\ 2a-c = 0 \\ -3a+2c=0\end{cases}$
 
 $\iff \begin{cases}-a+b-2c=0\\2a-c = 0\end{cases}$
 
 $\iff \begin{cases}b = 5a \\ c = 2a \end{cases}$
 
-
 La famille n'est donc pas libre.
-
 En effet, $1(-1, 2, -3)+5(1,0,-1)+2(-2, -1, 4)=0_{\R^3}$
+
+## Question 2
 
 > $\mathscr{F} = \{(-1, -2, 0),(0,-1,-1),(1,2,1)\}$
 
@@ -41,6 +43,7 @@ $\ifff{L_3 \leftarrow L_3 + L_2}\cases{-2a-b+2c = 0 \\ -a+c = 0 \\ a = 0}$
 
 $\iff \cases{b = 0 \\ c = 0 \\ a = 0}$
 
+## Question 3
 
 > $\mathscr{F} = \{(2,-1, -1), (-4,2,2)\}$
 
@@ -49,6 +52,8 @@ Soit $(a,b) \in \R^2$ tels que:
 Remarquons que $2(2,-1,-1)+1(-4,2,2)=0_{\R^3}$
 
 Donc la famille est liée.
+
+## Question 3
 
 > $\mathscr{F} = \{(1,3,-2),(-1,3,1)\}$
 
@@ -65,10 +70,14 @@ $\iff \cases{a = 0 \\ b = 0}$
 
 Donc la famille est libre.
 
+## Question 4
+
 > $\mathscr{F} = \{(0,0,0), (-1, 0, -1)\}$
 
 Par exemple, $1(0,0,0)+0(-1, 0, -1)=0_{\R^3}$
 - donc la famille est liée.
+
+## Question 5
 
 > $\mathscr{F} = \{(0,0,0)\}$
 
@@ -77,11 +86,17 @@ On a $1(0,0,0)=0_{\R^3}$ donc la famille est liée.
 > [!warn]
 > Si une famille contient le vecteur nul, elle est liée.
 
+## Question 6
+
 > $\mathscr{F} = \{(1,1,1)\}$
 
 Toute famille à un élément est libre __ssi__ cet élément n'est pas le vecteur nul. 
 
 # Exercice 2
+
+> On se place dans l'espace vectoriel $\R[X]$. Déterminer si les familles de vecteurs suivantes sont libres:
+
+## Question 1
 
 > $\mathscr{F} = \{X^2+1, X^2+X+1, X^2+X\}$
 
@@ -90,7 +105,6 @@ Soit $(a,b,c) \in \R^3$ tels que:
 C'est-à-dire tels que: $(a+b+c)X^2+(b+c)X+(a+b) = 0_{\R[X]}$
 
 Soit
-
 $(S):\cases{a+b+c = 0\\ b+c = 0 \\ a+b = 0}$
 
 Or $(S):\ifff{L_3 \leftarrow L_3 - L_1}$
@@ -98,6 +112,7 @@ Or $(S):\ifff{L_3 \leftarrow L_3 - L_1}$
 $\cases{a+b+c = 0 \\ b+c = 0 \\ -c = 0}$
 
 
+## Question 2
 
 > $\mathscr{F} = \{3X^3-X^2+2X-3, 2X^3+X-2, X^3+X^2+1\}$
 
@@ -121,22 +136,20 @@ $\iff \begin{cases}c=. 0 \\ b = 0 \\ a = 0\end{cases}$
 
 La famille est libre.
 
----
+## Question 3
 
 > $\mathscr{F} = \{X^5+X^4+1, 2X^3-X^2, 3X^2-1, X+2\}$
 
 C'est une famille de polynômes libres non-nuls étagée en degré. 
+- C'est donc une famille libre. 
 
-C'est donc une famille libre. 
 
-
-### Exercice 3
+# Exercice 3
 
 > On se place dans l'espace vectoriel des fonctions de $\mathbb{R}$ dans $\mathbb{R}$. On considère les fonctions
 > $g_0 : x \mapsto 1$, $g_1 : x \mapsto \cos(x)$, $g_2 : x \mapsto \cos(2x)$, $g_3 : x \mapsto \cos^2(x)$.
 > Déterminer si les familles de fonctions $\mathcal{F}_1 = \{g_0, g_1, g_2\}$ et $\mathcal{F}_2 = \{g_0, g_2, g_3\}$ sont libres.
 
-(w/o brackets)
 
 Soit:
 
@@ -157,10 +170,12 @@ $\underset{L_3 \leftarrow L_3 - 2L_2}{\iff} \begin{cases}a+b+c = 0  \\ a-c = 0 \
 $\iff \begin{cases}b = 0 \\ a = 0 \\ c = 0\end{cases}$
 $g_0, g_1, g_2$ est libre. 
 
-### Exercice 4
+# Exercice 4
 
 > Déterminer si les familles de vecteurs suivantes sont génératrices de $\mathbb{R}^3$ :  
 > $\mathcal{F}_1 = \{(1,1,1), (1,1,0), (1,0,0)\}$, $\mathcal{F}_2 = \{(1,1,0), (0,0,1), (1,1,1)\}$.
+
+## Question 1
 
 Soit $\mathscr{F} = \{(1,1,1), (1,1,0), (1,0,0 )\}$
 - Soit $(x,y,z)\in\R^3$
@@ -176,6 +191,8 @@ Or $(S)\iff \cases{c = x-y \\ b = y-z \\ a = z}$
 la famille est donc génératrice de $\R^3$ et, pour tout $(x,y,z)\in\R^3$
 
 $(x,y,z) = z(1,1,1)+(y-z)(1,1,0)+(x-y)(1,0,0)$
+
+## Question 2
 
 > $\mathscr{F} = \{(1,1,0), (0,0,1), (1,1,1)\}$
 
@@ -198,9 +215,12 @@ En effet, si tel était le cas, on aurait l'existence de trois réels $a,b,c$ te
 
 C'est-à-dire tels que $\cases{a+c = 1 \\ a+c = 0 \\ b+c = 0 }$
 Or, $(S)\ifff{L_2 \leftarrow L_2 - L_1}\cases{a+c = 1 \\ 0 = -1 \\ b+c = 0}$
-## Exercice 5
+# Exercice 5
 
 > Déterminer si les familles de vecteurs suivantes sont génératrices de $\R_2[X]$
+
+## Question 1
+
 > $\mathscr{F} = \{X^2+1, 2X^2+1, X^2\}$
 
 Soit $P = aX^2+bX+c$, existe-t-il $\alpha, \beta, \gamma$ trois réels tels que:
@@ -211,6 +231,8 @@ $(S):\cases{\alpha+2\beta+\gamma= a \\0 = b \\\alpha+\beta = c}$
 d'inconnus $\alpha, \beta, \gamma$ admet-il au moins une solution?
 
 Non, par exemple, $P=X$ n'est pas combinaison linéaire des éléments de $\mathscr{F}$
+
+## Question 2
 
 > $\{X^2+1, X^2+X, X^2\}$
 
@@ -226,8 +248,7 @@ Or $(S)\iff \cases{\alpha = a-b-c \\ \beta = b \\ \alpha = c}$
 
 La famille $\mathscr{F}$ est génératrice de $\R_2[X]$ et pour tout $P = aX^2+bX+c \in \R_2[X],$ on a:
 - $P = c(X^2+1)+b(X^2+X)+(a-b-c)X^2$
-## Exercice 6
-$\newcommand{\K}{\mathbb{K}}$
+# Exercice 6
 
 > Soit $E$ un $\K$-espace vectoriel de $F$ et $G$ deux sous-espaces vectoriels de $E$. 
 > Soit $\{f_1, ..., f_2\}$ une famille génératrice de $F$ et $\{g_1, ..., g_q\}$ une famille génératricec de $G$. 
@@ -254,7 +275,9 @@ et finalement, la famille $\{f_1, ..., f_p, \mu_1, ... , \mu_q\}$ est libre.
 
 ## Exercice 7
 
-> 
+> Soit $E$ un $K$-espace vectoriel et $F$ et $G$ deux sous-espaces vectoriels de $E$.
+> Soit $\{f_1, ...., f_p\}$ une famille génératrice de $F$ et $\{g_1, ..., g_q\}$ une famille génératrice de $G$. 
+> Montrer que  est une famille génératrice de $F+G$.
 
 Soit $F, G$ deux sous-espaces vectoriels d'un $\K$-espace vectoriel
 
@@ -271,11 +294,12 @@ D'une part, $y \in F$ et $\{f_1, ..., f_p\}$ est génératrice de $F$.
 Par conséquent:
 - $x = \lambda_1 f_1+...\lambda_p f_p + \mu_1 g_1 + ... + \mu_q g_q$ c'est-à-dire la famille $\{f_1, ..., f_p, g_1, ..., g_q\}$ est génératrice de $F+G$.
 
-## Exercice 8
+# Exercice 8
 
-$\newcommand{\Vect}{\text{Vect}}$
+> Déterminer une base des sous-espaces vectoriels suivants. En déduire leur dimension.
 
-> Détermienr une base des sous-espaces vectoriels suivants. En déduire leur dimension.
+## Question 1
+
 > $F = \{(x,y,z) \in \R^3 |x = 2z\}$
 
 Soit $(x,y,z)\in\R^3$. Alors 
@@ -297,6 +321,7 @@ $\newcommand{\card}{\text{card}}$
 $\mathcal{F}$ est donc une base de $F$.
 - et $\dim(F)=\card(\mathcal{F}) = 2$
 
+## Question 2
 
 > $F = \{(x,y,z) \in \R^3 | 2x+3y = 0 \text{ et } x+2y-z=0\}$
 
@@ -313,6 +338,8 @@ $\mathcal{F}$ est **génératrice** de $F$. De plus, il s'agit d'une famille **l
 Finalement, $\mathcal{F}$ est une base de $F$ et 
 - $\dim(F) = \card(\mathcal{F})$
 
+## Question 3
+
 > $F = \{(x,y,z,t) \in \R^4 | x+y+z+t = 0 \text{ et } x+z = 0\}$
 
 Soit $(x,y,z,t)\in\R^4$ alors $(x,y,z,t)\in F \iff \cases{x+y+z+t = 0 \\ x+z = 0 \\ }$ 
@@ -328,6 +355,8 @@ De plus, $\mathcal{F}$ est libre. En effet, soit $a,b \in \R$ tels que $a(0,1,0,
 
 C'est-à-dire $\cases{-b = 0 \\ a = 0 \\ -a+b = 0 \\ -a = 0} \iff$ soit $a=b=0$
 CCL: $\mathcal{F}$ est une base de $F$. 
+
+## Question 4
 
 > $F = \{P \in \R_4[X] | P(2) = 0\}$
 
@@ -349,7 +378,7 @@ De plus, c'est une famille libre car il s'agit d'une famille de polynômes non n
 Donc, $\mathcal{F}$ est une base de $F$ avec: 
 - $\dim(\mathcal{F}) = \card(F) = 4$
 
-
+## Question 5
 
 > $F = \{P\in\R_4[X] | P(-X) = P(X)\}$
 
@@ -367,6 +396,9 @@ D'où $P \in \Vect(\{X^4, X^2, 1\})$
 On a donc, par définition $\mathcal{F}$ génératrice de $F$. Par ailleurs, il s'agit d'une famille libre. 
 Car ce sont des polynômes sont nuls étagés en degrés. 
 C'est donc une base de $F$ et $\dim(F) = \card(\mathcal{F}) = 3$ **...cardinal de la base
+
+## Question 6
+
 > $F = \{P \in \R_3[X] | \int_{-1}^{1}P(x) dx = 0\}$
 
 Soit $P = aX^3+bX^2+cX+d \in \R_3[X]$ alors:
@@ -379,7 +411,7 @@ $\phantom{P \in F} \iff \exists \alpha \in \R, \exists \beta \in \R, \exists \ga
 D'où $F = \Vect(\{X^3, X^2-\frac{1}{3}, X\})$
 Donc $\mathcal{F}$ est génératrice de $F$. De plus il s'agit d'une famille libre car c'et une famille de polynôme non nuls étagés.
 
-## Exercice 10
+# Exercice 10
 
 > On admet que les vecteurs $(0,0,1), (1,-1, 0)$ et $(2,0,-1)$ forment une base de l'espace vectoriel $\R^3$. Déterminer les coordonnées des vecteurs $(1,1,1)$ et $(1,0,0)$ dans cette base.
 
@@ -411,7 +443,7 @@ $(1,0,0) = \frac{1}{2}(0,0,1)+0(1,-1, 0)+\frac{1}{2}(2,0,-1)$
 
 Le vecteur des composantes de $(1,0,0)$ dans la base $\mathcal{F}$ est $(\frac{1}{2}, 0, \frac{1}{2})$. 
 
-## Exercice 11
+# Exercice 11
 
 > On admet que les polynômes $X-1$ et $(X-1)^2$ forment une base dans l'espace vectoriel $\R_2[X]$. Déterminer les coordonnées des polynômes $X^2$ et $2X^2+X+1$ dans cette base.
 
@@ -435,7 +467,7 @@ En particulier,
 - $X^2 = 1\cdot(1)+2\cdot(X-1)+1((X-1)^2)$ donc les composantes du vecteur $X^2$ dans la base $\{1,X-1, (X-1)^2\}$ sont $(1,2,1)$.
 et
 - $2X^2+X+1 = 4\cdot(1)+5\cdot(X-1)+2((X-1)^2)$
-## Exercice 9
+# Exercice 9
 
 > On se place dans $\R^\mathbb{N}$, l'espace vectoriel des suites réelles. Déterminer une base du sous-espace vectoriel des suites arithmétiques. En déduire sa dimension.
 

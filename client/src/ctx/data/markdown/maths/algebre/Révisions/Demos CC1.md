@@ -1,5 +1,5 @@
 $\newcommand{\R}{\mathbb{R}}\newcommand{\sub}{\subset}$
-# Démo Alg-lin
+# Intersection S.E.V est S.E.V 
 
 > L'intersection de deux sous-espaces vectirels est un sous-espace vectoriel
 
@@ -17,7 +17,7 @@ D'où,
 
 Finalement, $F \cap G$ est bien un sous-espace vectoriel.
 
----
+# Somme S.E.V est S.E.V
 
 > La somme de deux sous-espaces vectoriels est un sous-espace vectoriel.
 
@@ -37,7 +37,7 @@ Ainsi, $\lambda u + v \in F +G$
 
 Donc $F+G$ est un sous-espace vectoriel.
 
----
+# Vect est S.E.V
 
 > Le sous-espace vectoriel engendré par une famille finie de vecteurs est un sous-espace vectoriel
 
@@ -55,7 +55,7 @@ Soit $\lambda \in \mathbb{K}$. Soit $u,v \in \text{Vect}(v_1, ..., v_n)$
 
 Ainsi, $\lambda u + v \in \text{Vect}(v_1, ..., v_n)$
 
----
+# ⊕ ssi décomp. unique
 
 > Deux sous-espaces sont supplémentaires ssi tout vecteur se décompose de manière unique sur ces sous-espaces
 
@@ -65,7 +65,7 @@ Supposons que tout vecteur de$E$ se décompose comme la somme d'un vecteur de $F
     - $\newcommand{\ud}[2]{\underset{#2}{\underbrace{#1}}} \ud{0}{\in F}+\ud{v}{\in G} = \ud{v}{\in F} + \ud{0}{\in G}$ 
 - Par unicité de cette décomposition sur $F$ et $G$, on obtient $v = 0$. D'où $F \cap G = \{0\}$
 
----
+# Décomp. unique sur base
 
 > Tout vecteur se décompose de manière unique sur une base
 
@@ -84,7 +84,7 @@ Soit $v \in E$
     - $\lambda_1=\mu_1, ..., \lambda_n = \mu_n$
 - Les deux décompositions sont ainsi identiques.
 
----
+# Cardinal n donc base
 
 > Dans un espace de dimension $n$, si une famille est libre de cardinal $n$ alors c'est une base de $E$.
 
@@ -93,12 +93,11 @@ Soit $\mathcal{F}$ une famille libre de cardinal $n$ non réduite à $\{0\}$
 D'après le théorème de la base incomplète,
 - Il existe une base $B$ de $E$ telle que:
     - $\mathcal{F} \sub B$
-- De plus, $card(B) = n$
-- Or, $\dim(\mathcal{F}) = n$
+- De plus, $\card(B) = n$
+	- Or, $\dim(\mathcal{F}) = n$
+Donc $\card(B) = \dim(\mathcal{F}) = n$ (n'a pas besoin d'être complétée), ainsi $\mathcal{F}=B$
 
-Donc $card(B) = \dim(\mathcal{F}) = n$ (n'a pas besoin d'être complétée), ainsi $\mathcal{F}=B$
-
----
+# Gén + Dim = Base
 
 > Dans un espace de dimension $n$, si une famille est génératrice et de cardinal $n$, alors c'est une base de $E$.
 
@@ -106,7 +105,7 @@ On a $\mathcal{F}$ est génératrice et $card(\mathcal{F}) = n$
 
 D'après le théorème de la base extraite:
 - Il existe une base $B$ telle que $B \sub \mathcal{F}$
-- Or, $\dim(B) = n = card(\mathcal{F})$
+- Or, $\dim(B) = n = \card(\mathcal{F})$
 
 Donc $\mathcal{F} = B$, d'où $\mathcal{F}$ est une base.
 
@@ -152,7 +151,7 @@ Et, on sait que
 
 Donc $E = F+G$
 
----
+# Dim + additivité = supplémentaires
 
 > Si $F+G = E$ et $\dim(F)+\dim(G) = \dim(E)$ alors $F$ et $G$ sont supplémentaires dans $E$
 
@@ -176,9 +175,9 @@ Mq $E = F \oplus G$
 
 Donc $E = F \oplus G$
 
----
+# Tout espace admet supplémentaire
 
-> Dans un espace de dimnsion finie, tout sous-espace admet un supplémentaire.
+> Dans un espace de dimension finie, tout sous-espace admet un supplémentaire.
 
 
 D'une part,
