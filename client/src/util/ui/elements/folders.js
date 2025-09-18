@@ -99,7 +99,7 @@ const FoldersChild = ({title, titleId, stack, listActive, color = undefined}) =>
 
 const Accordion = ({title, titleId, children, openDefault, listActive, color}) => {
 
-    console.log(title, titleId, color)
+
     const [open, setOpen] = useState((
         manifestData['/' + titleId]?.length && (
             !manifestData['/' + titleId][1].closed && ( openDefault ||

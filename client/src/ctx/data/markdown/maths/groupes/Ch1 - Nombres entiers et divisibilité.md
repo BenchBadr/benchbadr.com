@@ -1,9 +1,9 @@
 ---
 lang: fr
 date: 18/09/2025
-desc: Les groupes symétriques et alternés, leurs propriétés, et la notion de signature des permutations.
+desc: Principe de récurrence, ensembles entiers, division euclidienne
 ---
-$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\align}[1]{\begin{aligned}#1\end{aligned}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}$
+$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\align}[1]{\begin{aligned}#1\end{aligned}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}\newcommand{\Z}{\mathbb{Z}}\newcommand{\sub}{\subset}$
 > [!info]
 > Cours présenté par **M. Martinez**
 
@@ -118,5 +118,118 @@ Pour tout $(a,b)\in\Z \times \Z^*$
 
 ### 1.1 Démonstration
 
+### 1.1.1 Existence
+
 **1er cas**  - $(a,b)\in\N \times \N^*$
-- Soit $E = \{k \in \N\}$
+- Soit $E = \{k \in \N| kb > a\}$
+	- $a+1 \in E$ (car $b > 1$) donc $E ≠ \varnothing$
+	- $E \sub \N$ non-vide $E$ admet un plus petit élément noté $q^*$
+	- Posons $q = q^* -1$ et $r = a-b(q^* - 1)$
+	- On a $a = bq + r$
+- Montrons que $0 ≤ r < b$
+	- Par l'absurde, supposons que $r ≥ b$. On aurait,
+		- $(q^*-1)b a-r$ et on aurait $q^* b = a+\ub{b - r}{< 0} ≤ a$ 
+		- et $q*b ≤ 0$ **impossible** car $q*\in E$.
+
+**2ème cas** - $b > 0$ et $a < 0$
+- Si $a < 0$ et $b > 0$.
+	- On applique le résultat précédent à $-a$. 
+	- En effectuant la D-E de $(-a)$ par $b$,
+		- Il existe un couple $(q', r') \in \Z \times \{0, ..., b-1\}$  tel que $-a = bq'+r'$
+	- Si $r' = 0$ on pose $q = -q'$ et $r=r'=0$.
+		- Le couple $(q,r)$ a les propriétés requises $(a=bq+r$ avec$r=0 \in \{0, ..., b-1\})$
+	- Si $r' > 0$,
+		- On a $a=b(-q')-r'$ (car $-a=bq'+r'$)
+		- Posons $q=-q'-1$ et $r = b-r'$
+		- On a bien $a = b(-q')-r' = b(-q'-1)+(b-r')$ et $r \in \{0, ..., b-1\}$
+	- $0 ≤ r' ≤ b-1$
+	- $b ≥ b-r' ≥ 1$
+- Le couple $(q,r)$ a donc les propriétés requises.
+
+**3ème cas**  - $b < 0$ et $a \in \Z$ quelconque.
+- On applique la D-E précédente au couple $(a,-b)$
+- Il existe $(q', r')$ tel que $a = -bq'+r' = b(-q')+r'$
+- où $0 ≤ r' < -b = |b|$
+
+### 1.1.2 Unicité
+
+Supposons que 
+- $a=bq+r$
+- $a=bq'+r'$ 
+- avec $0 ≤ r < |b|$
+- et $0 ≤ r' < |b'|$
+- d'où,
+	- $r'-r = b(q-q')$
+- et $|r' - r| = |b||q-q'|$
+- D'où $|r' - r| ≤ \left| |r'| - |r|\right|$
+- et,
+	- $|r'-r| < |b|$
+	- car,
+		- $0 ≤ |r'| < b$
+		- $0 ≤ |r| < |b|$
+- $|b| > |b||q-q'|$
+- Ce qui n'est possible que si $|q-q'| = 0$
+	- Le seul multiple positif de $|b|$ inférieur strictement à $|b|$ est $0$.
+- et $a-bq = r = a - bq' = r'$ d'où $r = r'$.
+
+**Conclusion**
+Unicité de la D-E. 
+
+
+## 2. Divisibilité
+
+### 2.1 Définition
+
+Soit $a,b \in \Z, a ≠0$ 
+- On dit que $a$ **divise** $b$ et on écrit $a|b$ s'il existe $k \in \Z$ tel que:
+	- $b = k \cdot a$
+
+**Terminologie**
+- On dira que $a$ est un diviseur de $b$
+- Et $b$ est divisible par $a$
+- $b$ est multiple de $a$
+
+On notera:
+- $a\Z = \{ka | k \in \Z\}$ l'ensemble des multiples de $a$.
+
+**Conséquence**
+- $a|b$ si $b \in a\Z$
+
+### 2.2 Propriétés
+
+#### 2.2.1. Règles de calcul
+
+Soit $(a,b,c,d) \in \Z^4$.
+- $a ≠ 0$
+On a:
+1. $a|a, a|(-a), 1|a, a|0$
+2. Si $a|b$ alors $-a|b, a|bc$ et $ac|bc$
+3. Si $b ≠. 0$ et $a|b$ alors $|a| ≤ |b|$ donc chaque entier admet un nombre fini de diviseurs. 
+4. Si $a|b$ et $b|a$ alors $(a=b$ ou $a=-b)$.
+	- En particulier, $a|1$ si $a=±1$
+5. **Transitivité** : $a|b$ et $b|c$ alors $a|c$
+6. **avec l'addition** : si $a|b$ et $a|c$ alors $\forall (\lambda, \mu)\in\Z^2$,
+	- $a|(\lambda b + \mu c)$ (combinaison linéaire)
+7. **avec la multiplication**
+	- Si $a|b$ et $c|d$ alors $ac|bd$
+		- En particulier, si $a|b$ alors $\forall n \in \N, a^n | b^n$
+##### 2.2.1 1 Preuves
+
+1. $a=a \times 1 = (-a) \times (-1)$
+	- $a|0$ car $0 = a \times 0$
+2. SI $a|b$ il existe $q \in \Z$ tq $b=qa$
+	- D'où $b=(-q)(-a)$ d'où $-a|b$
+	- et, $bc = (qc)a$ d'où $a|bc$
+	- et, $bc = q(ac)$ d'où $ac|bc$
+3. Soit $q \in \Z$ tq $b = aq$ on a alors:
+	- $|b| = |a| |q|$ comme $|b| ≠ 0$ on a $|q| ≥ 1$
+	- et donc $|a| ≤ |b|$ $(|b| ≥ |a| \times 1)$
+
+#### 2.2.2.
+
+La relation binaire « divise » est une relation d'ordre partielle sur $\N$ car:
+- $\forall a \in \N, a|a$ (symétrie)
+- anti-symétrie, par $\fbox4$ (section précédente)
+- transitivité, $\fbox5$
+
+Le diagramme de Hasse implique que tout doit être "connecté". 

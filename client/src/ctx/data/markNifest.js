@@ -21,7 +21,8 @@ export const manifestData = {
             "/suites",
             "/algebre",
             "/integrales",
-            "/algebre II"
+            "/algebre II",
+            "/groupes"
         ],
         {
             "icon": null,
@@ -111,5 +112,15 @@ export const manifestData = {
             "child":true,
             "title":'Base de données'
         }
-    ]
+    ],
+    "/groupes":[
+        [
+            "Ch1 - Nombres entiers et divisibilité"
+        ],
+        {
+            "icon":null,
+            "child":true,
+            "title":'Groupes et arithmétique'
+        }
+    ],
 }

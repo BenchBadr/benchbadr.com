@@ -128,7 +128,7 @@ export const PathPreview = ({path, isFile = false, icon = null}) => {
 
 export const ImageCard = ({src, title, unfit, header = false}) => {
 
-    console.log(title)
+
     const seed = title.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
 
     function pastelBlob(seed) {

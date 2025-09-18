@@ -14,8 +14,8 @@
 
 ## 2. Quickfixes
 
-- [ ] Titling / Meta-data
-- [ ] Sitemap generation
+
+- [ ] Consent mode banner
 - [ ] Icon size sidebaright (scale to dimensions)
 
 ## 3. Distant

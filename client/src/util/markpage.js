@@ -8,6 +8,7 @@ import { sidebarItems } from "../ctx/SidebarContext";
 import { SearchBar } from "./components/spotlight";
 import Drawing from "./components/Drawing";
 import { useLocation } from 'react-router-dom';
+import removeMd from "remove-markdown";
 
 
 export const fetchMd = async ({path}) => {
@@ -98,7 +99,7 @@ const Markpage = ({defaultPath = null}) => {
                 setIntro(getIntro(text));
                 setContent(text);
 
-                console.log(isPathValid(pathPieces), pathPieces, sharing)
+
 
                 if (!isPathValid(pathPieces) && !sharing) {
                     setContent(-1)
@@ -130,6 +131,92 @@ const Markpage = ({defaultPath = null}) => {
 
         loadMarkdown();
     }, [path]);
+
+
+    useEffect(() => {
+
+        const updateMetadata = () => {
+            const title = intro?.title || path.split('/').pop();
+            const description = intro?.desc || (intro?.textContent ? removeMd(intro.textContent) : path);
+            const date = intro?.date ? intro.date.split('/').reverse().join('-') : undefined;
+            const url = window.location.href;
+            const banner = intro?.banner || '';
+
+            // Remove existing meta tags to avoid duplicates
+            const removeMeta = (name, attr = 'name') => {
+            const el = document.querySelector(`meta[${attr}="${name}"]`);
+            if (el) el.remove();
+            };
+
+            // Helper to add meta tags
+            const addMeta = (name, content, attr = 'name') => {
+            if (!content) return;
+            const meta = document.createElement('meta');
+            meta.setAttribute(attr, name);
+            meta.setAttribute('content', content);
+            document.head.appendChild(meta);
+            };
+
+            // Remove old tags
+            removeMeta('description');
+            removeMeta('title');
+            removeMeta('date');
+            removeMeta('og:title', 'property');
+            removeMeta('og:description', 'property');
+            removeMeta('og:type', 'property');
+            removeMeta('og:url', 'property');
+            removeMeta('og:image', 'property');
+            removeMeta('twitter:card', 'name');
+            removeMeta('twitter:title', 'name');
+            removeMeta('twitter:description', 'name');
+            removeMeta('twitter:image', 'name');
+            removeMeta('canonical', 'rel');
+
+            // Set document title
+            document.title = title;
+
+            // Add canonical link
+            let canonical = document.querySelector('link[rel="canonical"]');
+            if (!canonical) {
+                canonical = document.createElement('link');
+                canonical.setAttribute('rel', 'canonical');
+                document.head.appendChild(canonical);
+            }
+            canonical.setAttribute('href', url);
+
+            // Standard meta
+            addMeta('description', description);
+            addMeta('title', title);
+            addMeta('date', date);
+
+            // Open Graph
+            addMeta('og:title', title, 'property');
+            addMeta('og:description', description, 'property');
+            addMeta('og:type', 'article', 'property');
+            addMeta('og:url', url, 'property');
+            addMeta('og:image', banner, 'property');
+
+            // Twitter
+            addMeta('twitter:card', 'summary_large_image');
+            addMeta('twitter:title', title);
+            addMeta('twitter:description', description);
+            addMeta('twitter:image', banner);
+
+            // For debugging
+            console.log({
+            title,
+            description,
+            date,
+            url,
+            banner
+            });
+        };
+
+
+        if (intro) {
+            updateMetadata();
+        }
+    }, [intro]);
 
 
     if (content === -1) {
@@ -219,7 +306,7 @@ const BlogSpace = ({path = ["blog"], light = false}) => {
 
     }, [])
 
-    console.log(path)
+
 
     return (
         <>
