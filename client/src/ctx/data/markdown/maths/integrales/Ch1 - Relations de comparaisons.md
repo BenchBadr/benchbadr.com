@@ -4,7 +4,7 @@ desc: Cours introductif aux relations de comparaison.
 date: 10/09/2025
 ---
 > [!info]
-> Cours présenté par **M. Bonzom**
+> Cours présenté par **M. Ribaud**
 
 
 $\newcommand{\sub}{\subset}\newcommand{\R}{\mathbb{R}}\newcommand{\ov}[2]{\overset{#2}{\overbrace{#1}}}\newcommand{\lim}[1]{\underset{#1}{\text{lim}}}\newcommand{\N}{\mathbb{N}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\eq}[1]{\underset{#1}{\sim}}\newcommand{\eps}{\varepsilon}\newcommand{\td}[1]{\underset{#1}{\to}}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}$
@@ -322,3 +322,171 @@ Pour simplifier, on suppose que les suites sont non nulles à partir d'un certai
 - $\rcases{u_n = n^2 + 1\\ v_n = n^2}$ alors $u_n \sim v_n$
 	- Mais $\frac{e^{u_n}}{e^{v_n}} = \frac{e^{n^2+1}}{e^{n^2}} = e \cancel \to 1$
 - Donc $e^{u_n} \cancel \sim e^{v_n}$ 
+
+## 3.3 Proposition
+
+Soient $\{u_n\}_{n≥0}, \{v_n\}_{n≥0}$ et $\{w_n\}_{n≥0}$
+1. Si $u_n = o(v_n)$ et si $v_n = o(w_n)$ alors $u_n = o(w_n)$
+	- De même pour $O$.
+2. Compatibilité avec la linéarité
+	- Si $u_n = o(w_n)$ et $v_n = o(w_n)$
+	- Alors $\lambda u_n + \beta v_n = o(w_n)$
+	- Idem pour $O$.
+3. Stabilité par produit par une suite
+	- Si $u_n = o(v_n) \Rightarrow u_nw_n = o(v_nw_n)$ 
+	- De même pour $O$
+4. Stabilité par produit des $o$. 
+	- Si $u_n = o(v_n)$ et $w_n = o(h_n)$
+	- Alors $u_n \times w_n = o(v_n \times h_n)$
+	- De même pour $O$.
+
+### 3.3.1 Preuve
+
+*Laissée au lecteur*
+
+
+# III - Comparaison de fonctions
+
+On étend les notions de $\sim, o$ et de $O$ aux fonctions de $\mathcal{F}(I, \R)$
+
+## 1. Définition
+
+Soit $I$ un ensemble, $x_0 \in \R$ on appelle voisinage de de $x_0$ dans $I$, 
+- tout ensemble $J$ de la forme $J = I \cap ]x_0-\eps, x_0 + \eps[, \eps > 0$
+
+### 1.1 Exemples
+
+> [!tips]
+> Un voisinage est forcément inclu dans l'ensemble de départ 
+
+Si $I = [1;2[$
+- Si $x_0 = \frac32$
+- Un voisinage de $x_0$ est par exemple:
+	- $J = ]-\frac32-\frac18, \frac32+\frac18[= ]\frac{11}8;\frac{13}8[$
+
+Si $x_0 = 1$, alors un voisinage de $x_0 = 1$ est l'ensemble:
+- $J = [1;2[ \cap ]\frac12;\frac32[=[1,\frac32[$
+- Si $x_0=2$
+	- Alors, un voisinage de $x_0 = 2$ est l'ensemble $J=[1;2[\cap ]\frac32;\frac52[=]\frac32;2[$
+
+### 1.2 Remarque
+
+1. Si $x_0 = +\infty$
+	- On appelle voisinage de $+\infty$ tout intervalle de la forme $]A; +\infty[$
+2. Si $x_0 = -\infty$
+	- On appelle voisinage de $-\infty$ tout intervalle de la forme $]-\infty;A[$
+
+
+## 2. Définition 1
+
+Soit $f:I \to \R$, soit $x_0 \in I$ ou une "extrémité" de $I$.
+- On dira que $f$ est équivalente à $g$ au point $x_0$ 
+- Et on notera $f(x)\eq{x\to x_0} g(x)$ 
+
+> [!info]
+> Il faudra spécifier avec les fonctions dans quelle mesure c'est équivalent (là où pour les suites c'était forcément $n \to +\infty$).
+
+Si il existe $J$ un voisinnage de $x_0$ dans $I$ et $\eps:J \to \R$ tels que $\lim{x\to x_0}\eps(x) = 1$
+- $\forall x \in J, f(x) = \eps(x) g(x)$
+
+> [!check]
+> Même définition qu pour les suites à peu de choses près.
+
+## 3. Proposition 1
+
+On suppose que $g$ ne s'annule pas sur un voisinage de $x_0$. 
+- Pour les suites on supposait $v_n$ non nulle à partir d'un certain rang
+Alors, $f(x) \eq{x \to x_0}g(x) \iff \lim{x \to x_0}\frac{f(x)}{g(x)} = 1$
+
+### 3.1 Preuve
+
+*Idem que pour les suites*
+
+
+### 3.2 Exemple
+
+. $I = \R, x_0 = +\infty, f(x)=x^2, g(x)=x^2+x+1$
+
+$x^2=\frac{x^2}{x^2+x+1} \cdot (x^2+x+1) = \eps(x) \cdot g(x)$ avec $\eps(x) = \frac{x^2}{x^2+x+1}$
+
+Comme $\lim{x\to+\infty}\frac{x^2}{x^2+x+1}=+\infty,$
+- $\Rightarrow \exists A / \forall x \in ]A;+\infty[, x^2+x+1≥1$
+- et $\lim{x\to +\infty}\eps(x) = 1$
+On pose donc $J = ]A;+\infty[$ qui est un voisinage de $+\infty$.
+$\square$
+## 4. Définition 2
+
+Soit $f:I \to \R,$ soit $x_0 \in I$ où une extrémité  de $I$.
+- On dira que $f$ est négligeable devant $g$ en $x_0$.
+- Et on notera $f(x)=\ub{o}{x\to x_0}(g(x))$, 
+	- si il existe $J$ un voisinage de $x_0$ et $\eps:J \to \R/\lim{x \to x_0}\eps(x)=0$
+	- On veut que $f(x) = \eps(x)g(x)$
+
+## 5. Proposition 2
+
+Si $g$ ne s'annule pas sur $J$ un voisinage de $x_0$ alors,
+- $f(x) = \underset{x\to x_0}{o}(g(x)) \iff \lim{x\to x_0}\frac{f(x)}{g(x)} = 0$
+### 5.1 Preuve
+
+*Idem que pour les suites*
+
+### 5.2 Exemple
+
+On a:
+- $x^2 = \ub{o}{x\\to 0}(x)$ et $x = \ub{o}{x\to 0}$ 
+
+> [!warn]
+> Il faut toujours préciser le $x_0$ où on travaille!
+
+On a $x^2 = \ub{o}{x^2 \to 0}$ car $\lim{x\to 0}\frac{x^2}x=0$
+
+On a:
+- $x = \ub{o}{x\to +\infty}(x^2)$ car $\lim{x \to +\infty}\frac{x}{x^2} = \lim{x\to +\infty}\frac1x = 0$
+
+## 6. Définition 3
+
+Soit $f:I \to \R, x_0 \in I$ ou une extrémité de $I$. On dira que $f$ est dominée par $g$ au voisinage de $x_0$. On notera:
+- $f(x) = \ub{O}{x\to x_0}$ s\il existe $J$ un voisinage de $x_0$ dans $I$ et $\eps: J \to \R / f(x) = \eps(x) g(x)$ avec $\eps(x)$ bornée sur $J$.
+
+## 7. Proposition 3
+
+On suppose que $g$ ne s'annule pas sur $J$ en voisinage de $x_0$, alors:
+- $f(x) = \ub{O}{x\to x_0}(g(x)) \iff \frac{f(x)}{g(x)}$ est bornée sur $J$.
+### 7.1 Exemples
+
+1. On regarde $f(x) = e^x - 1, x_0 = 0$
+	- On considère $g(x)=x$ alors $\lim{x\to 0}\frac{e^x - 1}x = \lim{x \to 0}\frac{e^x - e^0}{x-0} = \left(e^x\right)'(0)$
+	- Donc $e^x - 1 \eq{x\to 0} x$
+2. On a $\sin(x) = \ub{O}{\to +\infty}(1)$
+	- En effet, la fonction $\eps(x)=\frac{\sin(x)}1=\sin(x)$ est bornée au voisinage de $+\infty$.
+
+## 2. Règles de calculs
+
+Toutes les règles valables pour les suites le sont pour les fonctions 
+- Le « cas particulier » de $x_0 = 0$
+	- Si on travaille en $x_0 = 0$, au lieu d'utiliser les notations 
+		- $f(x) \eq{x\to 0}g(x)$
+		- $f(x) = \ub{O}{x\to 0}(g(x))$
+	- On utilisera $f(x) \sim g(x), f(x) = o(g(x))$ et $f(x) = O(g(x))$
+
+## 3. Proposition (Règles de calculs en 0)
+
+1. Si $m> n$ alors $x^m= o(x^n)$
+2. Si $m ≥ n$ alors $o(x^n) + o(x^m) = o(x^n)$
+3. Si $\lambda \in \R^*$, $\lambda o(x^n) = o(x^n)$
+4. $x^mo(x^n)= o(x^{n+m})$
+	- $o(x^m)o(x^n)=o(x^{m+n})$
+
+### 3.1 Preuve
+
+1/ $\lim{x \to 0} \frac{x^m}{x^n}=\lim{x\to 0}x^{\ov{m-n}{>0}}=0\Rightarrow x^m = o(x^n)$ 
+3/ On pose $f(x)=o(x^n) \Rightarrow \lim{x\to 0}\frac{f(x)}{x^n}=0$
+- Et donc $\lambda(\lim{x \to 0}\frac{f(x)}{x^n}) \Rightarrow \lim{x\to 0}\frac{\lambda f(x)}{x^n}=0 \Rightarrow \lambda f(x) = o(x^n)$ $\square$
+4/ On pose $f(x) = o(x^n) \Rightarrow x^m f(x) = x^m o(x^n) \Rightarrow \frac{x^mf(x)}{x^{m+n}} = \frac{o(x^n)x^m}{x^{m+n}}=\frac{o(x^n)}{x^m}$ 
+- Donc $\lim{x\to 0}\left(\frac{x^mf(x)}{x^{m+n}}\right) = \lim{x\to 0}\left(\frac{o(x^n)}{x^n}\right) = 0$ 
+- Donc $x^mf(x) = o(x^{m+n})$
+- $o(x^m)=f(x), o(x^n)=g(x)$
+- $\Rightarrow \lim{x\to 0}\frac{f(x)}{x^m}=0$ et $\lim{x\to 0}\frac{g(x)}{x^n}=0$
+- $\Rightarrow \lim{x\to 0}\frac{f(x)g(x)}{x^{n+m}}=0$
+- $\Rightarrow f(x)g(x) = o(x^{n+m})$ soit $o(x^m)o(x^n)=o(x^{n+m})$
+

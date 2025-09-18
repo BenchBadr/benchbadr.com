@@ -4,44 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "411cdcdfdda18220",
+        "id": "ccf10a7a37dfbf71",
         "type": "tabs",
         "children": [
           {
-            "id": "b4960f9e7b1f58d2",
+            "id": "fecac55383e9f9f7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "maths/algebre II/Ch1 - Déterminant.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Ch1 - Déterminant"
-            }
-          },
-          {
-            "id": "81613ea002d916f8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "maths/integrales/Ch1 - Relations de comparaisons.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Ch1 - Relations de comparaisons"
-            }
-          },
-          {
-            "id": "17b50542789ce5f9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "maths/suites/_index.md",
+                "file": "maths/groupes/_index.md",
                 "mode": "source",
                 "source": false
               },
@@ -50,20 +22,35 @@
             }
           },
           {
-            "id": "f15f48ac45abe188",
+            "id": "473f6f28c29396b5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "sharing/TODO LIST.md",
+                "file": "sharing/Todo lists.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TODO LIST"
+              "title": "Todo lists"
+            }
+          },
+          {
+            "id": "d3d5cd64b2e791ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "blog/AI, empowering or parasiting.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AI, empowering or parasiting"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -170,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "maths/algebre II/Ch1 - Déterminant.md",
+                "file": "maths/groupes/Ch1 - Nombres entiers et divisibilité.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Ch1 - Déterminant"
+              "title": "Outline of Ch1 - Nombres entiers et divisibilité"
             }
           },
           {
@@ -211,46 +198,100 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b4960f9e7b1f58d2",
+  "floating": {
+    "id": "fdbd11003add4a45",
+    "type": "floating",
+    "children": [
+      {
+        "id": "e3ae2600affcb600",
+        "type": "window",
+        "children": [
+          {
+            "id": "a88a741c4f1ad420",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "bf17bcc636400c6b",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "maths/groupes/Ch1 - Nombres entiers et divisibilité.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "Ch1 - Nombres entiers et divisibilité"
+                }
+              },
+              {
+                "id": "a19cc258efd06738",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "maths/additions/logique assistée/Chapitre 1.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "Chapitre 1"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 559,
+        "y": 39,
+        "width": 1114,
+        "height": 927,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "bf17bcc636400c6b",
   "lastOpenFiles": [
-    "maths/integrales/_index.md",
-    "Test.md",
-    "maths/algebre II/_index.md",
-    "sharing/TODO LIST.md",
-    "maths/suites/_index.md",
-    "maths/algebre/_index.md",
+    "maths/additions/logique assistée/Chapitre 1.md",
+    "maths/groupes/Ch1 - Nombres entiers et divisibilité.md",
+    "sharing/Todo lists.md",
+    "blog/AI, empowering or parasiting.md",
+    "blog/1 an de ChatGPT.md",
     "maths/algebre II/Ch1 - Déterminant.md",
-    "maths/integrales/Ch1 - Relations de comparaisons.md",
-    "maths/algebre/Ch5 - Matrices d'applications linéaires.md",
-    "maths/algebre II",
-    "maths/algebre/td/TD 7.md",
-    "maths/algebre/Corrections/EV 3.md",
-    "maths/algebre/td/TD 6.md",
-    "maths/suites/td/TD 6.md",
-    "maths/algebre/Ch4 - Calcul matriciel.md",
-    "maths/suites/td/TD 5.md",
-    "maths/algebre/Ch2 - EV dim finie.md",
-    "sharing/Compilation.md",
-    "maths/algebre/Corrections/EV 2.md",
-    "informatique/langage C/_index.md",
-    "maths/algebre/td/TD 4.md",
-    "maths/algebre/Corrections/EV 1.md",
-    "maths/algebre/td/TD 3.md",
-    "maths/algebre/Corrections/CC1.6.md",
+    "maths/groupes/_index.md",
+    "informatique/bdd/Ch1 - Modélisation.md",
+    "maths/groupes",
     "informatique/langage C/Ch1 - Syntaxe de base.md",
-    "maths/algebre/td/TD 8.md",
-    "maths/algebre/td/TD 5.md",
-    "informatique/langage C",
-    "informatique/l1-misc",
+    "maths/integrales/Ch2 - Développements limités.md",
+    "maths/integrales/td/TD 1.md",
+    "maths/integrales/Ch1 - Relations de comparaisons.md",
+    "sharing/Récurrence chiante.md",
+    "maths/suites/Ch5 - Formule de Taylor et développement limité.md",
+    "maths/suites/Ch3 - Limites de fonctions et continuité.md",
+    "maths/_maths-sup/Ch18 - Structures algébriques usuelles.md",
+    "maths/algebre/Corrections/EV 3.md",
+    "sharing/Compilation.md",
+    "blog/Sommaire déroulant.md",
+    "informatique/langage C/td/TD 1.md",
+    "informatique/langage C/td",
+    "divers/anglais/TD 1.md",
+    "divers/anglais/_index.md",
+    "cv_en.md",
+    "divers/anglais",
+    "divers/phys/Planning.md",
+    "divers/civilisations/3. Empire Byzantin.md",
+    "divers/civilisations/2. Rome Antique.md",
+    "divers/civilisations",
+    "divers/phys/divers/chimie",
+    "divers/phys/divers/Mécanique",
+    "divers/phys/Mécanique/TD",
+    "divers/phys/divers",
+    "divers/phys/Mécanique",
+    "divers/phys",
     "Pasted image 20250911110449.png",
-    "maths/integrales/td",
-    "maths/integrales",
     "Pasted image 20250903160559.png",
-    "sharing",
-    "maths/additions",
     "Pasted image 20250901140618.png",
-    "assets.zip",
-    "netherlands.pdf",
     "assets/c.jpg",
     "assets/be.jpg",
     "assets/a.jpg",
@@ -258,7 +299,6 @@
     "assets/stay.jpg",
     "assets/heine.jpg",
     "assets/161969726.jpg",
-    "assets/leonardo-103786036-mgv_0752_O-695658.jpg_width_1366_height_768_crop_true",
     "Untitled.canvas",
     "Untitled 1.canvas"
   ]

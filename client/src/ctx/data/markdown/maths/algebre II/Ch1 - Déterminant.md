@@ -4,7 +4,9 @@ date: 12/09/2025
 desc: Les groupes symétriques et alternés, leurs propriétés, et la notion de signature des permutations.
 ---
 
-$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}$
+$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\align}[1]{\begin{aligned}#1\end{aligned}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}$ 
+
+ 
 > [!info]
 > Cours présenté par **M. Déléaval**
 
@@ -191,10 +193,39 @@ L'application $\sigma: \cases{\{1, ..., n\} \to \{1, ..., n\} \\ i \mapsto n+1-i
 Une décomposition de produit de transpositions est:
 - $\sigma = \cases{(1, n) ... (p, p+1) \text{ si }n=2p \\ (1,n) ... (p-1, p+1) \text{ si }n=2p-1}$
 
+---
+*Brouillon*
+
+$\sigma(1)=n, \sigma(2)=n=1...$ 
+
+**Montrons qu'il s'agit d'une involution**
+$\sigma(i) \circ \sigma(i) = n+1 - (n+1 - i) = i$
+Il s'agit bien d'une involution.
+
+**Trouvons la décomposition**
+$\sigma = \m{1 & \cdots & n \\ n & ... & 1}$
+
+**Cas 1 - $n$ est pair**
+Notons $n \equiv 0[2] \iff \exists p \in \N / n = 2p$
+$(1,2p)(2,2p-1)...(2p,1)$
+Par symétrie des transpositions, on peut supprimer la redondance (il y a symétrie)
+- $(1,2p)(2,2p-1)...(p, p+1)$
+
+**Cas 2 - $n$ est impair**
+Notons $n \equiv 1[2] \iff \exists p \in \N / n = 2p+1$
+$(1,2p)(2,2p-1)...(2p+1,1)$
+Par symétrie des transpositions, on peut supprimer la redondance (il y a symétrie)
+- $(1,2p)(2,2p-1)...(p-1, p+1)$
+
+On retrouve:
+- $\sigma = \cases{(1, n) ... (p, p+1) \text{ si }n=2p \\ (1,n) ... (p-1, p+1) \text{ si }n=2p-1}$
+
+--- 
+
 
 ## 3. Signature
 
-### 3.1. Définition
+### 3.1. Définition - Inversion
 
 Soit $(i,j)$ deux éléments dans $\{1, ..., n\}$ et soit $\sigma \in S_n$. 
 On dit que le couple $(i,j)$ est une **inversion de $\sigma$**.
@@ -339,4 +370,253 @@ Soit $\tau \in S_n$ une permutation impaire.
 - Réciproquement, soit $\sigma$ une permutation impaire.
 		- Écrivons $\sigma=\ub{(\sigma\tau^{-1})}{\in A_n (*)}\tau$
 		- $(*)$ car $\eps(\sigma \tau^{-1})=\eps(\sigma)\eps(\tau)=1$
+
+# II - Applications $p$-linéaires
+
+Dans cette section, $p$ désigne un entier naturel non-nul et $F$ désigne un $\K$-espace vectoriel (pas forcément en dimension finie).
+
+## 1. Définition
+
+Une application $f:\ov{E\times ... \times E}{p \text{ fois}} \to F$  est dite **$p$-linéaire** si pour tout $(u_1, ..., u_p) \in E^p$  et tout $i \in \{1, ..., p\}$ l'application $\mi{E \to F \\ x \mapsto f(u_1, ..., u_{i-1}, x, u_{i+1}, ..., u_p)}$ est linéaire. 
+
+### 1.1 Terminologie
+
+Dans le cas où:
+- $p=2$
+	- on dira plutôt **bilinéaire**
+- $p=3$
+	- on dira plutôt **trilinéaire**
+Dans le cas où $F=\K$
+- On dira plutôt **forme $p$-linéaire**.
+
+### 1.2 Exemples
+
+1. Les applications $1$-linéaires sont les applications linéaires (vues en L1)
+2. L'application : $f:\align{\R^2 \times \R^2 \to \R \\ ((x_1, y_1), (x_2, y_2)) \mapsto x_1x_2 + y_1y_2}$ est une forme bilinéaire
+	- Pour montrer qu'il s'agit d'une forme bilinéaire,
+		- $\forall \lambda \in \R, \forall (x_1, y_1) \in \R^2, \forall (x_1', y_1')\in\R^2, \forall (x_2, y_2) \in \R^2$
+			- $f(\lambda(x_1, y_1)+(x_1', y_1'), (x_2, y_2)) = \lambda f((x_1, y_1), (x_2, y_2)) + f((x_1', y_1'), (x_2, y_2))$
+		- $\forall \lambda \in \R, \forall (x_1, y_1) \in \R^2, \forall (x_2, y_2) \in \R^2, \forall (x_2', y_2') \in \R^2$
+			- $f((x_1, y_1), \lambda(x_2, y_2)+(x_2', y_2')) = \lambda f((x_1, y_1), (x_2, y_2))+f((x_1, y_1), (x_2', y_2'))$
+	- **Exemple**
+		- L'application $f:\align{\mc{C}^0([0,1], \R) \times \mc{C}^0([0,1], \R) \to \R \\ (g,h) \mapsto \int^1_0 g(x)h(x) dx}$ est une forme bilinéaire
+
+## 2. Expression d'une application $p$-linéaire en dimension finie
+
+> [!info]
+> **Rappel** - $E$ désigne un $\K$-espace vectoriel de dimension finie non nulle notée $n$. 
+> Par définition, admet une base. Notons $(e_1, ..., e_n)$ une base de $E$.
+
+### 2.1 Proposition
+
+Soit $f:E^p \to F$ une application $p$-linéaire.
+- Soit $u_1, ..., u_p$ $p$ vecteurs de $E$ tels que:
+	- $\forall j \in \{1, ..., p\}, u_j=\sum^n_{i=1}a_{i,j}e_i$ (se décompose dans la base)
+- Alors, on a:
+	- $f(u_1, ..., u_p) = \underset{(i_1, ..., i_p)\in \{1, ..., n\}^p}\sum a_{i_1, 1}, ..., a_{i_p, p}f(e_{i_1}, ..., e_{i_p})$  
+
+> [!tips]
+> En d'autre terme, linéarisation selon une décomposition de la base.
+#### 2.1.1 Preuve
+
+On procède par récurrence sur l'entier $p ≥ 1$.
+
+**Initialisation**
+- Soit $f:E\to F$ une application $1$-linéaire (i.e une application linéaire)
+	- Soit $u_1 = \sum_{i=1}^n a_{i,1}e_i$
+	- Alors, $f(u_1) = f(\sum^n_{i=1}a_{i,1}a_{i,1}e_i) \ub{=}{*}\sum^n_{i=1}a_{i,1}f(e_i)$
+		- $(*)$ : linéarité
+
+**Hérédité**
+On suppose la formule vérifiée pour un certain $p≥1$.
+Soit $f:E^{p+1}\to F$ une application $(p+1)$-linéaire.
+- Soit $u_1, ..., u_{p+1}$ $(p+1)$-vecteurs de $E$ tels que:
+	- $\forall j \in \{1, ..., p+1\}, u_1 = \sum^n_{i=1}a_{i,j}e_i$
+	- Écrivons alors,
+		- $f(u_1, ..., u_p, \sum^n_{i_{p+1}=1}a_{i_{p+1}, i_{p+1}}e_{i_{p+1}}) \ub{=}{(*)}=\sum_{i_{p+1}}^n a_{i_{p+1}, p+1}f(u_1, ..., u_{p, e_{i_{p+1}}})$ 
+			- $(*)$ : linéarité par rapport à la $(p+1)$-ième variable
+		- Pour tout $i_{p+1}\in\{1, ..., n\}$ l'application $\align{E^p \to F \\ (x_1, ..., x_p) \mapsto f(x_1, ..., x_pe_{i_{p+1}})}$
+			- est $p$-linéaire donc H.R assure que:
+				- $f(u_1, ..., u_{p, e_{i_{p+1}}}) = \sum_{(i_1, ..., i_p) \in \{1, ..., n\}^p}=a_{1,p}...a_{i_p, p}f(e_1, ..., e_{i_p}, e_{i_{p+1}})$ 
+			- En revenant à $(*)$, on peut alors écrire:
+				- $f(u_1, ..., u_{p+1}) = \sum^n_{i_{p+1}=1}a_{i_{p+1}, p+1}\sum_{(i_1, ..., i_p) \in \{1, ..., n\}^{p}}a_{i, 1}... a_{i_p, p}f(e_{i_1}, ..., e_{i_{p+1}})$ 
+				- $f(u_1, ..., u_{p+1}) = \sum_{(i_1, ..., i_{p+1}) \in \{1, ..., n\}^{p+1}}a_{i_1, 1} ... a_{i_{p+1}, p+1}f(e_1, ..., e_{i_{p+1}})$
+
+$\square$
+
+### 2.1.2 Information additionnelle
+
+Notons réciproquement que si $\{y_{i_1, ..., i_p}\}_{(i_1, ...,i_p)\in\{1, ..., n\}^p}$ est une famille de vecteurs de $F$, alors l'application:
+- $E^p \to F$
+
+$\left(\sum^n_{i=1}a_{i,1}e_i, ..., \sum^n_{i=1}a_{i,p}e_i\right) \mapsto \sum_{(i_1, ..., i_p)\in \{1, ..., n\}^p}a_{i_1, 1}... a_{i_p, p}y_{i_1, ..., i_p}$ est une application $p$-linéaire.
+
+## 3. Application $p$-linéaires alternées
+
+### 3.1 Définition
+
+Soit $f:E^p \to F$ une application $p$-linéaire. 
+- Elle est dite **alternée** si pour tout $(u_1, ..., u_p)\in E^p$ et tout $i≠j$:
+	- $u_i = u_j \Rightarrow f(u_1, ..., u_p) = 0_F$
+
+### 3.2 Proposition
+
+Soit $f:E^p \to F$ une application $p$-linéaire alternée. 
+- Alors, $f$ est **antisymétrique**, c'est-à-dire:
+	- Pour tout $(u_1, ..., u_p) \in E^p$ et pour tout $i<j$:
+		- $f(u_1, ..., u_i, ..., u_j, ..., u_p) = -f(u_1, ..., u_j, ..., u_i,..., u_p)$
+
+> [!check]
+> La réciproque est vraie. (alternée $\iff$ antisymétrique)
+
+### 3.2.1 Preuve
+
+Notons $g:\align{E \times E \to F \\ (x,y) \mapsto f(u_1, ..., \ub{x}{(1)}, ..., \ub{y}{(2)}, u_p)}$
+- $(1)$ : en $i$-ème position
+- $(2) :$ en $j$-ième position.
+
+Est une application linéaire.
+- $\forall x \in E, g(x,x)=0$ car $f$ est alternée.
+
+On va montrer que pour tout $(x,y)\in E^2, g(x,y) = -g(y,x)$
+
+Soit alors, $x \in E, y \in E$. Écrivons:
+- $0=g(x+y, x+y)\ub{=}{(*)}g(x, x+y)+g(y, x+y) = \ub{=}{(**)} g(x,x)+g(x,y)+g(y, x) + g(y, y)$
+	- $(*)$ : linéarité par rapport à la première variable
+	- $(**)$ : linéarité par rapport à la deuxième variable
+- On obtient ainsi:
+	- $g(x,y) + g(y,x) = 0$
+	- $g(x,y) = -g(y,x)$
+
+$\square$
+
+
+## 3.3 Proposition
+
+Soit $f:E^p \to F$ une application $p$-linéaire alternée. 
+Soit $\{u_1, ..., u_p\}$ une famille liée de vecteurs de $E$.
+- Alors, $f(u_1, ...,u_p)=0$
+
+### 3.3.1 Preuve
+
+Par hypothèse, il existe $i \in \{1, ..., p\}$ tel que:
+- $u_i = \overset{n}{\underset{\begin{matrix}k = 1 \\ k ≠ 1\end{matrix}}{\sum}}\lambda_k u_k$  avec  les $\lambda_k$ scalaire . 
+Alors, $f(u_1, ..., u_{i-1}, \sun{k = 1 \\ k ≠ 1}{p}\lambda_ku_k, u_{i+1}, ..., u_p) \ub{=}{(*)} \sun{k = 1 \\ k≠1}{p}f(u_1, ..., u_{i-1}, u_k, u_{i+1}, ..., u_p)$
+- Or, pour tout $k \in \{1, ..., p\} \backslash \{i\}$ la famille $\{u_1, ..., u_{i-1}, u_k, u_{i+1}, u_p\}$
+	- A (au moins) deux vecteurs identiques, donc puisque $f$ est alterné:
+		- $f(u_1, ..., u_{i-1}, u_k, u_{i+1}, ..., u_p) = 0$
+	- Et le résultat s'en déduit.
+
+$\square$
+
+> [!info]
+> On en déduit le corollaire suivant.
+### 3.3.2 Corollaire
+
+Soit $f:E^p \to F$ une application $p$-linéaire alternée.
+- Soit $(u_1, ..., u_p) \in E^p$.
+- Le vecteur $f(u_1, ..., u_p)$ est inchangé si l'on ajoute à l'un des $u_i$ de combinaison linéaire des autres $\{u_k\}_{k≠i}$
+
+#### 3.3.2.1 Preuve
+
+Soit $x$ une combinaison linéaire des $\{u_k\}_{k≠i}$.
+Alors:
+- $f(u_1, ..., u_{i-1},u_i+x, u_{i+1}, ..., u_p) \ub{=}{(*)}=f(u_1, ..., u_p) + \ub{f(u_1, ..., u_{i-1}, x, u_{i+1}, ..., u_p)}{(**)}$
+	- $(*)$ : linéarité par rapport à la première variable
+	- $(**)$ : $= 0$ d'après la proposition précédente.
+
+$\square$
+
+
+## 4. Expression d'une application $n$-linéaire alternée en dimension $n$
+
+Soit $f:E^n \to F$ une application $n$-linéaire alternée. 
+- Soit $(u_1, ..., u_n) \in E^n$
+- Puisque $f$ est en particulier antisymétrique, on peut écrire pour tout:
+	- $\tau \in \mc{S}_n : f(u_{\tau(1)}, ..., u_{\tau(n)}) = -f(u_1, ..., u_n)$ 
+	- $\phantom{\tau \in \mc{S}_n : f(u_{\tau(1)}, ..., u_{\tau(n)})} = \eps(\tau)f(u_1, ..., u_n)$ (signature)
+
+> [!check]
+> Puisque toute permutation se décompose en produit de transpositions et que la signature d'un produit est le produit des signatures, on en déduit alors immédiatement le résultat suivant. 
+
+## 4.1 Proposition
+
+Soit $f:E^n \to F$ une application $n$-linéaire alternée. 
+Pour tout $\sigma \in S_n$ et tout $(u_1, ..., u_n) \in E^n$, on a:
+- $f(u_{\sigma(1)}, ..., u_{\sigma(n)}) = \eps(\sigma)f(u_1, ..., u_n)$
+
+> [!info]
+> Rappelons qu'on a noté $\{e_1, ..., e_n\}$ une base de $E$
+
+Soit $u_1, ..., u_n$ $n$ vecteurs de $E$ tels que:
+- $\forall j \in \{1, ..., n\}, u_j = \sun{i=1}na_{i,j}e_i$
+
+D'après la proposition de **II - 2**, on a:
+$f(u_1, ...,u_n)=\sun{(i_1, ..., i_n) \in \{1, ..., n\}^n}{} a_{i_1, 1}....a_{i_n, n}f(e_{i_1}, ..., e_{i_n})$
+ $\phantom{f(u_1, ...,u_n)} = \sun{\sigma \in \{1, ..., n\}^{\{1, ..., n\}}}{}a_{\sigma(1),1}...a_{\sigma(n), n}f(e_{\sigma(1)}, ..., e_{\sigma(n)})$
+$\phantom{f(u_1, ...,u_n)} = \sun{\sigma \in S_n}{} a_{\sigma(1), 1} ... a_{\sigma(n), n}f(e_{\sigma(1)}, ..., e_{\sigma(n)})$ 
+
+Cette dernière égalité, venant du fait que si $\sigma \in \{1, ..., n\} \to \{1, ..., n\}$ est non-bijective - (i.e $\notin \mc{S}_n$)
+
+Venant du fait que si $\sigma \in \{1, ..., n\} \to \{1, ..., n\}$ est non-bijective alors $\{e_{\sigma(1), ..., e_{\sigma(n)}}\}$ a (au moins) deux vecteurs égaux, donc $f(e_{\sigma}(1), ..., e_{\sigma(n)}) = 0$
+
+Par conséquent,
+$f(u_1, ..., u_n) = \sun{\sigma\in \mc{S}_n}{}\eps(\sigma)a_{\sigma(1),1}... a_{\sigma(n), n}f(e_1, ..., e_n)$
+$\phantom{f(u_1, ..., u_n)} = \boxed{\sun{\sigma \in \mc{S}_n}{}\eps(\sigma)\prod^n_{i=1}a_{\sigma(i), i}f(e_1, ..., e_n)}$
+
+# III - Déterminant
+
+Signalons pour commencer cette section que l'ensemble des applications $p$-linéaires est non-vide et stable par combinaison linéaire.
+- C'est donc un sous-espace vectoriel des $\K$-espaces vectoriels $\mathscr{F}(E^p, F)$.
+
+En particulier, l'ensemble des formes $p$-linéaires alternées sur $E^p$ est un $\K$-espace vectoriel 
+- qu'on notera $\wedge^{*p}(E)$
+## 1. Formes $n$-linéaires alternées sur un espace de dimension $n$
+
+### 1.1 Théorème
+
+Soit $B = \{e_1, ..., e_n\}$ une base de $E$
+1. Il existe une unique forme $n$-linéaire alternée $\phi_0$ telle que $\phi_0(e_1, ..., e_n)=1$. 
+	- On note $\phi_0(e_1, ..., e_n) = \phi_0(B)=1$
+2. Toute forme $n$-linéaire alternée sur $E^n$ est proportionnelle à $\phi_0$.
+	- En particulier, $\wedge^{*n}(E)$ est de dimension $1$.
+
+### 1.1.1 Preuve
+
+*En fin de semestre, vraisemblablement longue et difficile (45 min à prévoir)*
+*Preuve admise provisoirement*
+
+
+## 2. Diverses notions de déterminant
+
+### 2.1 Déterminant de famille de vecteurs dans une base
+
+### 2.1.1 Définition
+
+Soit $B$ une base de $E$. Notons $\phi_0$ l'unique forme $n$-linéaire alternée telle que $\phi_0(B)=1$.
+Soit $\{u_1, ..., u_n\}$ une famille de vecteurs de $E$.
+
+On appelle **déterminant de la famille $\{u_1, ..., u_n\}$** dans la base $B$ (ou par rapport à la base $B$)
+- le scalaire $\phi_0(u_1, ..., u_n)$. 
+- On le note $\det_B(u_1, ..., u_n)$
+
+On note, $\det_B:\align{E^n \to \K \\ (u_1, ..., u_n) \mapsto \det(u_1, ..., u_n)}$
+
+Puisque $\det_B$ est un élément non nul de $\wedge^{*n}(E)$ qui est de dimension $1$.
+- C'en est une base.
+
+Soit $B'$ une autre base de $E$ et donc:
+- $\det_{B'}\in\wedge^{*n}(E)$.
+
+Il existe donc $\lambda \in \K$ tel que:
+- $\det_{B'}=\lambda \det_B$ i.e pour tout $(u_1, ..., u_n)\in E^n$
+	- $\det_{B'}(u_1, ..., u_n) = \lambda \det_B(u_1, ..., u_n)$
+
+En prenant en particulier, $(u_1, ..., u_n) = B$
+- On a $\det_{B'}(B) = \lambda \det_B(B) = 1$
+	- Donc pour tout $(u_1, ..., u_n) \in E^n$
+- $\det_{B'}(u_1, ..., u_n)\det(B)\det_B(u_1, ..., u_n)$
+
+En prenant, $(u_1, ..., u_n) = B'$ on obtient:
+- $\boxed{\det_{B'}(B)\det_B(B')}$
 

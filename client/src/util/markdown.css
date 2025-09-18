@@ -339,6 +339,33 @@
   --icon:'check';
 }
 
+[data-callout-type='gpt']{
+  --accent:var(--low-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+
+}
+
+div:not(.details)[data-callout-type='gpt'] {
+  div[data-callout-title]{
+    display: none;
+  }
+
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1024px-ChatGPT_logo.svg.png");
+
+  padding-left: 3em;
+  background-position: 1em 1.5em, center;
+
+  background-repeat: no-repeat, no-repeat;
+  background-size: 1.5em 1.5em;
+
+  background-color: var(--low-bg);
+
+}
+
+.app.dark div:not(.details)[data-callout-type='gpt']{
+  background-color: var(--low-bg);
+}
+
 /* The original callouts */
 
 div:not(.details)[data-callout-type='tips'], div:not(.details)[data-callout-type='info'], div:not(.details)[data-callout-type='warn'], div:not(.details)[data-callout-type='check'] {
@@ -378,6 +405,14 @@ div:not(.details)[data-callout-type='check'] {
   background-color: var(--green-op) !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(0, 203, 169)' height='1.5em' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z'/%3E%3C/svg%3E");
 }
+
+div:not(.details)[data-callout-type='check'] {
+  border-left-color:var(--green);
+  background-color: var(--green-op) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgb(0, 203, 169)' height='1.5em' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z'/%3E%3C/svg%3E");
+}
+
+
 
 
 .ext-refs{
@@ -567,6 +602,7 @@ a[data-footnote-ref] {
   transition-duration: .2s;
   overflow-x: auto;
   overflow-y: visible;
+  line-height:1.5;
 }
 
 

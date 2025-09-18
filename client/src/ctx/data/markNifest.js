@@ -1,9 +1,11 @@
 export const manifestData = {
     "/blog":[
         [
+            "1 an de ChatGPT",
             "Carnets d'Anatolie",
             "DiaFox",
             "Sommaire déroulant",
+            "AI, empowering or parasiting"
             // "Découverte des Pays-Bas"
         ],
         {
@@ -59,6 +61,7 @@ export const manifestData = {
     "/integrales":[
         [
             "Ch1 - Relations de comparaisons",
+            "Ch2 - Développements limités"
         ],
         {
             "icon": null,
@@ -69,7 +72,8 @@ export const manifestData = {
     ],
     "/informatique":[
         [
-            "/langage C"
+            "/langage C",
+            "/bdd"
         ],
         {
             "icon":null,
@@ -96,6 +100,16 @@ export const manifestData = {
             "icon":null,
             "child":true,
             "title":'Algèbre Linéaire II'
+        }
+    ],
+    "/bdd":[
+        [
+            "Ch1 - Modélisation"
+        ],
+        {
+            "icon":null,
+            "child":true,
+            "title":'Base de données'
         }
     ]
 }

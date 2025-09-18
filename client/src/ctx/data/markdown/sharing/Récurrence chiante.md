@@ -9,7 +9,7 @@ $\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\N}{\mathbb{N}}\n
 
 # Exercice 1
 
-> Pour $n ≥ 1$, on pose $H_n = \sum^n_{k=1}$.
+> Pour $n ≥ 1$, on pose $H_n = \sum^n_{k=1}\frac1k$.
 > Montrer que, pour $n≥2, H_n$ n'est jamais un entier.
 > 
 > *Indication : montrer par récurrence que $H_n$ est le quotient d'un entier impair par un entier pair en distinguant les cas où $n$ est pair et $n$ est impair.*

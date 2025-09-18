@@ -13,13 +13,13 @@ $\newcommand{\Z}{\mathbb{Z}}\newcommand{\N}{\mathbb{N}}$
 - **Surjective** : au moins un antécédant
 - **Bijective** : Injective + surjective
 
-# II - Rappels
+# II - Trigonométrie
 
 > [!tips]
 > $\cos$ est un connard, $\sin$ est sympa.
 
 
-## 1. Trigonométrie 
+## 1. Formules 
 
 - **Additivité**
 	- $\cos(a+b) = \cos a \cos b - \sin a \sin b$
@@ -29,16 +29,24 @@ $\newcommand{\Z}{\mathbb{Z}}\newcommand{\N}{\mathbb{N}}$
 - **Identité**
 	- $\sin^2x+\cos^2x=1$
 
-### 1.1 Exemples de corollaires
+## 2. Exemples de corollaires
 
 - $\cos(2x) = 2\cos^2x-1 = \cos^2x-\sin^2x$
 - $\sin(2x) = 2\sin x\cos x$ 
 
-## 2. Suites
 
-- **Convergence** : $\forall \epsilon > 0, \exists N \in \N / \forall n \in \N (n ≥ N \Rightarrow |u_n - l| ≤ \epsilon)$
+# III - Complexes
 
-## 3. Arithmétique
+- **Formules d'Euler**
+	- $\cos\theta = \frac{e^{i\theta}+e^{-i\theta}}2$
+	- $\sin\theta = \frac{e^{i\theta}-e^{-i\theta}}{2i}$
+
+# III - Suites
+## 1. Formules
+
+- **Convergence** : $\forall \epsilon > 0, \exists N \in n_0 / \forall n \in \N (n ≥ N \Rightarrow |u_n - l| ≤ \epsilon)$
+
+# IV. Arithmétique
 
 > [!success]- **Rappels**
 >- $a|b$ et $a|c$ alors $a|b+c$
@@ -149,9 +157,9 @@ $\newcommand{\Z}{\mathbb{Z}}\newcommand{\N}{\mathbb{N}}$
 > Les solutions entières de $(E)$ sont:
 > - $\{(35-16k, -15+7k), k \in \Z\}$
 
-## 4. Algèbre
+## V. Algèbre
 
-### 4.1 Formules
+## 1 Formules
 
 - **Formule du Rang**
 	- $f:E\to F$

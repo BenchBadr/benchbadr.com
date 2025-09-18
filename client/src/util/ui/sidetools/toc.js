@@ -129,7 +129,7 @@ const Toc = ({ markdown }) => {
                     className={`toc-link ${activeSection === item.id || !activeSection ? 'open' : ''} ${activeSection === item.id ? 'active' : ''}`}
                     onClick={() => scrollToSection(item.id)}
                 >
-                   <a>{removeMd(item.text)}</a>
+                   <a>{removeMd(item.text, { stripListLeaders: false })}</a>
                 </div>
                 {item.children.length > 0 && (
                     <div className="toc-children">

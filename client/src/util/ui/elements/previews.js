@@ -54,14 +54,16 @@ export const FilePreview = ({name, path}) => {
         fetchContent();
     }, [path]);
 
+    const MAX_CHAR = 150;
+
 
     return (
         <a className="preview-card" href={'/' + (path ? path.join('/') : '') + '/' + name}>
             <span className="title">
                 {name}
             </span>
-            <p style={{maxHeight:'5em'}}>{(intro && intro.desc) ? intro.desc : (content && removeMd(content.slice(0, 1000)))}</p>
-            <div className="low-bar">
+            <p style={{maxHeight:'5em', paddingBottom: intro?.desc.length < MAX_CHAR ? '2em' : undefined}}>{(intro && intro.desc) ? intro.desc : (content && removeMd(content.slice(0, MAX_CHAR * 2)))}</p>
+            <div className="low-bar" style={{background: intro?.desc.length < MAX_CHAR ? 'none' : undefined}}>
                 {intro?.lang && <span>
                     <span className="icon">translate</span>
                     <span>{{'en':'🇬🇧','fr':'🇫🇷'}[intro.lang]}</span>
@@ -126,6 +128,7 @@ export const PathPreview = ({path, isFile = false, icon = null}) => {
 
 export const ImageCard = ({src, title, unfit, header = false}) => {
 
+    console.log(title)
     const seed = title.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
 
     function pastelBlob(seed) {
