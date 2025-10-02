@@ -88,9 +88,7 @@
 @import url('./util/markdown.css');
 
 html {
- scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  color:#5c5c5c;
+
 }
 
 ::-webkit-scrollbar {

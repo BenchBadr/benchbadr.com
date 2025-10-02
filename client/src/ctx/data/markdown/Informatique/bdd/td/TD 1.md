@@ -263,3 +263,15 @@ classDef someclass fill:#bbf
 
 > Pour la prochaine fois voir le 5
 
+# Exercice 5
+
+![](https://i.ibb.co/gLxbbtkf/img-2025-09-22-16-17-31.png)
+
+> 1. Expliquez la différence entre les deux schémas ci-dessus
+> 2. Pour chaque schéma, où pouvez-vous ajouter les attributs "note" et "nb heures". Expliquez comment leur signification diffère dans chacun des cas.
+
+## Question 1
+
+Les deux façons dépendent du contexte d'application.
+
+## Question 2

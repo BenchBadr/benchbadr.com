@@ -22,6 +22,10 @@ const routes = [
     element: <ToExport><MainBlog/></ToExport>
   },
   {
+    path: '/sitemap.xml',
+    element: <Redirect url="/sitemap.xml" />
+  },
+  {
     path:'/papers',
     element: <ToExport><Papers/></ToExport>
   },

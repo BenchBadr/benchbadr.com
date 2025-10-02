@@ -4,25 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "ccf10a7a37dfbf71",
+        "id": "f0b19581a746c6fa",
         "type": "tabs",
         "children": [
           {
-            "id": "fecac55383e9f9f7",
+            "id": "be26be0f561d25f5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "maths/groupes/_index.md",
+                "file": "maths/integrales/td/TD 2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "_index"
+              "title": "TD 2"
             }
           },
           {
-            "id": "473f6f28c29396b5",
+            "id": "5c3863cc8a5995fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "maths/integrales/Ch2 - Développements limités.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Ch2 - Développements limités"
+            }
+          },
+          {
+            "id": "d325578413002bc9",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -36,21 +50,21 @@
             }
           },
           {
-            "id": "d3d5cd64b2e791ee",
+            "id": "2a36d549b015c696",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blog/AI, empowering or parasiting.md",
+                "file": "maths/groupes/Ch2 - Groupes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI, empowering or parasiting"
+              "title": "Ch2 - Groupes"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -82,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\\newcommand{\\rcases",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -107,7 +121,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 221.50260543823242
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "fd02d7e167b7be40",
@@ -143,27 +158,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
+                "useHierarchy": false,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
-            }
-          },
-          {
-            "id": "5e7a58700d10b277",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "sharing/Todo lists.md",
-                "followCursor": true,
-                "showSearch": true,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "Outline of Todo lists"
             }
           },
           {
@@ -179,13 +179,28 @@
               "icon": "links-going-out",
               "title": "Outgoing links from Recherche liste"
             }
+          },
+          {
+            "id": "2d4cb5b00c5bba25",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "maths/groupes/Ch2 - Groupes.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Ch2 - Groupes"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 236.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,112 +213,43 @@
       "command-palette:Open command palette": false
     }
   },
-  "floating": {
-    "id": "fdbd11003add4a45",
-    "type": "floating",
-    "children": [
-      {
-        "id": "e3ae2600affcb600",
-        "type": "window",
-        "children": [
-          {
-            "id": "a88a741c4f1ad420",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "bf17bcc636400c6b",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "maths/groupes/Ch1 - Nombres entiers et divisibilité.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "Ch1 - Nombres entiers et divisibilité"
-                }
-              },
-              {
-                "id": "a19cc258efd06738",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "maths/additions/logique assistée/Chapitre 1.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "Chapitre 1"
-                }
-              },
-              {
-                "id": "e04af8f808633899",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "sharing/Todo lists.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "Todo lists"
-                }
-              }
-            ],
-            "currentTab": 2
-          }
-        ],
-        "direction": "vertical",
-        "x": 559,
-        "y": 39,
-        "width": 1114,
-        "height": 927,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "e04af8f808633899",
+  "active": "2a36d549b015c696",
   "lastOpenFiles": [
-    "maths/groupes/Ch1 - Nombres entiers et divisibilité.md",
     "sharing/Todo lists.md",
-    "maths/additions/logique assistée/Chapitre 1.md",
-    "blog/AI, empowering or parasiting.md",
-    "blog/1 an de ChatGPT.md",
-    "maths/algebre II/Ch1 - Déterminant.md",
-    "maths/groupes/_index.md",
-    "informatique/bdd/Ch1 - Modélisation.md",
-    "maths/groupes",
-    "informatique/langage C/Ch1 - Syntaxe de base.md",
+    "maths/integrales/td/TD 2.md",
     "maths/integrales/Ch2 - Développements limités.md",
-    "maths/integrales/td/TD 1.md",
-    "maths/integrales/Ch1 - Relations de comparaisons.md",
-    "sharing/Récurrence chiante.md",
-    "maths/suites/Ch5 - Formule de Taylor et développement limité.md",
-    "maths/suites/Ch3 - Limites de fonctions et continuité.md",
-    "maths/_maths-sup/Ch18 - Structures algébriques usuelles.md",
-    "maths/algebre/Corrections/EV 3.md",
+    "maths/suites/td/TD 2.md",
+    "DLMI - L1/maths/suites/td/TD 2.md",
+    "DLMI - L1/maths/suites/td",
+    "DLMI - L1/maths/suites",
+    "DLMI - L1/maths",
+    "DLMI - L1",
+    "maths/algebre II/Ch1 - Déterminant.md",
+    "sharing/Presets.md",
     "sharing/Compilation.md",
-    "blog/Sommaire déroulant.md",
-    "informatique/langage C/td/TD 1.md",
-    "informatique/langage C/td",
-    "divers/anglais/TD 1.md",
-    "divers/anglais/_index.md",
-    "cv_en.md",
-    "divers/anglais",
-    "divers/phys/Planning.md",
-    "divers/civilisations/3. Empire Byzantin.md",
-    "divers/civilisations/2. Rome Antique.md",
-    "divers/civilisations",
-    "divers/phys/divers/chimie",
-    "divers/phys/divers/Mécanique",
-    "divers/phys/Mécanique/TD",
-    "divers/phys/divers",
-    "divers/phys/Mécanique",
-    "divers/phys",
+    "maths/_maths-sup/Ch14 - Relation de comparaison.md",
+    "maths/integrales/Ch1 - Relations de comparaisons.md",
+    "maths/integrales/td/TD 1.md",
+    "maths/algebre/Ch5 - Matrices d'applications linéaires.md",
+    "maths/suites/Ch4 - Dérivabilité.md",
+    "sharing/GPT-5 System.md",
+    "informatique/langage C/tp/TP 1.md",
+    "informatique/langage C/td/TD 2.md",
+    "informatique/bdd/projet/I. Modélisation.md",
+    "divers/anglais/TD Notes.md",
+    "informatique/bdd/td/TD 3.md",
+    "informatique/bdd/Ch1 - Modélisation & Syntaxe.md",
+    "maths/suites/td/TD 1.md",
+    "informatique/bdd/td/TD 2.md",
+    "maths/suites/td/TD 3.md",
+    "informatique/bdd/projet",
+    "informatique/bdd/_index.md",
+    "maths/algebre II/td/TD 1.md",
+    "maths/_maths-sup/td",
+    "informatique/algorithmie/td",
+    "informatique/langage C/tp",
+    "informatique/bdd/tp",
+    "informatique/algorithmie",
     "Pasted image 20250911110449.png",
     "Pasted image 20250903160559.png",
     "Pasted image 20250901140618.png",

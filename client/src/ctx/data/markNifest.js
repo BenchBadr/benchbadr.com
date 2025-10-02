@@ -105,7 +105,7 @@ export const manifestData = {
     ],
     "/bdd":[
         [
-            "Ch1 - Modélisation"
+            "Ch1 - Modélisation & Syntaxe"
         ],
         {
             "icon":null,
@@ -115,7 +115,8 @@ export const manifestData = {
     ],
     "/groupes":[
         [
-            "Ch1 - Nombres entiers et divisibilité"
+            "Ch1 - Nombres entiers et divisibilité",
+            "Ch2 - Groupes"
         ],
         {
             "icon":null,

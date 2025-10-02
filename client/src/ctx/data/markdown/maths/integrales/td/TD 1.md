@@ -63,7 +63,7 @@ Finalement, $\sin\left(\frac1n\right) \neqv{+\infty} \frac1{n^2}$
 Pour tout $n \in \N$,
 - $\frac{e^{2n}}{e^n} = \frac{(e^n)^2}{e^n}=e^n \td{n\to+\infty}+\infty$
 
-Donc $e^n \neqv{+\infty} e^2n$
+Donc $e^n \neqv{+\infty} e^{2n}$
 
 
 ## Question 6
@@ -328,12 +328,16 @@ Donc,
 
 Ainsi, 
 - $c_n \eq{+\infty}\frac1n$
-- $d_n = \frac{n\ln(n)}{n^2+1} \eq{+\infty} \frac{n\ln(n)}{n^2} = \frac{\ln(n)}n$ 
 
 
 ### Question 1.4
 
 > $\left\{\frac{n\ln(n)}{n^2+1}\right\}_{n\ge 1}$,
+
+- $d_n = \frac{n\ln(n)}{n^2+1} \eq{+\infty} \frac{n\ln(n)}{n^2} = \frac{\ln(n)}n$ 
+### Question 1.5
+
+> $\left\{\exp\left(\frac{-n^2+n}{n+1}\right)\right\}_{n\ge 0}$,
 
 $e_n = \exp\left(\frac{-n^2+1}{n+1}\right) = \exp\left(-n\frac{1-1/n}{1+\frac1n}\right)$
 On a:
@@ -351,13 +355,13 @@ Alors, $e_n \eq{+\infty} \exp(2)\exp(-n) = e^{2-n}$
 
 ### Question 1.6
 
-> 6. $\left\{n^3e^{-n}\right\}_{n\ge 1}$,
+> $\left\{\frac{1}{n^2+1}\right\}_{n\ge 0}$,
 
 $g_n = \frac1{n^2+1}\eq{+\infty}\frac1{n^2}$
 
 ### Question 1.7
 
-> 7. $\left\{\frac{1}{n^2+1}\right\}_{n\ge 0}$,
+>  $\left\{n^3e^{-n}\right\}_{n\ge 1}$,
 
 $h_n = \frac{n^2}{2^n}=n^22^{-n}$
 
@@ -524,7 +528,7 @@ Soit $a>0,$
 > Remarque, $(u_n)_{n\in\N}$ et $(v_n)_{n\in\N}$ supposés $>0$ sinon $u_n^a$ et $v_n^a$ pour $a \notin \N$ n'a pas de sens.
 
 On écrit:
-- $\frac{u_n^a}{v_n^a}=\left(\frac{u_n}{v_n}\right)=e^{a\ln(u_n/v_n)}$
+- $\frac{u_n^a}{v_n^a}=\left(\frac{u_n}{v_n}\right)^\alpha=e^{a\ln(u_n/v_n)}$
 Or,
 - $\frac{u_n}{v_n}\to 1$ donc par continuité de $\ln$, $a\ln\left(\frac{u_n}{v_n}\right) \td{n\to+\infty} a\ln 1 = 0$.
 Et, par continuité de $\exp$
@@ -553,7 +557,7 @@ On écrit:
 - $\frac{e^{u_n}}{e^{v_n}}=e^{u_n - v_n} = e^{u_n(1- a_n)}$
 
 Et on note une borne de $(u_n)_{n\in\N} : \forall n, |u_n| ≤ m$.
-On a:
+On a: (puisque $a_n \to 1$)
 - $|u_n(1-a_n)| = |u_n| \times |1 - a_n| ≤ m \times |1 - a_n| \td{n \to +\infty}0$
 
 Donc, $u_n(1- a_n) \td{n\to+\infty}$ et par continuité de $\exp$ en $0$, en $e^{u_n(1-a_n)} \to e^0 = 1$ i.e $e^{u_n} \eq{+\infty} e^{v_n}$.
@@ -576,7 +580,17 @@ Donc, $u_n(1- a_n) \td{n\to+\infty}$ et par continuité de $\exp$ en $0$, en $e^
 > 8. $f_8(x) = \frac{1}{x}$
 > 9. $f_9(x) = x^2e^{x/2}$
 
-
+| $\nearrow$ est o de $\swarrow$ | $f_1(x)$ | $f_2(x)$ | $f_3(x)$ | $f_4(x)$ | $f_5(x)$ | $f_6(x)$ | $f_7(x)$ | $f_8(x)$ | $f_9(x)$ |
+| ------------------------------ | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+| $f_1(x)$                       | x        |          | x        |          |          |          | x        |          | x        |
+| $f_2(x)$                       | x        | x        | x        |          |          |          | x        |          | x        |
+| $f_3(x)$                       |          |          | x        |          |          |          | x        |          |          |
+| $f_4(x)$                       | x        | x        | x        | x        | x        |          | x        |          | x        |
+| $f_5(x)$                       | x        | x        | x        |          | x        |          | x        |          | x        |
+| $f_6(x)$                       | x        | x        | x        | x        | x        | x        |          | x        | x        |
+| $f_7(x)$                       |          |          |          |          |          |          | x        |          |          |
+| $f_8(x)$                       | x        | x        | x        | x        | x        |          | x        | x        | x        |
+| $f_9(x)$                       |          |          | x        |          |          |          | x        |          | x        |
 # Exercice 7
 
 > Déterminer des équivalents simples en $+\infty$ pour les fonctions suivantes :
@@ -591,11 +605,142 @@ Donc, $u_n(1- a_n) \td{n\to+\infty}$ et par continuité de $\exp$ en $0$, en $e^
 > 8. $f_8(x) = \ln(x^4+x^2+1)$
 > 9. $f_9(x) = E(x)$
 
+## Question 1
+
+> $f_1(x) = \frac{x^3+x^2+1}{x^4+1}$
+
+$\frac{x^3+x^2+1}{x^4+1} \eq{+\infty}\frac{x^3}{x^4}=\frac1x$
+
+## Question 2
+
+> $f_2(x) = \frac{e^x+e^{-x}}{2}$
+
+$\frac{e^x + e^{-x}}2 \eq{+\infty} \frac{e^{x}}2$ 
+
+## Question 3
+
+> $f_3(x) = \sin\left(\frac{1}{x}\right)$
+
+> [!check]
+> On utilise le TAF
+
+$f_3(x) = \frac{\sin\m{\frac1x} - \sin(0)}{\frac1x - 0}\times \frac1x \eq{+\infty} \sin'(0) \times \frac1x = \frac1x$  
+
+## Question 4
+
+> $f_4(x) = \sqrt{x+1}-\sqrt{x}$
+
+$f_4(x) = \sqrt{x+1} - \sqrt{x} = \frac{(\sqrt{x+1} - \sqrt{x})(\sqrt{x+1} + \sqrt{x})}{\sqrt{x+1} + \sqrt{x}} = \frac{x+1-x}{\sqrt{x+1}+\sqrt{x}}$ 
+Or $\sqrt{x+1} + \sqrt{x} = \sqrt{x}\ub{\left(\sqrt{1+\frac1x} + 1\right)}{\td{x\to +\infty} 2} \eq{+\infty} 2\sqrt{x}$.
+Donc $f_4(x) \eq{+\infty} \frac1{2\sqrt{x}}$
+
+## Question 5
+
+> $f_5(x) = \cos(e^{-x})$
+
+$f_5(x) = \cos(e^{-x})$
+On a:
+- On a $\lim{x\to +\infty}e^{-x}=0$
+Donc, par continuité de $\cos$ en $0$,
+- $\lim{x\to+\infty}\cos(e^{-x})=\cos(0) = 1$
+Donc $f_5(x) \eq{+\infty} 1$
+
+## Question 6
+
+> $f_6(x) = \sqrt{x^2+e^{2x}+1}$
+
+$f_6(x) = \sqrt{x^2+e^{2x}+1}$
+$\phantom{f_6(x)} = \sqrt{e^{2x}(e^{-2x}x^2+1+e^{-2x})}$
+$\phantom{f_6(x)} = \sqrt{e^x}\ub{\sqrt{e^{-2x}x^2+1+e^{-2x}}}{\td{+\infty} 1 (*)}$ 
+- $(*)$ Par continuité et croissance comparée de $t \mapsto \sqrt{t}$ en $1$
+donc,
+- $f_6(x) \eq{+\infty}e^x$
+
+## Question 7
+
+> $f_7(x) = \ln(x+1)-\ln(x)$
+
+$f_7(x) = \ln(x+1)-\ln(x)$
+$\phantom{f_7(x)} = \ln\left(\frac{x+1}{x}\right)$
+$\phantom{f_7(x)} = \frac{\ln(1+\frac1x) - \ln(1)}{(1+\frac1x) - 1} \times \frac1x$
+Or,
+- $\lim{t\to 1}\frac{\ln(t) - \ln(1)}{t-1} = \ln'(1) = \frac11 = 1$ 
+Donc,
+- $f_7(x) \eq{+\infty}\frac1x$
+
+## Question 8
+
+> $f_8(x) = \ln(x^4+x^2+1)$
+
+$f_8(x) = \ln(x^4+x^2+ 1)$
+$\phantom{f_8(x)} = \ln\left(x^4(1+x^{-2}+x^{-4})\right)$
+$\phantom{f_8(x)} = \ln(x^4) + \ln(1+x^{-2}+x^{-4})$
+Donc,
+- $\frac{f_8(x)}{\ln(x^4)} = 1 + \frac{\ln(1+x^{-2}+x^{-4})}{\ln(x^4)} \td{x\to+\infty}1$
+Ainsi,
+- $f_8(x) \td{+\infty} \ln(x^4)=4\ln(x)$
+
+## Question 9
+
+> $f_9(x) = E(x)$
+
+On a pour $x>0$,
+- $x-1 ≤ f_9(x) ≤ x \Rightarrow \frac{x-1}{x} ≤ \frac{f_9(x)}{x} ≤ \frac{x}x$
+- $\phantom{x-1 ≤ f_9(x) ≤ x \Rightarrow \frac{x-1}{x}} \Rightarrow 1 - \frac1x ≤ \frac{f_9(x)}x ≤ 1$
+Or, 
+- $\lim{x\to +\infty} 1 - \frac1x = \lim{x\to+\infty}1=1$
+Donc, par comparaison,
+- $\lim{x\to +\infty} \frac{f_9(x)}x = 1$ i.e $f_9(x) \eq{+\infty} x$
 
 # Exercice 8
 
 > 1. Montrer que $\ln(1+x) \underset{0}{\sim} x$ et $x^2+x^3 \underset{0}{\sim} x^2$ et en déduire $\lim{x \to 0^+} \frac{\ln(1+x)+x^2}{x^2+x^3}$.
 > 2. Montrer que $\sin(2x) \underset{0}{\sim} 2x$ et $\tan(3x) \underset{0}{\sim} 3x$ et en déduire $\lim{x \to 0} \frac{\sin(2x)}{\tan(3x)}$.
+
+## Question 1
+
+> Montrer que $\ln(1+x) \underset{0}{\sim} x$ et $x^2+x^3 \underset{0}{\sim} x^2$ et en déduire $\lim{x \to 0^+} \frac{\ln(1+x)+x^2}{x^2+x^3}$.
+
+
+Soit $x > -1, x ≠0$
+- $\frac{\ln(1+x)+x^2}{x} = \frac{\ln(1+x)}{x} + x$
+Or,
+- $\frac{\ln(1+x)}{x}= \frac{\ln(1+x) - \ln(1+0)}{x-0}$
+- $\td{x \to 0} \frac1{1+0} = 1$
+- car $t \underset{f}\mapsto \ln(1+t)$ est dérivable en $0$ de dérivée $f'(t) = \frac1{1+t}$.
+Donc,
+- $\frac{\ln(1+x)+x^2}{x}\td{x\to 0}1$ i.e $\ln(1+x)+x^2 \eq{0} x$
+De plus,
+- $\frac{x^2 + x^3}{x^2} = 1 + x \td{x \to 0} 1$
+Donc,
+- $x^2 + x^3 \eq{0} x^2$
+Par quotient d'équivalents,
+- $\frac{\ln(1+x)+x^2}{x^2+x^3} \eq{0} \frac{x}{x^2} = \frac1x$
+
+## Question 2
+
+> Montrer que $\sin(2x) \underset{0}{\sim} 2x$ et $\tan(3x) \underset{0}{\sim} 3x$ et en déduire $\lim{x \to 0} \frac{\sin(2x)}{\tan(3x)}$.
+
+**D'une part**
+Soit $x ≠0$
+- $\frac{\sin(2x)}{2x} = \frac{\sin(2x) -\sin(0)}{2x - 0}$
+Or,
+- $\frac{\sin(y)-0}{y - 0} \td{y \to 0} \sin'(0) = \cos(0) = 1$
+Et,
+- $2x \td{x\to 0} 0$
+Donc,
+- $\frac{\sin(2x)}{2x}\td{x\to 1}1$ i.e $\sin(2x) \eq{0} 2x$. 
+
+**D'autre part**,
+- $\frac{\tan(3x)}{3x} = \frac{\tan(3x) - \tan(0)}{3x - 0}$
+Or,
+- $3x \td{x \to 0}0$
+et,
+- $\frac{\tan(y) - \tan(0)}{y - 0} \td{y \to 0}\tan'(0) = 1 + \tan^2(0) = 1$
+Donc,
+- $\frac{\tan(3x)}{3x} \td{x\to 0} 1$ i.e $\tan(3x) \eq{0} 3x$
+
+
 
 # Exercice 9
 
@@ -603,6 +748,27 @@ Donc, $u_n(1- a_n) \td{n\to+\infty}$ et par continuité de $\exp$ en $0$, en $e^
 > 
 > 1. Déterminer un équivalent simple de $P$ en $+\infty$.
 > 2. Déterminer un équivalent simple de $P$ en 0.
+
+
+## Question 1
+
+> Déterminer un équivalent simple de $P$ en $+\infty$.
+
+Pour $x>0$,
+- $\frac{P(x)}{a_nx^n}=\frac{a_nx^n + a_{n-1}x^{n-1}+...+a_1x+a_0}{a_nx^n}$
+- $= 1 + \frac{a_{n-1}}{a_n} \times \frac1x + \frac{a_{n-2}}{a_n} \times \frac1{x^2} + ... + \frac{a_1}{a_n} \times \frac1{x^{n-1}}+\frac{a_0}{a_n}\times\frac1{x^n}$
+Donc,
+- $P(x) \eq{+\infty} a_nx^n$
+
+## Question 2
+
+> Déterminer un équivalent simple de $P$ en 0.
+
+Pour $x ≠ 0$,
+- $\frac{P(x)}{a_px^p} = \frac{a_nx^n + a_{n-1}x^{n-1}+...+a_px^p+0}{a_px^p}$
+- $= \frac{a_n}{a_p}x^{\ov{n-p}{>0}}{>0}+\frac{a_{n-1}}{a_p}x^{\ov{n-1-p}{>0}}+...+\frac{a_{p-1}}{a_p}x+1$
+- $\td{x \to 0}1$
+i.e $P(x) \eq{0} a_px^p$
 
 # Exercice 10
 

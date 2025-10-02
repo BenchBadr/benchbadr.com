@@ -213,8 +213,3 @@ int main(void) {
 	return 0;
 }
 ```
-
-# Exercice 7
-
-> **Complexité**
-> Voici trois opérations 

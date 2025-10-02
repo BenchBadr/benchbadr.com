@@ -571,3 +571,200 @@ QSORT(3)                   Library Functions Manual             �
 ...
 ```
 
+# V - Généralités
+
+> [!check]
+> Au départ, le C était tapé sur un téléscripteur sur papier. Il fallait ainsi écrire du code court, d'où l'intérêt des fonctions.
+
+Pendant les calculs, les "étapes" intermédiaires du calcul sont stockées dans la pile dont la taille s'obtient dans le terminal avec la commande `ulimit -s`. À ne pas confondre avec l'accumulateur.
+
+## 1. Syntaxe de définition d'une fonction
+
+La définition d'une fonction se fait avec la syntaxe suivante:
+
+```c
+typeRetour nomFct(type1, nom1, ..., typen nomn){
+	instructions
+}
+```
+
+- **Nom de la fonction** - `nomFct`
+- **Paramètres** : `nom1`, `...`, `nomn`
+	- variables locales initialisées à l'appel (de fait, inconnues ailleurs que dans le scope).
+	- affectées avec les valeurs des arguments fournis à l'appel.
+	- à la fin e l'exécution de la fonction ces variables n'existent plus.
+- **Type de retour**
+	- Unicité du type possible
+	- Unicité de la valeur de retour possible
+	- Aucune valeur de retour implique `typeRetour = void` $\iff$ `JS:null` ou `PY:None`
+- **Bloc de la fonction** (scope)
+	- Peut contenir ses propres déclarations de variables (locales)
+	- Adresses initialisées à l'exécution
+		- Technique d'indirection
+		- Les variables lcoales sont placées à partir d'une certaine adresse dans une pile.
+
+> [!tips]
+> **Rappel** - Comme tout élément manipulé par le programme une fonction doit avoir été **déclarée** avant d'être utilisée.
+
+En tête d'un fichier, on peut déclarer des fonctions grâce aux prototypes. 
+- La valeur retour d'un processus est de 16 bits et selon le signal on apprend quel "flag" a tué le process.
+
+# VI - Fonctions
+
+## 1. Changer la valeur d'une varaible par une fonction
+
+- Toutes les transmissions de paramètres à des valeurs sont **des transmissions par valeur**
+- Une fonction travaille toujours sur **des copies des arguments** qui lui ont été fournis. 
+- Les arguments originaux ne sont donc jamais chargés par la fonction, en particulier si ces arguments sont des constantes ou des expressions.
+
+> Peut-on changer la valeur d'une variable à l'aide d'une fonction?
+
+Oui. C'est ce que fait `scanf`. On peut changer le contenu de la mémoire à l'adresse donnée en argument. Ce qui nous amène à la section suviante.
+
+## 2. Utilisation de l'adresse d'une variable
+
+> [!check]
+> L'opérateur `&` fournit l'adresse d'une variable
+
+L'opérateur `*` permet:
+- **dans une déclaration** de définir un élément de type `adresse`
+
+```c
+int p;
+foo = &p;
+*foo = 5; // met 5 dans la variable p
+p = *foo + 1; // met 6 dans la variable p
+```
+
+> [!info]
+> La bibliothèque standard avant utilisait des adresses fixes. Cela rendait la bibliothèque vulnérable à des modifications malicieuses, ainsi les adresses sont aujourd'hui réaffectées à chaque initialisation de la bibliothéque.
+
+## 3. L'adresse Zéro et la terrible `segmentation fault`
+
+- IL existe une adresse invalide : l'adresse zéro `NULL`
+	- utile pour initialiser un pointeur
+	- `int * n = NULL` signifie en fait que:
+		- l'adresse `n` ne pointe pas encore sur une zone mémoire valide. 
+
+
+## 4. Exemple
+
+```c
+#include <stdio.h>
+
+int f(void) {
+	return 5;
+}
+
+int g(int x) {
+	int n = 3;
+	prinf("Dans g n = %d\n", n);
+	x = n * x;
+	return x;
+}
+
+int main(void){
+	int n = 10;
+	printf("f() renvoie %d\n", f());
+	printf("g(%d) renvoie %d\n", n, g(n));
+	printf("Dans le main n = %d\n", n);
+	return 0;
+}
+```
+
+## 5. segfault
+
+La `segfault` c'est quand on cherche à accéder à des adresses interdites ou inaccessible.
+
+## 6. Bonne pratique de codage et structures conditionnelles
+
+```c
+int *p = NULL;
+...
+if (*p) // Erreur de sementation
+```
+
+## 7. Transmission par adresse à une fonction
+
+> Changer la valeur d'une variale à l'aide d'une fonction
+
+```c
+#include <stdio.h>
+
+void absolue(int * x) {
+	if (*x < 0)
+		*x = -*x;
+}
+
+int main(void) {
+	int a = -5;
+	printf("Valeur de a avant : %d\n", a);
+	absolue(&a);
+	printf("Valeur de a apres : %d\n",a);
+	return 0;
+}
+```
+
+### 7.1 Exemple
+
+```c
+void autre_sens(int n) {
+	printf("Adrese de n = %p\n", &n);
+}
+
+```
+
+# VII - Retour de valeurs
+
+## 1. Retour de plusieurs valeurs
+
+**Difficulté** : une fonction C ne peut renvoyer qu'une valeur (de type `void`, numérique, adresse, structure...).
+
+> [!check]
+> **Solution** : on fournit l'adresse des variables où l'on souhaite placer un résultat.
+
+**Remarque** : on peut alors utiliser la valeur d retour pour indiquer d'autres informations.
+
+## 2. Exemple : résolution d'une équation du seconde degré
+
+On veut écrire une fonction qui calcule les racines réelles d'une équation du second degré:
+- $ax^2+bx+c = 0$
+
+Le prototype sera donc:
+
+```c
+int resoudre(int a, int b, int c, double * x, double * y)
+```
+
+- **But**
+	- Résoudre une équation du second degré
+- **Paramètres**
+	- Valeurs : les coefficients entiers adresse : 2 solutions possibles
+- **Retour**
+	- Le nombre de solution de l'équation
+		- -1 : équation dégénérée, infinité de solution
+		- 0 : pas de solution
+		- 1 : une racine double placée à l'adresse $x$
+		- 2 : deux racines placées aux adresses de $x$ et $y$.
+	- Les adresses non utilisées seront mises à `NULL`
+
+## 3. Valeur de retour comme code d'erreur
+
+> [!tips]
+> Idée très utilisée dans les fonctions systèmes.
+
+```c
+int fact(int n){
+	if (n < 0)
+		return -1;
+	...
+}
+```
+
+## Gestion de la pile
+
+> [!warn]
+> Les variables locales doivent être initialisées. 
+> **Leur adresse ne doit pas être renvoyée**
+
+Cela peut engendrer une `segfault`

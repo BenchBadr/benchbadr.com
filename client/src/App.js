@@ -3,6 +3,8 @@ import ThemeProvider, {ThemeContext} from './ctx/ThemeContext';
 import SidebarProvider from './ctx/SidebarContext';
 import { useContext } from 'react';
 import Md from './util/markdown';
+// import Consent from './util/ui/elements/consentBanner';
+import Cookies from 'js-cookie';
 
 
 function App() {
@@ -87,10 +89,24 @@ export default MainContent;
 
 
 const ToExportChild = ({children}) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme, consented, setConsented} = useContext(ThemeContext);
+
+  const toggleConsent = () => {
+    setConsented(!true);
+    Cookies.set('consent', consented, { expires: 365 });
+  }
+
+
   return (
     <div className={`app ${theme}`}>
+
+       {/* Consent banner */}
+      {/* {!consented && <Consent toggle={toggleConsent}/>} */}
+
+
       <div className='main-content'>
+
+
         {children}
       </div>
     </div>

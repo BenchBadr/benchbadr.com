@@ -1,25 +1,39 @@
 
 # Misc checklist
 
-- [ ] Activer la carte
-- [ ] Appeler CAF
-- [ ] Photo séjour
-- [ ] Procédure séjour
-- [ ] Vol A/R Coimbra
+# Devoirs
+
+- [ ] Lundi - Faire l'exemple des slides de traduction (DB)
+- [ ] Mardi AlgLin - Qst 5 du 7
+- [ ] Jeudi - Sous groupe inclu element neutre + Exos nombres premiers
+
+- [ ] Interro Arithmétique (30 min)
+	- Questions de cours + mini-exo
+- [ ] Vendredi - Exercice 4, Finir la correction de l'exercice 3
+
+- [ ] 13/10 - Rendu 1 Proj BDD
+
+- [ ] Partiel Arithmétique (23/10)
+	- ~2h / 2h30
+
+- [ ] S'exercer PLaton (C)
+
 
 # Website
 ## 1. To fix immediately
 
-*None for now*
+- [ ] Fix scroll + spotlight on Chromium
 
 ## 2. Quickfixes
 
-
-- [ ] Consent mode banner
+- [ ] Add support for permissive spotlight search (eg. `int/ch1 - ...`)
+- [ ] Fix color discrepancy nested spaces
 - [ ] Icon size sidebaright (scale to dimensions)
 
-## 3. Distant
+## 3. Features
 
+- [ ] Add support for TikZ
+- [ ] Add support for tags
 - [ ] Cache markdown into html files
 
 

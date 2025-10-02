@@ -4,8 +4,8 @@ date: 12/09/2025
 desc: Les groupes symétriques et alternés, leurs propriétés, et la notion de signature des permutations.
 ---
 
-$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\align}[1]{\begin{aligned}#1\end{aligned}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}$ 
-
+$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}\newcommand{\Z}{\mathbb{Z}}\newcommand{\sub}{\subset}\newcommand{\pron}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\prod}}}\newcommand{\C}{\mathbb{C}}\newcommand{\align}[1]{\begin{array}{l}#1\end{array}}\newcommand{\tr}{\text{tr}}\newcommand{\dt}[1]{\left|\begin{array}{l}#1\end{array}\right|}\newcommand{\piv}[1]{\underset{\begin{array}{l}#1\end{array}}{=}}\newcommand{\ov}[2]{\overset{#2}{\overbrace{#1}}}\newcommand{\mb}[1]{\begin{matrix}#1\end{matrix}}\newcommand{\com}{\text{com}}$
+ 
  
 > [!info]
 > Cours présenté par **M. Déléaval**
@@ -377,7 +377,7 @@ Dans cette section, $p$ désigne un entier naturel non-nul et $F$ désigne un $\
 
 ## 1. Définition
 
-Une application $f:\ov{E\times ... \times E}{p \text{ fois}} \to F$  est dite **$p$-linéaire** si pour tout $(u_1, ..., u_p) \in E^p$  et tout $i \in \{1, ..., p\}$ l'application $\mi{E \to F \\ x \mapsto f(u_1, ..., u_{i-1}, x, u_{i+1}, ..., u_p)}$ est linéaire. 
+Une application $f:\ov{E\times ... \times E}{p \text{ fois}} \to F$  est dite **$p$-linéaire** si pour tout $(u_1, ..., u_p) \in E^p$  et tout $i \in \{1, ..., p\}$ l'application $\align{E \to F \\ x \mapsto f(u_1, ..., u_{i-1}, x, u_{i+1}, ..., u_p)}$ est linéaire. 
 
 ### 1.1 Terminologie
 
@@ -491,7 +491,7 @@ Soit alors, $x \in E, y \in E$. Écrivons:
 $\square$
 
 
-## 3.3 Proposition
+### 3.3 Proposition
 
 Soit $f:E^p \to F$ une application $p$-linéaire alternée. 
 Soit $\{u_1, ..., u_p\}$ une famille liée de vecteurs de $E$.
@@ -539,7 +539,7 @@ Soit $f:E^n \to F$ une application $n$-linéaire alternée.
 > [!check]
 > Puisque toute permutation se décompose en produit de transpositions et que la signature d'un produit est le produit des signatures, on en déduit alors immédiatement le résultat suivant. 
 
-## 4.1 Proposition
+### 4.1 Proposition
 
 Soit $f:E^n \to F$ une application $n$-linéaire alternée. 
 Pour tout $\sigma \in S_n$ et tout $(u_1, ..., u_n) \in E^n$, on a:
@@ -591,7 +591,7 @@ Soit $B = \{e_1, ..., e_n\}$ une base de $E$
 
 ### 2.1 Déterminant de famille de vecteurs dans une base
 
-### 2.1.1 Définition
+#### 2.1.1 Définition
 
 Soit $B$ une base de $E$. Notons $\phi_0$ l'unique forme $n$-linéaire alternée telle que $\phi_0(B)=1$.
 Soit $\{u_1, ..., u_n\}$ une famille de vecteurs de $E$.
@@ -619,4 +619,478 @@ En prenant en particulier, $(u_1, ..., u_n) = B$
 
 En prenant, $(u_1, ..., u_n) = B'$ on obtient:
 - $\boxed{\det_{B'}(B)\det_B(B')}$
+
+### 2.2. Déterminant d'un endomorphisme
+
+#### 2.2.1 Proposition / Définition
+
+Soit $f \in \mc{L}(E)$. Il existe un unique scalaire $\lambda$ appelé **déterminant** de $f$ tel que:
+- Pour toute base $B$ de $E$ et tout $(u_1, ..., u_n) \in E^n$:
+	- $\det_B(f(u_1), ..., f(u_n)) = \lambda \det_B(u_1, ..., u_n)$
+- On le note $\det(f)$ et il vérifie pour toute base $B$ de $E$:
+	- $\det(f) = \det_B(f(B))$
+
+##### 2.2.1.1 Preuve
+
+**Unicité**
+- Si $\lambda$ convient et si $B$ est une base de $E$,
+	- on a **pour tout** $(u_1, ..., u_n) \in E^n$
+		- $\det_B(f(u_1), ..., f(u_n)) = \lambda\det_B(u_1, ..., u_n)$
+	- En prenant $(u_1, ..., u_n) = B$, on obtient $\lambda = \det_B(f(B))$
+**Existence**
+- Soit $B$ une base de $E$. 
+	- L'application: $\align{E^n \to \K \\ (u_1, ..., u_n) \mapsto \det_B(f(u_1), ..., f(u_n))}$  
+		- est une forme $n$-linéaire alternée sur $\wedge^{*n}(E)$.
+		- Or, $\det_B$ est une base de $\wedge^{*n}(E)$
+		- donc il existe $\lambda \in \K$ tel que pour tout:
+			- $(u_1, ..., u_n) \in E^n$,
+				- $\det(f(u_1), ..., f(u_n)) = \lambda \det_B(u_1, ..., u_n)$ $\color{blue}(*)$
+- Soit $B'$ une autre base de $E$.
+	- Puisque $\det_{B'} \in \wedge^{*n}(E)$  donc $\det_B$ est une base,
+		- Il existe $\alpha \in \K$ tel qu $\det_{B'} = \alpha \det_B$.
+			- En multipliant $\color{blue}(*)$ par $\alpha$ on obtient:
+				- $\alpha \det_B(f(u_1), ..., f(u_n)) = \alpha \lambda \det_B(u_1, ..., u_n)$
+				- c'est-à-dire,
+					- $\det_{B'}(f(u_1), ..., f(u_n)) = \lambda \det_{B'}(u_1, ..., u_n)$
+
+##### 2.2.1.2 Exemple
+
+1. $\det(\id_E) = 1$
+	- Se vérifie avec la formule précédente
+	- $\det_B(f(u_1), ..., f(u_n))=\lambda \det_B(u_1, ..., u_n)$
+	- $\det_B(u_1, ..., u_n)=\lambda \det_B(u_1, ..., u_n)$
+	- $\lambda = 1$
+2. Soit $\delta \in \mc{S}_n$  et $\{e_1, ..., e_n\}$ une base de $E$. 
+	- On considère l'endomorphisme de $E$ suivant:
+		- $f$ donné pour tout $i \in \{1, ..., n\}$
+		- $f(e_i) = e_{\sigma(i)}$
+	- Alors, $\det(f) = \det_B(f(e_1), ..., f(e_n))$
+		- $\det(f) = \det_B(e_{\sigma(1)}, ..., e_{\sigma(n)})$
+		- $\det(f) = \eps(\sigma) \det_B(e_1, ..., e_n)$
+		- $\det(f) = \eps(\sigma)$
+
+### 2.2.3  Déterminant d'une matrice carrée
+
+#### 2.2.3.1 Définition
+
+On appelle **déterminant** d'une matrice carrée de taille $n$ le déterminant de ses vecteurs colonnes dans la base canonique de $\K^n$. On le note $\det(A)$.
+
+#### 2.2.3.2 Notation
+
+Si $A = (a_{i,j})_{\align{1 ≤ 1 ≤ n \\ 1 ≤ j ≤ n}} \in \ms{M}_n(\K)$
+- On notera: $\det(A) = \left| \align{a_{1,1} & \cdots & \cdots & a_{1, n} \\ \vdots & \ddots & a_{i,j} & \vdots \\ \vdots & & \ddots & \vdots \\ a_{n,1} & \cdots & \cdots & a_{n,n} }\right|$    
+
+### 3. Proposition
+
+Soit $A = (a_{i,j})_{\align{1 ≤ i ≤ n \\ 1 ≤ j ≤ n}} \in \ms{M}_n(\K)$  
+- Alors $\boxed{\det(A) = \sun{\delta \in \mc{S}_n}{} \eps(\delta)\prod^n_{i=1}a_{\delta(i), i}}$ 
+
+### 3.1 Preuve
+
+Faite à la section précédente (II. 4)
+
+### 3.2 Exemple
+
+$\mb{a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2}} = \sun{\delta \in \ms{2}}{}\eps(\delta)\prod^{2}_{i=1}a_{\delta(i), i}$
+$\phantom{\mb{a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2}}} = \eps(\id)a_{\id(1), 1}a_{\id(2),2} + \eps((1,2))a_{(1,2)(1),1}a_{(1,2)(2), 2}$
+$\phantom{\mb{a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2}}} = a_{1,1}a_{2,2} - a_{2,1}a_{1,2}$
+
+> [!info]
+> La proposition ci-dessus donne le corollaire immédiat suivant:
+
+### 3.3 Corollaire
+
+1. Soit $B$ une base de $E$ et $\{u_1. ..., u_n\}$ une famille de vecteurs de $E$. 
+	- On note $A$ la matrice  des composants de $\{u_1, ..., u_n\}$ dans la base $B$.
+		- Alors $\det_B(u_1, ..., u_n)= \det(A)$
+2. Soit $f \in \mc{L}(E)$ et $B$ une base de $E$. 
+	- On note $A$ la matrice de $f$ dans la base $B$.
+		- Alors $\det(f) = \det(A) = \det_B(f(B))$
+
+#### 3.3.1 Exemple
+
+Soit $D \in \ms{M}_n(\K)$ une matrice diagonale,
+- on note $\lambda_1, ..., \lambda_n$ les éléments diagonaux
+	- $\det(D) = \prod^n_{i=1}\lambda_i$
+- En effet,
+	- $D$ est la matrice de la famille $\{\lambda_1e_1, ..., \lambda_ne_n\}$ dans la base $\{e_1, ..., e_n\}$
+	- Donc,
+		- $\det(D) = \det_B(\lambda_1e_1, ..., \lambda_n e_n)\ub{=}{(*)} \prod^n_{i=1}\lambda_i \ub{\det_B(e_1, ..., e_n)}{=1}$
+		- $(*)$ :Par $n$-linéarité *(linéarité par rapport à toutes les variables)
+
+## 4. Propriétés des déterminants
+
+### 4.1 Théorème
+
+Soit $B$ une base de $E$.
+- Soit $u_1, ..., u_n$ $n$ vecteurs de $E$. 
+- On a équivalence entre:
+	1. $\{u_1, ..., u_n\}$ est une base de $E$
+	2. $\det_B(u_1, ..., u_n) ≠ 0$
+
+> [!check]
+> Je suis une base ssi mon déterminant est non-nul.
+
+#### 4.1.1 Preuve
+
+$(\Rightarrow)$ Commençons par supposer que $B' = \{u_1, ..., u_n\}$ est une base de $E$. 
+- D'après la formule:
+	- $\det_B(B')\det_{B'}(B) = 1$ vue dans **III. 2**
+	- On a alors $\det_B(B')≠0$
+
+$(\cancel \Rightarrow)$ Supposons maintenant que $\{u_1, ..., u_n\}$ n'est pas une base de $E$.
+- Cette famille de $n$ vecteurs est donc liée.
+	- Donc d'après **II. 3**
+	- $\det_B(u_1, ..., u_n) = 0$
+
+$\square$
+## 5. Proposition
+
+### 5.1 Version endomorphisme
+
+1. Soit $\lambda \in \K$ et $f \in \mc{L}(E)$.
+	- Alors $\det(\lambda f) = \lambda^n \det(f)$
+2. Soit $f \in \mc{L}(E)$ et $g \in \mc{L}(E)$.
+	- Alors $\det(f \circ g) = \det(f)\det(g)$
+
+### 5.2 Version matrice carrée
+
+1. Soit $\lambda \in \K$ et $A \in \ms{M}_n(\K)$.
+	- Alors $\det(\lambda A) = \lambda^n \det(A)$
+2. Soit $A \in \ms{M}_n(\K)$ et $B \in \ms{M}_n(\K)$
+	- Alors $\det(AB) = \det(A)\det(B) = \det(B) \det(A)$
+
+### 5.3 Preuve
+
+#### 5.3.1 Version endomorphisme
+
+Soit $B = \{e_1, ..., e_n\}$ une base de $E$. 
+1. On a $\det(\lambda f) = \det_B(\lambda f(e_1), ..., \lambda f(e_n)) \ub{=}{(*)}  \lambda^n \det_B(f(e_1), ..., f(e_n)) = \lambda^n\det(f)$
+	- $(*)$ : Par $n$-linéarité on sort les $\lambda$
+2. On a $\det(f \circ g) = \det_B(f \circ g(e_1), ..., f \circ g(e_n)) = \det_B(f(g(e_1)), ..., f(g(e_n)))$
+	- $= \det(f) \det_B(g (e_1), ..., g(e_n))$
+	- $= \det(f) \det(g)$
+
+#### 5.3.2 Version matrice
+
+1. Soit $f$ l'endomorphisme de $\K^n$ canoniquement associé à $A$.
+	- Alors $\lambda A$ est la matrice de $\lambda f$ dans la base canonique de $\K^n$
+		- on a alors $\det(\lambda A) = \det(\lambda f) = \lambda^n \det(f) = \lambda^n \det(A)$
+2. Soit $f$, respectivement $g$ l'endomorphisme de $\K^n$ canoniquement associé à $A$, respectivement à $B$.
+	- Alors $AB$ est la matrice de $f \circ g$ dans la base canonique de $\K^n$ et on a alors:
+		 - $\det(AB) = \det(f \circ g) = \det(f) \det(g) = \det(A) \det(B)$
+
+$\square$
+
+
+## 6. Théorème
+
+### 6.1 Version endomorphisme
+
+Soit $f \in \mc{L}(E)$. Alors $f$ est bijectif (un automorphisme) ssi $\det(f) ≠ 0$
+- Dans ce cas, on a:
+	- $\det(f^{-1}) = (\det(f))^{-1}$
+
+### 6.2 Version matrice
+
+Soit $A \in \ms{M}_n(\K)$. Alors $A$ est **inversible** ssi $\det(A) ≠ 0$
+- Dans ce cas, on a:
+	- $\det(A^{-1}) = (\det(A))^{-1}$
+
+### 6.3 Preuve
+
+**Version endomorphisme**
+Soit $B$ une base de $E$. 
+- On sait que $f$ est bijectif si et seulement si $f(B)$ est une base de $E$.
+- Donc d'après le 1er théorème de cette sous-section,
+	- si et seulement si $\det_B(f(B)) ≠ 0$, 
+		- c'est-à-dire si et seulement si $\det(f) ≠ 0$
+	- Écrivons alors $\det(\id_E) = \det(f \circ f^{-1}) \ub{=}{(*)}\det(f)\det(f^{-1})$ et le résultat puisque $\det(\id_E)=1$ 
+		- $(*)$ : Proposition précédente
+
+**Version matrice**
+Soit $f$ l'endomorphisme de $\K^n$ canoniquement associé à $A$. 
+- On sait que $A$ est inversible ssi $f$ est bijectif. 
+- On sait par ailleurs que $\det(A) = \det(f)$
+	- Donc, d'après le 1er thèorème de cette sous-section,
+		- $A$ est inversible ssi $\det(A) ≠ 0$
+	- Dans ce cas, on écrit:
+		- $\ub{\det(I_n)}{(*)} = \det(AA^{-1}) \ub{=}{(**)}\det(A)\det(A^{-1})$
+		- $(*)$ : produit des coefficients diagonaux
+		- $(**)$ : proposition précédente
+
+$\square$
+
+## 7. Proposition
+
+Le déterminant d'une matrice carrée est une forme $n$-linéaire alternée des lignes de cette matrice. 
+
+
+### 7.1 Preuve
+
+Soit $A = (a_{i, j})_{\align{1 ≤ i≤n \\ 1 ≤ j ≤ n}} \in \ms{M}_n(\K)$.
+La formule $\det(A) = \sun{\sigma \in \ms{S}_n}{} \eps(\sigma)\prod^n_{i=1}a_{\sigma(i), i}$
+- prouve que le déterminant est une forme $n$-linéaire de lignes car dans les produits apparaît un seul et un unique terme de chaque ligne (car $\sigma \in \mc{S}_n$)
+
+De plus, elle est alternée car si une matrice possède deux lignes identiques,
+- elle est non-inversible et d'après le théorème précédent, son déterminant est nul.
+
+$\square$
+
+### 7.2 Corollaire
+
+Soit $a \in \ms{M}_n{(\K)}$. $\det(A) = \det(^tA)$ 
+
+
+#### 7.2.1 Preuve
+
+Les applications suivantes:
+- $\align{(\ms{M}_{n,1}(\K))^n \to \K \\ (c_1, ..., c_n) \mapsto \det(c_1, ..., c_k)}$  
+et,
+- $\align{(\ms{M}_{n,1})^n \to \K \\ (c_1, ..., c_n) \mapsto \det\m{^t c_1 \\ \vdots \\ ^t c_n}}$ 
+sont toutes 2 $n$-linéaires alternées sur $(\ms{M}_{n,1}(\K))^n$.
+
+Elles sont donc proportionnelles; on a alors l'existence d'un $\lambda \in \K$ tel que pour tout $A \in \ms{M}_n(\K)$:
+- $\det(A) = \lambda \det(^t A)$
+En posant $A = I_n,$ on obtient $\lambda = 1$
+
+$\square$
+
+#### 7.2.2 Remarque
+
+Cette formule s'écrit:
+- $\sun{\delta \in S_n}{}\eps(\sigma)\prod^n_{i=1}a_{\sigma(i), i} = \sun{\sigma \in \ms{S}_n}\eps(\sigma)\prod^n_{i=1}a_{i, \sigma(i)}$ 
+on peut la redémontrer en prouvant que pour tout $\sigma \in \mc{S}_n$ on a (à l'ordre près des facteurs)
+- $a_{\sigma(1), 1} \cdots a_{\sigma(n), n} = a_{1, \sigma^{-1}(1)} \cdots a_{n, \sigma^{-1}(n)}$
+
+De plus, elle est alternée car si une matrice possède de deux lignes identiques, elle est non inversible et, d'après le théorème précédent, son déterminant.
+
+$\square$
+
+# IV - Applications aux calculs de déterminants
+
+On a vu dans la section précédente que le calcul du déterminant d'une famille de vecteurs dans une base ou que le calcul du déterminant d'un endomorphisme peut se ramener au calcul du déterminant d'une matrice carrée qu'on appellera simplement déterminant.
+## 1. Opérations élémentaires sur les lignes ou les colonnes d'un déterminant
+
+Le déterminant d'une matrice carrée étant une forme $n$-linéaire alternée de ses lignes ou de ses colonnes, les propriétés vues sur les formes $n$-linéaires alternée permettant d'énoncer les règles suivantes:
+
+> [!check]
+> On a respectivement ligne ou colonne, pas les deux.
+
+1. Si un déterminant a une ligne / colonne exclusivement composée de $0$, il est nul.
+2. Si un déterminant a deux 2 lignes / colonnes identiques, il est nul
+3. L'échange de deux lignes / colonnes d'un déterminant multiplie ce déterminant par $-1$.
+4. Un déterminant dont une ligne / colonne est combinaison linéaire des autres lignes / colonnes est nul.
+5. Si l'on ajoute à une ligne / colonne une combinaison linéaire des autres lignes / colonnes, la valeur du déterminant est inchangée.
+6. Si l'on multiplie chaque coefficient d'une ligne / colonne d'un déterminant par un scalaire $\lambda$ le déterminant est multiplié par $\lambda$.
+
+### 1.1 Exemple
+
+**Combinaison linéaire**
+
+$\dt{-1 & 3 & 1\\ -1 & 4 & 5 \\ -2 & 5 & 1} = 0$
+
+car $C_3 = 2C_1 + C_2$ par $\fbox4$
+
+## 2. Développement du déterminant suivant une ligne ou une colonne
+
+> [!info]
+> Dans cette sous-section, on suppose que $n \in \N \backslash \{0,1\}$.
+
+### 2.1 Proposition
+
+Soit $A=(a_{ij})_{\align{1 ≤ i ≤ n \\ 1 ≤ j ≤ n}} \in \ms{M}_n(\K)$ une matrice de la forme suivante:
+- $A = \m{ & \vdots & 0 \\ \Huge{A'} & \vdots & \vdots \\ & \vdots & 0 \\ a_{n,1} & \vdots & a_{n,n}}$  alors $\det(A) = a_{n,n}\det(A')$
+
+En particulier, si $A = (a_{i,j})_{1 ≤ i,j ≤ n} \in \ms{M}_{n}(\K)$  est triangulaire, alors $\boxed{\det(A) = \pron{i=1}n a_{i,,i}}$
+#### 2.1.1 Preuve
+
+Écrivons $\det(A) = \sun{\sigma \in \mc{S}_n}{} \eps(\sigma). \pron{i=1}n a_{\sigma(i), i}$
+On a par hypothèse, pour tout $\sigma \in \mc{S}_n$ telle que $\sigma(n) ≠ n$
+- $a_{\sigma(n), n} = 0$
+
+On simplifie la somme de la manière suivante:
+- donc $\det(A) = \left(\sun{\sigma \in \mc{S}_n : \sigma(n) = n}{}\eps(\sigma)\pron{i=1}na_{\sigma(i), i}\right)a_{n,n}$
+
+Or, la restriction de $\{1, ..., n-1\}$ d'une permutation de $\mc{S}_n$ vérifiant $\sigma(n) = n$ est une permutation $s \in \mc{S}_{n-1}$.
+- Réciproquement,
+	- Toute permutation de $\mc{S}_{n-1}$ peut se prolonger en une permutation $\sigma \in \mc{S}_n$ en posant $\sigma(n) = n$.
+- De plus, $\eps(\sigma) = \eps(s)$ car la décomposition en produit de transpositions de l'une donne la même décomposition en produit de transpositions de l'autre. 
+- On peut donc écrire $\det(A) = \left( \sun{s \in \mc{S}_{n-1}} \eps(s) \pron{i=1}{n-1}a_{s(i), i}\right)a_{n,n}=a_{n,n}\det(A')$.
+
+Soit $A$ une matrice triangulaire,
+- Quitte à transposer et puisque $\det(A) = \det(^tA)$ on peut supposer que $A$ est triangulaire inférieure.
+- Il suffit alors de faire une récurrence et d'utiliser le résuoltat que l'on vient de démontrer.
+
+#### 2.1.2 Exemple
+
+Soit $(a,b,c) \in \R^3$
+Calculons le déterminant suivant:
+- $\dt{1 & a & a^2 \\ 1 & b & b^2 \\ 1 & c & c^2} = \piv{L_2 \leftarrow L_2 - L_1}\dt{1 & a & a^2 \\ 0 & (b-a) & b^2 - a^2 \\ 0 & (c-a) & c^2 - a^2}$  
+- $\ub{=}{*} (b-a)(c-a)\dt{1 & a & a^2 \\ 0 & 1 & b+a \\ 0 & 1 & c+a}$
+	- $(*)$ : mise en facteur dans $L_2$ par $(b-a)$ et mise en facteur dans $L_3$ par $c-a$.
+	- **Rappel** :  Ici, c'est 3 linéaire et on a $\det_B(L_1, \lambda L_2, L_3) = \lambda\det_B(L_1, L_2', L_3)$
+- $\piv{L_3 \leftarrow L_3 - L_2} (b-a)(c-a)\ub{\dt{1 & a & a^2 \\ 0 & 1 & b+a \\ 0 & 0 & c-b}}{(**)}$
+	- $(**)$ : triangulaire $= c-b$
+- $= (b-a)(c-a)(c-b)$
+
+### 2.2 Définitions - Mineur et cofacteur
+
+Soit $A = (a_{ij})_{1 ≤ i,j ≤ n} \ms{M}_n(\K)$
+Pour tout $(i,j)\in\{1, ..., n\} \times \{1, ..., n\}$, on appelle:
+1. **Mineur** $a_{ij}$ le déterminant obtenu à partir de $A$ en supprimant sa $i$-ème ligne et sa $j$-ième colonne.
+	- On le note $\Delta _{i,j}$
+2. **Cofacteur** de $a_{ij}$ le scalaire 
+	- $(-1)^{i+j}\Delta{i,j}$
+
+#### 2.2.1 Exemple
+
+Soit $A = \m{\color{red}a\color{0} & b & \boxed{c} \\ \boxed{\color{red}d} \color{0}& \boxed{e} & \boxed{f} \\ \color{red}g\color{0} & h & \boxed{i}]} \in \ms{M}_3(\R)$
+- le mineur de $f$ est $\dt{a & b \\ g & h} = ah - gh$
+- Le cofacteur de $(-1)^{2+1}\dt{b & c \\ h & i} = -(bi - ch)$
+
+### 2.3 Théorème
+
+#### 2.3.1  - Développement du déterminant suivant la $j$-ième colonne
+
+Soit $A = (a_{ij})_{1 ≤ i,j ≤ n} \in \ms{M}_{n}(\K)$. 
+- Pour tout $j \in \{1, ..., n\}$
+- $\det(A) = \sun{i=1}{n}a_{i,j} \cdot (-1)^{i+j}\Delta{i,j}$
+
+#### 2.3.2 - Développement du déterminants suivant la $i$-ème ligne.
+
+Soit $A = (a_{ij})_{1 ≤ i,j ≤ n} \in \ms{M}_{n}(\K)$. 
+- Pour tout $i \in \{1, ..., n\}$
+- on a $\det(A) = \sun{j=1}{n}a_{i,j}(-1)^{i+j}\Delta_{i,j}$
+Avant de prouver ce théorème, donnons un exemple.
+
+#### 2.3.3. Exemple
+
+On a $\dt{1 & 4 & -1 \\ -2 & 5 & 0 \\ 3 & 6 & 2} \piv{(*)} \dt{1^+ & 4^- & -1^+ \\ -2^- & 5^+ & 0^- \\ 3^+ & 6^- & 2^+}$  (on ajoute les $(-1)^{j+1}$ du cofacteur)
+- $(*)$ : développement suivant $C_3$
+
+$= \dt{-2 & 5 \\ 3 & 6} - 0\dt{-2 & 5 \\ 3 & 6} +2\dt{1 & 4 \\ -2 & 5} = 53$
+
+> [!tips]
+> On prend les cofacteurs respectifs multipliés par les coefficients et on somme. Utilisation immédiate de la colonne présédente.
+
+#### 2.3.4 Preuve
+
+On ne prouve que le 1er point du théorème.
+Notons $B$ la base canonique de $\K^n$ et $C_1, ..., C_n$ les colonnes de $A$.
+Pour tout $j \in \{1, .., n\}$ on a:
+- $\det(A) = \det_B(c_1, ..., c_{j-1}, \sun{i=1}n a_{i,j_{e_i}}, c_{j+1}, ..., c_n)$
+	- $\downarrow$ Par linéarité par rapport à la $j$-ème variable
+- $= \sun{i=1}n a_{i,j}\det_B(c_1, ..., c_{j-1}, e_i, c_{j+1}, ..., c_n)$
+
+Montrons alors que $\det_B(C_1, ..., C_{j-1}, e_i, C_{j+1}, ..., C_n) = (-1)^{i+1}\delta{i,j}$
+
+Écrivons $\det_B(C_1, ..., C_{j-1}, e_i, C_{j+1}, .., C_n) = \dt{a_{1,1} & \cdots & a_{1, j-1} & 0 & a_{1, j+1} & \cdots & a_{1,n} \\ \vdots & & \vdots & \vdots & & & \vdots \\ a_{i-1, 1} & \cdots & a_{i-1, j-1} & 0 & a_{i-1, j+1} & \cdots & a_{i-1, n} \\ a_{i, 1} & \cdots & a_{i, j-1} & 1 & a_{i,j+1} & \cdots & a_{i,n} \\ \vdots & & \vdots & \vdots & \vdots & & \vdots \\ a_{n,1} & \cdots & a_{n, j-1} & 0 & a_{n, j+1} & \cdots & a_{n,n}}$   
+
+On procède à $n-j$ échanges successifs de colonnes pour emmener la $j$-ième colonne en dernière position puis à $n-i$ échanges successifs de lignes pour emmener la $i$-ème ligne en dernière position et:
+
+- $\det_B(C_1, ..., C_{j-1}, e_i, C_{j+1}, ..., C_n)$
+- $= \ov{(-1)^{n-j}(-1)^{n-i}}{= (-1)^{i+j}}\underset{\color{blue}(*)}{\dt{a_{1,1} & \cdots & a_{1, j-1} & a_{1, j+1} & \cdots & a_{1, n} & 0 \\ \vdots & & & \vdots &  & \vdots & \vdots \\ a_{i-1, 1} & \cdots & a_{i-1, j-1} & a_{i-1, j+1} & \cdots & a_{i-1, n} & 0 \\ a_{i+1, 1} & \cdots & a_{i+1, j-1} & a_{i+1, j+1} & \cdots & a_{i+1, n} & 0 \\ \vdots & & \vdots & \vdots & & \vdots & \vdots \\ a_{n,1} & \cdots & a_{n, j-1} & a_{n, j+1} & \cdots & a_{n,n} & 0 \\ a_{i,1} & \cdots & a_{i, j-1} & a_{i, j+1} & \cdots & a_{i, n} & 1}}$      
+	- $\color{blue}(*) : = 1 \cdots \Delta_{i,j}$ d'après la première proposition de cette sous-section.
+
+$\square$
+## 3. Comatrice
+
+### 3.1  Définition
+
+Soit $A = (a_{i,j})_{1 ≤ i,j ≤ n} \in \ms{M}_n(\K)$
+- On appelle **comatrice** de $A$ la matrice des cofacteurs de $A$. 
+- On la note $\com(A)$ 
+Et donc $\com(A) = \left((-1)^{i+j}\Delta_{i,j}\right)_{\align{1 ≤ i ≤ n \\ 1 ≤ j ≤ n}} \in \ms{M}_n(\K)$
+
+#### 3.1.1 Exemple
+
+Soit $A = \m{1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9} \in\ms{M}_{3}(\R)$ 
+- Alors $\com(A) = \m{+\dt{5 & 6 \\ 8 & 9} & -\dt{4 & 6 \\ 7 & 9} & +\dt{4 & 5 \\ 7 & 8} \\ -\dt{2 & 3 \\ 8 & 9} & +\dt{1 & 3 \\ 7 & 9} & -\dt{1 & 2 \\ 7 & 8} \\ +\dt{2 & 3 \\ 5 & 6} & -\dt{1 & 3 \\ 4 & 6} & +\dt{1 & 2 \\ 4 & 5}} = \m{-3 & 6 & -3 \\ 6 & -12 & 6 \\ -3 & 6 & -3}$
+### 3.2 Proposition
+
+Soit $A = (a_{ij})_{1 ≤ i,j ≤ n}\in\ms{M}_n(\K)$ 
+- Alors $A^t(\com(A)) = {}^t(\com(A))A = \det(A)I_n$ 
+
+
+En particulier, si $A$ est inversible alors:
+- $A^{-1} = \frac1{\det(A)}{}^t(\com(A))$
+
+> [!warn]
+> Il faudrait déjà que la matrice soit inversible pour utiliser la formule de calcul d'inverse et elle se révèle souvent non optimale.
+#### 3.2.1 Exemple
+
+Soit $A = \m{a & b \\ c & d} \in \ms{M}_2(\R)$
+- Alors $A$ est inversible ssi $\det(A) ≠ 0$
+- c'est-à-dire, ssi $(ad-bc)≠0$
+Dans ce cas,
+- $A^{-1} = \frac1{ad - bc}{}^t\ub{\m{d & -c \\ -b & a}}{\com(A)} = \frac1{ad-bc}\m{d & -b \\ -c & a}$
+
+> [!info]
+> À l'exception des matrice $2\times2$ et de certaines matrices à paramètres, on utilisera rarement la formule (lorsque $A$ est inversible) $A^{-1} = \frac1{\det(A)}{}^t(\com(A))$
+
+
+#### 3.2.2 Preuve
+
+Notons $C = A{}^t\com(A) = (c_{i,j})_{1 ≤ i, j ≤ n} \in \ms{M}_n(\K)$
+- Alors pour tout $(i,j)\in\{1, ..., n\} \times \{1, ..., n\}$
+	- $\boxed{c_{i,j} = \sun{k=1}na_{i,k}(-1)^{j+k}\Delta{j,k}}$
+
+Si $j=1$,
+- alors $c_{i,i}=\sun{k=1}na_{i,k}(-1)^{i+k} \ub{=}{(*)} \det(A)$
+	- $(*)$ : Formule du développement suivant la i-ème ligne.
+Si $i ≠ j$
+- Soit $A' = (a'_{i,j})_{\align{1 ≤ i ≤ n \\ 1 ≤ j ≤ n}} \in \ms{M}_n(\K)$ la matrice obtenue à partir de $A$.
+	- En recopiant sa $i$-ème ligne dans la $j$-ième.
+	- Alors, puisque $A'$ a deux lignes identiques, $\det(A') = 0$
+	- En développant suivant la $j$-ième ligne, on a:
+		- $c_{} = \sun{k=1}na_{j,k}(-1)^{j+k}\Delta'_{j,k}$
+	- Par construction,
+		- $a'_{j,k} = a_{i,k}$ et $\Delta'_{j,k} = \Delta_{j,k}$ car:
+			- $A$ et $A'$ ont les mêmes lignes à l'exception de la $j$-ième.
+	- D'où 
+		- $0 = \sun{k=1}n a_{i,k}(-1)^{j+k}\Delta j,k = a_{i,j}$
+		- On a montré que $A^t (\com(A)) = \det(A) I_n$
+
+- On montre de même que $^t(\com(A))A = \det(A)I_n$ en utilisant:
+	- des développements suivants des colonnes.
+
+## 4. Formule de Cramer
+
+« Rappelons » qu'un système à $n$ équations et $n$ inconnues et dit de Cramer. 
+- Un système carré
+- Disposant d'une unique solution.
+Cela revient à ce que la matrice associée au système soit inversible. 
+
+
+### 4.1 Proposition
+
+Soit $(S)$ un système de Cramer d'écriture matricielle:
+- $AX = B$
+Si $(x_1, ..., x_n)$ est l'unique solution, 
+- On a:
+	- $\forall i \{1, ..., n\}, x_1 = \frac{\det(A_i)}{\det(A)}$
+	- où $A_i$ est la matrice obtenue à partir de $A$ en remplaçant sa i-ème colonne par $B$
+
+#### 4.1.1 Exemple
+
+Avant de donner la preuve, faisons un exemple:
+
+Soit $(S)$ le système linéaire:
+- $\cases{ax+ by = e \\ cx + dy = f}$
+Alors $(S)$ est de **Cramer** ssi:
+- $\dt{a & b \\ c & d} ≠ 0$ et, dans ce cas:
+La solution $(x,y)$ est donnée par:
+- $x = \frac{\dt{e & b \\ f & d}}{\dt{a & b \\ c & d}} = \frac{ed - bf}{ad - bc}$
+- $y = \frac{\dt{a & e \\ c & f}}{\dt{a & b \\ c & d}} = \frac{af-ec}{ad - bc}$
+
+#### 4.1.2 Preuve
+
+Notons $\ms{B}$ la base canonique de $\K^n$ et $c_1, ..., c_n$ les colonnes de $A$.
+- Pour tout $i \in \{1, ..., n\},$ on a:
+	- $\det(A_i) = \det_{\ms{B}}(c_1, ..., c_{i-1}, B, c_{i+1}, ..., c_n) \piv{(*)} \ub{\sun{j=1}n\det_{\ms{B}}(c_1, ..., c_{i-1}, c_j, c_{i+1}, ..., c_n)}{(**)}$
+		- $(*) :$ linéarité par rapport à la i-ème variable
+		- $(**) = 0$ si $j ≠ i$
+	- $= x_i\ub{\det_{\ms{B}}(c_1, ..., c_{i-1}, c_{i}, c_{i+1}, ..., c_n)}{\det(A)}$
+
 

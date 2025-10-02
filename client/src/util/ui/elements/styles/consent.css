@@ -1,0 +1,17 @@
+.consent {
+    --p:3em;
+
+    position:fixed;
+    width:calc(100% - var(--p)/2);
+    height:30vh;
+    background:var(--low-bg-op-80);
+    z-index:1000;
+    backdrop-filter: blur(10px);
+
+    left:50%;
+    transform: translateX(-50%);
+
+    border-radius: 2rem;
+    bottom:1em;
+
+}

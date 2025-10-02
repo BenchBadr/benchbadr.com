@@ -3,7 +3,7 @@ lang: fr
 date: 18/09/2025
 desc: Principe de récurrence, ensembles entiers, division euclidienne
 ---
-$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\align}[1]{\begin{aligned}#1\end{aligned}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}\newcommand{\Z}{\mathbb{Z}}\newcommand{\sub}{\subset}$
+$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\align}[1]{\begin{aligned}#1\end{aligned}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}\newcommand{\Z}{\mathbb{Z}}\newcommand{\sub}{\subset}\newcommand{\pron}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\prod}}}$
 > [!info]
 > Cours présenté par **M. Martinez**
 
@@ -225,11 +225,172 @@ On a:
 	- $|b| = |a| |q|$ comme $|b| ≠ 0$ on a $|q| ≥ 1$
 	- et donc $|a| ≤ |b|$ $(|b| ≥ |a| \times 1)$
 
-#### 2.2.2.
+#### 2.2.2. Relation d'ordre partielle
 
 La relation binaire « divise » est une relation d'ordre partielle sur $\N$ car:
 - $\forall a \in \N, a|a$ (symétrie)
 - anti-symétrie, par $\fbox4$ (section précédente)
 - transitivité, $\fbox5$
 
-Le diagramme de Hasse implique que tout doit être "connecté". 
+Le **diagramme de Hasse** implique que tout doit être "connecté". 
+
+```mermaid
+graph TD
+  1
+  2 --> 1
+  3 --> 1
+  4 --> 2
+  4 --> 1
+  5 --> 1
+  6 --> 2
+  6 --> 3
+  6 --> 1
+  7 --> 1
+  8 --> 4
+  8 --> 2
+  8 --> 1
+  9 --> 3
+  9 --> 1
+  10 --> 2
+  10 --> 5
+  10 --> 1
+
+```
+
+
+# IV - Les nombres premiers
+
+## 1. Définition
+
+Un entier naturel $p$ est dit premier s'il possède **exactement** 2 diviseurs (positifs)
+- À savoir $1$ et $p$
+En particulier, $1$ n'est pas premier (car n'en possède pas 2).
+
+### 1.1 Exemple
+
+- $2$ est un nombre premier et c'est le seul nombre premier pair.
+
+## 2. Théorème
+
+1. Tout entier  différent de  admet un diviseur premier.
+2. Si de plus, $n$ **n'est pas lui même un nombre premier,**
+	- alors il admet un diviseur premier qui est plus petit que $\sqrt{n}$. 
+
+### 2.1 Preuve
+
+- Si $n$ est premier,
+	- Il admet un diviseur premier de fait, lui-même
+- Sinon, (à fortiori différent de $1$)
+	- $n$ admet un diviseur dans $[|2, n-1|]$
+
+> [!warn]
+> $0$ n'est diviseur d'aucun nombre.
+
+Soit $\ms{D}_n^s$ l'ensemble des diviseurs stricts de $n$. 
+- $\ms{D}_n^5 = \ms{D}_n \backslash \{1, n\} = \{l \in \N | \exists k \in \N, lk = n\}\backslash \{1, n\}$
+$P_n$ : $\ms{D}_n^5 ≠ \varnothing$ $\color{blue}(*)$
+
+Montrons que $p$ est premier
+- En effet, par l'absurde, si $p$ n'est pas premier
+	- Il admettrait un diviseur $d \notin \{1, p\}$ 
+	- Et donc, 
+		- $d \in [|2, p-1|]$
+		- $d | p$ avec $d < p$ 
+		- Par transitivité,
+			- on aurait $d|n$ 
+				- Par transitivité
+				- car $p|n$ et $d|p$
+	- Or, on a supposé $p$ plus petit diviseur strict de $n$
+		- On a $d<p$ et $d \in \ms{D}_n^5$
+	- **ABSURDE** car contredit la minimalité de $p$.
+		- On en déduit que $p$ est premier.
+
+$\square$
+
+**Conclusion**
+SI $n≠1$ alors $n$ admet un diviseur premier.
+
+### 2.2 Preuve
+
+Il existe un diviseur e $m$ de $n$ tel que $m \in [|p, n-1|]$ tel que:
+- $m = pm$ donc $n = pm ≥ p^2$ donc $p ≤ \sqrt{n}$
+## 3. Théorème - Nombres premiers infinis
+
+L'ensemble des entiers premiers est infini.
+
+> [!info]
+> [Erdös](https://fr.wikipedia.org/wiki/Paul_Erd%C5%91s), mathématicien hongrois qui voulait écrire un livre contenant les plus belles démonstrations des mathématiques, qu'il voulait nommait **The Book**, un projet qui n'a jamais abouti mais donna lieu à des livres annexes s'en inspirant, souvent osus le nom de **Proof from the Book**.
+
+### 3.1 Preuve
+
+> [!check]
+> On doit cette preuve à Euclide
+
+Par l'absurde, 
+Supposons que l'ensemble $\ms{P}$ des entiers premiers soit fini.
+- Posons alors $\ms{P} = \{p_1, p_2, ..., p_n\}$ (écriture en extension)
+- Posons $n = p_1 \times p_2 \times p_3 \times ... \times p_n + 1$ 
+	- Par application du théorème précédent
+		- $n$ admet un diviseur premier $p$. 
+		- **D'une part** $p|n$ donne le reste de la division euclidienne de $p$ paar $n$ vaut $0$.
+		- **D'autre part**, $p \in \ms{P} = \{p_1, ..., p_n\}$. Posons $i_* \in \{1, ..., n\}$ tel que $p = p_{i_*}$
+			- $n = p_{i_*}\left( \prod^{n}_{\align{i = 1 \\ i ≠ i_{*}}} p_i\right) + 1$  
+			- qui donne la D-E de $n$ par $p_{i_{*}} = p$  dont le reste vaut $1$
+		- **Impossible par unicité du reste de la D-E**.
+- CCL : L'ensemble des entiers premiers est infini.
+
+> [!tips]
+> $i_*$ est l'indice d'un nombre premier divisant $n$. On l'isole.
+
+## 4. Théorème - Décomposition en facteurs premiers
+
+Soit $n ≥ 2$
+- Il existe un unique entier $k$, un unique $k$-uplet de nombres premiers
+	- $2 ≤ p_1 < p_2 < p_3 < ... < p_k$
+- et un unique $k$-uplet $(\alpha_1, ..., \alpha_k)$ d'entiers naturels non-nuls tels que:
+	- $n = p_1^{\alpha_1} \times p_2^{\alpha_2} \times ... \times p_k^{\alpha_k} = \pron{i=1}{k}p_{i}^{\alpha_i}$
+
+### 4.1 Preuve
+
+- **Existence de la décomposition**
+	- Pour $n ≥ 2$
+		- On pose $H_n : \forall m \in [|2, n|]$, 
+			- $\exists k \in \N^*$ un $k$-uplet de nombres premiers $(p_1, ..., p_k)$ 
+				- avec $p_1 < p_2 < ... < p_k$
+			- et un $k$-uplet $(\alpha_1, ..., \alpha_k) \in (\N^*)^k$ tels que:
+				- $m = p_1^{\alpha_1} \cdot ... \cdot p_k^{\alpha_k}$
+		- Nous allons démontrer que $\forall n ≥ 2$, $H_n$ est vraie par récurrence
+		- **Initialisation**
+			- Posons $k=1, \alpha_1 = 1$ on a $2^1 = 2$
+			- On a bien montré $H_2$ vraie.
+		- **Hérédité**
+			- Soit $n≥2$ un entier fixé.
+				- Supposons que $H_n$ est vraie et montrons $H_{n+1}$.
+				- Puisque $H_n$ est vraie, il suffit de démontrer qu'il existe $k \in \N^*$ tel que:
+					- et les nombres premiers $(p_1, ..., p_k)$ tels que:
+						- $p_1 < ... < p_k$
+					- et,
+						- $(\alpha_1, ..., \alpha_k) \in (\N^*)^k$ vérifiant $n+1 = p_1^{\alpha_1} ... p_k^{\alpha_k}$
+			- Par application du théorème du cours, 
+				- **Si $(n+1)$ premier**,
+					- $H_{n+1}$ est vraie avec $k=1$ et $\alpha_k = 1$, $p_1 = n+1$
+				- **Sinon**
+					- $n+1$ admet un diviseur premier $p \in \ms{P}$
+					- Il existe $m \in [|2, n|]$ tel que:
+						- $n+1 = mp$
+					- Puisque $H_n$ est vraie et $m \in [|2, n|]$ il existe $k' \in \N^*$
+						- $(p_1', ..., p_{k'}') \in \ms{P}^k$
+							- $p_1' < ... < p_k'$
+						- et,
+						- $(\alpha'_1, ..., \alpha'_{k'}) \in (\N^*)^{k'}$
+							- $m = (p_1')^{'\alpha_1'} \cdot ... \cdot (p'_{k'})^{\alpha'_{k'}}$
+						- et, $(n+1) = p \cdot (p_1')^{\alpha_1'} \cdot ... \cdot (p'_{k'})^{\alpha'_{k'}}$
+					- $(*)$ : $(n+1) = p_1^{\alpha_1} ... p_k^{\alpha_k}$
+					- $(*)$ fournit alors la décomposition recherchée en réorganisant les termes par ordre croissant.
+		- **Conclusion**
+			-  $\forall n ≥ 2, H_n$ est vérifiée
+			- On a donc prouvé l'existence de la décomposition en facteurs premiers d'un nombre entier.
+- **Unicité de la décomposition**
+	- *Vue plus tard*
+
+

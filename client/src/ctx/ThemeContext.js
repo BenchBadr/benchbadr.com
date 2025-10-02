@@ -5,6 +5,7 @@ export const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(Cookies.get('theme') || 'light');
+  const [consented, setConsented] = useState(Cookies.get('consent') || false);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => {
@@ -14,12 +15,9 @@ const ThemeProvider = ({ children }) => {
     });
   };
 
-  useEffect(() => {
-    Cookies.set('theme', theme, { expires: 365 });
-  }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, consented:consented, setConsented:setConsented }}>
       {children}
     </ThemeContext.Provider>
   );

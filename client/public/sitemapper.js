@@ -1,22 +1,25 @@
 import { manifestData } from "../src/ctx/data/markNifest.js";
 import fs from "fs";
 
+function encodeUrl(url) {
+    const [base, ...parts] = url.split('/');
+    return [base, ...parts.map(encodeURIComponent)].join('/');
+}
+
 function generateSitemap(manifest) {
-    const baseUrl = "https://benchbadr.github.io";
-    let urls = [];
+    const baseUrl = "https://benchbadr.com";
+    const urls = new Set();
 
     Object.entries(manifest).forEach(([path, [items]]) => {
-        urls.push(`${baseUrl}${path}`);
-
+        urls.add(encodeUrl(`${baseUrl}${path}`));
         items.forEach(item => {
             if (typeof item === "string" && !item.startsWith("/")) {
-                urls.push(`${baseUrl}${path}/${item}`);
+                urls.add(encodeUrl(`${baseUrl}${path}/${item}`));
             }
         });
     });
 
-    
-    const xmlUrls = urls.map(url => `
+    const xmlUrls = Array.from(urls).map(url => `
     <url>
         <loc>${url}</loc>
     </url>`).join("");
@@ -26,7 +29,6 @@ function generateSitemap(manifest) {
 ${xmlUrls}
 </urlset>`;
 }
-
 
 const sitemapXml = generateSitemap(manifestData);
 fs.writeFileSync("./sitemap.xml", sitemapXml);
