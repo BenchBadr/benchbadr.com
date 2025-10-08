@@ -384,10 +384,7 @@ Journaliste -- ecrit : "0,n"
 Article -- ecrit : "0,n"
 Événement -- ecrit : "0,n"
 ```
-> [!warn]
-> Le schéma permet simultanément les deux faits:
-> - Alice a écrit l'article LM048 sur les JO 2024
-> - Bob a écrit l'article LM048 sur les législatives 2024
+x
 
 > Dans quelle scénario le premier schéma est-il la réponse attendue?
 
@@ -939,4 +936,168 @@ Pour voir plus https://postgresql.com/docs/
 	- Le seule type de cas où ce serait utile serait 
 		- pour un éventuel service de traitement d'image par exemple.
 
+
+## 8. Modification de la base de données
+
+Objectifs
+- Création des tables, définition des contraintes structurelles
+- Insertion de nouvelles données, suppression, mise à jour
+
+### 8.1 Création de table
+
+- Choix des **noms** des colonnes de leurs **types** et leurs **contraintes**
+- Les contraintes s'appliquent soit sur une colonne spécifique soit sur l'ensemble de la table.
+- On peut choisir des valeurs par défaut avec `default`
+- On note ci-dessous tout ce qui est entre crochets comme étant optionnel.
+
+```sql
+CREATE TABLE nomTable (
+	nomColonne1 typeColonne1 [default val1] [contraintesColonne1]
+	...
+	[CONSTRAINT nomContrainte1] definitionContrainte1
+)
+```
+
+**Exemple**
+
+```sql
+CREATE TABLE produit (
+	ref int PRIMARY KEY,
+	libelle varchar(25) NOT NULL,
+	poids int,
+	poidsPaquet int,
+	CONSTRAINT capacitePaquet CHECK (poids <= poidsPaquet)
+);
+```
+
+Qui produira la table ci-dessous:
+
+- produit
+
+| ref | libelle | poids | poidsPaquet |
+| --- | ------- | ----- | ----------- |
+| ... | ...     | ..    | ..          |
+
+On rappelle les types de la section précédente.
+
+### 8.2 Contraintes
+
+- `PRIMARY KEY`
+	- Déclare une ou plusieurs colonnes comme **clef primaire** de la table.
+	- `numEtud int PRIMARY KEY` 
+- `FOREIGN KEY ... REFERENCES ...`
+	- Déclare une colonne comme **clef étrangère** faisant référence à une autre colonne d'une autre table.
+	- `FOREIGN KEY (numEtud) REFERENCES etudiant(numEtud)` 
+	- La colonne référencée doit avoir une contrainte `UNIQUE`
+- `UNIQUE`
+	- Contrainte d'unicité des lignes (combinaison de colonne)
+	- `nom varchar(25) UNIQUE`
+	- `CONSTRAINT uniqueNomPrenom UNIQUE (nom, prenom)`
+- `NOT NULL`
+	- la colonne doit nécessairement être renseignée.
+	- `libelle varchar(25) NOT NULL`
+- `CHECK` (condition)
+	- Les valeurs de la table doivent respecter une condition données.
+	- `CONSTRAINT capacitePaquet CHECK (poids <= poidsPaquet)`
+
+## 9. Lors de suppression / mise à jour
+
+
+## 10. Modification de la structure d'une table existante
+
+## 10.1 Ajouter une colonne
+
+```sql
+ALTER TABLE nomTable
+ADD COLUMN nomCol typeCol;
+```
+
+### 10.2 Supprimer une colonne
+
+```sql
+ALTER TABLE nomTable
+DROP COLUMN nomCol;
+```
+
+### 10.3 Renommer une colonne
+
+```sql
+ALTER TABLE nomTable
+RENAME COLUMN nomCol TO nouvNom;
+```
+
+### 10.4 Changer le type d'une colonne
+
+```sql
+ALTER TABLE nomTABLE
+ALTER COLUMN nomCol TYPE nouvType;
+```
+
+### 10.5 Ajouter une valeur par défaut
+
+```sql
+ALTER TABLE nomTable
+ALTER COLUMN nomCol SET DEFAULT val;
+```
+
+### 10.6 Retirer une valeur par défaut
+
+```sql
+ALTER TABLE nomTable
+ALER COLUMN nomCol DROP DEFAULT;
+```
+
+
+
+## 11 Insertion d'enregistrement
+
+- Clause `INSERT` : ajoute une nouvelle ligne à une table existance
+	- En renseignant dans l'ordre toutes les colonnes de la table:
+		- `INSERT INTO nomTable VALUES (val1, val5, val2);`
+	- En spécifiant les colonnes à remplir
+		- `INSERT INTO nomTable(col1, col5, col2) VALUES (val1, val5, val2)`
+		- Les autres colonnes sont alors remplies avec
+			- une valeur automatique (cas `default` ou `serial`)
+			- avec un `NULL` sinon.
+- Clause `RETURNING` : spécifie les valeurs à renvoyer après insertion -  utilisé pricnipalement pour récupérer les valeurs automatiques.
+
+```sql
+INSERT INTO etudiant()
+```
+
+> [!warn]
+> **Erreur grave** : on n'obtient pas un numéro étudiant avec un `SELECT` mais on le stocke à l'enregistrement autrement il sera perdu et confus avec d'autres élèves si plusieurs instances du même prénom existent.
+
+
+## 12. Mise à jour des enregistrements
+
+```sql
+UPDATE nomTable SET noCol = valeur WHERE condition;
+```
+
+Modifie **toutes** les lignes satisfaisant la condition. Sans condition **toutes les lignes** sont modifiées.
+
+Après modification, les lignes modifiées **doivent** satisfaire les contraintes du schéma.
+- Si une ligne enfreint une contrainte, toutes les modifications sont annulées.
+
+
+## 13. Suppression d'enregistrement
+
+### 13.1 Tout supprimer
+
+On n'utilisera pas:
+
+```sql
+DELETE from TABLE;
+```
+
+
+Mais plutôt:
+
+```sql
+TRUNCATE TABLE nomTable [CASCADE] [RESTRAT IDENTITY];
+```
+
+- **cascade** : agit sur les attributs interdépendants.
+- **restart identity** : réinitialise `serial`
 

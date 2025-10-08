@@ -768,3 +768,194 @@ int fact(int n){
 > **Leur adresse ne doit pas être renvoyée**
 
 Cela peut engendrer une `segfault`
+
+# VII - Listes
+
+Comme d'habitude, ça n'existe pas et il y a des éléments syntaxiques que le compilateur gère pour nous. 
+
+## 1. Définition
+
+Un tableau est une structure de données regroupant une séquence finie d'éléments de même types auxquels on peut accéder efficacement par leur position (indice).
+
+### 1.1 Quelques précisions
+
+- Langages à typages statique (C, Java, OCaml):
+	- tous les éléments d'un tableau doivent avoir le même type
+- Langages à typage dynamique (Python)
+	- Peuvent permettre d'avoir des tableaux hétérogènes.
+En C, un tableau est constitué d'un nombre fixé d'éléments du même type, accessibles par un indice. L'idée est qu'il est facile, connaissant la taille du type, de calculer la position dans la mémoire d'un élément grâce à son indice. 
+
+> [!check]
+> On parlera de zone mémoire pour qualifier un tableau. 
+
+
+## 2. Déclaration d'un tableau
+
+### 2.1 Syntaxe pour la déclaration d'un tableau
+
+```
+typeElement nomTableau[taille];
+```
+
+- `nomTableau` est len om du tableau;
+- taille est un entier positif
+	- En C, `ansi`, `taille` doit être constante définie à la compilation
+	- À partir du `c99`, `taille` peut être définie à l'éxecution.
+
+### 2.2 Fonctionnement
+
+- La déclaration réserve une zone permettant de ranger consécutivement `taille` valeurs de type `typeElement`.
+- Les indices sont des ntiers et commencent avec 0:
+	- les indices valides vont de $0$ à `taille-1`
+- `t[i]` désigne l'élément à l'indice `i` du tableau
+
+$\newcommand{\cs}[3]{\overset{#1}{\underset{#2}{\boxed{#3}}}}$
+
+### 2.3 Initialisation simplifiée
+
+Lorsque la taille est connue à la compilation, on peut préciser les valeurs des éléments à la déclaration.
+- On donne entre accolades les valeurs consécutives séparées par des virgules
+- Si la totalité des valeurs n'est pas donnée, les éléments restant sont initialisés avec des $0$.
+`
+```c
+#define TAILLE 10
+
+int main() {
+	int i, t[TAILLE];
+	int tt[TAILLE] = {0,1,2,3,4,5};
+	...
+}
+```
+
+- `t` est un tableau de 10 `int` au contenu non précisé
+
+
+### 2.4 Fonctions et tableaux 
+
+- À la déclaration d'une fonction, un tableau est déclaré comme paramètre par la syntaxe suivante.
+  
+```
+typeElement = nomTableau[];
+```
+
+- Lors d'un appel de fonction, on précise uniquement len om du tableau.
+- Pour écrire les fonctions facilement réutilisables, on transmet la taille effective.
+
+```c
+void lireTableau(int tab[], int taille) {
+	int i;
+	for (i = 0; i < taille; i++) {
+		scanf("%d", &tab[i]);
+	}
+}
+
+void afficheTableau(int tab[], int taille) {
+	int i;
+	for (i = 0; i < taille; i++)
+		printf("%d ", tab[i]);
+	printf("\n");
+}
+
+int main(void) {
+	int tab[10];
+	lireTableau(tab, 10);
+	afficheTableau(tab, 10);
+	return 0;
+}
+```
+
+> [!check]
+> À nous de nous assurer que les indices sont valides. En Java ou en Python, on nous signale ces erreurs.
+
+Un tableau, c'est l'adresse de son premier élément:
+- Les compilateur interprète `t[i]` comme le $i$-ème élément du type après l'adresse `t`.
+- Si on transmet un tableau à une fonction, les élémentssont transmis par adresse.
+
+### 2.5 Définition de constantes
+
+> [!warn]
+> Ne **jamais** utiliser de valeurs numérique pour la taille d'un tableau
+
+- Utiliser une constante symbolique:
+	- `#define TAILLE 42`
+- Le préprocesseur remplace avant la compilation toute apparition de la première suite de lettres par la deuxième (acucune analyse)
+
+> [!tips]
+> L'utilisation de majuscule permet de reconnaître dans le code une directive pour le préprocesseur (très utile en cas d'erreur dans la définition)
+
+On peut créer une constante en ajoutant `const` avant sa déclaration.
+
+```c
+const int taille = 12;
+```
+
+C'est cette même chose qui est appréciable dans le java, car le compilateur vérifie de façon très exigeante. 
+
+### 2.6 Tableaux partiellement remplis
+
+Dans la pratique, on sait rarement à l'avance le nombre d'éléments à manipuler. Suivant les cas:
+- On déclare des tableaux de taille réelle `TAILLE_MAX` (constante)
+	-  Que l'on remplit partiellement
+- On alloue dynamiquement **sur le tas** la place juste nécessaire avec un appel à `malloc`.
+
+Dans les deux cas, il fau savoir combien d'éléments sont à prendre en compte.
+- On mémorise la taille effective (le nombre d'éléments à prendre en compte) dans une variable
+	- associer l tableau et sa taille effective dans une `structure`.
+- On utilise un marqueur de fin (élément n'appartenant pas à l'ensemble des valeurs valides) après le dernier éléments valides
+	- voir le cours sur les chaînes de caractères
+- pas toujours possibles.
+
+### 3. Tableaux à plusieurs dimensions
+
+- `truc tab[N]` déclare un tableau à une dimension : `tab` est un tableau de `N` éléments de type `truc`.
+	- `truc ... [N]` correspond au type : tableau de `N` truc
+
+> [!warn]
+> Un tableau de dimension $n$ est un tableau dont les éléments sont des tableaux de dimension $n-1$
+
+- L'instruction `truc tab[M][N]` déclare donc un tableau de `M` "machins" où chaque "machin" est un tableau de `N` éléments de type `truc`
+
+## 4 Caractères en C, le type `char`
+
+- **Rappel 1**
+	- Le type `char` désgien les entiers écrits sur 1 octet
+		- le type `unsigned char` désigne les entiers de 0 à 255
+		- Le type `signed char` désigne les entiers de $-128$ à $127$
+- Suivant le compilateur, le type char peut désigner `unsigned char` ou `signed char`
+- **Rappel 2**
+	- Le code `ascii` est la partie de 0 à 127.
+	- Il ne permet pas de gérer les lettres accentuées
+- **Rappel 3**
+	- Les fonctions `scanf` et `printf` utilisent le spécificateur de format `%c` pour manipler des caractères
+- **Rappel 4**
+	- Pour désigner une constante de type `char` on écrit la lettre entre quote `z` ou on donne la valeur numérique de son code
+
+```c
+printf("%c", 'a');
+printf("%c", 97); // moins lisible non ?
+```
+
+$\Rightarrow$ les deux instructions affichent toutes les deux : `a`
+
+### 4.1 Lecture, écriture par caractère
+
+Deux fonction déclarées dans `stdio.h` permettent une manipulation caractère par caractère.
+- **Lecture** : la fonction de prototype `int getchar(void);`  renvoie la valeur d'un octet lu au cavier.
+- En cas d'erreur ou d'arrêt d'écriture (`Ctrl D` sous Linux) elle renvoie la constante symbolique `EOF` (définie dans `stdio.h`) par 
+	- `#define EOF (-1)`
+- Pour pouvoir prendre cette valeur, il faut dans un enemble de valeurs plus grand que l'ensemble des `char` : les `int`
+- **Écriture**
+	- La fonction de prototype `int putchar(int c)`; écrit l'entier `c`, considéré comme un `unsigned char` sur la sortie standart.
+	- Elle renvoie le caractère écrit ou `EOF`
+
+> Pourquoi `getchar(void)` renvoie un `int`?
+
+
+## 4.2. Opérations sur les caractères
+
+Les `char` sont des petits entiers.
+$\Rightarrow$ On peut donc leur appliquer toutes les opérations sur les entiers.
+
+> [!info]
+> Une règle essentielle quand on programme : [Règle de Paretto](https://fr.wikipedia.org/wiki/Principe_de_Pareto)
+

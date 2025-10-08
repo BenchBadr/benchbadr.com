@@ -145,6 +145,8 @@ Soit $\sigma$ l'association de l'état de la puissance en chaque itération
 	- Par **descente infinie** de fermat (i.e minoration des entiers naturels)
 		- on en déduit la terminaison du calcul de l'exponentiation rapide.
 
+> [!info]
+> On parlera ici de variant de boucle.
 ### 2. Correction de l'algorithme
 
 $P_{n-1} :$ $x^n= y^m \cdot \texttt{res}$ pour $(n,m)$ avec $m$ déterministe et déterminé en fonction de $n$.
@@ -158,7 +160,8 @@ Soit $k \in \N$ tel que $P_{n-k}$ vraie. Mq $P_{n-k+1}$ est vraie.
 	- $x^n= y^m \cdot \texttt{res}$
 	- À l'itération suivante on obtient:
 		- Si $m$ impair,
-			- $\texttt{res} = \texttt{res}\cdot y$ 
+			- $x^{n+1} = y^m \cdot \texttt{res} \cdot x$
+			- $\phantom{x^{n+1}}$
 
 
 # Exercice 4

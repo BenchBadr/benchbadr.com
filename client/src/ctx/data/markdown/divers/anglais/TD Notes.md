@@ -52,3 +52,10 @@ In this course, they organise very unconventional activities to teach them the r
 - At the beginning of the programme, they asked to jump into a chilly pool with their clothes on: they learned through this to step outside their comfort zone / to think outside the box = differently / to stand out from the crowd / to be ready to face the unexpected
 - We also see them play a volleyball game with rules that keep hanging $\to$ to teach them to adapt to any situation / to face new challenges. Indeed, when you start a business, you must overcome a lot of obstacles.
 In this programme, they learn to be immune to the **pressure** of running business, to be **fearless = bold**, to be strong-willed = determined.
+
+- Silicon companies are **renowned** for the amazing perks given to their employees. Most of the headquarters have awesome on-site facilities (installations) / amenities (amenagement). gyms, running trails = paths, swimming pools, zen rooms where the employees can relax = can unwind = cill out.
+- Employees are also offered services like care wash, laundry and drycleaning, haircuts or massages, which make their lives easier
+- On top of getting a high salary = high wages (6 figure salary) silicon employees also get benefits outside of work such as free health coverage, unlimited vacation with stipends and reimburseemnt of daycare. the companies also offer women to freeze their eggs or to pay for adoption fees so that they can pursue their career first and have children later in their life.
+- what is surprising is that they give money to employees who take more than a week of holidays, which shows that many tech employees are workaholics / don't take many holidays / much vaction
+- Employers f **lavish** (= generous) perks to attract and retain the talents = the best engineers and scientists but also to make them loyal. they also do it to boost the employees' productivity. they have understood that the more satisfied employees are, the more productive they re, the happier they are, the better they work $\to$ the more motivated they are. 
+

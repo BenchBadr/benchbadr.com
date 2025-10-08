@@ -3,7 +3,7 @@ lang: fr
 date: 15/09/2025
 desc: Groupe symétrique, définition du déterminant
 ---
-$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}\newcommand{\Z}{\mathbb{Z}}\newcommand{\sub}{\subset}\newcommand{\pron}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\prod}}}\newcommand{\C}{\mathbb{C}}\newcommand{\align}[1]{\begin{array}{l}#1\end{array}}\newcommand{\tr}{\text{tr}}$
+$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}\newcommand{\Z}{\mathbb{Z}}\newcommand{\sub}{\subset}\newcommand{\pron}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\prod}}}\newcommand{\C}{\mathbb{C}}\newcommand{\align}[1]{\begin{array}{l}#1\end{array}}\newcommand{\tr}{\text{tr}}\newcommand{\dt}[1]{\left|\begin{array}{l}#1\end{array}\right|}\newcommand{\piv}[1]{\underset{\begin{array}{l}#1\end{array}}{=}}\newcommand{\ov}[2]{\overset{#2}{\overbrace{#1}}}\newcommand{\mb}[1]{\begin{matrix}#1\end{matrix}}\newcommand{\com}{\text{com}}\newcommand{\td}[1]{\underset{#1}{\longrightarrow}}\newcommand{\Q}{\mathbb{Q}}\newcommand{\supp}{\text{supp}}\newcommand{\card}{\text{card}}$
  
 > [!info]
 > Enseignant: **Julien Roth** (julien.roth@univ-eiffel.fr) Copernic 4B060
@@ -220,7 +220,7 @@ $= (1,6)(3,5)(5,8)(8,4)(4,7)$
 $=(1,6)(3,7)(3,4)(3,8)(3,5)$
 ## Exercice 4 - Décomposition en produits II
 
-> 1. Dans $S_n,$ avec $n ≥ 4$, on considère une permutation $\sigma$ et un $p$-cycle $c=(x_1, x_2, ..., x_p), 2 ≤ p ≤ n$. Montrer que la permutation $\sigma \circ c \circ \sigma^{-1}$ est un $p$-cycle que l'on précisera.
+> 1. Dans $\mc{S}_n,$ avec $n ≥ 4$, on considère une permutation $\sigma$ et un $p$-cycle $c=(x_1, x_2, ..., x_p), 2 ≤ p ≤ n$. Montrer que la permutation $\sigma \circ c \circ \sigma^{-1}$ est un $p$-cycle que l'on précisera.
 > 2. Montrer que toute transposition de $S_n$ peut s'écrire comme le produit de transpositions de la forme $i \in \{2, ..., n\}$.
 > 3. En déduire que toute permutation de $S_n$ peut s'écrire comme le produit de transpositions de la forme $(1, i) \in \{2, ..., n\}$
 > 4. En s'inspirant de la première question, montrer que toute transposition $(1,i)\in\{2, ..., n\},$ s'écrit comme le produit composé uniquement des cycles. $(1,2), (2,3, ..., n-1, n), (n, n-1, n-2, ..., 3, 2)$
@@ -252,9 +252,10 @@ $\phantom{s(k)}=k$
 
 Donc $s = \sigma \circ c \circ \sigma^{-1}$ est bien le cycle $(\sigma(x_1), \sigma(x_2), ..., \sigma(x_p))$
 
+
 ### Question 2
 
-> Montrer que toute transposition de $S_n$ peut s'écrire comme le produit de transpositions de la forme $i \in \{2, ..., n\}$.
+> Montrer que toute transposition de $\mc{S}_n$ peut s'écrire comme le produit de transpositions de la forme $i \in \{2, ..., n\}$.
 > **Énoncé alternatif (notations tableau)**
 > Montrer que toute transposition de $\mc{S}_n$ peut s'écrire comme produit de transposition de la forme $(1, i)$
 

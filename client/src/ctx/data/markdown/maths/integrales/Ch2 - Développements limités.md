@@ -6,7 +6,7 @@ date: 17/09/2025
 > [!info]
 > Cours présenté par **M. Ribaud**
 
-$\newcommand{\sub}{\subset}\newcommand{\R}{\mathbb{R}}\newcommand{\ov}[2]{\overset{#2}{\overbrace{#1}}}\newcommand{\lim}[1]{\underset{#1}{\text{lim}}}\newcommand{\N}{\mathbb{N}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\eq}[1]{\underset{#1}{\sim}}\newcommand{\eps}{\varepsilon}\newcommand{\td}[1]{\underset{#1}{\to}}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\mc}{\mathcal}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}$
+$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}\newcommand{\Z}{\mathbb{Z}}\newcommand{\sub}{\subset}\newcommand{\pron}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\prod}}}\newcommand{\C}{\mathbb{C}}\newcommand{\align}[1]{\begin{array}{l}#1\end{array}}\newcommand{\tr}{\text{tr}}\newcommand{\dt}[1]{\left|\begin{array}{l}#1\end{array}\right|}\newcommand{\piv}[1]{\underset{\begin{array}{l}#1\end{array}}{=}}\newcommand{\ov}[2]{\overset{#2}{\overbrace{#1}}}\newcommand{\mb}[1]{\begin{matrix}#1\end{matrix}}\newcommand{\com}{\text{com}}\newcommand{\td}[1]{\underset{#1}{\longrightarrow}}\newcommand{\Q}{\mathbb{Q}}\newcommand{\supp}{\text{supp}}\newcommand{\card}{\text{card}}\newcommand{\sp}{\text{Sp}}\newcommand{\vect}[1]{\text{Vect}\left(#1\right)}\newcommand{\ifff}[1]{\underset{#1}{\iff}}\newcommand{\eqv}[1]{\underset{#1}{\sim}}$
 # I - Introduction
 
 L'objectif est le suivant: on se donne $f:I \to \R, x_0 \in I,$ et on cherche à approximer $f$ par une fonction plus simple, à savoir un polynôme.
@@ -600,4 +600,67 @@ On a alors,
 
 
 ## 2. Méthode 2
+
+On effectue un changement de variable pour se ramener en $0$.
+
+### 2.1 Exemple
+
+> DL à l'ordre $3$ de $f(x) = \frac1x$ en $x_0=3$
+
+Posons $x=3+u \iff u = x-3$ et $ux \td{} 3$ alors $u \td{} 0$
+On obtient alors,
+- $f(x) = \frac1{x} = \frac1{3+u} = g(u)$
+Et, on fait le DL à l'ordre $3$ de $g(u)$ en $0$.
+- $\frac1{3+u}=\frac13 \frac1{1+\frac{u}3} = \frac13 \times \left(\frac13\frac1{1+v}\right), v = \frac{u}3$  
+- Et, $\frac13(1 - v + v^2 - v^3 + o(v^3))$
+- $= \frac13 - \frac{u}9 + \frac{u^2}{27} - \frac{u^3}{81} + o(u^3)$
+- Donc,
+	- $f(x) = \frac13 - \frac{(x-3)}9 + \frac{(x-3)^2}{27} + \frac{(x-3)^3}{81} + o((x-3)^3)$
+
+# V - DL en $±\infty$
+
+> [!info]
+> Le but est souvent d'obtenir un équivalent d'une fonction compliquée en $±\infty$.
+
+## 1. Exemple 1
+
+> $f(x) = \frac{x+2}{x^2-1}$
+
+
+On a $f(x) \eqv{+\infty} \frac{x}{x^2} = \frac1x \td{} 0$ 
+
+On a $f(x) = \frac{x}{x^2} \frac{1 + \frac2x}{1 - \frac1{x^2}} = \frac1x\left(\frac{1 + \frac2x}{1 - \frac1{x^2}}\right)$
+On pose:
+- $u = \frac1x \td{} 0$ et alors,
+- $\frac{1+\frac2x}{1-\frac1{x^2}} = \frac{1+2u}{1 - u^2}$
+
+
+$\begin{array}{l|}1+2u & \vdots \\ -(1-u^2) & \vdots \\ \hline 2u & \vdots &  + o(u) \\ -(2u) & \vdots \\ \hline  0 \end{array}$$\align{& 1 - u^2 \\ \hline & 1 + 2u \\ \\ \\ \\  \\ }$
+
+
+Donc $\frac{1+2u}{1 - u^2} = 1 + 2u + o(u)$
+$= 1 + \frac2x + o(\frac1x)$
+
+Et donc, 
+- $f(x) = \frac1x\left(1+\frac2x + o\left(\frac1x\right)\right)$
+- $\phantom{f(x)} = \frac1x + \frac2{x^2}+o\left(\frac1{x^2}\right)$
+
+
+## 2. Exemple 2
+
+> $f(x) = \frac{x^3 + 2}{x^2 - 1}$
+
+$f(x) \eqv{+\infty} = \frac{x^3}{x^2} = x \td{x\to +\infty}+\infty$
+$f(x) = \frac{x^3}{x^2} \cdot \frac{1 + \frac{2}{x^3}}{1 - \frac1{x^2}} = x\left(\frac{1 + \frac{2}{x^3}}{1 - \frac1{x^2}}\right)$
+
+et on pose $u = \frac1x \td{} 0 \sim x \to +\infty$
+
+Soit $g(u) = \frac{1 + 2u^3}{1 - u^2}$
+
+$\begin{array}{l|}1+2u^2 & \vdots \\ -(1-u^2) & \vdots \\ \hline u^2 & \vdots & +o(u^2) \\ -(u^2) & \vdots & +o(u^2) \\ \hline 0\end{array}$ $\align{& 1 - u^2 \\ \hline & 1 + u^2 \\ \\ \\ \\  \\ }$
+
+
+Donc $g(u) = 1 + u^2 + o(u^2)$
+Au final, $f(x) = x(1 + \frac1{x^2} + o\left(\frac1{x^2}\right))$
+- soit $f(x) = x + \frac1x + o\left(\frac1x\right)$
 

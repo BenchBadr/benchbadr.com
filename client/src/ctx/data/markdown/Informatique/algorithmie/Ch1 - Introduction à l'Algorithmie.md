@@ -315,3 +315,41 @@ Montrons qu'il est correct par récurrence sur $n$:
 
 On a vu **deux techniques** fondamentales pour établir la correction d'un algorithme.
 - Les **invaraints** pour les boucles `for` et `while`.
+
+# II - 
+
+## 1. Variant de boucle
+
+> [!info]
+> On dit **invariant de boucle** (pour prouver la correction) - c'est une propriété
+> **Variant de boucle** - un entier (≠ propriété). C'est ma quantité qui décroit.
+
+### 1.1 Définition
+
+Un **variant** de boucle `while` est un quantité entière qui décroît strictement à chaque itération de la boucle.
+- On montre la **terminaison** en vérifiant qu'on arrête la boucle dès que le variant est suffisamment petit.
+
+
+## 2. Variant de récursivté
+
+Par exemple, pour le marquage sur une grille
+- On appelle sur des cases non-marquées
+- il n'y a donc plus d'appel récursif si le v`ariant est inférieur ou égal au nombre de cases pleines
+- ligne. : le variant diminue strictement à chaque appel
+	- on a prouvé la terminaison de l'algorithme
+
+```python
+def acces(T, D, A, M):
+	if D == A: return True
+		M.add(D)
+	...
+```
+
+## 3. Conclusion sur les variants
+
+### 3.1 Variants de boucles
+
+- Quantité entière
+- décroît strcitement
+
+

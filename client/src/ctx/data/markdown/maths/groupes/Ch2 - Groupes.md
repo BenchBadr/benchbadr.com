@@ -3,7 +3,8 @@ lang: fr
 desc: Cours sur les groupes
 date: 25/09/2025
 ---
-$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}\newcommand{\Z}{\mathbb{Z}}\newcommand{\sub}{\subset}\newcommand{\pron}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\prod}}}\newcommand{\C}{\mathbb{C}}\newcommand{\align}[1]{\begin{array}{l}#1\end{array}}$
+$\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\newcommand{\ub}[2]{\underset{#2}{\underbrace{#1}}}\newcommand{\R}{\mathbb{R}}\newcommand{\id}{\text{id}}\newcommand{\eps}{\varepsilon}\newcommand{\cases}[1]{\begin{cases}#1\end{cases}}\newcommand{\rcases}[1]{\begin{rcases}#1\end{rcases}}\newcommand{\N}{\mathbb{N}}\newcommand{\sun}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\sum}}}\newcommand{\mc}{\mathcal}\newcommand{\ms}{\mathscr}\newcommand{\Z}{\mathbb{Z}}\newcommand{\sub}{\subset}\newcommand{\pron}[2]{\overset{#2}{\underset{\begin{matrix}#1\end{matrix}}{\prod}}}\newcommand{\C}{\mathbb{C}}\newcommand{\align}[1]{\begin{array}{l}#1\end{array}}\newcommand{\tr}{\text{tr}}\newcommand{\dt}[1]{\left|\begin{array}{l}#1\end{array}\right|}\newcommand{\piv}[1]{\underset{\begin{array}{l}#1\end{array}}{=}}\newcommand{\ov}[2]{\overset{#2}{\overbrace{#1}}}\newcommand{\mb}[1]{\begin{matrix}#1\end{matrix}}\newcommand{\com}{\text{com}}\newcommand{\td}[1]{\underset{#1}{\longrightarrow}}\newcommand{\Q}{\mathbb{Q}}$
+
 > [!info]
 > Cours présenté par **M. Martinez**
 # I - Loi de composition
@@ -276,6 +277,8 @@ Soit $H_1, H_2$ deux sous-groupes de $(G, \cdot)$.
 	- donc, $x^{-1}\in H_1 \cap H_2$ i.e,
 		- $\fbox3 \ \forall x \in H, \ x^{-1} \in H$
 
+
+
 > [!warn]
 > L'union de deux sous-groupes n'est pas un sous groupe.
 
@@ -283,3 +286,155 @@ Soit $H_1, H_2$ deux sous-groupes de $(G, \cdot)$.
 
 $H_1 = 3\Z$ et $H_2 = 8\Z$
 - $H_1 \cup H_2 \not < G$. 
+
+... à faire `°1°`
+
+
+### 2.2 Sous-groupe engendré par la partie $S$. 
+
+Soit $(G, \cdot)$ un groupe et $S \sub G$ $(S ≠ \varnothing)$.
+Nous désignons par $\ms{H}_s$ l'ensemble de tous les sous-groupes de $(G, \cdot)$ contenant la partie $S$.
+- On a alors, comme conséquence de la proposition précédente que:
+	- $\underset{H \in \ms{H}_S}{\Huge\cap} H$ est un sous-groupe de $(G, \cdot)$
+
+$\underset{H \in \ms{H}_S}{\Huge\cap} H$   est le plus **petit** (au sens de l'inclusion des ensemblistes). 
+- Plus petit sous-groupe contenant la partie $S$. 
+
+#### 2.2.1 Définition
+
+Soit $(G, \cdot)$ un groupe et $S\sub G \ (S ≠ \varnothing)$
+- On appelle sous-groupe engendré par $S$ le plus petit sous-groupe de $(G, \cdot)$ contenant $S$
+- Il est noté $\langle S \rangle$ 
+	- On a $\langle S \rangle = \underset{H \in \ms{H}_s}{\Huge\cap}H$ 
+
+### 2.2.2 Remarque
+
+Si $(G, \cdot)$ est un groupe et $x \in G$, on note simplement,
+- $\langle x \rangle$ au lieu de $\langle \{ x\} \rangle$ 
+
+### 2.2.3 Proposition
+
+Soit $(G, \cdot)$ un groupe et $S \sub G,$ $(S ≠ \varnothing)$
+- $\langle S \rangle = \{a_1a_2...a_n | n\in\N^*, a_i \in S \text{ ou } a_i^{-1}\in S, \forall i \in \{1, ..., n\}\}$
+	- écriture paramétrique
+
+#### 2.2.3.1 Preuve
+
+Posons $H = \{a_1 ... a_n | n \in \N^*, a_1 \in S \text{ ou }a^{-1} \in S, i \in [|1, n|]\}$
+- Il s'agit de montrer que $H = \langle S \rangle$
+
+$(\sub)$ Mq $H \sub \langle S \rangle$ 
+- Soit $x \in H,$
+	- $x = a_1 \cdot a_2 \cdot ... \cdot a_{n-1} \cdot a_n$
+		- avec $a_i \in S$
+		- ou $a_i^{-1} \in S$
+		- $\forall i \in [|i, n|]$
+	- $a_i \in \langle S \rangle$ : en effet,
+		- Si $a_i \in S, a_i \in \langle S \rangle$ par définition. 
+		- Si $a_i^{-1} \in S$ alors  $a_i = (a_i^{-1})^{-1} \in \langle S \rangle$
+			- car $\langle S \rangle < (G, \cdot)$ et $a_{i}^{-1} \in \langle S \rangle$
+			- car $(a_i^{-1}\in S)$
+	- Donc, 
+		- $\forall i \in [| 1, n|], a_i \in \langle S \rangle$
+		- Ainsi, puisque $\langle S \rangle < G$
+		- $x = \pron{i=1}n a_i \in \langle S \rangle \in G$
+			- par stabilité de la loi $\cdot$ sur $\langle S \rangle$
+- **CCL :** $H \sub \langle S \rangle$
+$(\supset)$ $\langle S \rangle \sub H$ 
+- Il suffit que démontrer que $S\sub H$ $(1)$ et que $H < G$ $(2)$
+	1. En effet, soit $a \in S$
+		- En posant $n = 1$ 
+			- et $a_1 = a$, on a $a=a_1\in H$
+				- **CCL**  - $S \sub H$
+	2. $H$ est un sous-groupe de $G$
+		- $H ≠ \varnothing$ car $S \sub H$ et $S ≠ \varnothing$
+		- Soit $x,y \in H$
+			- Alors il existe $n \in \N^*, a_i \in S$ ou $a_i^{-1} \in S$ $\forall i \in [|1, n|]$ 
+				- tel que $x = a_1 ... a_n$
+			- et il existe, 
+				- $m \in \N^*$ et $a_j' \in S$ et $a_j^{-1} \in S$
+					- $\forall j \in [|1, m|]$
+				- tel que $y = a_1' ... a_m'$
+		- On a alors,
+			- $x\cdot y = a_1 ... a_n a_1' ... a_n'$
+				- posons $b_i = a_i$ $\forall i \in [|1, n|]$
+				- et $b_i = a_i'$ $\forall i \in [|n+1, n+m|]$
+			- alors,
+				- $x \cdot y = b_1 ... b_{n+m}$ avec
+					- $\forall i \in [|1, n+m|]$
+			- ce qui montre que:
+				- $x \cdot y \in H$
+		- **CCL** - $\forall x,y \in H, x \cdot y \in H$
+	3. Soit $x \in H$
+		- Il existe $n \in \N^*$ $a_i \in S$ ou $a_i^{-1}\in S$
+			- $\forall i \in [|1, n|]$
+			- tels que:
+				- $x = a_1 ... a_n$
+		- On a alors,
+			- $x^{-1}=(a_1...a_n)^{-1}$
+			- $\phantom{x^{-1}} = a_n^{-1}a_{n-1}^{-1} ... a_2^{-1}a_1^{-1}$
+		- En effet,
+			- $(a_n^{-1}a_{n-1}^{-1} ... a_2^{-1}a_1^{-1})(a_1 ... a_n)$
+			- $= a_n^{-1}a_{n-1}^{-1}\left(a_3^{-1}(a_2^{-1}(a_1^{-1} \cdot a_{1})a_2)a_3\right) \cdot a_n = e_g$
+		- De même,
+			- $a_1 ... a_n \cdot a_{n^{-1}} ... a_{1}^{-1} = e_G$
+
+**Résumé**
+- $S \sub H$
+- $H < G$ donc:
+	- $\underset{\align{W < G \\ \text{tq }S \sub G}}{\Huge\cap}W \sub H$ car $H \in \{W \sub G | S \sub W \text{ et }W < G \}$  
+- et, $\boxed{\langle S \rangle \sub H}$
+
+**Conclusion générale**
+- $\boxed{\langle S \rangle = H}$
+
+#### 2.2.3.2 Remarque
+
+En notation additive,
+- $\langle S \rangle = \left\{\sun{i=1}n a_i | n \in \N^* \text{ et } \forall i \in [|1, n|], a_i \in S \text{ ou }-a_i \in S\right\}$   
+
+
+#### 2.2.3.3 Exemple fondamental
+
+- $(\Z, +)$
+- $\langle x \rangle = \left\{\sun{i=1}n a_i | a_i \in \{x, -x\} \forall i \in [|1, n |]\right\} = \{nx | n \in \Z\} = x\Z$ 
+
+### 2.2.4 Définition
+
+Soit $(G, \cdot)$ un groupe et $S\sub G$
+1. On dit que $S$ est une partie génératrice de $(G, \cdot)$ 
+	- $\langle S \rangle = G$
+2. On dit qu'un groupe est **monogène** (un seul générateur)
+	- Il existe $x \in G$ tel que $\langle x \rangle = G$
+	- autrement dit, si $\{x\}$ est générateur de $G$. 
+3. On dit que $G$ est de **type** fini si:
+	- Il existe $\{x_1, ..., x_n\} \sub G$ tel que:
+		- $G = \langle \{x_1, ..., x_n\} \rangle$
+4. Un groupe monogène d'ordre fini est appelé groupe **cyclique**.
+5. On dira que $x \in G$ est **d'ordre fini** si:
+	- $o(\langle x \rangle)$ est fini. (Rappel: $o(\langle x \rangle) = \#\langle x \rangle$)
+	- Dans tout groupe, le seul élément d'ordre $1$ est l'élément noeutre.
+
+> [!warn]
+> $\fbox3$ n'implique pas que $o(G) < +\infty$ (que l'ordre de $G$ est fini).
+
+#### 2.2.4.1 Exemple
+
+
+**Exemple 1**
+$(\Z, +)$ est un groupe monogène engendré par $1$.
+- $\Z = \langle 1 \rangle$
+Les seuls générateurs de $\Z$ sont $1$ et $-1$. 
+
+**Exemple 2**
+$u = \left\{e^{\frac{i(2\pi)k}n} | k \in \ub{[|0, n-1|]}{k \in \Z}\right\}$ 
+- $u = \left\langle e^\frac{i2\pi}n\right\rangle$
+	- $= \langle e^{\frac{2\pi k}n}\rangle$ où $k \wedge n = 1$
+$u_n$  est un groupe des racines $n$-ièmes de l'unité.
+
+$(\mathbb{Q}, +)$ n'est pas monogène.
+Il n'admet pas de partie génératrice finie, 
+- On peut montrer (+ difficile) que $\mathbb{Q} = \langle \{\frac1n | n \in \N^*\}\rangle$
+
+
+ 

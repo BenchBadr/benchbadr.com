@@ -521,7 +521,7 @@ Soit $f:E^p \to F$ une application $p$-linéaire alternée.
 
 Soit $x$ une combinaison linéaire des $\{u_k\}_{k≠i}$.
 Alors:
-- $f(u_1, ..., u_{i-1},u_i+x, u_{i+1}, ..., u_p) \ub{=}{(*)}=f(u_1, ..., u_p) + \ub{f(u_1, ..., u_{i-1}, x, u_{i+1}, ..., u_p)}{(**)}$
+- $f(u_1, ..., u_{i-1},u_i+x, u_{i+1}, ..., u_p) \ub{=}{(*)}f(u_1, ..., u_p) + \ub{f(u_1, ..., u_{i-1}, x, u_{i+1}, ..., u_p)}{(**)}$
 	- $(*)$ : linéarité par rapport à la première variable
 	- $(**)$ : $= 0$ d'après la proposition précédente.
 

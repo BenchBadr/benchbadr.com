@@ -3,20 +3,28 @@
 
 # Devoirs
 
-- [ ] Lundi - Faire l'exemple des slides de traduction (DB)
-- [ ] Mardi AlgLin - Qst 5 du 7
-- [ ] Jeudi - Sous groupe inclu element neutre + Exos nombres premiers
 
 - [ ] Interro Arithmétique (30 min)
-	- Questions de cours + mini-exo
+	- Questions de cours + mini-exo (1 ou 2)
+	- à faire `°1°`
+- [ ] ALG : 9 & 10 fiche TD 2
 - [ ] Vendredi - Exercice 4, Finir la correction de l'exercice 3
 
+
 - [ ] 13/10 - Rendu 1 Proj BDD
+- [ ] 14/10 - Anglais texte preparer
+
+- [ ] 16/10 - Contrôle AL2
 
 - [ ] Partiel Arithmétique (23/10)
-	- ~2h / 2h30
+	- ~2h / 2h30 (sur tout a voir et vu)
 
-- [ ] S'exercer PLaton (C)
+**Les examens**
+- [ ] 05/11 (Intégrales)
+- [ ] 12/11 (Algèbre)
+
+
+- [ ] 13/11 - 10h-16h (Forum des stages)
 
 
 # Website
@@ -26,8 +34,7 @@
 
 ## 2. Quickfixes
 
-- [ ] Add support for permissive spotlight search (eg. `int/ch1 - ...`)
-- [ ] Fix color discrepancy nested spaces
+- [x] Add support for permissive spotlight search (eg. `int/ch1 - ...`)
 - [ ] Icon size sidebaright (scale to dimensions)
 
 ## 3. Features

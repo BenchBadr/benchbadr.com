@@ -441,7 +441,7 @@ html:has(.app.dark) .burger{
 
   .spotlight-container{
     animation: slideIn 0.2s ease-out;
-    margin-top:20%;
+    margin-top:30vh;
     margin-left:50%;
     translate:-50% 0;
   }
@@ -530,6 +530,7 @@ html:has(.spotlight-overlay){
 }
 
 
+
 .spotlight-results{
   padding:15px;
   overflow: scroll;
@@ -537,6 +538,7 @@ html:has(.spotlight-overlay){
 
   scrollbar-width: thin;
   scrollbar-color: var(--current-op-30) transparent;
+  
   
 
   -ms-overflow-style: none;
@@ -559,6 +561,8 @@ html:has(.spotlight-overlay){
   }
 
 }
+
+
 
 .spotlight-results > a{
   color:unset;

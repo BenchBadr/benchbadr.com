@@ -1,7 +1,7 @@
 ---
 lang: fr
 desc: Modélisation
-date: 29/09/2023
+date: 29/09/2025
 ---
 > [!info]
 > Encadré par **M. Boussidan**

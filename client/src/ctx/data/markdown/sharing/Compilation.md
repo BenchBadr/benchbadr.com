@@ -54,6 +54,7 @@ $\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\n
 ## 1. Formules
 
 - **Convergence** : $\forall \epsilon > 0, \exists N \in n_0 / \forall n \in \N (n ≥ N \Rightarrow |u_n - l| ≤ \epsilon)$
+- **Critère de Cauchy** : $\forall \eps > 0, \exists N / \forall p ≥ n ≥ N$ on a $|u_n - u_p| ≤ \eps$
 
 # /Fonctions
 
@@ -219,4 +220,11 @@ $\newcommand{\K}{\mathbb{K}}\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}\n
 - **Reste intégral**
 	- $\forall x \in I, f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{f^{''}(x_0)}{2!}(x-x_0)^2+...+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \int^x_{x_0}f^{(n+1)}(t)\frac{(x-t)^n}{n!}$.
 - **Lagrange**
+
+# /Groupes
+
+- **Vocabulaire**
+	- Centre :  l'ensemble des couples d'éléments commutant.
+
+- **Théorème de Lagrange** : 
 
